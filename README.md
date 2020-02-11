@@ -1,7 +1,7 @@
 # rvc18
 Adding to RVC statistical analysis by mhepner
 
-This is the setup for hepner_code.R to be easily run 
+This is the setup for hepner_code.R to be easily run as RVC_99_18
 
 The main output file is big_csv        setwd(...../big_csv)  
   -> Within that file there should be 3 more output files named exploited_species, trohpic_groups, and trophic_level
