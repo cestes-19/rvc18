@@ -1,5 +1,6 @@
 
 library(tidyverse)
+library(data.table)
 
 setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/DT")
 
@@ -19,7 +20,7 @@ White_Shoal <- read_csv("White_Shoal/data/White_Shoal_biomass_data_combined.csv"
 
 DT_reef_biomass_data_combined <- rbind(Bird_Key_Reef,Black_Coral_Rock, Davis_Rock, Loggerhead_Patch, Mayers_Peak, Palmata_Patch,Prolifera_Patch, Mayers_Peak, Maze, Temptation_Rock, Texas_Rock, White_Shoal)
 DT_reef_biomass_data <- arrange(DT_reef_biomass_data_combined, Year,Reef, sum, max, min, mean, sd )
-DT_reef_biomass_data$SUBREGION <- ("DT")
+DT_reef_biomass_data$REGION <- ("DT")
 export(DT_reef_biomass_data, "DT_reef_biomass_data.csv")
 
 ###LK
@@ -44,7 +45,7 @@ Western_Sambo_Shallow <- read_csv("Western_Sambo_Shallow/data/Western_Sambo_Shal
 
 LK_reef_biomass_data_combined <- rbind(Eastern_Sambo_Deep,Eastern_Sambo_Shallow,Jaap_Reef,Looe_Key_Deep,Looe_Key_Shallow,Red_Dun_Reef,Rock_Key_Deep,Rock_Key_Shallow,Sand_Key_Deep,Sand_Key_Shallow,Smith_Shoal,West_Washer_Woman,Western_Sambo_Deep,Western_Sambo_Shallow)
 LK_reef_biomass_data <- arrange(LK_reef_biomass_data_combined, Year,Reef, sum, max, min, mean, sd )
-LK_reef_biomass_data$SUBREGION <- ("LK")
+LK_reef_biomass_data$REGION <- ("LK")
 export(LK_reef_biomass_data, "LK_reef_biomass_data.csv")
 
 
@@ -68,7 +69,7 @@ West_Turtle_Shoal <- read_csv("West_Turtle_Shoal/data/West_Turtle_Shoal_biomass_
 
 MK_reef_biomass_data_combined <- rbind(Alligator_Deep,Alligator_Shallow,Dustan_Rocks,Long_Key,Rawa_Reef,Sombrero_Deep,Sombrero_Shallow,Tennessee_Deep,Tennessee_Shallow,Thor,West_Turtle_Shoal)
 MK_reef_biomass_data <- arrange(MK_reef_biomass_data_combined, Year,Reef, sum, max, min, mean, sd )
-MK_reef_biomass_data$SUBREGION <- ("MK")
+MK_reef_biomass_data$REGION <- ("MK")
 export(MK_reef_biomass_data, "MK_reef_biomass_data.csv")
 
 
@@ -91,7 +92,7 @@ Two_Patches <- read_csv("Two_Patches/data/Two_Patches_biomass_data_combined.csv"
 
 UK_reef_biomass_data_combined <- rbind(Admiral, Burr_Fish, Carysfort_Deep, Carysfort_Shallow, Conch_Deep, Conch_Shallow, Grecian_Rocks, Molasses_Deep, Molasses_Shallow, Porter_Patch, Turtle, Two_Patches)
 UK_reef_biomass_data <- arrange(UK_reef_biomass_data_combined, Year,Reef, sum, max, min, mean, sd )
-UK_reef_biomass_data$SUBREGION <- ("UK")
+UK_reef_biomass_data$REGION <- ("UK")
 export(UK_reef_biomass_data, "UK_reef_biomass_data.csv")
 
 
@@ -125,11 +126,12 @@ Palm_Beach_5 <- read_csv("Palm_Beach_5/data/Palm_Beach_5_biomass_data_combined.c
 
 SEF_reef_biomass_data_combined <- rbind(Broward_County_1,Broward_County_2,Broward_County_3,Broward_County_4,Broward_County_5,Broward_County_6,Broward_County_A, Dade_County_1, Dade_County_2,Dade_County_3,Dade_County_4,Dade_County_5,Dade_County_6,Dade_County_7,Dade_County_8,Martin_County_1,Martin_County_2,Palm_Beach_1,Palm_Beach_2,Palm_Beach_3,Palm_Beach_4)
 SEF_reef_biomass_data <- arrange(SEF_reef_biomass_data_combined, Year,Reef, sum, max, min, mean, sd )
-SEF_reef_biomass_data$SUBREGION <- ("SEF")
+SEF_reef_biomass_data$REGION <- ("SEF")
 export(SEF_reef_biomass_data, "SEF_reef_biomass_data.csv")
 
 
 ##### COMBINE ALL SUBREGIONS INTO ONE LARGE CSV
+
 setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF")
 
 DT <- read_csv("DT/DT_reef_biomass_data.csv")
@@ -140,6 +142,9 @@ SEF <- read_csv("SEF/SEF_reef_biomass_data.csv")
 
 All_regions_biomass_data_combined <- rbind(DT,LK,MK,UK,SEF)
 All_regions_biomass_data <- arrange(All_regions_biomass_data_combined, Year, Reef, sum, max, min, mean, sd)
+
+### Change column names to add to coral data
+setnames(All_regions_biomass_data, old = c('Reef'), new = c('sitename'))
 export(All_regions_biomass_data, "All_regions_RVC_biomass_data.csv")
 
 
