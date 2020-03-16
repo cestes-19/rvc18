@@ -224,6 +224,8 @@ export(Bird_Key_comm_biomass, "Bird_Key_Reef/data/Bird_Key_commercial_biomass.cs
 
 
 
+
+
 ## Black Coral 
 
 
@@ -1764,6 +1766,101 @@ DT_reef_comm_biomass_combined <- rbind(Bird_Key_comm_biomass,Black_Coral_Rock_co
 DT_reef_comm_biomass_data <- arrange(DT_reef_comm_biomass_combined, Year,Reef, sum, max, min, mean, sd )
 DT_reef_comm_biomass_data$REGION <- ("DT")
 export(DT_reef_comm_biomass_data, "DT_commercial_biomass_data.csv")
+
+
+
+### Rank by region for RHI values (1-5)
+
+
+## Herbivrous first and repeat code for commercial 
+
+## remove max, min, mean, sd
+DT_reef_herb_biomass_data$max <- NULL
+DT_reef_herb_biomass_data$min <- NULL
+DT_reef_herb_biomass_data$sd <- NULL
+DT_reef_herb_biomass_data$REGION <- NULL
+DT_reef_herb_biomass_data$mean <- NULL
+
+
+DT_herb_graph <- DT_reef_herb_biomass_data[order(DT_reef_herb_biomass_data$sum),]
+
+## sort data into 5 different bins using binr 
+
+DT_herb_bins <- bins(DT_herb_graph$sum,target.bins = 5, max.breaks = NA, exact.groups = TRUE, minpts = 1)
+view(DT_herb_bins$binct)
+
+#### MANUALLY ADD IN THE VALUES OF EACH BIN. 1-5 WILL BE ADDED TO EACH BIN SUBSET
+
+## from binct make the value of the bins and apply number 1-5 for each bin
+
+DT_herb_1 <- subset(DT_herb_graph, sum < 0.0056032901376835)
+DT_herb_2 <- subset(DT_herb_graph, sum >= 0.0056032901376835  & sum < 0.0221995480842845 )
+DT_herb_3 <- subset(DT_herb_graph, sum >= 0.0221995480842845  & sum < 0.0410235754113624 )
+DT_herb_4 <- subset(DT_herb_graph, sum >= 0.0410235754113624  & sum < 0.101480385743905 )
+DT_herb_5 <- subset(DT_herb_graph, sum >= 0.101480385743905  & sum < 0.402358481642115 )
+
+
+DT_herb_1$RHI_Fish <- "1"
+DT_herb_2$RHI_Fish <- "2"
+DT_herb_3$RHI_Fish <- "3"
+DT_herb_4$RHI_Fish <- "4"
+DT_herb_5$RHI_Fish <- "5"
+
+DT_herb_RHI <- rbind(DT_herb_1,DT_herb_2,DT_herb_3,DT_herb_4,DT_herb_5)  
+
+DT_herb_RHI$SUBREGION <- "DT"
+
+## Commercial 
+
+## remove max, min, mean, sd
+DT_reef_comm_biomass_data$max <- NULL
+DT_reef_comm_biomass_data$min <- NULL
+DT_reef_comm_biomass_data$sd <- NULL
+DT_reef_comm_biomass_data$REGION <- NULL
+DT_reef_comm_biomass_data$mean <- NULL
+
+
+DT_comm_graph <- DT_reef_comm_biomass_data[order(DT_reef_comm_biomass_data$sum),]
+
+## sort data into 5 different bins using binr 
+
+DT_comm_bins <- bins(DT_comm_graph$sum,target.bins = 5, max.breaks = NA, exact.groups = TRUE, minpts = 1)
+
+view(DT_comm_bins$binct)
+
+#### MANUALLY ADD IN THE VALUES OF EACH BIN. 1-5 WILL BE ADDED TO EACH BIN SUBSET
+
+## from binct make the value of the bins and apply number 1-5 for each bin
+
+DT_comm_1 <- subset(DT_comm_graph, sum < 0.0359017935408148)
+DT_comm_2 <- subset(DT_comm_graph, sum >= 0.0359017935408148  & sum < 0.0815088984015452 )
+DT_comm_3 <- subset(DT_comm_graph, sum >= 0.0815088984015452  & sum <  0.184596796992808 )
+DT_comm_4 <- subset(DT_comm_graph, sum >= 0.184596796992808   & sum < 0.420954554064919 )
+DT_comm_5 <- subset(DT_comm_graph, sum >= 0.420954554064919  & sum < 1.64067833758724 )
+
+
+DT_comm_1$RHI_Fish <- "1"
+DT_comm_2$RHI_Fish <- "2"
+DT_comm_3$RHI_Fish <- "3"
+DT_comm_4$RHI_Fish <- "4"
+DT_comm_5$RHI_Fish <- "5"
+
+DT_comm_RHI <- rbind(DT_comm_1,DT_comm_2,DT_comm_3,DT_comm_4,DT_comm_5)  
+
+DT_comm_RHI$SUBREGION <- "DT"
+
+
+
+export(DT_herb_RHI, "DT_herbivorous_RHI.csv")
+export(DT_comm_RHI, "DT_commercial_RHI.csv")
+
+
+
+
+
+
+
+
 
 
 
@@ -5510,6 +5607,89 @@ LK_reef_comm_biomass_data <- arrange(LK_reef_comm_biomass_combined, Year,Reef, s
 LK_reef_comm_biomass_data$REGION <- ("LK")
 export(LK_reef_comm_biomass_data, "LK_commercial_biomass_data.csv")
 
+
+
+## Herbivrous first and repeat code for commercial 
+
+## remove max, min, mean, sd
+LK_reef_herb_biomass_data$max <- NULL
+LK_reef_herb_biomass_data$min <- NULL
+LK_reef_herb_biomass_data$sd <- NULL
+LK_reef_herb_biomass_data$REGION <- NULL
+LK_reef_herb_biomass_data$mean <- NULL
+
+
+LK_herb_graph <- LK_reef_herb_biomass_data[order(LK_reef_herb_biomass_data$sum),]
+
+## sort data into 5 different bins using binr 
+
+LK_herb_bins <- bins(LK_herb_graph$sum,target.bins = 5, max.breaks = NA, exact.groups = TRUE, minpts = 1)
+
+view(LK_herb_bins$binct)
+#### MANUALLY ADD IN THE VALUES OF EACH BIN. 1-5 WILL BE ADDED TO EACH BIN SUBSET
+
+## from binct make the value of the bins and apply number 1-5 for each bin
+
+LK_herb_1 <- subset(LK_herb_graph, sum < 0.0056629373881087)
+LK_herb_2 <- subset(LK_herb_graph, sum >= 0.0056629373881087  & sum <  0.0363535140563045 )
+LK_herb_3 <- subset(LK_herb_graph, sum >=  0.0363535140563045  & sum < 0.0500209322725625 )
+LK_herb_4 <- subset(LK_herb_graph, sum >= 0.0500209322725625  & sum < 0.0783675310729793 )
+LK_herb_5 <- subset(LK_herb_graph, sum >= 0.0783675310729793  & sum < 0.241610789753565 )
+
+
+LK_herb_1$RHI_Fish <- "1"
+LK_herb_2$RHI_Fish <- "2"
+LK_herb_3$RHI_Fish <- "3"
+LK_herb_4$RHI_Fish <- "4"
+LK_herb_5$RHI_Fish <- "5"
+
+LK_herb_RHI <- rbind(LK_herb_1,LK_herb_2,LK_herb_3,LK_herb_4,LK_herb_5)  
+
+LK_herb_RHI$SUBREGION <- "LK"
+
+
+
+## Commercial 
+
+## remove max, min, mean, sd
+LK_reef_comm_biomass_data$max <- NULL
+LK_reef_comm_biomass_data$min <- NULL
+LK_reef_comm_biomass_data$sd <- NULL
+LK_reef_comm_biomass_data$REGION <- NULL
+LK_reef_comm_biomass_data$mean <- NULL
+
+
+LK_comm_graph <- LK_reef_comm_biomass_data[order(LK_reef_comm_biomass_data$sum),]
+
+## sort data into 5 different bins using binr 
+
+LK_comm_bins <- bins(LK_comm_graph$sum,target.bins = 5, max.breaks = NA, exact.groups = TRUE, minpts = 1)
+
+view(LK_comm_bins$binct)
+
+#### MANUALLY ADD IN THE VALUES OF EACH BIN. 1-5 WILL BE ADDED TO EACH BIN SUBSET
+
+## from binct make the value of the bins and apply number 1-5 for each bin
+
+LK_comm_1 <- subset(LK_comm_graph, sum < 0.0277977364242418)
+LK_comm_2 <- subset(LK_comm_graph, sum >= 0.0277977364242418  & sum < 0.135288929696232 )
+LK_comm_3 <- subset(LK_comm_graph, sum >= 0.135288929696232  & sum <  0.192955206003565 )
+LK_comm_4 <- subset(LK_comm_graph, sum >= 0.192955206003565   & sum < 0.257303978583748 )
+LK_comm_5 <- subset(LK_comm_graph, sum >= 0.257303978583748  & sum <  0.706146336133836 )
+
+
+LK_comm_1$RHI_Fish <- "1"
+LK_comm_2$RHI_Fish <- "2"
+LK_comm_3$RHI_Fish <- "3"
+LK_comm_4$RHI_Fish <- "4"
+LK_comm_5$RHI_Fish <- "5"
+
+LK_comm_RHI <- rbind(LK_comm_1,LK_comm_2,LK_comm_3,LK_comm_4,LK_comm_5)  
+LK_comm_RHI$SUBREGION <- "LK"
+
+
+export(LK_herb_RHI, "LK_herbivorous_RHI.csv")
+export(LK_comm_RHI, "LK_commercial_RHI.csv")
 
 
 
@@ -9261,6 +9441,90 @@ MK_reef_comm_biomass_data <- arrange(MK_reef_comm_biomass_combined, Year,Reef, s
 MK_reef_comm_biomass_data$REGION <- ("MK")
 export(MK_reef_comm_biomass_data, "MK_commercial_biomass_data.csv")
 
+## Herbivrous first and repeat code for commercial 
+
+## remove max, min, mean, sd
+MK_reef_herb_biomass_data$max <- NULL
+MK_reef_herb_biomass_data$min <- NULL
+MK_reef_herb_biomass_data$sd <- NULL
+MK_reef_herb_biomass_data$REGION <- NULL
+MK_reef_herb_biomass_data$mean <- NULL
+
+
+MK_herb_graph <- MK_reef_herb_biomass_data[order(MK_reef_herb_biomass_data$sum),]
+
+## sort data into 5 different bins using binr 
+
+MK_herb_bins <- bins(MK_herb_graph$sum,target.bins = 5, max.breaks = NA, exact.groups = TRUE, minpts = 1)
+
+view(MK_herb_bins$binct)
+#### MANUALLY ADD IN THE VALUES OF EACH BIN. 1-5 WILL BE ADDED TO EACH BIN SUBSET
+
+## from binct make the value of the bins and apply number 1-5 for each bin
+
+MK_herb_1 <- subset(MK_herb_graph, sum == 0)
+MK_herb_2 <- subset(MK_herb_graph, sum >= 0.0035743943621699  & sum <  0.0172257720076149 )
+MK_herb_3 <- subset(MK_herb_graph, sum >= 0.0172257720076149  & sum < 0.037302886333091 )
+MK_herb_4 <- subset(MK_herb_graph, sum >= 0.037302886333091  & sum < 0.0605819972182435 )
+MK_herb_5 <- subset(MK_herb_graph, sum >= 0.0605819972182435  & sum < 0.157081779454653 )
+
+
+MK_herb_1$RHI_Fish <- "1"
+MK_herb_2$RHI_Fish <- "2"
+MK_herb_3$RHI_Fish <- "3"
+MK_herb_4$RHI_Fish <- "4"
+MK_herb_5$RHI_Fish <- "5"
+
+MK_herb_RHI <- rbind(MK_herb_1,MK_herb_2,MK_herb_3,MK_herb_4,MK_herb_5)  
+
+MK_herb_RHI$SUBREGION <- "MK"
+
+
+## Commercial 
+
+## remove max, min, mean, sd
+MK_reef_comm_biomass_data$max <- NULL
+MK_reef_comm_biomass_data$min <- NULL
+MK_reef_comm_biomass_data$sd <- NULL
+MK_reef_comm_biomass_data$REGION <- NULL
+MK_reef_comm_biomass_data$mean <- NULL
+
+
+MK_comm_graph <- MK_reef_comm_biomass_data[order(MK_reef_comm_biomass_data$sum),]
+
+## sort data into 5 different bins using binr 
+
+MK_comm_bins <- bins(MK_comm_graph$sum,target.bins = 5, max.breaks = NA, exact.groups = TRUE, minpts = 1)
+
+view(MK_comm_bins$binct)
+
+#### MANUALLY ADD IN THE VALUES OF EACH BIN. 1-5 WILL BE ADDED TO EACH BIN SUBSET
+
+## from binct make the value of the bins and apply number 1-5 for each bin
+
+MK_comm_1 <- subset(MK_comm_graph, sum == 0)
+MK_comm_2 <- subset(MK_comm_graph, sum >= 0.0093236502326533  & sum < 0.072877590958306 )
+MK_comm_3 <- subset(MK_comm_graph, sum >= 0.072877590958306  & sum <  0.14241754363211 )
+MK_comm_4 <- subset(MK_comm_graph, sum >= 0.14241754363211   & sum < 0.234013981539776 )
+MK_comm_5 <- subset(MK_comm_graph, sum >= 0.234013981539776  & sum <  0.512292234546501 )
+
+
+MK_comm_1$RHI_Fish <- "1"
+MK_comm_2$RHI_Fish <- "2"
+MK_comm_3$RHI_Fish <- "3"
+MK_comm_4$RHI_Fish <- "4"
+MK_comm_5$RHI_Fish <- "5"
+
+MK_comm_RHI <- rbind(MK_comm_1,MK_comm_2,MK_comm_3,MK_comm_4,MK_comm_5)  
+MK_comm_RHI$SUBREGION <- "MK"
+
+
+export(MK_herb_RHI, "MK_herbivorous_RHI.csv")
+export(MK_comm_RHI, "MK_commercial_RHI.csv")
+
+
+
+
 
 
 
@@ -12730,6 +12994,102 @@ UK_reef_comm_biomass_data$REGION <- ("UK")
 export(UK_reef_comm_biomass_data, "UK_commercial_biomass_data.csv")
 
 
+## Herbivrous first and repeat code for commercial 
+
+## remove max, min, mean, sd
+UK_reef_herb_biomass_data$max <- NULL
+UK_reef_herb_biomass_data$min <- NULL
+UK_reef_herb_biomass_data$sd <- NULL
+UK_reef_herb_biomass_data$REGION <- NULL
+UK_reef_herb_biomass_data$mean <- NULL
+
+
+UK_herb_graph <- UK_reef_herb_biomass_data[order(UK_reef_herb_biomass_data$sum),]
+
+## sort data into 5 different bins using binr 
+
+UK_herb_bins <- bins(UK_herb_graph$sum,target.bins = 5, max.breaks = NA, exact.groups = TRUE, minpts = 1)
+
+view(UK_herb_bins$binct)
+#### MANUALLY ADD IN THE VALUES OF EACH BIN. 1-5 WILL BE ADDED TO EACH BIN SUBSET
+
+## from binct make the value of the bins and apply number 1-5 for each bin
+
+UK_herb_1 <- subset(UK_herb_graph, sum == 0)
+UK_herb_2 <- subset(UK_herb_graph, sum >= 0.0014643612286758  & sum < 0.0358794031811074 )
+UK_herb_3 <- subset(UK_herb_graph, sum >= 0.0358794031811074  & sum < 0.0619726528158242 )
+UK_herb_4 <- subset(UK_herb_graph, sum >= 0.0619726528158242  & sum < 0.0885447098399118 )
+UK_herb_5 <- subset(UK_herb_graph, sum >= 0.0885447098399118  & sum < 0.186256093285804 )
+
+
+UK_herb_1$RHI_Fish <- "1"
+UK_herb_2$RHI_Fish <- "2"
+UK_herb_3$RHI_Fish <- "3"
+UK_herb_4$RHI_Fish <- "4"
+UK_herb_5$RHI_Fish <- "5"
+
+UK_herb_RHI <- rbind(UK_herb_1,UK_herb_2,UK_herb_3,UK_herb_4,UK_herb_5)  
+UK_herb_RHI$SUBREGION <- "UK"
+
+
+
+## Commercial 
+
+## remove max, min, mean, sd
+UK_reef_comm_biomass_data$max <- NULL
+UK_reef_comm_biomass_data$min <- NULL
+UK_reef_comm_biomass_data$sd <- NULL
+UK_reef_comm_biomass_data$REGION <- NULL
+UK_reef_comm_biomass_data$mean <- NULL
+
+
+UK_comm_graph <- UK_reef_comm_biomass_data[order(UK_reef_comm_biomass_data$sum),]
+
+## sort data into 5 different bins using binr 
+
+UK_comm_bins <- bins(UK_comm_graph$sum,target.bins = 5, max.breaks = NA, exact.groups = TRUE, minpts = 1)
+
+view(UK_comm_bins$binct)
+
+#### MANUALLY ADD IN THE VALUES OF EACH BIN. 1-5 WILL BE ADDED TO EACH BIN SUBSET
+
+## from binct make the value of the bins and apply number 1-5 for each bin
+
+UK_comm_1 <- subset(UK_comm_graph, sum == 0)
+UK_comm_2 <- subset(UK_comm_graph, sum >= 0.0110060923447543  & sum <  0.101816602035964 )
+UK_comm_3 <- subset(UK_comm_graph, sum >=  0.101816602035964  & sum <  0.206701309604427 )
+UK_comm_4 <- subset(UK_comm_graph, sum >= 0.206701309604427   & sum < 0.300343244684643 )
+UK_comm_5 <- subset(UK_comm_graph, sum >= 0.300343244684643  & sum <  0.644855087783647 )
+
+
+UK_comm_1$RHI_Fish <- "1"
+UK_comm_2$RHI_Fish <- "2"
+UK_comm_3$RHI_Fish <- "3"
+UK_comm_4$RHI_Fish <- "4"
+UK_comm_5$RHI_Fish <- "5"
+
+UK_comm_RHI <- rbind(UK_comm_1,UK_comm_2,UK_comm_3,UK_comm_4,UK_comm_5)  
+UK_comm_RHI$SUBREGION <- "UK"
+
+
+export(UK_herb_RHI, "UK_herbivorous_RHI.csv")
+export(UK_comm_RHI, "UK_commercial_RHI.csv")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### SE Florida 
 
@@ -15382,32 +15742,149 @@ export(SEF_reef_comm_biomass_data, "SEF_commercial_biomass_data.csv")
 
 
 
+## Herbivrous first and repeat code for commercial 
+
+## remove max, min, mean, sd
+SEF_reef_herb_biomass_data$max <- NULL
+SEF_reef_herb_biomass_data$min <- NULL
+SEF_reef_herb_biomass_data$sd <- NULL
+SEF_reef_herb_biomass_data$REGION <- NULL
+SEF_reef_herb_biomass_data$mean <- NULL
+
+
+SEF_herb_graph <- SEF_reef_herb_biomass_data[order(SEF_reef_herb_biomass_data$sum),]
+
+## sort data into 5 different bins using binr 
+
+SEF_herb_bins <- bins(SEF_herb_graph$sum,target.bins = 5, max.breaks = NA, exact.groups = TRUE, minpts = 1)
+
+view(SEF_herb_bins$binct)
+#### MANUALLY ADD IN THE VALUES OF EACH BIN. 1-5 WILL BE ADDED TO EACH BIN SUBSET
+
+## from binct make the value of the bins and apply number 1-5 for each bin
+
+SEF_herb_1 <- subset(SEF_herb_graph, sum == 0)
+SEF_herb_2 <- subset(SEF_herb_graph, sum >= 0.0025070807120065  & sum < 0.0127665914401812 )
+SEF_herb_3 <- subset(SEF_herb_graph, sum >= 0.0127665914401812  & sum < 0.0288397341137309 )
+SEF_herb_4 <- subset(SEF_herb_graph, sum >= 0.0288397341137309  & sum < 0.0440605378173069 )
+SEF_herb_5 <- subset(SEF_herb_graph, sum >= 0.0440605378173069  & sum < 0.110681625977084 )
+
+
+SEF_herb_1$RHI_Fish <- "1"
+SEF_herb_2$RHI_Fish <- "2"
+SEF_herb_3$RHI_Fish <- "3"
+SEF_herb_4$RHI_Fish <- "4"
+SEF_herb_5$RHI_Fish <- "5"
+
+SEF_herb_RHI <- rbind(SEF_herb_1,SEF_herb_2,SEF_herb_3,SEF_herb_4,SEF_herb_5)  
+SEF_herb_RHI$SUBREGION <- "SEF"
+
+
+## Commercial 
+
+## remove max, min, mean, sd
+SEF_reef_comm_biomass_data$max <- NULL
+SEF_reef_comm_biomass_data$min <- NULL
+SEF_reef_comm_biomass_data$sd <- NULL
+SEF_reef_comm_biomass_data$REGION <- NULL
+SEF_reef_comm_biomass_data$mean <- NULL
+
+
+SEF_comm_graph <- SEF_reef_comm_biomass_data[order(SEF_reef_comm_biomass_data$sum),]
+
+## sort data into 5 different bins using binr 
+
+SEF_comm_bins <- bins(SEF_comm_graph$sum,target.bins = 5, max.breaks = NA, exact.groups = TRUE, minpts = 1)
+
+view(SEF_comm_bins$binct)
+
+#### MANUALLY ADD IN THE VALUES OF EACH BIN. 1-5 WILL BE ADDED TO EACH BIN SUBSET
+
+## from binct make the value of the bins and apply number 1-5 for each bin
+
+SEF_comm_1 <- subset(SEF_comm_graph, sum == 0)
+SEF_comm_2 <- subset(SEF_comm_graph, sum >= 0.017035825031166  & sum < 0.0508615526402642 )
+SEF_comm_3 <- subset(SEF_comm_graph, sum >= 0.0508615526402642  & sum < 0.0973626776710686 )
+SEF_comm_4 <- subset(SEF_comm_graph, sum >= 0.0973626776710686  & sum < 0.155983370517576 )
+SEF_comm_5 <- subset(SEF_comm_graph, sum >= 0.155983370517576  & sum < 0.360454342235304 )
+
+
+SEF_comm_1$RHI_Fish <- "1"
+SEF_comm_2$RHI_Fish <- "2"
+SEF_comm_3$RHI_Fish <- "3"
+SEF_comm_4$RHI_Fish <- "4"
+SEF_comm_5$RHI_Fish <- "5"
+
+SEF_comm_RHI <- rbind(SEF_comm_1,SEF_comm_2,SEF_comm_3,SEF_comm_4,SEF_comm_5)  
+SEF_comm_RHI$SUBREGION <- "SEF"
+
+
+export(SEF_herb_RHI, "SEF_herbivorous_RHI.csv")
+export(SEF_comm_RHI, "SEF_commercial_RHI.csv")
+
+
+
+
+
+
+
+
+
 ### COMBINE ALL SUBREGIONS TOGETHER
 
 library(data.table)
 setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF")
 
-DT <- read_csv("DT/DT_herbivorous_biomass_data.csv")
-LK <- read_csv("LK/LK_herbivorous_biomass_data.csv")
-MK <- read_csv("MK/MK_herbivorous_biomass_data.csv")
-UK <- read_csv("UK/UK_herbivorous_biomass_data.csv")
-SEF <- read_csv("SEF/SEF_herbivorous_biomass_data.csv")
+DT_herb <- read_csv("DT/DT_herbivorous_biomass_data.csv")
+LK_herb <- read_csv("LK/LK_herbivorous_biomass_data.csv")
+MK_herb <- read_csv("MK/MK_herbivorous_biomass_data.csv")
+UK_herb <- read_csv("UK/UK_herbivorous_biomass_data.csv")
+SEF_herb <- read_csv("SEF/SEF_herbivorous_biomass_data.csv")
 
-All_regions_herb_data_combined <- rbind(DT,LK,MK,UK,SEF)
+All_regions_herb_data_combined <- rbind(DT_herb,LK_herb,MK_herb,UK_herb,SEF_herb)
 All_regions_herb_data <- arrange(All_regions_herb_data_combined, Year, Reef, sum, max, min, mean, sd)
 
 setnames(All_regions_herb_data, old = c('Reef'), new = c('sitename'))
 export(All_regions_herb_data, "All_regions_RVC_herbivorous_biomass.csv")
 
-DT <- read_csv("DT/DT_commercial_biomass_data.csv")
-LK <- read_csv("LK/LK_commercial_biomass_data.csv")
-MK <- read_csv("MK/MK_commercial_biomass_data.csv")
-UK <- read_csv("UK/UK_commercial_biomass_data.csv")
-SEF <- read_csv("SEF/SEF_commercial_biomass_data.csv")
+DT_comm <- read_csv("DT/DT_commercial_biomass_data.csv")
+LK_comm <- read_csv("LK/LK_commercial_biomass_data.csv")
+MK_comm <- read_csv("MK/MK_commercial_biomass_data.csv")
+UK_comm <- read_csv("UK/UK_commercial_biomass_data.csv")
+SEF_comm <- read_csv("SEF/SEF_commercial_biomass_data.csv")
 
-All_regions_comm_data_combined <- rbind(DT,LK,MK,UK,SEF)
+All_regions_comm_data_combined <- rbind(DT_comm,LK_comm,MK_comm,UK_comm,SEF_comm)
 All_regions_comm_data <- arrange(All_regions_comm_data_combined, Year, Reef, sum, max, min, mean, sd)
 
 setnames(All_regions_comm_data, old = c('Reef'), new = c('sitename'))
 export(All_regions_comm_data, "All_regions_RVC_commercial_biomass.csv")
+
+
+
+
+### RHI combined
+
+DT_RHI_herbb <- read_csv("DT/DT_herbivorous_RHI.csv")
+LK_RHI_herbb <- read_csv("LK/LK_herbivorous_RHI.csv")
+MK_RHI_herbb <- read_csv("MK/MK_herbivorous_RHI.csv")
+UK_RHI_herbb <- read_csv("UK/UK_herbivorous_RHI.csv")
+SEF_RHI_herbb <- read_csv("SEF/SEF_herbivorous_RHI.csv")
+
+All_regions_herb_RHI_combined <- rbind(DT_RHI_herbb,LK_RHI_herbb,MK_RHI_herbb,UK_RHI_herbb,SEF_RHI_herbb)
+#All_regions_herb_RHI <- arrange(All_regions_herb_RHI_combined, Year, Reef, sum, max, min, mean, sd)
+
+setnames(All_regions_herb_RHI_combined, old = c('Reef'), new = c('sitename'))
+export(All_regions_herb_RHI_combined, "All_regions_RVC_herbivorous_RHI.csv")
+
+DT_RHI_commm <- read_csv("DT/DT_commercial_RHI.csv")
+LK_RHI_commm <- read_csv("LK/LK_commercial_RHI.csv")
+MK_RHI_commm <- read_csv("MK/MK_commercial_RHI.csv")
+UK_RHI_commm <- read_csv("UK/UK_commercial_RHI.csv")
+SEF_RHI_commm <- read_csv("SEF/SEF_commercial_RHI.csv")
+
+All_regions_comm_RHI_combined <- rbind(DT_RHI_commm,LK_RHI_commm,MK_RHI_commm,UK_RHI_commm,SEF_RHI_commm)
+#All_regions_comm_RHI <- arrange(All_regions_comm_RHI_combined, Year, Reef, sum, max, min, mean, sd)
+
+setnames(All_regions_comm_RHI_combined, old = c('Reef'), new = c('sitename'))
+export(All_regions_comm_RHI_combined, "All_regions_RVC_commercial_RHI.csv")
 
