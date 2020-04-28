@@ -6,7 +6,7 @@ library(tidyverse)
 library(data.table)
 library(plyr)
 
-setwd("C:/Users/cestes/Documents/Spring_2020/1996_2017")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/1996_2017")
 
 ### Combining coral data to later combine with fish data 
 
@@ -129,7 +129,7 @@ colnames(Coral_macro_combine) <- c("Year","sitename","RHI_coral","RHI_macroalgae
 
 ##Add fish data
 
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF")
 
 
 
@@ -150,8 +150,8 @@ CREMP_RVC_RHI_herb_combined_by_year <- arrange(CREMP_RVC_RHI_herb_combined, Year
 ### output (arranged by year or reef)
 
 colnames(CREMP_RVC_RHI_herb_combined_by_year)[4] <- "RHI_Herb"
-#export(CREMP_RVC_RHI_herb_combined_by_year,"C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/CREMP_RVC_RHI_herbivorous_YEAR.csv")
-#export(CREMP_RVC_RHI_herb_combined,"C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/CREMP_RVC_RHI_herbivorous_REEF.csv" )
+#export(CREMP_RVC_RHI_herb_combined_by_year,"C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/CREMP_RVC_RHI_herbivorous_YEAR.csv")
+#export(CREMP_RVC_RHI_herb_combined,"C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/CREMP_RVC_RHI_herbivorous_REEF.csv" )
 
 
 ## Commercial 
@@ -170,8 +170,8 @@ CREMP_RVC_RHI_comm_combined_by_year <- arrange(CREMP_RVC_RHI_comm_combined, Year
 ### output (arranged by year or reef)
 colnames(CREMP_RVC_RHI_comm_combined_by_year)[4] <- "RHI_Comm"
 
-#export(CREMP_RVC_RHI_comm_combined_by_year,"C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/CREMP_RVC_RHI_commercial_YEAR.csv")
-#export(CREMP_RVC_RHI_comm_combined,"C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/CREMP_RVC_RHI_commercial_REEF.csv" )
+#export(CREMP_RVC_RHI_comm_combined_by_year,"C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/CREMP_RVC_RHI_commercial_YEAR.csv")
+#export(CREMP_RVC_RHI_comm_combined,"C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/CREMP_RVC_RHI_commercial_REEF.csv" )
 
 ## combine herbivorous with commercial fish
 
@@ -198,7 +198,7 @@ export(RHI_test, "RHI_RVC_CREMP_ALL.csv")
 
 ### take the average of all RHI columns (done in excel) (4 categories) and plot 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC")
 
 RHI_read <- read_csv("RHI_RVC_CREMP_Average.csv")
 
@@ -208,7 +208,7 @@ RHI_master <- select(RHI_read, Year,sitename,Subregion,RHI_Average)
 
 ##MK
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI/MK")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI/MK")
 
 Alligator_Deep <- filter(RHI_master, sitename == "Alligator Deep")
 export(Alligator_Deep,"Alligator_Deep.csv")
@@ -474,7 +474,7 @@ export(MK_RHI, "MK_RHI.csv")
 ## LK
 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI/LK")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI/LK")
 
 Eastern_Sambo_Deep <- filter(RHI_master, sitename == "Eastern Sambo Deep")
 export(Eastern_Sambo_Deep,"Eastern_Sambo_Deep.csv")
@@ -784,7 +784,7 @@ export(LK_RHI, "LK_RHI.csv")
 
 
 ## UK
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI/UK")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI/UK")
 
 
 Admiral <- filter(RHI_master, sitename == "Admiral")
@@ -1038,7 +1038,7 @@ export(UK_RHI, "UK_RHI.csv")
 
 ### DT
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI/DT")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI/DT")
 
 
 Bird_Key_Reef <- filter(RHI_master, sitename == "Bird Key Reef")
@@ -1268,7 +1268,7 @@ export(DT_RHI,"DT_RHI.csv")
 
 ### SEF
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI/SEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI/SEF")
 
 
 Broward_County_1 <- filter(RHI_master, sitename == "Broward County 1")
@@ -1728,7 +1728,7 @@ export(SEF_RHI,"SEF_RHI.csv")
 
 ### Combine all 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI")
 
 DT_RHI <- read_csv("DT/DT_RHI.csv")
 LK_RHI <- read_csv("LK/LK_RHI.csv")

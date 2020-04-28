@@ -7,7 +7,7 @@ library("magrittr")
 library("tidyverse")
 library("binr")
 
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF")
 
 ### First create bins to rank entire area
 
@@ -1265,7 +1265,7 @@ SEF_RHI_combined <- merge(SEF_RHI_comm, SEF_RHI_herb)
 
 ## Combine CREMP and RHI 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/1996_2017")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/1996_2017")
 
 ### Combining coral data to later combine with fish data 
 
@@ -2657,15 +2657,15 @@ colnames(SEF_final) <- c("Year","Stony Coral","Macroalgae","Commercial Fish","He
 
 ### output 
 
-export(DT_final,"C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI_regions/DT.csv")
-export(LK_final,"C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI_regions/LK.csv")
-export(MK_final,"C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI_regions/MK.csv")
-export(UK_final,"C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI_regions/UK.csv")
-export(SEF_final,"C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI_regions/SEF.csv")
+export(DT_final,"C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI_regions/DT.csv")
+export(LK_final,"C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI_regions/LK.csv")
+export(MK_final,"C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI_regions/MK.csv")
+export(UK_final,"C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI_regions/UK.csv")
+export(SEF_final,"C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI_regions/SEF.csv")
 
 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/RHI_regions")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/RHI_regions")
 
 
 DT_plot <- read_csv("DT.csv")

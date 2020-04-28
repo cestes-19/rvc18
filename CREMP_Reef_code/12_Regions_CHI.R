@@ -1,7 +1,7 @@
 
 
 ### CHI per Regions: UK, LK, MK, SEF, DT
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF")
 
 
 
@@ -116,7 +116,7 @@ DT_CHI_percent <- DT_CHI_percent %>%
   mutate_if(is.numeric,round,digits = 0)
 
 
-CREMP_DT <- read_csv("C:/Users/cestes/Documents/Spring_2020/1996_2017/Dry_Tortugas_averages.csv")
+CREMP_DT <- read_csv("C:/Users/cara.estes/Documents/Spring_2020/1996_2017/Dry_Tortugas_averages.csv")
 
 CREMP_DT <- CREMP_DT %>%
   mutate_if(is.numeric,round,digits = 0)
@@ -175,7 +175,7 @@ ggplot(CREMP_RVC_DT_plot3, aes(Year, value, fill =variable))+
     legend.box.background = element_rect(colour = "black"))+
   ylab("CHI %")
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/CHI_regions")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/CHI_regions")
 
 ggsave("DT.png", width = 8, height = 4)
 
@@ -183,7 +183,7 @@ ggsave("DT.png", width = 8, height = 4)
 
 ### LK
 
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF")
 
 LK <- read_csv("LK/LK_reef_biomass_data.csv")
 
@@ -385,7 +385,7 @@ LK_CHI_percent <- LK_CHI_percent %>%
 
 
 
-CREMP_LK <- read_csv("C:/Users/cestes/Documents/Spring_2020/1996_2017/Lower_Keys_averages.csv")
+CREMP_LK <- read_csv("C:/Users/cara.estes/Documents/Spring_2020/1996_2017/Lower_Keys_averages.csv")
 
 CREMP_LK <- CREMP_LK %>%
   mutate_if(is.numeric,round,digits = 0)
@@ -444,7 +444,7 @@ ggplot(CREMP_RVC_LK_plot3, aes(Year, value, fill =variable))+
     legend.box.background = element_rect(colour = "black"))+
   ylab("CHI %")
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/CHI_regions")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/CHI_regions")
 
 ggsave("LK.png", width = 8, height = 4)
 
@@ -453,7 +453,7 @@ ggsave("LK.png", width = 8, height = 4)
 
 ### MK
 
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF")
 
 MK <- read_csv("MK/MK_reef_biomass_data.csv")
 
@@ -655,7 +655,7 @@ MK_CHI_percent <- MK_CHI_percent %>%
 
 
 
-CREMP_MK <- read_csv("C:/Users/cestes/Documents/Spring_2020/1996_2017/Middle_Keys_averages.csv")
+CREMP_MK <- read_csv("C:/Users/cara.estes/Documents/Spring_2020/1996_2017/Middle_Keys_averages.csv")
 
 CREMP_MK <- CREMP_MK %>%
   mutate_if(is.numeric,round,digits = 0)
@@ -714,7 +714,7 @@ ggplot(CREMP_RVC_MK_plot3, aes(Year, value, fill =variable))+
     legend.box.background = element_rect(colour = "black"))+
   ylab("CHI %")
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/CHI_regions")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/CHI_regions")
 
 ggsave("MK.png", width = 8, height = 4)
 
@@ -724,7 +724,7 @@ ggsave("MK.png", width = 8, height = 4)
 
 ### UK
 
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF")
 
 UK <- read_csv("UK/UK_reef_biomass_data.csv")
 
@@ -926,7 +926,7 @@ UK_CHI_percent <- UK_CHI_percent %>%
 
 
 
-CREMP_UK <- read_csv("C:/Users/cestes/Documents/Spring_2020/1996_2017/Upper_Keys_averages.csv")
+CREMP_UK <- read_csv("C:/Users/cara.estes/Documents/Spring_2020/1996_2017/Upper_Keys_averages.csv")
 
 CREMP_UK <- CREMP_UK %>%
   mutate_if(is.numeric,round,digits = 0)
@@ -985,7 +985,7 @@ ggplot(CREMP_RVC_UK_plot3, aes(Year, value, fill =variable))+
     legend.box.background = element_rect(colour = "black"))+
   ylab("CHI %")
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/CHI_regions")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/CHI_regions")
 
 ggsave("UK.png", width = 8, height = 4)
 
@@ -994,7 +994,7 @@ ggsave("UK.png", width = 8, height = 4)
 
 ### SEF
 
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF")
 
 SEF <- read_csv("SEF/SEF_reef_biomass_data.csv")
 
@@ -1071,7 +1071,7 @@ SEF_CHI_percent <- SEF_CHI_percent %>%
 
 
 
-CREMP_SEF <- read_csv("C:/Users/cestes/Documents/Spring_2020/1996_2017/SE_Florida_averages.csv")
+CREMP_SEF <- read_csv("C:/Users/cara.estes/Documents/Spring_2020/1996_2017/SE_Florida_averages.csv")
 
 CREMP_SEF <- CREMP_SEF %>%
   mutate_if(is.numeric,round,digits = 0)
@@ -1131,7 +1131,7 @@ ggplot(CREMP_RVC_SEF_plot3, aes(Year, value, fill =variable))+
     legend.box.background = element_rect(colour = "black"))+
   ylab("CHI")
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/CHI_regions")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/CHI_regions")
 
 ggsave("SEF.png", width = 8, height = 4)
 
