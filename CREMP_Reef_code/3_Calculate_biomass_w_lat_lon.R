@@ -204,6 +204,25 @@ DT_bio_calculation_2016$biomass <- (DT_A_2016*(DT_len_2016*10^(DT_B_2016))/1000)
 write_csv(DT_bio_calculation_2016, 'biomass/bioDT2016_2.csv') #2016 
 
 
+DT2018<- getRvcData(2018, "DRY TORT")
+DT_TAX_2018 <- DT2018$taxonomic_data
+
+
+DTbio_2018 <- read_csv('RVC_18_DT_analyze.csv')
+
+#### Combine biomass with taxonomic data to keep lat and lon with output
+
+DT_bio_calculation_2018 <- inner_join(DT_TAX_2018, DTbio_2018)
+
+### Manual biomass calculation
+DT_len_2018 <- DT_bio_calculation_2018$LEN
+DT_A_2018 <- DT_bio_calculation_2018$WLEN_A
+DT_B_2018 <- DT_bio_calculation_2018$WLEN_B
+DT_bio_calculation_2018$biomass <- (DT_A_2018*(DT_len_2018*10^(DT_B_2018))/1000)
+
+## ouput
+write_csv(DT_bio_calculation_2018, 'biomass/bioDT2018_2.csv') #2018 
+
 
 
 

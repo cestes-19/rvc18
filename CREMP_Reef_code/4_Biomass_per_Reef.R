@@ -11,16 +11,13 @@ library("tidyverse")
 
 setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/DT")
 
-#RVC_00 <- import("RVC_00_UK.xls")
-#export(RVC_00,"RVC_00_UK_file.csv")
-#RVC_00_UK <- import("RVC_00_UK_file.csv")
-#RVC_00_UK$SUBREGION_DOMAIN <-rep('UK',nrow(RVC_00_UK))
-#export(RVC_00_UK,"RVC_00_UK_analyze.csv")
+
 
 ### First change .xls to .csv for each reef, then get total biomass, max, min 
 Bird_Key_2000 <- import("Bird_Key_Reef/data/Bird_Key_Reef_2000.xls")
 Bird_Key_2000_Total_biomass <- summarise_at(Bird_Key_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Bird_Key_2000_Total_biomass$Year <- ('2000')
+Bird_Key_2000_Total_biomass$Reef <- ('Bird Key Reef')
 ###output
 export(Bird_Key_2000_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2000_biomass_data.csv")
 
@@ -28,12 +25,14 @@ export(Bird_Key_2000_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2000_biomass_dat
 Bird_Key_1999 <- import("Bird_Key_Reef/data/Bird_Key_Reef_1999.xls")
 Bird_Key_1999_Total_biomass <- summarise_at(Bird_Key_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Bird_Key_1999_Total_biomass$Year <- ('1999')
+Bird_Key_1999_Total_biomass$Reef <- ('Bird Key Reef')
 ###output
 export(Bird_Key_1999_Total_biomass,"Bird_Key_Reef/data/Bird_Key_1999_biomass_data.csv")
 
 Bird_Key_2004 <- import("Bird_Key_Reef/data/Bird_Key_Reef_2004.xls")
 Bird_Key_2004_Total_biomass <- summarise_at(Bird_Key_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Bird_Key_2004_Total_biomass$Year <- ('2004')
+Bird_Key_2004_Total_biomass$Reef <- ('Bird Key Reef')
 
 ###output
 export(Bird_Key_2004_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2004_biomass_data.csv")
@@ -41,6 +40,7 @@ export(Bird_Key_2004_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2004_biomass_dat
 Bird_Key_2006 <- import("Bird_Key_Reef/data/Bird_Key_Reef_2006.xls")
 Bird_Key_2006_Total_biomass <- summarise_at(Bird_Key_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Bird_Key_2006_Total_biomass$Year <- ('2006')
+Bird_Key_2006_Total_biomass$Reef <- ('Bird Key Reef')
 
 ###output
 export(Bird_Key_2006_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2006_biomass_data.csv")
@@ -48,12 +48,14 @@ export(Bird_Key_2006_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2006_biomass_dat
 Bird_Key_2008 <- import("Bird_Key_Reef/data/Bird_Key_Reef_2008.xls")
 Bird_Key_2008_Total_biomass <- summarise_at(Bird_Key_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Bird_Key_2008_Total_biomass$Year <- ('2008')
+Bird_Key_2008_Total_biomass$Reef <- ('Bird Key Reef')
 
 ###output
 export(Bird_Key_2008_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2008_biomass_data.csv")
 Bird_Key_2010 <- import("Bird_Key_Reef/data/Bird_Key_Reef_2010.xls")
 Bird_Key_2010_Total_biomass <- summarise_at(Bird_Key_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Bird_Key_2010_Total_biomass$Year <- ('2010')
+Bird_Key_2010_Total_biomass$Reef <- ('Bird Key Reef')
 
 ###output
 export(Bird_Key_2010_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2010_biomass_data.csv")
@@ -61,13 +63,14 @@ export(Bird_Key_2010_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2010_biomass_dat
 Bird_Key_2012 <- import("Bird_Key_Reef/data/Bird_Key_Reef_2012.xls")
 Bird_Key_2012_Total_biomass <- summarise_at(Bird_Key_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Bird_Key_2012_Total_biomass$Year <- ('2012')
-
+Bird_Key_2012_Total_biomass$Reef <- ('Bird Key Reef')
 ###output
 export(Bird_Key_2012_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2012_biomass_data.csv")
 
 Bird_Key_2014 <- import("Bird_Key_Reef/data/Bird_Key_Reef_2014.xls")
 Bird_Key_2014_Total_biomass <- summarise_at(Bird_Key_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Bird_Key_2014_Total_biomass$Year <- ('2014')
+Bird_Key_2014_Total_biomass$Reef <- ('Bird Key Reef')
 
 ###output
 export(Bird_Key_2014_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2014_biomass_data.csv")
@@ -75,9 +78,19 @@ export(Bird_Key_2014_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2014_biomass_dat
 Bird_Key_2016 <- import("Bird_Key_Reef/data/Bird_Key_Reef_2016.xls")
 Bird_Key_2016_Total_biomass <- summarise_at(Bird_Key_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Bird_Key_2016_Total_biomass$Year <- ('2016')
+Bird_Key_2016_Total_biomass$Reef <- ('Bird Key Reef')
 
 ###output
 export(Bird_Key_2016_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2016_biomass_data.csv")
+
+
+Bird_Key_2018 <- import("Bird_Key_Reef/data/Bird_Key_Reef_2018.xls")
+Bird_Key_2018_Total_biomass <- summarise_at(Bird_Key_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+Bird_Key_2018_Total_biomass$Year <- ('2018')
+Bird_Key_2018_Total_biomass$Reef <- ('Bird Key Reef')
+
+###output
+export(Bird_Key_2018_Total_biomass,"Bird_Key_Reef/data/Bird_Key_2018_biomass_data.csv")
 
 ####combine biomass data for each reef in a table 
 Bird_Key_1999_merge <- read_csv("Bird_Key_Reef/data/Bird_Key_1999_biomass_data.csv")
@@ -89,6 +102,7 @@ Bird_Key_2010_merge <- read_csv("Bird_Key_Reef/data/Bird_Key_2010_biomass_data.c
 Bird_Key_2012_merge <- read_csv("Bird_Key_Reef/data/Bird_Key_2012_biomass_data.csv")
 Bird_Key_2014_merge <- read_csv("Bird_Key_Reef/data/Bird_Key_2014_biomass_data.csv")
 Bird_Key_2016_merge <- read_csv("Bird_Key_Reef/data/Bird_Key_2016_biomass_data.csv")
+Bird_Key_2018_merge <- read_csv("Bird_Key_Reef/data/Bird_Key_2018_biomass_data.csv")
 
 Bird_key_merge_1 <- rbind(Bird_Key_1999_merge,Bird_Key_2000_merge)
 Bird_key_merge_2 <- rbind(Bird_key_merge_1,Bird_Key_2004_merge)
@@ -97,7 +111,7 @@ Bird_key_merge_4 <- rbind(Bird_key_merge_3,Bird_Key_2008_merge)
 Bird_key_merge_5 <- rbind(Bird_key_merge_4,Bird_Key_2010_merge)
 Bird_key_merge_6 <- rbind(Bird_key_merge_5,Bird_Key_2012_merge)
 Bird_key_merge_7 <- rbind(Bird_key_merge_6,Bird_Key_2014_merge)
-Bird_Key_Reef_biomass_data_combined <- rbind(Bird_key_merge_7,Bird_Key_2016_merge)
+Bird_Key_Reef_biomass_data_combined <- rbind(Bird_key_merge_7,Bird_Key_2016_merge,Bird_Key_2018_merge)
 
 ##output
 export(Bird_Key_Reef_biomass_data_combined,"Bird_Key_Reef/data/Bird_Key_biomass_data_combined.csv")
@@ -113,6 +127,7 @@ export(Bird_Key_Reef_biomass_data_combined,"Bird_Key_Reef/data/Bird_Key_biomass_
 Black_Coral_Rock_2000 <- import("Black_Coral_Rock/data/Black_Coral_Rock_2000.xls")
 Black_Coral_Rock_2000_Total_biomass <- summarise_at(Black_Coral_Rock_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Black_Coral_Rock_2000_Total_biomass$Year <- ('2000')
+Black_Coral_Rock_2000_Total_biomass$Reef <- ('BLack Coral Rock')
 ###output
 export(Black_Coral_Rock_2000_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Rock_2000_biomass_data.csv")
 
@@ -120,12 +135,14 @@ export(Black_Coral_Rock_2000_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Ro
 Black_Coral_Rock_1999 <- import("Black_Coral_Rock/data/Black_Coral_Rock_1999.xls")
 Black_Coral_Rock_1999_Total_biomass <- summarise_at(Black_Coral_Rock_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Black_Coral_Rock_1999_Total_biomass$Year <- ('1999')
+Black_Coral_Rock_1999_Total_biomass$Reef <- ('BLack Coral Rock')
 ###output
 #export(Black_Coral_Rock_1999_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Rock_1999_biomass_data.csv")
 
 Black_Coral_Rock_2004 <- import("Black_Coral_Rock/data/Black_Coral_Rock_2004.xls")
 Black_Coral_Rock_2004_Total_biomass <- summarise_at(Black_Coral_Rock_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Black_Coral_Rock_2004_Total_biomass$Year <- ('2004')
+Black_Coral_Rock_2004_Total_biomass$Reef <- ('BLack Coral Rock')
 
 ###output
 export(Black_Coral_Rock_2004_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Rock_2004_biomass_data.csv")
@@ -133,6 +150,7 @@ export(Black_Coral_Rock_2004_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Ro
 Black_Coral_Rock_2006 <- import("Black_Coral_Rock/data/Black_Coral_Rock_2006.xls")
 Black_Coral_Rock_2006_Total_biomass <- summarise_at(Black_Coral_Rock_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Black_Coral_Rock_2006_Total_biomass$Year <- ('2006')
+Black_Coral_Rock_2006_Total_biomass$Reef <- ('BLack Coral Rock')
 
 ###output
 export(Black_Coral_Rock_2006_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Rock_2006_biomass_data.csv")
@@ -140,12 +158,14 @@ export(Black_Coral_Rock_2006_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Ro
 Black_Coral_Rock_2008 <- import("Black_Coral_Rock/data/Black_Coral_Rock_2008.xls")
 Black_Coral_Rock_2008_Total_biomass <- summarise_at(Black_Coral_Rock_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Black_Coral_Rock_2008_Total_biomass$Year <- ('2008')
+Black_Coral_Rock_2008_Total_biomass$Reef <- ('BLack Coral Rock')
 
 ###output
 export(Black_Coral_Rock_2008_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Rock_2008_biomass_data.csv")
 Black_Coral_Rock_2010 <- import("Black_Coral_Rock/data/Black_Coral_Rock_2010.xls")
 Black_Coral_Rock_2010_Total_biomass <- summarise_at(Black_Coral_Rock_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Black_Coral_Rock_2010_Total_biomass$Year <- ('2010')
+Black_Coral_Rock_2010_Total_biomass$Reef <- ('BLack Coral Rock')
 
 ###output
 export(Black_Coral_Rock_2010_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Rock_2010_biomass_data.csv")
@@ -153,6 +173,7 @@ export(Black_Coral_Rock_2010_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Ro
 Black_Coral_Rock_2012 <- import("Black_Coral_Rock/data/Black_Coral_Rock_2012.xls")
 Black_Coral_Rock_2012_Total_biomass <- summarise_at(Black_Coral_Rock_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Black_Coral_Rock_2012_Total_biomass$Year <- ('2012')
+Black_Coral_Rock_2012_Total_biomass$Reef <- ('BLack Coral Rock')
 
 ###output
 export(Black_Coral_Rock_2012_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Rock_2012_biomass_data.csv")
@@ -160,6 +181,7 @@ export(Black_Coral_Rock_2012_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Ro
 Black_Coral_Rock_2014 <- import("Black_Coral_Rock/data/Black_Coral_Rock_2014.xls")
 Black_Coral_Rock_2014_Total_biomass <- summarise_at(Black_Coral_Rock_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Black_Coral_Rock_2014_Total_biomass$Year <- ('2014')
+Black_Coral_Rock_2014_Total_biomass$Reef <- ('BLack Coral Rock')
 
 ###output
 export(Black_Coral_Rock_2014_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Rock_2014_biomass_data.csv")
@@ -167,9 +189,20 @@ export(Black_Coral_Rock_2014_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Ro
 Black_Coral_Rock_2016 <- import("Black_Coral_Rock/data/Black_Coral_Rock_2016.xls")
 Black_Coral_Rock_2016_Total_biomass <- summarise_at(Black_Coral_Rock_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Black_Coral_Rock_2016_Total_biomass$Year <- ('2016')
+Black_Coral_Rock_2016_Total_biomass$Reef <- ('BLack Coral Rock')
 
 ###output
 export(Black_Coral_Rock_2016_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Rock_2016_biomass_data.csv")
+
+
+Black_Coral_Rock_2018 <- import("Black_Coral_Rock/data/Black_Coral_Rock_2018.xls")
+Black_Coral_Rock_2018_Total_biomass <- summarise_at(Black_Coral_Rock_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+Black_Coral_Rock_2018_Total_biomass$Year <- ('2018')
+Black_Coral_Rock_2018_Total_biomass$Reef <- ('BLack Coral Rock')
+
+###output
+export(Black_Coral_Rock_2018_Total_biomass,"Black_Coral_Rock/data/Black_Coral_Rock_2018_biomass_data.csv")
+
 
 ####combine biomass data for each reef in a table 
 #Black_Coral_Rock_1999_merge <- read_csv("Black_Coral_Rock/data/Black_Coral_Rock_1999_biomass_data.csv")
@@ -181,6 +214,8 @@ Black_Coral_Rock_2010_merge <- read_csv("Black_Coral_Rock/data/Black_Coral_Rock_
 Black_Coral_Rock_2012_merge <- read_csv("Black_Coral_Rock/data/Black_Coral_Rock_2012_biomass_data.csv")
 Black_Coral_Rock_2014_merge <- read_csv("Black_Coral_Rock/data/Black_Coral_Rock_2014_biomass_data.csv")
 Black_Coral_Rock_2016_merge <- read_csv("Black_Coral_Rock/data/Black_Coral_Rock_2016_biomass_data.csv")
+Black_Coral_Rock_2018_merge <- read_csv("Black_Coral_Rock/data/Black_Coral_Rock_2018_biomass_data.csv")
+
 
 #Black_Coral_Rock_merge_1 <- rbind(Black_Coral_Rock_1999_merge,Black_Coral_Rock_2000_merge)
 Black_Coral_Rock_merge_2 <- rbind(Black_Coral_Rock_2000_merge,Black_Coral_Rock_2004_merge)
@@ -189,7 +224,7 @@ Black_Coral_Rock_merge_4 <- rbind(Black_Coral_Rock_merge_3,Black_Coral_Rock_2008
 Black_Coral_Rock_merge_5 <- rbind(Black_Coral_Rock_merge_4,Black_Coral_Rock_2010_merge)
 Black_Coral_Rock_merge_6 <- rbind(Black_Coral_Rock_merge_5,Black_Coral_Rock_2012_merge)
 Black_Coral_Rock_merge_7 <- rbind(Black_Coral_Rock_merge_6,Black_Coral_Rock_2014_merge)
-Black_Coral_Rock_Reef_biomass_data_combined <- rbind(Black_Coral_Rock_merge_7,Black_Coral_Rock_2016_merge)
+Black_Coral_Rock_Reef_biomass_data_combined <- rbind(Black_Coral_Rock_merge_7,Black_Coral_Rock_2016_merge, Black_Coral_Rock_2018_merge)
 
 ##output
 export(Black_Coral_Rock_Reef_biomass_data_combined,"Black_Coral_Rock/data/Black_Coral_Rock_biomass_data_combined.csv")
@@ -204,19 +239,24 @@ export(Black_Coral_Rock_Reef_biomass_data_combined,"Black_Coral_Rock/data/Black_
 Davis_Rock_2000 <- import("Davis_Rock/data/Davis_Rock_2000.xls")
 Davis_Rock_2000_Total_biomass <- summarise_at(Davis_Rock_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Davis_Rock_2000_Total_biomass$Year <- ('2000')
+Davis_Rock_2000_Total_biomass$Reef <- ('Davis Rock')
 ###output
 export(Davis_Rock_2000_Total_biomass,"Davis_Rock/data/Davis_Rock_2000_biomass_data.csv")
 
-##repeat for all years 99-16
+##repeat for all years 99-16  (wont work for some reason)
 Davis_Rock_1999 <- import("Davis_Rock/data/Davis_Rock_1999.xls")
 Davis_Rock_1999_Total_biomass <- summarise_at(Davis_Rock_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Davis_Rock_1999_Total_biomass$Year <- ('1999')
+Davis_Rock_1999_Total_biomass$Reef <- ('Davis Rock')
+
 ###output
 #export(Davis_Rock_1999_Total_biomass,"Davis_Rock/data/Davis_Rock_1999_biomass_data.csv")
 
 Davis_Rock_2004 <- import("Davis_Rock/data/Davis_Rock_2004.xls")
 Davis_Rock_2004_Total_biomass <- summarise_at(Davis_Rock_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Davis_Rock_2004_Total_biomass$Year <- ('2004')
+Davis_Rock_2004_Total_biomass$Reef <- ('Davis Rock')
+
 
 ###output
 export(Davis_Rock_2004_Total_biomass,"Davis_Rock/data/Davis_Rock_2004_biomass_data.csv")
@@ -224,6 +264,7 @@ export(Davis_Rock_2004_Total_biomass,"Davis_Rock/data/Davis_Rock_2004_biomass_da
 Davis_Rock_2006 <- import("Davis_Rock/data/Davis_Rock_2006.xls")
 Davis_Rock_2006_Total_biomass <- summarise_at(Davis_Rock_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Davis_Rock_2006_Total_biomass$Year <- ('2006')
+Davis_Rock_2006_Total_biomass$Reef <- ('Davis Rock')
 
 ###output
 export(Davis_Rock_2006_Total_biomass,"Davis_Rock/data/Davis_Rock_2006_biomass_data.csv")
@@ -231,6 +272,8 @@ export(Davis_Rock_2006_Total_biomass,"Davis_Rock/data/Davis_Rock_2006_biomass_da
 Davis_Rock_2008 <- import("Davis_Rock/data/Davis_Rock_2008.xls")
 Davis_Rock_2008_Total_biomass <- summarise_at(Davis_Rock_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Davis_Rock_2008_Total_biomass$Year <- ('2008')
+Davis_Rock_2008_Total_biomass$Reef <- ('Davis Rock')
+
 
 ###output
 export(Davis_Rock_2008_Total_biomass,"Davis_Rock/data/Davis_Rock_2008_biomass_data.csv")
@@ -238,6 +281,8 @@ export(Davis_Rock_2008_Total_biomass,"Davis_Rock/data/Davis_Rock_2008_biomass_da
 Davis_Rock_2010 <- import("Davis_Rock/data/Davis_Rock_2010.xls")
 Davis_Rock_2010_Total_biomass <- summarise_at(Davis_Rock_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Davis_Rock_2010_Total_biomass$Year <- ('2010')
+Davis_Rock_2010_Total_biomass$Reef <- ('Davis Rock')
+
 
 ###output
 export(Davis_Rock_2010_Total_biomass,"Davis_Rock/data/Davis_Rock_2010_biomass_data.csv")
@@ -245,6 +290,7 @@ export(Davis_Rock_2010_Total_biomass,"Davis_Rock/data/Davis_Rock_2010_biomass_da
 Davis_Rock_2012 <- import("Davis_Rock/data/Davis_Rock_2012.xls")
 Davis_Rock_2012_Total_biomass <- summarise_at(Davis_Rock_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Davis_Rock_2012_Total_biomass$Year <- ('2012')
+Davis_Rock_2012_Total_biomass$Reef <- ('Davis Rock')
 
 ###output
 export(Davis_Rock_2012_Total_biomass,"Davis_Rock/data/Davis_Rock_2012_biomass_data.csv")
@@ -252,6 +298,8 @@ export(Davis_Rock_2012_Total_biomass,"Davis_Rock/data/Davis_Rock_2012_biomass_da
 Davis_Rock_2014 <- import("Davis_Rock/data/Davis_Rock_2014.xls")
 Davis_Rock_2014_Total_biomass <- summarise_at(Davis_Rock_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Davis_Rock_2014_Total_biomass$Year <- ('2014')
+Davis_Rock_2014_Total_biomass$Reef <- ('Davis Rock')
+
 
 ###output
 export(Davis_Rock_2014_Total_biomass,"Davis_Rock/data/Davis_Rock_2014_biomass_data.csv")
@@ -259,9 +307,21 @@ export(Davis_Rock_2014_Total_biomass,"Davis_Rock/data/Davis_Rock_2014_biomass_da
 Davis_Rock_2016 <- import("Davis_Rock/data/Davis_Rock_2016.xls")
 Davis_Rock_2016_Total_biomass <- summarise_at(Davis_Rock_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Davis_Rock_2016_Total_biomass$Year <- ('2016')
+Davis_Rock_2016_Total_biomass$Reef <- ('Davis Rock')
+
 
 ###output
 export(Davis_Rock_2016_Total_biomass,"Davis_Rock/data/Davis_Rock_2016_biomass_data.csv")
+
+
+Davis_Rock_2018 <- import("Davis_Rock/data/Davis_Rock_2018.xls")
+Davis_Rock_2018_Total_biomass <- summarise_at(Davis_Rock_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+Davis_Rock_2018_Total_biomass$Year <- ('2018')
+Davis_Rock_2018_Total_biomass$Reef <- ('Davis Rock')
+
+
+###output
+export(Davis_Rock_2018_Total_biomass,"Davis_Rock/data/Davis_Rock_2018_biomass_data.csv")
 
 ####combine biomass data for each reef in a table 
 Davis_Rock_1999_merge <- read_csv("Davis_Rock/data/Davis_Rock_1999_biomass_data.csv")
@@ -273,6 +333,8 @@ Davis_Rock_2010_merge <- read_csv("Davis_Rock/data/Davis_Rock_2010_biomass_data.
 Davis_Rock_2012_merge <- read_csv("Davis_Rock/data/Davis_Rock_2012_biomass_data.csv")
 Davis_Rock_2014_merge <- read_csv("Davis_Rock/data/Davis_Rock_2014_biomass_data.csv")
 Davis_Rock_2016_merge <- read_csv("Davis_Rock/data/Davis_Rock_2016_biomass_data.csv")
+Davis_Rock_2018_merge <- read_csv("Davis_Rock/data/Davis_Rock_2018_biomass_data.csv")
+
 
 Davis_Rock_merge_1 <- rbind(Davis_Rock_1999_merge,Davis_Rock_2000_merge)
 Davis_Rock_merge_2 <- rbind(Davis_Rock_2000_merge,Davis_Rock_2004_merge)
@@ -281,7 +343,7 @@ Davis_Rock_merge_4 <- rbind(Davis_Rock_merge_3,Davis_Rock_2008_merge)
 Davis_Rock_merge_5 <- rbind(Davis_Rock_merge_4,Davis_Rock_2010_merge)
 Davis_Rock_merge_6 <- rbind(Davis_Rock_merge_5,Davis_Rock_2012_merge)
 Davis_Rock_merge_7 <- rbind(Davis_Rock_merge_6,Davis_Rock_2014_merge)
-Davis_Rock_Reef_biomass_data_combined <- rbind(Davis_Rock_merge_7,Davis_Rock_2016_merge)
+Davis_Rock_Reef_biomass_data_combined <- rbind(Davis_Rock_merge_7,Davis_Rock_2016_merge,Davis_Rock_2018_merge)
 
 ##output
 export(Davis_Rock_Reef_biomass_data_combined,"Davis_Rock/data/Davis_Rock_biomass_data_combined.csv")
@@ -295,6 +357,8 @@ export(Davis_Rock_Reef_biomass_data_combined,"Davis_Rock/data/Davis_Rock_biomass
 Loggerhead_Patch_2000 <- import("Loggerhead_Patch/data/Loggerhead_Patch_2000.xls")
 Loggerhead_Patch_2000_Total_biomass <- summarise_at(Loggerhead_Patch_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Loggerhead_Patch_2000_Total_biomass$Year <- ('2000')
+Loggerhead_Patch_2000_Total_biomass$Reef <- ('Loggerhead Patch')
+
 ###output
 export(Loggerhead_Patch_2000_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Patch_2000_biomass_data.csv")
 
@@ -302,12 +366,15 @@ export(Loggerhead_Patch_2000_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Pat
 Loggerhead_Patch_1999 <- import("Loggerhead_Patch/data/Loggerhead_Patch_1999.xls")
 Loggerhead_Patch_1999_Total_biomass <- summarise_at(Loggerhead_Patch_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Loggerhead_Patch_1999_Total_biomass$Year <- ('1999')
+Loggerhead_Patch_1999_Total_biomass$Reef <- ('Loggerhead Patch')
+
 ###output
 export(Loggerhead_Patch_1999_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Patch_1999_biomass_data.csv")
 
 Loggerhead_Patch_2004 <- import("Loggerhead_Patch/data/Loggerhead_Patch_2004.xls")
 Loggerhead_Patch_2004_Total_biomass <- summarise_at(Loggerhead_Patch_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Loggerhead_Patch_2004_Total_biomass$Year <- ('2004')
+Loggerhead_Patch_2004_Total_biomass$Reef <- ('Loggerhead Patch')
 
 ###output
 export(Loggerhead_Patch_2004_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Patch_2004_biomass_data.csv")
@@ -315,6 +382,7 @@ export(Loggerhead_Patch_2004_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Pat
 Loggerhead_Patch_2006 <- import("Loggerhead_Patch/data/Loggerhead_Patch_2006.xls")
 Loggerhead_Patch_2006_Total_biomass <- summarise_at(Loggerhead_Patch_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Loggerhead_Patch_2006_Total_biomass$Year <- ('2006')
+Loggerhead_Patch_2006_Total_biomass$Reef <- ('Loggerhead Patch')
 
 ###output
 export(Loggerhead_Patch_2006_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Patch_2006_biomass_data.csv")
@@ -322,6 +390,7 @@ export(Loggerhead_Patch_2006_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Pat
 Loggerhead_Patch_2008 <- import("Loggerhead_Patch/data/Loggerhead_Patch_2008.xls")
 Loggerhead_Patch_2008_Total_biomass <- summarise_at(Loggerhead_Patch_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Loggerhead_Patch_2008_Total_biomass$Year <- ('2008')
+Loggerhead_Patch_2008_Total_biomass$Reef <- ('Loggerhead Patch')
 
 ###output
 export(Loggerhead_Patch_2008_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Patch_2008_biomass_data.csv")
@@ -329,6 +398,7 @@ export(Loggerhead_Patch_2008_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Pat
 Loggerhead_Patch_2010 <- import("Loggerhead_Patch/data/Loggerhead_Patch_2010.xls")
 Loggerhead_Patch_2010_Total_biomass <- summarise_at(Loggerhead_Patch_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Loggerhead_Patch_2010_Total_biomass$Year <- ('2010')
+Loggerhead_Patch_2010_Total_biomass$Reef <- ('Loggerhead Patch')
 
 ###output
 export(Loggerhead_Patch_2010_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Patch_2010_biomass_data.csv")
@@ -336,6 +406,8 @@ export(Loggerhead_Patch_2010_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Pat
 Loggerhead_Patch_2012 <- import("Loggerhead_Patch/data/Loggerhead_Patch_2012.xls")
 Loggerhead_Patch_2012_Total_biomass <- summarise_at(Loggerhead_Patch_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Loggerhead_Patch_2012_Total_biomass$Year <- ('2012')
+Loggerhead_Patch_2012_Total_biomass$Reef <- ('Loggerhead Patch')
+
 
 ###output
 export(Loggerhead_Patch_2012_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Patch_2012_biomass_data.csv")
@@ -343,6 +415,8 @@ export(Loggerhead_Patch_2012_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Pat
 Loggerhead_Patch_2014 <- import("Loggerhead_Patch/data/Loggerhead_Patch_2014.xls")
 Loggerhead_Patch_2014_Total_biomass <- summarise_at(Loggerhead_Patch_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Loggerhead_Patch_2014_Total_biomass$Year <- ('2014')
+Loggerhead_Patch_2014_Total_biomass$Reef <- ('Loggerhead Patch')
+
 
 ###output
 export(Loggerhead_Patch_2014_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Patch_2014_biomass_data.csv")
@@ -350,9 +424,19 @@ export(Loggerhead_Patch_2014_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Pat
 Loggerhead_Patch_2016 <- import("Loggerhead_Patch/data/Loggerhead_Patch_2016.xls")
 Loggerhead_Patch_2016_Total_biomass <- summarise_at(Loggerhead_Patch_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Loggerhead_Patch_2016_Total_biomass$Year <- ('2016')
+Loggerhead_Patch_2016_Total_biomass$Reef <- ('Loggerhead Patch')
 
 ###output
 export(Loggerhead_Patch_2016_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Patch_2016_biomass_data.csv")
+
+
+Loggerhead_Patch_2018 <- import("Loggerhead_Patch/data/Loggerhead_Patch_2018.xls")
+Loggerhead_Patch_2018_Total_biomass <- summarise_at(Loggerhead_Patch_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+Loggerhead_Patch_2018_Total_biomass$Year <- ('2018')
+Loggerhead_Patch_2018_Total_biomass$Reef <- ('Loggerhead Patch')
+
+###output
+export(Loggerhead_Patch_2018_Total_biomass,"Loggerhead_Patch/data/Loggerhead_Patch_2018_biomass_data.csv")
 
 ####combine biomass data for each reef in a table 
 Loggerhead_Patch_1999_merge <- read_csv("Loggerhead_Patch/data/Loggerhead_Patch_1999_biomass_data.csv")
@@ -364,6 +448,9 @@ Loggerhead_Patch_2010_merge <- read_csv("Loggerhead_Patch/data/Loggerhead_Patch_
 Loggerhead_Patch_2012_merge <- read_csv("Loggerhead_Patch/data/Loggerhead_Patch_2012_biomass_data.csv")
 Loggerhead_Patch_2014_merge <- read_csv("Loggerhead_Patch/data/Loggerhead_Patch_2014_biomass_data.csv")
 Loggerhead_Patch_2016_merge <- read_csv("Loggerhead_Patch/data/Loggerhead_Patch_2016_biomass_data.csv")
+Loggerhead_Patch_2018_merge <- read_csv("Loggerhead_Patch/data/Loggerhead_Patch_2018_biomass_data.csv")
+
+
 
 Loggerhead_Patch_merge_1 <- rbind(Loggerhead_Patch_1999_merge,Loggerhead_Patch_2000_merge)
 Loggerhead_Patch_merge_2 <- rbind(Loggerhead_Patch_merge_1,Loggerhead_Patch_2004_merge)
@@ -372,7 +459,7 @@ Loggerhead_Patch_merge_4 <- rbind(Loggerhead_Patch_merge_3,Loggerhead_Patch_2008
 Loggerhead_Patch_merge_5 <- rbind(Loggerhead_Patch_merge_4,Loggerhead_Patch_2010_merge)
 Loggerhead_Patch_merge_6 <- rbind(Loggerhead_Patch_merge_5,Loggerhead_Patch_2012_merge)
 Loggerhead_Patch_merge_7 <- rbind(Loggerhead_Patch_merge_6,Loggerhead_Patch_2014_merge)
-Loggerhead_Patch_Reef_biomass_data_combined <- rbind(Loggerhead_Patch_merge_7,Loggerhead_Patch_2016_merge)
+Loggerhead_Patch_Reef_biomass_data_combined <- rbind(Loggerhead_Patch_merge_7,Loggerhead_Patch_2016_merge,Loggerhead_Patch_2018_merge)
 
 ##output
 export(Loggerhead_Patch_Reef_biomass_data_combined,"Loggerhead_Patch/data/Loggerhead_Patch_biomass_data_combined.csv")
@@ -385,6 +472,8 @@ export(Loggerhead_Patch_Reef_biomass_data_combined,"Loggerhead_Patch/data/Logger
 Mayers_Peak_2000 <- import("Mayers_Peak/data/Mayers_Peak_2000.xls")
 Mayers_Peak_2000_Total_biomass <- summarise_at(Mayers_Peak_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Mayers_Peak_2000_Total_biomass$Year <- ('2000')
+Mayers_Peak_2000_Total_biomass$Reef <- ('Mayers Peak')
+
 ###output
 export(Mayers_Peak_2000_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2000_biomass_data.csv")
 
@@ -392,12 +481,15 @@ export(Mayers_Peak_2000_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2000_biomass
 Mayers_Peak_1999 <- import("Mayers_Peak/data/Mayers_Peak_1999.xls")
 Mayers_Peak_1999_Total_biomass <- summarise_at(Mayers_Peak_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Mayers_Peak_1999_Total_biomass$Year <- ('1999')
+Mayers_Peak_1999_Total_biomass$Reef <- ('Mayers Peak')
+
 ###output
 export(Mayers_Peak_1999_Total_biomass,"Mayers_Peak/data/Mayers_Peak_1999_biomass_data.csv")
 
 Mayers_Peak_2004 <- import("Mayers_Peak/data/Mayers_Peak_2004.xls")
 Mayers_Peak_2004_Total_biomass <- summarise_at(Mayers_Peak_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Mayers_Peak_2004_Total_biomass$Year <- ('2004')
+Mayers_Peak_2004_Total_biomass$Reef <- ('Mayers Peak')
 
 ###output
 export(Mayers_Peak_2004_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2004_biomass_data.csv")
@@ -405,6 +497,7 @@ export(Mayers_Peak_2004_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2004_biomass
 Mayers_Peak_2006 <- import("Mayers_Peak/data/Mayers_Peak_2006.xls")
 Mayers_Peak_2006_Total_biomass <- summarise_at(Mayers_Peak_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Mayers_Peak_2006_Total_biomass$Year <- ('2006')
+Mayers_Peak_2006_Total_biomass$Reef <- ('Mayers Peak')
 
 ###output
 export(Mayers_Peak_2006_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2006_biomass_data.csv")
@@ -412,6 +505,7 @@ export(Mayers_Peak_2006_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2006_biomass
 Mayers_Peak_2008 <- import("Mayers_Peak/data/Mayers_Peak_2008.xls")
 Mayers_Peak_2008_Total_biomass <- summarise_at(Mayers_Peak_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Mayers_Peak_2008_Total_biomass$Year <- ('2008')
+Mayers_Peak_2008_Total_biomass$Reef <- ('Mayers Peak')
 
 ###output
 export(Mayers_Peak_2008_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2008_biomass_data.csv")
@@ -419,6 +513,7 @@ export(Mayers_Peak_2008_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2008_biomass
 Mayers_Peak_2010 <- import("Mayers_Peak/data/Mayers_Peak_2010.xls")
 Mayers_Peak_2010_Total_biomass <- summarise_at(Mayers_Peak_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Mayers_Peak_2010_Total_biomass$Year <- ('2010')
+Mayers_Peak_2010_Total_biomass$Reef <- ('Mayers Peak')
 
 ###output
 export(Mayers_Peak_2010_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2010_biomass_data.csv")
@@ -426,6 +521,7 @@ export(Mayers_Peak_2010_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2010_biomass
 Mayers_Peak_2012 <- import("Mayers_Peak/data/Mayers_Peak_2012.xls")
 Mayers_Peak_2012_Total_biomass <- summarise_at(Mayers_Peak_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Mayers_Peak_2012_Total_biomass$Year <- ('2012')
+Mayers_Peak_2012_Total_biomass$Reef <- ('Mayers Peak')
 
 ###output
 export(Mayers_Peak_2012_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2012_biomass_data.csv")
@@ -433,6 +529,7 @@ export(Mayers_Peak_2012_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2012_biomass
 Mayers_Peak_2014 <- import("Mayers_Peak/data/Mayers_Peak_2014.xls")
 Mayers_Peak_2014_Total_biomass <- summarise_at(Mayers_Peak_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Mayers_Peak_2014_Total_biomass$Year <- ('2014')
+Mayers_Peak_2014_Total_biomass$Reef <- ('Mayers Peak')
 
 ###output
 export(Mayers_Peak_2014_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2014_biomass_data.csv")
@@ -440,9 +537,19 @@ export(Mayers_Peak_2014_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2014_biomass
 Mayers_Peak_2016 <- import("Mayers_Peak/data/Mayers_Peak_2016.xls")
 Mayers_Peak_2016_Total_biomass <- summarise_at(Mayers_Peak_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Mayers_Peak_2016_Total_biomass$Year <- ('2016')
+Mayers_Peak_2016_Total_biomass$Reef <- ('Mayers Peak')
 
 ###output
 export(Mayers_Peak_2016_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2016_biomass_data.csv")
+
+
+Mayers_Peak_2018 <- import("Mayers_Peak/data/Mayers_Peak_2018.xls")
+Mayers_Peak_2018_Total_biomass <- summarise_at(Mayers_Peak_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+Mayers_Peak_2018_Total_biomass$Year <- ('2018')
+Mayers_Peak_2018_Total_biomass$Reef <- ('Mayers Peak')
+
+###output
+export(Mayers_Peak_2018_Total_biomass,"Mayers_Peak/data/Mayers_Peak_2018_biomass_data.csv")
 
 ####combine biomass data for each reef in a table 
 Mayers_Peak_1999_merge <- read_csv("Mayers_Peak/data/Mayers_Peak_1999_biomass_data.csv")
@@ -454,6 +561,8 @@ Mayers_Peak_2010_merge <- read_csv("Mayers_Peak/data/Mayers_Peak_2010_biomass_da
 Mayers_Peak_2012_merge <- read_csv("Mayers_Peak/data/Mayers_Peak_2012_biomass_data.csv")
 Mayers_Peak_2014_merge <- read_csv("Mayers_Peak/data/Mayers_Peak_2014_biomass_data.csv")
 Mayers_Peak_2016_merge <- read_csv("Mayers_Peak/data/Mayers_Peak_2016_biomass_data.csv")
+Mayers_Peak_2018_merge <- read_csv("Mayers_Peak/data/Mayers_Peak_2018_biomass_data.csv")
+
 
 Mayers_Peak_merge_1 <- rbind(Mayers_Peak_1999_merge,Mayers_Peak_2000_merge)
 Mayers_Peak_merge_2 <- rbind(Mayers_Peak_merge_1,Mayers_Peak_2004_merge)
@@ -462,7 +571,7 @@ Mayers_Peak_merge_4 <- rbind(Mayers_Peak_merge_3,Mayers_Peak_2008_merge)
 Mayers_Peak_merge_5 <- rbind(Mayers_Peak_merge_4,Mayers_Peak_2010_merge)
 Mayers_Peak_merge_6 <- rbind(Mayers_Peak_merge_5,Mayers_Peak_2012_merge)
 Mayers_Peak_merge_7 <- rbind(Mayers_Peak_merge_6,Mayers_Peak_2014_merge)
-Mayers_Peak_Reef_biomass_data_combined <- rbind(Mayers_Peak_merge_7,Mayers_Peak_2016_merge)
+Mayers_Peak_Reef_biomass_data_combined <- rbind(Mayers_Peak_merge_7,Mayers_Peak_2016_merge,Mayers_Peak_2018_merge)
 
 ##output
 export(Mayers_Peak_Reef_biomass_data_combined,"Mayers_Peak/data/Mayers_Peak_biomass_data_combined.csv")
@@ -474,6 +583,8 @@ export(Mayers_Peak_Reef_biomass_data_combined,"Mayers_Peak/data/Mayers_Peak_biom
 Palmata_Patch_2000 <- import("Palmata_Patch/data/Palmata_Patch_2000.xls")
 Palmata_Patch_2000_Total_biomass <- summarise_at(Palmata_Patch_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palmata_Patch_2000_Total_biomass$Year <- ('2000')
+Palmata_Patch_2000_Total_biomass$Reef <- ('Palmata Patch')
+
 ###output
 export(Palmata_Patch_2000_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2000_biomass_data.csv")
 
@@ -481,12 +592,15 @@ export(Palmata_Patch_2000_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2000_b
 Palmata_Patch_1999 <- import("Palmata_Patch/data/Palmata_Patch_1999.xls")
 Palmata_Patch_1999_Total_biomass <- summarise_at(Palmata_Patch_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palmata_Patch_1999_Total_biomass$Year <- ('1999')
+Palmata_Patch_1999_Total_biomass$Reef <- ('Palmata Patch')
+
 ###output
 export(Palmata_Patch_1999_Total_biomass,"Palmata_Patch/data/Palmata_Patch_1999_biomass_data.csv")
 
 Palmata_Patch_2004 <- import("Palmata_Patch/data/Palmata_Patch_2004.xls")
 Palmata_Patch_2004_Total_biomass <- summarise_at(Palmata_Patch_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palmata_Patch_2004_Total_biomass$Year <- ('2004')
+Palmata_Patch_2004_Total_biomass$Reef <- ('Palmata Patch')
 
 ###output
 export(Palmata_Patch_2004_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2004_biomass_data.csv")
@@ -494,6 +608,7 @@ export(Palmata_Patch_2004_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2004_b
 Palmata_Patch_2006 <- import("Palmata_Patch/data/Palmata_Patch_2006.xls")
 Palmata_Patch_2006_Total_biomass <- summarise_at(Palmata_Patch_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palmata_Patch_2006_Total_biomass$Year <- ('2006')
+Palmata_Patch_2006_Total_biomass$Reef <- ('Palmata Patch')
 
 ###output
 export(Palmata_Patch_2006_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2006_biomass_data.csv")
@@ -501,6 +616,7 @@ export(Palmata_Patch_2006_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2006_b
 Palmata_Patch_2008 <- import("Palmata_Patch/data/Palmata_Patch_2008.xls")
 Palmata_Patch_2008_Total_biomass <- summarise_at(Palmata_Patch_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palmata_Patch_2008_Total_biomass$Year <- ('2008')
+Palmata_Patch_2008_Total_biomass$Reef <- ('Palmata Patch')
 
 ###output
 export(Palmata_Patch_2008_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2008_biomass_data.csv")
@@ -508,6 +624,7 @@ export(Palmata_Patch_2008_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2008_b
 Palmata_Patch_2010 <- import("Palmata_Patch/data/Palmata_Patch_2010.xls")
 Palmata_Patch_2010_Total_biomass <- summarise_at(Palmata_Patch_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palmata_Patch_2010_Total_biomass$Year <- ('2010')
+Palmata_Patch_2010_Total_biomass$Reef <- ('Palmata Patch')
 
 ###output
 export(Palmata_Patch_2010_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2010_biomass_data.csv")
@@ -515,6 +632,7 @@ export(Palmata_Patch_2010_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2010_b
 Palmata_Patch_2012 <- import("Palmata_Patch/data/Palmata_Patch_2012.xls")
 Palmata_Patch_2012_Total_biomass <- summarise_at(Palmata_Patch_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palmata_Patch_2012_Total_biomass$Year <- ('2012')
+Palmata_Patch_2012_Total_biomass$Reef <- ('Palmata Patch')
 
 ###output
 export(Palmata_Patch_2012_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2012_biomass_data.csv")
@@ -522,6 +640,7 @@ export(Palmata_Patch_2012_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2012_b
 Palmata_Patch_2014 <- import("Palmata_Patch/data/Palmata_Patch_2014.xls")
 Palmata_Patch_2014_Total_biomass <- summarise_at(Palmata_Patch_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palmata_Patch_2014_Total_biomass$Year <- ('2014')
+Palmata_Patch_2014_Total_biomass$Reef <- ('Palmata Patch')
 
 ###output
 export(Palmata_Patch_2014_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2014_biomass_data.csv")
@@ -529,9 +648,19 @@ export(Palmata_Patch_2014_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2014_b
 Palmata_Patch_2016 <- import("Palmata_Patch/data/Palmata_Patch_2016.xls")
 Palmata_Patch_2016_Total_biomass <- summarise_at(Palmata_Patch_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palmata_Patch_2016_Total_biomass$Year <- ('2016')
+Palmata_Patch_2016_Total_biomass$Reef <- ('Palmata Patch')
 
 ###output
 export(Palmata_Patch_2016_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2016_biomass_data.csv")
+
+
+Palmata_Patch_2018 <- import("Palmata_Patch/data/Palmata_Patch_2018.xls")
+Palmata_Patch_2018_Total_biomass <- summarise_at(Palmata_Patch_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+Palmata_Patch_2018_Total_biomass$Year <- ('2018')
+Palmata_Patch_2018_Total_biomass$Reef <- ('Palmata Patch')
+
+###output
+export(Palmata_Patch_2018_Total_biomass,"Palmata_Patch/data/Palmata_Patch_2018_biomass_data.csv")
 
 ####combine biomass data for each reef in a table 
 Palmata_Patch_1999_merge <- read_csv("Palmata_Patch/data/Palmata_Patch_1999_biomass_data.csv")
@@ -543,6 +672,7 @@ Palmata_Patch_2010_merge <- read_csv("Palmata_Patch/data/Palmata_Patch_2010_biom
 Palmata_Patch_2012_merge <- read_csv("Palmata_Patch/data/Palmata_Patch_2012_biomass_data.csv")
 Palmata_Patch_2014_merge <- read_csv("Palmata_Patch/data/Palmata_Patch_2014_biomass_data.csv")
 Palmata_Patch_2016_merge <- read_csv("Palmata_Patch/data/Palmata_Patch_2016_biomass_data.csv")
+Palmata_Patch_2018_merge <- read_csv("Palmata_Patch/data/Palmata_Patch_2018_biomass_data.csv")
 
 Palmata_Patch_merge_1 <- rbind(Palmata_Patch_1999_merge,Palmata_Patch_2000_merge)
 Palmata_Patch_merge_2 <- rbind(Palmata_Patch_merge_1,Palmata_Patch_2004_merge)
@@ -551,7 +681,7 @@ Palmata_Patch_merge_4 <- rbind(Palmata_Patch_merge_3,Palmata_Patch_2008_merge)
 Palmata_Patch_merge_5 <- rbind(Palmata_Patch_merge_4,Palmata_Patch_2010_merge)
 Palmata_Patch_merge_6 <- rbind(Palmata_Patch_merge_5,Palmata_Patch_2012_merge)
 Palmata_Patch_merge_7 <- rbind(Palmata_Patch_merge_6,Palmata_Patch_2014_merge)
-Palmata_Patch_Reef_biomass_data_combined <- rbind(Palmata_Patch_merge_7,Palmata_Patch_2016_merge)
+Palmata_Patch_Reef_biomass_data_combined <- rbind(Palmata_Patch_merge_7,Palmata_Patch_2016_merge,Palmata_Patch_2018_merge)
 
 ##output
 export(Palmata_Patch_Reef_biomass_data_combined,"Palmata_Patch/data/Palmata_Patch_biomass_data_combined.csv")
@@ -564,6 +694,7 @@ export(Palmata_Patch_Reef_biomass_data_combined,"Palmata_Patch/data/Palmata_Patc
 Prolifera_Patch_2000 <- import("Prolifera_Patch/data/Prolifera_Patch_2000.xls")
 Prolifera_Patch_2000_Total_biomass <- summarise_at(Prolifera_Patch_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Prolifera_Patch_2000_Total_biomass$Year <- ('2000')
+Prolifera_Patch_2000_Total_biomass$Reef <- ('Prolifera Patch')
 ###output
 export(Prolifera_Patch_2000_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_2000_biomass_data.csv")
 
@@ -571,12 +702,15 @@ export(Prolifera_Patch_2000_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_
 Prolifera_Patch_1999 <- import("Prolifera_Patch/data/Prolifera_Patch_1999.xls")
 Prolifera_Patch_1999_Total_biomass <- summarise_at(Prolifera_Patch_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Prolifera_Patch_1999_Total_biomass$Year <- ('1999')
+Prolifera_Patch_1999_Total_biomass$Reef <- ('Prolifera Patch')
+
 ###output
 export(Prolifera_Patch_1999_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_1999_biomass_data.csv")
 
 Prolifera_Patch_2004 <- import("Prolifera_Patch/data/Prolifera_Patch_2004.xls")
 Prolifera_Patch_2004_Total_biomass <- summarise_at(Prolifera_Patch_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Prolifera_Patch_2004_Total_biomass$Year <- ('2004')
+Prolifera_Patch_2004_Total_biomass$Reef <- ('Prolifera Patch')
 
 ###output
 export(Prolifera_Patch_2004_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_2004_biomass_data.csv")
@@ -584,6 +718,7 @@ export(Prolifera_Patch_2004_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_
 Prolifera_Patch_2006 <- import("Prolifera_Patch/data/Prolifera_Patch_2006.xls")
 Prolifera_Patch_2006_Total_biomass <- summarise_at(Prolifera_Patch_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Prolifera_Patch_2006_Total_biomass$Year <- ('2006')
+Prolifera_Patch_2006_Total_biomass$Reef <- ('Prolifera Patch')
 
 ###output
 export(Prolifera_Patch_2006_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_2006_biomass_data.csv")
@@ -591,6 +726,7 @@ export(Prolifera_Patch_2006_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_
 Prolifera_Patch_2008 <- import("Prolifera_Patch/data/Prolifera_Patch_2008.xls")
 Prolifera_Patch_2008_Total_biomass <- summarise_at(Prolifera_Patch_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Prolifera_Patch_2008_Total_biomass$Year <- ('2008')
+Prolifera_Patch_2008_Total_biomass$Reef <- ('Prolifera Patch')
 
 ###output
 export(Prolifera_Patch_2008_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_2008_biomass_data.csv")
@@ -598,6 +734,7 @@ export(Prolifera_Patch_2008_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_
 Prolifera_Patch_2010 <- import("Prolifera_Patch/data/Prolifera_Patch_2010.xls")
 Prolifera_Patch_2010_Total_biomass <- summarise_at(Prolifera_Patch_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Prolifera_Patch_2010_Total_biomass$Year <- ('2010')
+Prolifera_Patch_2010_Total_biomass$Reef <- ('Prolifera Patch')
 
 ###output
 export(Prolifera_Patch_2010_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_2010_biomass_data.csv")
@@ -605,6 +742,7 @@ export(Prolifera_Patch_2010_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_
 Prolifera_Patch_2012 <- import("Prolifera_Patch/data/Prolifera_Patch_2012.xls")
 Prolifera_Patch_2012_Total_biomass <- summarise_at(Prolifera_Patch_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Prolifera_Patch_2012_Total_biomass$Year <- ('2012')
+Prolifera_Patch_2012_Total_biomass$Reef <- ('Prolifera Patch')
 
 ###output
 export(Prolifera_Patch_2012_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_2012_biomass_data.csv")
@@ -612,6 +750,7 @@ export(Prolifera_Patch_2012_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_
 Prolifera_Patch_2014 <- import("Prolifera_Patch/data/Prolifera_Patch_2014.xls")
 Prolifera_Patch_2014_Total_biomass <- summarise_at(Prolifera_Patch_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Prolifera_Patch_2014_Total_biomass$Year <- ('2014')
+Prolifera_Patch_2014_Total_biomass$Reef <- ('Prolifera Patch')
 
 ###output
 export(Prolifera_Patch_2014_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_2014_biomass_data.csv")
@@ -619,9 +758,19 @@ export(Prolifera_Patch_2014_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_
 Prolifera_Patch_2016 <- import("Prolifera_Patch/data/Prolifera_Patch_2016.xls")
 Prolifera_Patch_2016_Total_biomass <- summarise_at(Prolifera_Patch_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Prolifera_Patch_2016_Total_biomass$Year <- ('2016')
+Prolifera_Patch_2016_Total_biomass$Reef <- ('Prolifera Patch')
 
 ###output
 export(Prolifera_Patch_2016_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_2016_biomass_data.csv")
+
+Prolifera_Patch_2018 <- import("Prolifera_Patch/data/Prolifera_Patch_2018.xls")
+Prolifera_Patch_2018_Total_biomass <- summarise_at(Prolifera_Patch_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+Prolifera_Patch_2018_Total_biomass$Year <- ('2018')
+Prolifera_Patch_2018_Total_biomass$Reef <- ('Prolifera Patch')
+
+###output
+export(Prolifera_Patch_2018_Total_biomass,"Prolifera_Patch/data/Prolifera_Patch_2018_biomass_data.csv")
+
 
 ####combine biomass data for each reef in a table 
 Prolifera_Patch_1999_merge <- read_csv("Prolifera_Patch/data/Prolifera_Patch_1999_biomass_data.csv")
@@ -633,6 +782,7 @@ Prolifera_Patch_2010_merge <- read_csv("Prolifera_Patch/data/Prolifera_Patch_201
 Prolifera_Patch_2012_merge <- read_csv("Prolifera_Patch/data/Prolifera_Patch_2012_biomass_data.csv")
 Prolifera_Patch_2014_merge <- read_csv("Prolifera_Patch/data/Prolifera_Patch_2014_biomass_data.csv")
 Prolifera_Patch_2016_merge <- read_csv("Prolifera_Patch/data/Prolifera_Patch_2016_biomass_data.csv")
+Prolifera_Patch_2018_merge <- read_csv("Prolifera_Patch/data/Prolifera_Patch_2018_biomass_data.csv")
 
 Prolifera_Patch_merge_1 <- rbind(Prolifera_Patch_1999_merge,Prolifera_Patch_2000_merge)
 Prolifera_Patch_merge_2 <- rbind(Prolifera_Patch_merge_1,Prolifera_Patch_2004_merge)
@@ -641,7 +791,7 @@ Prolifera_Patch_merge_4 <- rbind(Prolifera_Patch_merge_3,Prolifera_Patch_2008_me
 Prolifera_Patch_merge_5 <- rbind(Prolifera_Patch_merge_4,Prolifera_Patch_2010_merge)
 Prolifera_Patch_merge_6 <- rbind(Prolifera_Patch_merge_5,Prolifera_Patch_2012_merge)
 Prolifera_Patch_merge_7 <- rbind(Prolifera_Patch_merge_6,Prolifera_Patch_2014_merge)
-Prolifera_Patch_Reef_biomass_data_combined <- rbind(Prolifera_Patch_merge_7,Prolifera_Patch_2016_merge)
+Prolifera_Patch_Reef_biomass_data_combined <- rbind(Prolifera_Patch_merge_7,Prolifera_Patch_2016_merge,Prolifera_Patch_2018_merge)
 
 ##output
 export(Prolifera_Patch_Reef_biomass_data_combined,"Prolifera_Patch/data/Prolifera_Patch_biomass_data_combined.csv")
@@ -653,6 +803,7 @@ export(Prolifera_Patch_Reef_biomass_data_combined,"Prolifera_Patch/data/Prolifer
 Temptation_Rock_2000 <- import("Temptation_Rock/data/Temptation_Rock_2000.xls")
 Temptation_Rock_2000_Total_biomass <- summarise_at(Temptation_Rock_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Temptation_Rock_2000_Total_biomass$Year <- ('2000')
+Temptation_Rock_2000_Total_biomass$Reef <- ('Temptation Rock')
 ###output
 export(Temptation_Rock_2000_Total_biomass,"Temptation_Rock/data/Temptation_Rock_2000_biomass_data.csv")
 
@@ -660,12 +811,14 @@ export(Temptation_Rock_2000_Total_biomass,"Temptation_Rock/data/Temptation_Rock_
 Temptation_Rock_1999 <- import("Temptation_Rock/data/Temptation_Rock_1999.xls")
 Temptation_Rock_1999_Total_biomass <- summarise_at(Temptation_Rock_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Temptation_Rock_1999_Total_biomass$Year <- ('1999')
+Temptation_Rock_1999_Total_biomass$Reef <- ('Temptation Rock')
 ###output
 export(Temptation_Rock_1999_Total_biomass,"Temptation_Rock/data/Temptation_Rock_1999_biomass_data.csv")
 
 Temptation_Rock_2004 <- import("Temptation_Rock/data/Temptation_Rock_2004.xls")
 Temptation_Rock_2004_Total_biomass <- summarise_at(Temptation_Rock_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Temptation_Rock_2004_Total_biomass$Year <- ('2004')
+Temptation_Rock_2004_Total_biomass$Reef <- ('Temptation Rock')
 
 ###output
 export(Temptation_Rock_2004_Total_biomass,"Temptation_Rock/data/Temptation_Rock_2004_biomass_data.csv")
@@ -673,6 +826,7 @@ export(Temptation_Rock_2004_Total_biomass,"Temptation_Rock/data/Temptation_Rock_
 Temptation_Rock_2006 <- import("Temptation_Rock/data/Temptation_Rock_2006.xls")
 Temptation_Rock_2006_Total_biomass <- summarise_at(Temptation_Rock_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Temptation_Rock_2006_Total_biomass$Year <- ('2006')
+Temptation_Rock_2006_Total_biomass$Reef <- ('Temptation Rock')
 
 ###output
 export(Temptation_Rock_2006_Total_biomass,"Temptation_Rock/data/Temptation_Rock_2006_biomass_data.csv")
@@ -680,27 +834,28 @@ export(Temptation_Rock_2006_Total_biomass,"Temptation_Rock/data/Temptation_Rock_
 Temptation_Rock_2008 <- import("Temptation_Rock/data/Temptation_Rock_2008.xls")
 Temptation_Rock_2008_Total_biomass <- summarise_at(Temptation_Rock_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Temptation_Rock_2008_Total_biomass$Year <- ('2008')
-
+Temptation_Rock_2008_Total_biomass$Reef <- ('Temptation Rock')
 ###output
 export(Temptation_Rock_2008_Total_biomass,"Temptation_Rock/data/Temptation_Rock_2008_biomass_data.csv")
 
 Temptation_Rock_2010 <- import("Temptation_Rock/data/Temptation_Rock_2010.xls")
 Temptation_Rock_2010_Total_biomass <- summarise_at(Temptation_Rock_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Temptation_Rock_2010_Total_biomass$Year <- ('2010')
-
+Temptation_Rock_2010_Total_biomass$Reef <- ('Temptation Rock')
 ###output
 export(Temptation_Rock_2010_Total_biomass,"Temptation_Rock/data/Temptation_Rock_2010_biomass_data.csv")
 
 Temptation_Rock_2012 <- import("Temptation_Rock/data/Temptation_Rock_2012.xls")
 Temptation_Rock_2012_Total_biomass <- summarise_at(Temptation_Rock_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Temptation_Rock_2012_Total_biomass$Year <- ('2012')
-
+Temptation_Rock_2012_Total_biomass$Reef <- ('Temptation Rock')
 ###output
 export(Temptation_Rock_2012_Total_biomass,"Temptation_Rock/data/Temptation_Rock_2012_biomass_data.csv")
 
 Temptation_Rock_2014 <- import("Temptation_Rock/data/Temptation_Rock_2014.xls")
 Temptation_Rock_2014_Total_biomass <- summarise_at(Temptation_Rock_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Temptation_Rock_2014_Total_biomass$Year <- ('2014')
+Temptation_Rock_2014_Total_biomass$Reef <- ('Temptation Rock')
 
 ###output
 export(Temptation_Rock_2014_Total_biomass,"Temptation_Rock/data/Temptation_Rock_2014_biomass_data.csv")
@@ -708,9 +863,18 @@ export(Temptation_Rock_2014_Total_biomass,"Temptation_Rock/data/Temptation_Rock_
 Temptation_Rock_2016 <- import("Temptation_Rock/data/Temptation_Rock_2016.xls")
 Temptation_Rock_2016_Total_biomass <- summarise_at(Temptation_Rock_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Temptation_Rock_2016_Total_biomass$Year <- ('2016')
+Temptation_Rock_2016_Total_biomass$Reef <- ('Temptation Rock')
 
 ###output
 export(Temptation_Rock_2016_Total_biomass,"Temptation_Rock/data/Temptation_Rock_2016_biomass_data.csv")
+
+Temptation_Rock_2018 <- import("Temptation_Rock/data/Temptation_Rock_2018.xls")
+Temptation_Rock_2018_Total_biomass <- summarise_at(Temptation_Rock_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+Temptation_Rock_2018_Total_biomass$Year <- ('2018')
+Temptation_Rock_2018_Total_biomass$Reef <- ('Temptation Rock')
+
+###output
+export(Temptation_Rock_2018_Total_biomass,"Temptation_Rock/data/Temptation_Rock_2018_biomass_data.csv")
 
 ####combine biomass data for each reef in a table 
 Temptation_Rock_1999_merge <- read_csv("Temptation_Rock/data/Temptation_Rock_1999_biomass_data.csv")
@@ -722,6 +886,7 @@ Temptation_Rock_2010_merge <- read_csv("Temptation_Rock/data/Temptation_Rock_201
 Temptation_Rock_2012_merge <- read_csv("Temptation_Rock/data/Temptation_Rock_2012_biomass_data.csv")
 Temptation_Rock_2014_merge <- read_csv("Temptation_Rock/data/Temptation_Rock_2014_biomass_data.csv")
 Temptation_Rock_2016_merge <- read_csv("Temptation_Rock/data/Temptation_Rock_2016_biomass_data.csv")
+Temptation_Rock_2018_merge <- read_csv("Temptation_Rock/data/Temptation_Rock_2018_biomass_data.csv")
 
 Temptation_Rock_merge_1 <- rbind(Temptation_Rock_1999_merge,Temptation_Rock_2000_merge)
 Temptation_Rock_merge_2 <- rbind(Temptation_Rock_merge_1,Temptation_Rock_2004_merge)
@@ -730,7 +895,7 @@ Temptation_Rock_merge_4 <- rbind(Temptation_Rock_merge_3,Temptation_Rock_2008_me
 Temptation_Rock_merge_5 <- rbind(Temptation_Rock_merge_4,Temptation_Rock_2010_merge)
 Temptation_Rock_merge_6 <- rbind(Temptation_Rock_merge_5,Temptation_Rock_2012_merge)
 Temptation_Rock_merge_7 <- rbind(Temptation_Rock_merge_6,Temptation_Rock_2014_merge)
-Temptation_Rock_Reef_biomass_data_combined <- rbind(Temptation_Rock_merge_7,Temptation_Rock_2016_merge)
+Temptation_Rock_Reef_biomass_data_combined <- rbind(Temptation_Rock_merge_7,Temptation_Rock_2016_merge,Temptation_Rock_2018_merge)
 
 ##output
 export(Temptation_Rock_Reef_biomass_data_combined,"Temptation_Rock/data/Temptation_Rock_biomass_data_combined.csv")
@@ -741,9 +906,11 @@ export(Temptation_Rock_Reef_biomass_data_combined,"Temptation_Rock/data/Temptati
 ### Texas Rock
 
 
+
 Texas_Rock_2000 <- import("Texas_Rock/data/Texas_Rock_2000.xls")
 Texas_Rock_2000_Total_biomass <- summarise_at(Texas_Rock_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Texas_Rock_2000_Total_biomass$Year <- ('2000')
+Texas_Rock_2000_Total_biomass$Reef <- ('Texas Rock')
 ###output
 export(Texas_Rock_2000_Total_biomass,"Texas_Rock/data/Texas_Rock_2000_biomass_data.csv")
 
@@ -751,12 +918,15 @@ export(Texas_Rock_2000_Total_biomass,"Texas_Rock/data/Texas_Rock_2000_biomass_da
 Texas_Rock_1999 <- import("Texas_Rock/data/Texas_Rock_1999.xls")
 Texas_Rock_1999_Total_biomass <- summarise_at(Texas_Rock_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Texas_Rock_1999_Total_biomass$Year <- ('1999')
+Texas_Rock_1999_Total_biomass$Reef <- ('Texas Rock')
+
 ###output
 export(Texas_Rock_1999_Total_biomass,"Texas_Rock/data/Texas_Rock_1999_biomass_data.csv")
 
 Texas_Rock_2004 <- import("Texas_Rock/data/Texas_Rock_2004.xls")
 Texas_Rock_2004_Total_biomass <- summarise_at(Texas_Rock_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Texas_Rock_2004_Total_biomass$Year <- ('2004')
+Texas_Rock_2004_Total_biomass$Reef <- ('Texas Rock')
 
 ###output
 export(Texas_Rock_2004_Total_biomass,"Texas_Rock/data/Texas_Rock_2004_biomass_data.csv")
@@ -764,6 +934,7 @@ export(Texas_Rock_2004_Total_biomass,"Texas_Rock/data/Texas_Rock_2004_biomass_da
 Texas_Rock_2006 <- import("Texas_Rock/data/Texas_Rock_2006.xls")
 Texas_Rock_2006_Total_biomass <- summarise_at(Texas_Rock_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Texas_Rock_2006_Total_biomass$Year <- ('2006')
+Texas_Rock_2006_Total_biomass$Reef <- ('Texas Rock')
 
 ###output
 export(Texas_Rock_2006_Total_biomass,"Texas_Rock/data/Texas_Rock_2006_biomass_data.csv")
@@ -771,6 +942,7 @@ export(Texas_Rock_2006_Total_biomass,"Texas_Rock/data/Texas_Rock_2006_biomass_da
 Texas_Rock_2008 <- import("Texas_Rock/data/Texas_Rock_2008.xls")
 Texas_Rock_2008_Total_biomass <- summarise_at(Texas_Rock_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Texas_Rock_2008_Total_biomass$Year <- ('2008')
+Texas_Rock_2008_Total_biomass$Reef <- ('Texas Rock')
 
 ###output
 export(Texas_Rock_2008_Total_biomass,"Texas_Rock/data/Texas_Rock_2008_biomass_data.csv")
@@ -778,30 +950,37 @@ export(Texas_Rock_2008_Total_biomass,"Texas_Rock/data/Texas_Rock_2008_biomass_da
 Texas_Rock_2010 <- import("Texas_Rock/data/Texas_Rock_2010.xls")
 Texas_Rock_2010_Total_biomass <- summarise_at(Texas_Rock_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Texas_Rock_2010_Total_biomass$Year <- ('2010')
-
+Texas_Rock_2010_Total_biomass$Reef <- ('Texas Rock')
 ###output
 export(Texas_Rock_2010_Total_biomass,"Texas_Rock/data/Texas_Rock_2010_biomass_data.csv")
 
 Texas_Rock_2012 <- import("Texas_Rock/data/Texas_Rock_2012.xls")
 Texas_Rock_2012_Total_biomass <- summarise_at(Texas_Rock_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Texas_Rock_2012_Total_biomass$Year <- ('2012')
-
+Texas_Rock_2012_Total_biomass$Reef <- ('Texas Rock')
 ###output
 export(Texas_Rock_2012_Total_biomass,"Texas_Rock/data/Texas_Rock_2012_biomass_data.csv")
 
 Texas_Rock_2014 <- import("Texas_Rock/data/Texas_Rock_2014.xls")
 Texas_Rock_2014_Total_biomass <- summarise_at(Texas_Rock_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Texas_Rock_2014_Total_biomass$Year <- ('2014')
-
+Texas_Rock_2014_Total_biomass$Reef <- ('Texas Rock')
 ###output
 export(Texas_Rock_2014_Total_biomass,"Texas_Rock/data/Texas_Rock_2014_biomass_data.csv")
 
 Texas_Rock_2016 <- import("Texas_Rock/data/Texas_Rock_2016.xls")
 Texas_Rock_2016_Total_biomass <- summarise_at(Texas_Rock_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Texas_Rock_2016_Total_biomass$Year <- ('2016')
-
+Texas_Rock_2016_Total_biomass$Reef <- ('Texas Rock')
 ###output
 export(Texas_Rock_2016_Total_biomass,"Texas_Rock/data/Texas_Rock_2016_biomass_data.csv")
+
+Texas_Rock_2018 <- import("Texas_Rock/data/Texas_Rock_2018.xls")
+Texas_Rock_2018_Total_biomass <- summarise_at(Texas_Rock_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+Texas_Rock_2018_Total_biomass$Year <- ('2018')
+Texas_Rock_2018_Total_biomass$Reef <- ('Texas Rock')
+###output
+export(Texas_Rock_2018_Total_biomass,"Texas_Rock/data/Texas_Rock_2018_biomass_data.csv")
 
 ####combine biomass data for each reef in a table 
 Texas_Rock_1999_merge <- read_csv("Texas_Rock/data/Texas_Rock_1999_biomass_data.csv")
@@ -813,6 +992,7 @@ Texas_Rock_2010_merge <- read_csv("Texas_Rock/data/Texas_Rock_2010_biomass_data.
 Texas_Rock_2012_merge <- read_csv("Texas_Rock/data/Texas_Rock_2012_biomass_data.csv")
 Texas_Rock_2014_merge <- read_csv("Texas_Rock/data/Texas_Rock_2014_biomass_data.csv")
 Texas_Rock_2016_merge <- read_csv("Texas_Rock/data/Texas_Rock_2016_biomass_data.csv")
+Texas_Rock_2018_merge <- read_csv("Texas_Rock/data/Texas_Rock_2018_biomass_data.csv")
 
 Texas_Rock_merge_1 <- rbind(Texas_Rock_1999_merge,Texas_Rock_2000_merge)
 Texas_Rock_merge_2 <- rbind(Texas_Rock_merge_1,Texas_Rock_2004_merge)
@@ -821,7 +1001,7 @@ Texas_Rock_merge_4 <- rbind(Texas_Rock_merge_3,Texas_Rock_2008_merge)
 Texas_Rock_merge_5 <- rbind(Texas_Rock_merge_4,Texas_Rock_2010_merge)
 Texas_Rock_merge_6 <- rbind(Texas_Rock_merge_5,Texas_Rock_2012_merge)
 Texas_Rock_merge_7 <- rbind(Texas_Rock_merge_6,Texas_Rock_2014_merge)
-Texas_Rock_Reef_biomass_data_combined <- rbind(Texas_Rock_merge_7,Texas_Rock_2016_merge)
+Texas_Rock_Reef_biomass_data_combined <- rbind(Texas_Rock_merge_7,Texas_Rock_2016_merge,Texas_Rock_2018_merge)
 
 ##output
 export(Texas_Rock_Reef_biomass_data_combined,"Texas_Rock/data/Texas_Rock_biomass_data_combined.csv")
@@ -833,6 +1013,7 @@ export(Texas_Rock_Reef_biomass_data_combined,"Texas_Rock/data/Texas_Rock_biomass
 Maze_2000 <- import("The_Maze/data/Maze_2000.xls")
 Maze_2000_Total_biomass <- summarise_at(Maze_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Maze_2000_Total_biomass$Year <- ('2000')
+Maze_2000_Total_biomass$Reef <- ('Maze')
 ###output
 export(Maze_2000_Total_biomass,"The_Maze/data/Maze_2000_biomass_data.csv")
 
@@ -840,12 +1021,14 @@ export(Maze_2000_Total_biomass,"The_Maze/data/Maze_2000_biomass_data.csv")
 Maze_1999 <- import("The_Maze/data/Maze_1999.xls")
 Maze_1999_Total_biomass <- summarise_at(Maze_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Maze_1999_Total_biomass$Year <- ('1999')
+Maze_1999_Total_biomass$Reef <- ('Maze')
 ###output
 export(Maze_1999_Total_biomass,"The_Maze/data/Maze_1999_biomass_data.csv")
 
 Maze_2004 <- import("The_Maze/data/Maze_2004.xls")
 Maze_2004_Total_biomass <- summarise_at(Maze_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Maze_2004_Total_biomass$Year <- ('2004')
+Maze_2004_Total_biomass$Reef <- ('Maze')
 
 ###output
 export(Maze_2004_Total_biomass,"The_Maze/data/Maze_2004_biomass_data.csv")
@@ -853,6 +1036,7 @@ export(Maze_2004_Total_biomass,"The_Maze/data/Maze_2004_biomass_data.csv")
 Maze_2006 <- import("The_Maze/data/Maze_2006.xls")
 Maze_2006_Total_biomass <- summarise_at(Maze_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Maze_2006_Total_biomass$Year <- ('2006')
+Maze_2006_Total_biomass$Reef <- ('Maze')
 
 ###output
 export(Maze_2006_Total_biomass,"The_Maze/data/Maze_2006_biomass_data.csv")
@@ -860,6 +1044,7 @@ export(Maze_2006_Total_biomass,"The_Maze/data/Maze_2006_biomass_data.csv")
 Maze_2008 <- import("The_Maze/data/Maze_2008.xls")
 Maze_2008_Total_biomass <- summarise_at(Maze_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Maze_2008_Total_biomass$Year <- ('2008')
+Maze_2008_Total_biomass$Reef <- ('Maze')
 
 ###output
 export(Maze_2008_Total_biomass,"The_Maze/data/Maze_2008_biomass_data.csv")
@@ -867,6 +1052,7 @@ export(Maze_2008_Total_biomass,"The_Maze/data/Maze_2008_biomass_data.csv")
 Maze_2010 <- import("The_Maze/data/Maze_2010.xls")
 Maze_2010_Total_biomass <- summarise_at(Maze_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Maze_2010_Total_biomass$Year <- ('2010')
+Maze_2010_Total_biomass$Reef <- ('Maze')
 
 ###output
 export(Maze_2010_Total_biomass,"The_Maze/data/Maze_2010_biomass_data.csv")
@@ -874,6 +1060,7 @@ export(Maze_2010_Total_biomass,"The_Maze/data/Maze_2010_biomass_data.csv")
 Maze_2012 <- import("The_Maze/data/Maze_2012.xls")
 Maze_2012_Total_biomass <- summarise_at(Maze_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Maze_2012_Total_biomass$Year <- ('2012')
+Maze_2012_Total_biomass$Reef <- ('Maze')
 
 ###output
 export(Maze_2012_Total_biomass,"The_Maze/data/Maze_2012_biomass_data.csv")
@@ -881,6 +1068,7 @@ export(Maze_2012_Total_biomass,"The_Maze/data/Maze_2012_biomass_data.csv")
 Maze_2014 <- import("The_Maze/data/Maze_2014.xls")
 Maze_2014_Total_biomass <- summarise_at(Maze_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Maze_2014_Total_biomass$Year <- ('2014')
+Maze_2014_Total_biomass$Reef <- ('Maze')
 
 ###output
 export(Maze_2014_Total_biomass,"The_Maze/data/Maze_2014_biomass_data.csv")
@@ -888,9 +1076,19 @@ export(Maze_2014_Total_biomass,"The_Maze/data/Maze_2014_biomass_data.csv")
 Maze_2016 <- import("The_Maze/data/Maze_2016.xls")
 Maze_2016_Total_biomass <- summarise_at(Maze_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Maze_2016_Total_biomass$Year <- ('2016')
+Maze_2016_Total_biomass$Reef <- ('Maze')
 
 ###output
 export(Maze_2016_Total_biomass,"The_Maze/data/Maze_2016_biomass_data.csv")
+
+
+Maze_2018 <- import("The_Maze/data/Maze_2018.xls")
+Maze_2018_Total_biomass <- summarise_at(Maze_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+Maze_2018_Total_biomass$Year <- ('2018')
+Maze_2018_Total_biomass$Reef <- ('Maze')
+
+###output
+export(Maze_2018_Total_biomass,"The_Maze/data/Maze_2018_biomass_data.csv")
 
 ####combine biomass data for each reef in a table 
 Maze_1999_merge <- read_csv("The_Maze/data/Maze_1999_biomass_data.csv")
@@ -902,6 +1100,7 @@ Maze_2010_merge <- read_csv("The_Maze/data/Maze_2010_biomass_data.csv")
 Maze_2012_merge <- read_csv("The_Maze/data/Maze_2012_biomass_data.csv")
 Maze_2014_merge <- read_csv("The_Maze/data/Maze_2014_biomass_data.csv")
 Maze_2016_merge <- read_csv("The_Maze/data/Maze_2016_biomass_data.csv")
+Maze_2018_merge <- read_csv("The_Maze/data/Maze_2018_biomass_data.csv")
 
 #Maze_merge_1 <- rbind(Maze_1999_merge,Maze_2000_merge)
 Maze_merge_2 <- rbind(Maze_2000_merge,Maze_2004_merge)
@@ -910,7 +1109,7 @@ Maze_merge_4 <- rbind(Maze_merge_3,Maze_2008_merge)
 Maze_merge_5 <- rbind(Maze_merge_4,Maze_2010_merge)
 Maze_merge_6 <- rbind(Maze_merge_5,Maze_2012_merge)
 Maze_merge_7 <- rbind(Maze_merge_6,Maze_2014_merge)
-Maze_Reef_biomass_data_combined <- rbind(Maze_merge_7,Maze_2016_merge)
+Maze_Reef_biomass_data_combined <- rbind(Maze_merge_7,Maze_2016_merge,Maze_2018_merge)
 
 ##output
 export(Maze_Reef_biomass_data_combined,"The_Maze/data/Maze_biomass_data_combined.csv")
@@ -921,6 +1120,8 @@ export(Maze_Reef_biomass_data_combined,"The_Maze/data/Maze_biomass_data_combined
 White_Shoal_2000 <- import("White_Shoal/data/White_Shoal_2000.xls")
 White_Shoal_2000_Total_biomass <- summarise_at(White_Shoal_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 White_Shoal_2000_Total_biomass$Year <- ('2000')
+White_Shoal_2000_Total_biomass$Reef <- ('White Shoal')
+
 ###output
 export(White_Shoal_2000_Total_biomass,"White_Shoal/data/White_Shoal_2000_biomass_data.csv")
 
@@ -928,12 +1129,15 @@ export(White_Shoal_2000_Total_biomass,"White_Shoal/data/White_Shoal_2000_biomass
 White_Shoal_1999 <- import("White_Shoal/data/White_Shoal_1999.xls")
 White_Shoal_1999_Total_biomass <- summarise_at(White_Shoal_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 White_Shoal_1999_Total_biomass$Year <- ('1999')
+White_Shoal_1999_Total_biomass$Reef <- ('White Shoal')
+
 ###output
 export(White_Shoal_1999_Total_biomass,"White_Shoal/data/White_Shoal_1999_biomass_data.csv")
 
 White_Shoal_2004 <- import("White_Shoal/data/White_Shoal_2004.xls")
 White_Shoal_2004_Total_biomass <- summarise_at(White_Shoal_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 White_Shoal_2004_Total_biomass$Year <- ('2004')
+White_Shoal_2004_Total_biomass$Reef <- ('White Shoal')
 
 ###output
 export(White_Shoal_2004_Total_biomass,"White_Shoal/data/White_Shoal_2004_biomass_data.csv")
@@ -941,6 +1145,7 @@ export(White_Shoal_2004_Total_biomass,"White_Shoal/data/White_Shoal_2004_biomass
 White_Shoal_2006 <- import("White_Shoal/data/White_Shoal_2006.xls")
 White_Shoal_2006_Total_biomass <- summarise_at(White_Shoal_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 White_Shoal_2006_Total_biomass$Year <- ('2006')
+White_Shoal_2006_Total_biomass$Reef <- ('White Shoal')
 
 ###output
 export(White_Shoal_2006_Total_biomass,"White_Shoal/data/White_Shoal_2006_biomass_data.csv")
@@ -948,6 +1153,7 @@ export(White_Shoal_2006_Total_biomass,"White_Shoal/data/White_Shoal_2006_biomass
 White_Shoal_2008 <- import("White_Shoal/data/White_Shoal_2008.xls")
 White_Shoal_2008_Total_biomass <- summarise_at(White_Shoal_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 White_Shoal_2008_Total_biomass$Year <- ('2008')
+White_Shoal_2008_Total_biomass$Reef <- ('White Shoal')
 
 ###output
 export(White_Shoal_2008_Total_biomass,"White_Shoal/data/White_Shoal_2008_biomass_data.csv")
@@ -955,6 +1161,7 @@ export(White_Shoal_2008_Total_biomass,"White_Shoal/data/White_Shoal_2008_biomass
 White_Shoal_2010 <- import("White_Shoal/data/White_Shoal_2010.xls")
 White_Shoal_2010_Total_biomass <- summarise_at(White_Shoal_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 White_Shoal_2010_Total_biomass$Year <- ('2010')
+White_Shoal_2010_Total_biomass$Reef <- ('White Shoal')
 
 ###output
 export(White_Shoal_2010_Total_biomass,"White_Shoal/data/White_Shoal_2010_biomass_data.csv")
@@ -962,6 +1169,7 @@ export(White_Shoal_2010_Total_biomass,"White_Shoal/data/White_Shoal_2010_biomass
 White_Shoal_2012 <- import("White_Shoal/data/White_Shoal_2012.xls")
 White_Shoal_2012_Total_biomass <- summarise_at(White_Shoal_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 White_Shoal_2012_Total_biomass$Year <- ('2012')
+White_Shoal_2012_Total_biomass$Reef <- ('White Shoal')
 
 ###output
 export(White_Shoal_2012_Total_biomass,"White_Shoal/data/White_Shoal_2012_biomass_data.csv")
@@ -969,6 +1177,7 @@ export(White_Shoal_2012_Total_biomass,"White_Shoal/data/White_Shoal_2012_biomass
 White_Shoal_2014 <- import("White_Shoal/data/White_Shoal_2014.xls")
 White_Shoal_2014_Total_biomass <- summarise_at(White_Shoal_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 White_Shoal_2014_Total_biomass$Year <- ('2014')
+White_Shoal_2014_Total_biomass$Reef <- ('White Shoal')
 
 ###output
 export(White_Shoal_2014_Total_biomass,"White_Shoal/data/White_Shoal_2014_biomass_data.csv")
@@ -976,9 +1185,18 @@ export(White_Shoal_2014_Total_biomass,"White_Shoal/data/White_Shoal_2014_biomass
 White_Shoal_2016 <- import("White_Shoal/data/White_Shoal_2016.xls")
 White_Shoal_2016_Total_biomass <- summarise_at(White_Shoal_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 White_Shoal_2016_Total_biomass$Year <- ('2016')
+White_Shoal_2016_Total_biomass$Reef <- ('White Shoal')
 
 ###output
 export(White_Shoal_2016_Total_biomass,"White_Shoal/data/White_Shoal_2016_biomass_data.csv")
+
+White_Shoal_2018 <- import("White_Shoal/data/White_Shoal_2018.xls")
+White_Shoal_2018_Total_biomass <- summarise_at(White_Shoal_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
+White_Shoal_2018_Total_biomass$Year <- ('2018')
+White_Shoal_2018_Total_biomass$Reef <- ('White Shoal')
+
+###output
+export(White_Shoal_2018_Total_biomass,"White_Shoal/data/White_Shoal_2018_biomass_data.csv")
 
 ####combine biomass data for each reef in a table 
 White_Shoal_1999_merge <- read_csv("White_Shoal/data/White_Shoal_1999_biomass_data.csv")
@@ -990,6 +1208,7 @@ White_Shoal_2010_merge <- read_csv("White_Shoal/data/White_Shoal_2010_biomass_da
 White_Shoal_2012_merge <- read_csv("White_Shoal/data/White_Shoal_2012_biomass_data.csv")
 White_Shoal_2014_merge <- read_csv("White_Shoal/data/White_Shoal_2014_biomass_data.csv")
 White_Shoal_2016_merge <- read_csv("White_Shoal/data/White_Shoal_2016_biomass_data.csv")
+White_Shoal_2018_merge <- read_csv("White_Shoal/data/White_Shoal_2018_biomass_data.csv")
 
 White_Shoal_merge_1 <- rbind(White_Shoal_1999_merge,White_Shoal_2000_merge)
 White_Shoal_merge_2 <- rbind(White_Shoal_merge_1,White_Shoal_2004_merge)
@@ -998,7 +1217,7 @@ White_Shoal_merge_4 <- rbind(White_Shoal_merge_3,White_Shoal_2008_merge)
 White_Shoal_merge_5 <- rbind(White_Shoal_merge_4,White_Shoal_2010_merge)
 White_Shoal_merge_6 <- rbind(White_Shoal_merge_5,White_Shoal_2012_merge)
 White_Shoal_merge_7 <- rbind(White_Shoal_merge_6,White_Shoal_2014_merge)
-White_Shoal_Reef_biomass_data_combined <- rbind(White_Shoal_merge_7,White_Shoal_2016_merge)
+White_Shoal_Reef_biomass_data_combined <- rbind(White_Shoal_merge_7,White_Shoal_2016_merge,White_Shoal_2018_merge)
 
 ##output
 export(White_Shoal_Reef_biomass_data_combined,"White_Shoal/data/White_Shoal_biomass_data_combined.csv")
@@ -1019,30 +1238,40 @@ setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/LK")
 Eastern_Sambo_Deep_1999 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_1999.xls")
 Eastern_Sambo_Deep_1999_Total_biomass <- summarise_at(Eastern_Sambo_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_1999_Total_biomass$Year <- ('1999')
+Eastern_Sambo_Deep_1999_Total_biomass$Reef <- ('Eastern Sambo Deep')
+
 ###output
 export(Eastern_Sambo_Deep_1999_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_1999_biomass_data.csv")
 
 Eastern_Sambo_Deep_2000 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2000.xls")
 Eastern_Sambo_Deep_2000_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2000_Total_biomass$Year <- ('2000')
+Eastern_Sambo_Deep_2000_Total_biomass$Reef <- ('Eastern Sambo Deep')
+
 ###output
 export(Eastern_Sambo_Deep_2000_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2000_biomass_data.csv")
 
 Eastern_Sambo_Deep_2001 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2001.xls")
 Eastern_Sambo_Deep_2001_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2001_Total_biomass$Year <- ('2001')
+Eastern_Sambo_Deep_2001_Total_biomass$Reef <- ('Eastern Sambo Deep')
+
 ###output
 export(Eastern_Sambo_Deep_2001_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2001_biomass_data.csv")
 
 Eastern_Sambo_Deep_2002 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2002.xls")
 Eastern_Sambo_Deep_2002_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2002_Total_biomass$Year <- ('2002')
+Eastern_Sambo_Deep_2002_Total_biomass$Reef <- ('Eastern Sambo Deep')
+
 ###output
 export(Eastern_Sambo_Deep_2002_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2002_biomass_data.csv")
 
 Eastern_Sambo_Deep_2003 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2003.xls")
 Eastern_Sambo_Deep_2003_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2003_Total_biomass$Year <- ('2003')
+Eastern_Sambo_Deep_2003_Total_biomass$Reef <- ('Eastern Sambo Deep')
+
 ###output
 export(Eastern_Sambo_Deep_2003_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2003_biomass_data.csv")
 
@@ -1050,6 +1279,7 @@ export(Eastern_Sambo_Deep_2003_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2004 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2004.xls")
 Eastern_Sambo_Deep_2004_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2004_Total_biomass$Year <- ('2004')
+Eastern_Sambo_Deep_2004_Total_biomass$Reef <- ('Eastern Sambo Deep')
 
 ###output
 export(Eastern_Sambo_Deep_2004_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2004_biomass_data.csv")
@@ -1057,6 +1287,8 @@ export(Eastern_Sambo_Deep_2004_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2005 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2005.xls")
 Eastern_Sambo_Deep_2005_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2005_Total_biomass$Year <- ('2005')
+Eastern_Sambo_Deep_2005_Total_biomass$Reef <- ('Eastern Sambo Deep')
+
 ###output
 export(Eastern_Sambo_Deep_2005_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2005_biomass_data.csv")
 
@@ -1064,6 +1296,7 @@ export(Eastern_Sambo_Deep_2005_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2006 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2006.xls")
 Eastern_Sambo_Deep_2006_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2006_Total_biomass$Year <- ('2006')
+Eastern_Sambo_Deep_2006_Total_biomass$Reef <- ('Eastern Sambo Deep')
 
 ###output
 export(Eastern_Sambo_Deep_2006_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2006_biomass_data.csv")
@@ -1071,6 +1304,8 @@ export(Eastern_Sambo_Deep_2006_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2007 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2007.xls")
 Eastern_Sambo_Deep_2007_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2007_Total_biomass$Year <- ('2007')
+Eastern_Sambo_Deep_2007_Total_biomass$Reef <- ('Eastern Sambo Deep')
+
 ###output
 export(Eastern_Sambo_Deep_2007_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2007_biomass_data.csv")
 
@@ -1078,6 +1313,7 @@ export(Eastern_Sambo_Deep_2007_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2008 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2008.xls")
 Eastern_Sambo_Deep_2008_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2008_Total_biomass$Year <- ('2008')
+Eastern_Sambo_Deep_2008_Total_biomass$Reef <- ('Eastern Sambo Deep')
 
 ###output
 export(Eastern_Sambo_Deep_2008_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2008_biomass_data.csv")
@@ -1085,6 +1321,8 @@ export(Eastern_Sambo_Deep_2008_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2009 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2009.xls")
 Eastern_Sambo_Deep_2009_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2009_Total_biomass$Year <- ('2009')
+Eastern_Sambo_Deep_2009_Total_biomass$Reef <- ('Eastern Sambo Deep')
+
 ###output
 export(Eastern_Sambo_Deep_2009_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2009_biomass_data.csv")
 
@@ -1092,6 +1330,7 @@ export(Eastern_Sambo_Deep_2009_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2010 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2010.xls")
 Eastern_Sambo_Deep_2010_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2010_Total_biomass$Year <- ('2010')
+Eastern_Sambo_Deep_2010_Total_biomass$Reef <- ('Eastern Sambo Deep')
 
 ###output
 export(Eastern_Sambo_Deep_2010_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2010_biomass_data.csv")
@@ -1099,6 +1338,9 @@ export(Eastern_Sambo_Deep_2010_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2011 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2011.xls")
 Eastern_Sambo_Deep_2011_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2011_Total_biomass$Year <- ('2011')
+Eastern_Sambo_Deep_2011_Total_biomass$Reef <- ('Eastern Sambo Deep')
+
+
 ###output
 export(Eastern_Sambo_Deep_2011_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2011_biomass_data.csv")
 
@@ -1106,6 +1348,7 @@ export(Eastern_Sambo_Deep_2011_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2012 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2012.xls")
 Eastern_Sambo_Deep_2012_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2012_Total_biomass$Year <- ('2012')
+Eastern_Sambo_Deep_2012_Total_biomass$Reef <- ('Eastern Sambo Deep')
 
 ###output
 export(Eastern_Sambo_Deep_2012_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2012_biomass_data.csv")
@@ -1113,6 +1356,7 @@ export(Eastern_Sambo_Deep_2012_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2014 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2014.xls")
 Eastern_Sambo_Deep_2014_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2014_Total_biomass$Year <- ('2014')
+Eastern_Sambo_Deep_2014_Total_biomass$Reef <- ('Eastern Sambo Deep')
 
 ###output
 export(Eastern_Sambo_Deep_2014_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2014_biomass_data.csv")
@@ -1120,6 +1364,7 @@ export(Eastern_Sambo_Deep_2014_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2016 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2016.xls")
 Eastern_Sambo_Deep_2016_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2016_Total_biomass$Year <- ('2016')
+Eastern_Sambo_Deep_2016_Total_biomass$Reef <- ('Eastern Sambo Deep')
 
 ###output
 export(Eastern_Sambo_Deep_2016_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2016_biomass_data.csv")
@@ -1127,6 +1372,8 @@ export(Eastern_Sambo_Deep_2016_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sa
 Eastern_Sambo_Deep_2018 <- import("Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2018.xls")
 Eastern_Sambo_Deep_2018_Total_biomass <- summarise_at(Eastern_Sambo_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Deep_2018_Total_biomass$Year <- ('2018')
+Eastern_Sambo_Deep_2018_Total_biomass$Reef <- ('Eastern Sambo Deep')
+
 ###output
 export(Eastern_Sambo_Deep_2018_Total_biomass,"Eastern_Sambo_Deep/data/Eastern_Sambo_Deep_2018_biomass_data.csv")
 
@@ -1179,30 +1426,40 @@ export(Eastern_Sambo_Deep_Reef_biomass_data_combined,"Eastern_Sambo_Deep/data/Ea
 Eastern_Sambo_Shallow_1999 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_1999.xls")
 Eastern_Sambo_Shallow_1999_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_1999_Total_biomass$Year <- ('1999')
+Eastern_Sambo_Shallow_1999_Total_biomass$Reef <- ('Eastern Sambo Shallow')
+
 ###output
 export(Eastern_Sambo_Shallow_1999_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_1999_biomass_data.csv")
 
 Eastern_Sambo_Shallow_2000 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2000.xls")
 Eastern_Sambo_Shallow_2000_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2000_Total_biomass$Year <- ('2000')
+Eastern_Sambo_Shallow_2000_Total_biomass$Reef <- ('Eastern Sambo Shallow')
+
 ###output
 export(Eastern_Sambo_Shallow_2000_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2000_biomass_data.csv")
 
 Eastern_Sambo_Shallow_2001 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2001.xls")
 Eastern_Sambo_Shallow_2001_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2001_Total_biomass$Year <- ('2001')
+Eastern_Sambo_Shallow_2001_Total_biomass$Reef <- ('Eastern Sambo Shallow')
+
 ###output
 export(Eastern_Sambo_Shallow_2001_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2001_biomass_data.csv")
 
 Eastern_Sambo_Shallow_2002 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2002.xls")
 Eastern_Sambo_Shallow_2002_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2002_Total_biomass$Year <- ('2002')
+Eastern_Sambo_Shallow_2002_Total_biomass$Reef <- ('Eastern Sambo Shallow')
+
 ###output
 export(Eastern_Sambo_Shallow_2002_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2002_biomass_data.csv")
 
 Eastern_Sambo_Shallow_2003 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2003.xls")
 Eastern_Sambo_Shallow_2003_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2003_Total_biomass$Year <- ('2003')
+Eastern_Sambo_Shallow_2003_Total_biomass$Reef <- ('Eastern Sambo Shallow')
+
 ###output
 export(Eastern_Sambo_Shallow_2003_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2003_biomass_data.csv")
 
@@ -1210,6 +1467,7 @@ export(Eastern_Sambo_Shallow_2003_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2004 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2004.xls")
 Eastern_Sambo_Shallow_2004_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2004_Total_biomass$Year <- ('2004')
+Eastern_Sambo_Shallow_2004_Total_biomass$Reef <- ('Eastern Sambo Shallow')
 
 ###output
 export(Eastern_Sambo_Shallow_2004_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2004_biomass_data.csv")
@@ -1217,6 +1475,8 @@ export(Eastern_Sambo_Shallow_2004_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2005 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2005.xls")
 Eastern_Sambo_Shallow_2005_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2005_Total_biomass$Year <- ('2005')
+Eastern_Sambo_Shallow_2005_Total_biomass$Reef <- ('Eastern Sambo Shallow')
+
 ###output
 export(Eastern_Sambo_Shallow_2005_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2005_biomass_data.csv")
 
@@ -1224,6 +1484,7 @@ export(Eastern_Sambo_Shallow_2005_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2006 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2006.xls")
 Eastern_Sambo_Shallow_2006_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2006_Total_biomass$Year <- ('2006')
+Eastern_Sambo_Shallow_2006_Total_biomass$Reef <- ('Eastern Sambo Shallow')
 
 ###output
 export(Eastern_Sambo_Shallow_2006_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2006_biomass_data.csv")
@@ -1231,6 +1492,8 @@ export(Eastern_Sambo_Shallow_2006_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2007 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2007.xls")
 Eastern_Sambo_Shallow_2007_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2007_Total_biomass$Year <- ('2007')
+Eastern_Sambo_Shallow_2007_Total_biomass$Reef <- ('Eastern Sambo Shallow')
+
 ###output
 export(Eastern_Sambo_Shallow_2007_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2007_biomass_data.csv")
 
@@ -1238,6 +1501,7 @@ export(Eastern_Sambo_Shallow_2007_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2008 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2008.xls")
 Eastern_Sambo_Shallow_2008_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2008_Total_biomass$Year <- ('2008')
+Eastern_Sambo_Shallow_2008_Total_biomass$Reef <- ('Eastern Sambo Shallow')
 
 ###output
 export(Eastern_Sambo_Shallow_2008_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2008_biomass_data.csv")
@@ -1245,6 +1509,8 @@ export(Eastern_Sambo_Shallow_2008_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2009 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2009.xls")
 Eastern_Sambo_Shallow_2009_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2009_Total_biomass$Year <- ('2009')
+Eastern_Sambo_Shallow_2009_Total_biomass$Reef <- ('Eastern Sambo Shallow')
+
 ###output
 export(Eastern_Sambo_Shallow_2009_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2009_biomass_data.csv")
 
@@ -1252,6 +1518,7 @@ export(Eastern_Sambo_Shallow_2009_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2010 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2010.xls")
 Eastern_Sambo_Shallow_2010_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2010_Total_biomass$Year <- ('2010')
+Eastern_Sambo_Shallow_2010_Total_biomass$Reef <- ('Eastern Sambo Shallow')
 
 ###output
 export(Eastern_Sambo_Shallow_2010_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2010_biomass_data.csv")
@@ -1259,6 +1526,8 @@ export(Eastern_Sambo_Shallow_2010_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2011 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2011.xls")
 Eastern_Sambo_Shallow_2011_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2011_Total_biomass$Year <- ('2011')
+Eastern_Sambo_Shallow_2011_Total_biomass$Reef <- ('Eastern Sambo Shallow')
+
 ###output
 export(Eastern_Sambo_Shallow_2011_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2011_biomass_data.csv")
 
@@ -1266,6 +1535,7 @@ export(Eastern_Sambo_Shallow_2011_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2012 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2012.xls")
 Eastern_Sambo_Shallow_2012_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2012_Total_biomass$Year <- ('2012')
+Eastern_Sambo_Shallow_2012_Total_biomass$Reef <- ('Eastern Sambo Shallow')
 
 ###output
 export(Eastern_Sambo_Shallow_2012_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2012_biomass_data.csv")
@@ -1273,6 +1543,7 @@ export(Eastern_Sambo_Shallow_2012_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2014 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2014.xls")
 Eastern_Sambo_Shallow_2014_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2014_Total_biomass$Year <- ('2014')
+Eastern_Sambo_Shallow_2014_Total_biomass$Reef <- ('Eastern Sambo Shallow')
 
 ###output
 export(Eastern_Sambo_Shallow_2014_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2014_biomass_data.csv")
@@ -1280,6 +1551,7 @@ export(Eastern_Sambo_Shallow_2014_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2016 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2016.xls")
 Eastern_Sambo_Shallow_2016_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2016_Total_biomass$Year <- ('2016')
+Eastern_Sambo_Shallow_2016_Total_biomass$Reef <- ('Eastern Sambo Shallow')
 
 ###output
 export(Eastern_Sambo_Shallow_2016_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2016_biomass_data.csv")
@@ -1287,6 +1559,8 @@ export(Eastern_Sambo_Shallow_2016_Total_biomass,"Eastern_Sambo_Shallow/data/East
 Eastern_Sambo_Shallow_2018 <- import("Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2018.xls")
 Eastern_Sambo_Shallow_2018_Total_biomass <- summarise_at(Eastern_Sambo_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Eastern_Sambo_Shallow_2018_Total_biomass$Year <- ('2018')
+Eastern_Sambo_Shallow_2018_Total_biomass$Reef <- ('Eastern Sambo Shallow')
+
 ###output
 export(Eastern_Sambo_Shallow_2018_Total_biomass,"Eastern_Sambo_Shallow/data/Eastern_Sambo_Shallow_2018_biomass_data.csv")
 
@@ -1338,30 +1612,38 @@ export(Eastern_Sambo_Shallow_Reef_biomass_data_combined,"Eastern_Sambo_Shallow/d
 Jaap_Reef_1999 <- import("Jaap_Reef/data/Jaap_Reef_1999.xls")
 Jaap_Reef_1999_Total_biomass <- summarise_at(Jaap_Reef_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_1999_Total_biomass$Year <- ('1999')
+Jaap_Reef_1999_Total_biomass$Reef <- ('Jaap')
+
 ###output
 export(Jaap_Reef_1999_Total_biomass,"Jaap_Reef/data/Jaap_Reef_1999_biomass_data.csv")
 
 Jaap_Reef_2000 <- import("Jaap_Reef/data/Jaap_Reef_2000.xls")
 Jaap_Reef_2000_Total_biomass <- summarise_at(Jaap_Reef_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2000_Total_biomass$Year <- ('2000')
+Jaap_Reef_2000_Total_biomass$Reef <- ('Jaap')
+
 ###output
 export(Jaap_Reef_2000_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2000_biomass_data.csv")
 
 Jaap_Reef_2001 <- import("Jaap_Reef/data/Jaap_Reef_2001.xls")
 Jaap_Reef_2001_Total_biomass <- summarise_at(Jaap_Reef_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2001_Total_biomass$Year <- ('2001')
+Jaap_Reef_2001_Total_biomass$Reef <- ('Jaap')
 ###output
 export(Jaap_Reef_2001_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2001_biomass_data.csv")
 
 Jaap_Reef_2002 <- import("Jaap_Reef/data/Jaap_Reef_2002.xls")
 Jaap_Reef_2002_Total_biomass <- summarise_at(Jaap_Reef_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2002_Total_biomass$Year <- ('2002')
+Jaap_Reef_2002_Total_biomass$Reef <- ('Jaap')
 ###output
 export(Jaap_Reef_2002_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2002_biomass_data.csv")
 
 Jaap_Reef_2003 <- import("Jaap_Reef/data/Jaap_Reef_2003.xls")
 Jaap_Reef_2003_Total_biomass <- summarise_at(Jaap_Reef_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2003_Total_biomass$Year <- ('2003')
+Jaap_Reef_2003_Total_biomass$Reef <- ('Jaap')
+
 ###output
 export(Jaap_Reef_2003_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2003_biomass_data.csv")
 
@@ -1369,6 +1651,7 @@ export(Jaap_Reef_2003_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2003_biomass_data.
 Jaap_Reef_2004 <- import("Jaap_Reef/data/Jaap_Reef_2004.xls")
 Jaap_Reef_2004_Total_biomass <- summarise_at(Jaap_Reef_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2004_Total_biomass$Year <- ('2004')
+Jaap_Reef_2004_Total_biomass$Reef <- ('Jaap')
 
 ###output
 export(Jaap_Reef_2004_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2004_biomass_data.csv")
@@ -1376,6 +1659,8 @@ export(Jaap_Reef_2004_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2004_biomass_data.
 Jaap_Reef_2005 <- import("Jaap_Reef/data/Jaap_Reef_2005.xls")
 Jaap_Reef_2005_Total_biomass <- summarise_at(Jaap_Reef_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2005_Total_biomass$Year <- ('2005')
+Jaap_Reef_2005_Total_biomass$Reef <- ('Jaap')
+
 ###output
 export(Jaap_Reef_2005_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2005_biomass_data.csv")
 
@@ -1383,6 +1668,7 @@ export(Jaap_Reef_2005_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2005_biomass_data.
 Jaap_Reef_2006 <- import("Jaap_Reef/data/Jaap_Reef_2006.xls")
 Jaap_Reef_2006_Total_biomass <- summarise_at(Jaap_Reef_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2006_Total_biomass$Year <- ('2006')
+Jaap_Reef_2006_Total_biomass$Reef <- ('Jaap')
 
 ###output
 export(Jaap_Reef_2006_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2006_biomass_data.csv")
@@ -1390,6 +1676,8 @@ export(Jaap_Reef_2006_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2006_biomass_data.
 Jaap_Reef_2007 <- import("Jaap_Reef/data/Jaap_Reef_2007.xls")
 Jaap_Reef_2007_Total_biomass <- summarise_at(Jaap_Reef_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2007_Total_biomass$Year <- ('2007')
+Jaap_Reef_2007_Total_biomass$Reef <- ('Jaap')
+
 ###output
 export(Jaap_Reef_2007_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2007_biomass_data.csv")
 
@@ -1397,6 +1685,7 @@ export(Jaap_Reef_2007_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2007_biomass_data.
 Jaap_Reef_2008 <- import("Jaap_Reef/data/Jaap_Reef_2008.xls")
 Jaap_Reef_2008_Total_biomass <- summarise_at(Jaap_Reef_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2008_Total_biomass$Year <- ('2008')
+Jaap_Reef_2008_Total_biomass$Reef <- ('Jaap')
 
 ###output
 export(Jaap_Reef_2008_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2008_biomass_data.csv")
@@ -1404,6 +1693,7 @@ export(Jaap_Reef_2008_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2008_biomass_data.
 Jaap_Reef_2009 <- import("Jaap_Reef/data/Jaap_Reef_2009.xls")
 Jaap_Reef_2009_Total_biomass <- summarise_at(Jaap_Reef_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2009_Total_biomass$Year <- ('2009')
+Jaap_Reef_2009_Total_biomass$Reef <- ('Jaap')
 ###output
 export(Jaap_Reef_2009_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2009_biomass_data.csv")
 
@@ -1411,6 +1701,7 @@ export(Jaap_Reef_2009_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2009_biomass_data.
 Jaap_Reef_2010 <- import("Jaap_Reef/data/Jaap_Reef_2010.xls")
 Jaap_Reef_2010_Total_biomass <- summarise_at(Jaap_Reef_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2010_Total_biomass$Year <- ('2010')
+Jaap_Reef_2010_Total_biomass$Reef <- ('Jaap')
 
 ###output
 export(Jaap_Reef_2010_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2010_biomass_data.csv")
@@ -1418,6 +1709,8 @@ export(Jaap_Reef_2010_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2010_biomass_data.
 Jaap_Reef_2011 <- import("Jaap_Reef/data/Jaap_Reef_2011.xls")
 Jaap_Reef_2011_Total_biomass <- summarise_at(Jaap_Reef_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2011_Total_biomass$Year <- ('2011')
+Jaap_Reef_2011_Total_biomass$Reef <- ('Jaap')
+
 ###output
 export(Jaap_Reef_2011_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2011_biomass_data.csv")
 
@@ -1425,6 +1718,7 @@ export(Jaap_Reef_2011_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2011_biomass_data.
 Jaap_Reef_2012 <- import("Jaap_Reef/data/Jaap_Reef_2012.xls")
 Jaap_Reef_2012_Total_biomass <- summarise_at(Jaap_Reef_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2012_Total_biomass$Year <- ('2012')
+Jaap_Reef_2012_Total_biomass$Reef <- ('Jaap')
 
 ###output
 export(Jaap_Reef_2012_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2012_biomass_data.csv")
@@ -1432,6 +1726,7 @@ export(Jaap_Reef_2012_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2012_biomass_data.
 Jaap_Reef_2014 <- import("Jaap_Reef/data/Jaap_Reef_2014.xls")
 Jaap_Reef_2014_Total_biomass <- summarise_at(Jaap_Reef_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2014_Total_biomass$Year <- ('2014')
+Jaap_Reef_2014_Total_biomass$Reef <- ('Jaap')
 
 ###output
 export(Jaap_Reef_2014_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2014_biomass_data.csv")
@@ -1439,6 +1734,7 @@ export(Jaap_Reef_2014_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2014_biomass_data.
 Jaap_Reef_2016 <- import("Jaap_Reef/data/Jaap_Reef_2016.xls")
 Jaap_Reef_2016_Total_biomass <- summarise_at(Jaap_Reef_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2016_Total_biomass$Year <- ('2016')
+Jaap_Reef_2016_Total_biomass$Reef <- ('Jaap')
 
 ###output
 export(Jaap_Reef_2016_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2016_biomass_data.csv")
@@ -1446,6 +1742,8 @@ export(Jaap_Reef_2016_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2016_biomass_data.
 Jaap_Reef_2018 <- import("Jaap_Reef/data/Jaap_Reef_2018.xls")
 Jaap_Reef_2018_Total_biomass <- summarise_at(Jaap_Reef_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Jaap_Reef_2018_Total_biomass$Year <- ('2018')
+Jaap_Reef_2018_Total_biomass$Reef <- ('Jaap')
+
 ###output
 export(Jaap_Reef_2018_Total_biomass,"Jaap_Reef/data/Jaap_Reef_2018_biomass_data.csv")
 
@@ -1498,30 +1796,40 @@ export(Jaap_Reef_biomass_data_combined,"Jaap_Reef/data/Jaap_Reef_biomass_data_co
 Looe_Key_Deep_1999 <- import("Looe_Key_Deep/data/Looe_Key_Deep_1999.xls")
 Looe_Key_Deep_1999_Total_biomass <- summarise_at(Looe_Key_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_1999_Total_biomass$Year <- ('1999')
+Looe_Key_Deep_1999_Total_biomass$Reef <- ('Looe Key Deep')
+
 ###output
 export(Looe_Key_Deep_1999_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_1999_biomass_data.csv")
 
 Looe_Key_Deep_2000 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2000.xls")
 Looe_Key_Deep_2000_Total_biomass <- summarise_at(Looe_Key_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2000_Total_biomass$Year <- ('2000')
+Looe_Key_Deep_2000_Total_biomass$Reef <- ('Looe Key Deep')
+
 ###output
 export(Looe_Key_Deep_2000_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2000_biomass_data.csv")
 
 Looe_Key_Deep_2001 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2001.xls")
 Looe_Key_Deep_2001_Total_biomass <- summarise_at(Looe_Key_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2001_Total_biomass$Year <- ('2001')
+Looe_Key_Deep_2001_Total_biomass$Reef <- ('Looe Key Deep')
+
 ###output
 export(Looe_Key_Deep_2001_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2001_biomass_data.csv")
 
 Looe_Key_Deep_2002 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2002.xls")
 Looe_Key_Deep_2002_Total_biomass <- summarise_at(Looe_Key_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2002_Total_biomass$Year <- ('2002')
+Looe_Key_Deep_2002_Total_biomass$Reef <- ('Looe Key Deep')
+
 ###output
 export(Looe_Key_Deep_2002_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2002_biomass_data.csv")
 
 Looe_Key_Deep_2003 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2003.xls")
 Looe_Key_Deep_2003_Total_biomass <- summarise_at(Looe_Key_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2003_Total_biomass$Year <- ('2003')
+Looe_Key_Deep_2003_Total_biomass$Reef <- ('Looe Key Deep')
+
 ###output
 export(Looe_Key_Deep_2003_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2003_biomass_data.csv")
 
@@ -1529,6 +1837,7 @@ export(Looe_Key_Deep_2003_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2003_b
 Looe_Key_Deep_2004 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2004.xls")
 Looe_Key_Deep_2004_Total_biomass <- summarise_at(Looe_Key_Deep_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2004_Total_biomass$Year <- ('2004')
+Looe_Key_Deep_2004_Total_biomass$Reef <- ('Looe Key Deep')
 
 ###output
 export(Looe_Key_Deep_2004_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2004_biomass_data.csv")
@@ -1536,6 +1845,8 @@ export(Looe_Key_Deep_2004_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2004_b
 Looe_Key_Deep_2005 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2005.xls")
 Looe_Key_Deep_2005_Total_biomass <- summarise_at(Looe_Key_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2005_Total_biomass$Year <- ('2005')
+Looe_Key_Deep_2005_Total_biomass$Reef <- ('Looe Key Deep')
+
 ###output
 export(Looe_Key_Deep_2005_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2005_biomass_data.csv")
 
@@ -1543,6 +1854,7 @@ export(Looe_Key_Deep_2005_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2005_b
 Looe_Key_Deep_2006 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2006.xls")
 Looe_Key_Deep_2006_Total_biomass <- summarise_at(Looe_Key_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2006_Total_biomass$Year <- ('2006')
+Looe_Key_Deep_2006_Total_biomass$Reef <- ('Looe Key Deep')
 
 ###output
 export(Looe_Key_Deep_2006_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2006_biomass_data.csv")
@@ -1550,6 +1862,8 @@ export(Looe_Key_Deep_2006_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2006_b
 Looe_Key_Deep_2007 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2007.xls")
 Looe_Key_Deep_2007_Total_biomass <- summarise_at(Looe_Key_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2007_Total_biomass$Year <- ('2007')
+Looe_Key_Deep_2007_Total_biomass$Reef <- ('Looe Key Deep')
+
 ###output
 export(Looe_Key_Deep_2007_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2007_biomass_data.csv")
 
@@ -1557,6 +1871,7 @@ export(Looe_Key_Deep_2007_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2007_b
 Looe_Key_Deep_2008 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2008.xls")
 Looe_Key_Deep_2008_Total_biomass <- summarise_at(Looe_Key_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2008_Total_biomass$Year <- ('2008')
+Looe_Key_Deep_2008_Total_biomass$Reef <- ('Looe Key Deep')
 
 ###output
 export(Looe_Key_Deep_2008_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2008_biomass_data.csv")
@@ -1564,6 +1879,8 @@ export(Looe_Key_Deep_2008_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2008_b
 Looe_Key_Deep_2009 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2009.xls")
 Looe_Key_Deep_2009_Total_biomass <- summarise_at(Looe_Key_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2009_Total_biomass$Year <- ('2009')
+Looe_Key_Deep_2009_Total_biomass$Reef <- ('Looe Key Deep')
+
 ###output
 export(Looe_Key_Deep_2009_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2009_biomass_data.csv")
 
@@ -1571,6 +1888,7 @@ export(Looe_Key_Deep_2009_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2009_b
 Looe_Key_Deep_2010 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2010.xls")
 Looe_Key_Deep_2010_Total_biomass <- summarise_at(Looe_Key_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2010_Total_biomass$Year <- ('2010')
+Looe_Key_Deep_2010_Total_biomass$Reef <- ('Looe Key Deep')
 
 ###output
 export(Looe_Key_Deep_2010_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2010_biomass_data.csv")
@@ -1578,6 +1896,8 @@ export(Looe_Key_Deep_2010_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2010_b
 Looe_Key_Deep_2011 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2011.xls")
 Looe_Key_Deep_2011_Total_biomass <- summarise_at(Looe_Key_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2011_Total_biomass$Year <- ('2011')
+Looe_Key_Deep_2011_Total_biomass$Reef <- ('Looe Key Deep')
+
 ###output
 export(Looe_Key_Deep_2011_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2011_biomass_data.csv")
 
@@ -1585,6 +1905,7 @@ export(Looe_Key_Deep_2011_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2011_b
 Looe_Key_Deep_2012 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2012.xls")
 Looe_Key_Deep_2012_Total_biomass <- summarise_at(Looe_Key_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2012_Total_biomass$Year <- ('2012')
+Looe_Key_Deep_2012_Total_biomass$Reef <- ('Looe Key Deep')
 
 ###output
 export(Looe_Key_Deep_2012_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2012_biomass_data.csv")
@@ -1592,6 +1913,7 @@ export(Looe_Key_Deep_2012_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2012_b
 Looe_Key_Deep_2014 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2014.xls")
 Looe_Key_Deep_2014_Total_biomass <- summarise_at(Looe_Key_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2014_Total_biomass$Year <- ('2014')
+Looe_Key_Deep_2014_Total_biomass$Reef <- ('Looe Key Deep')
 
 ###output
 export(Looe_Key_Deep_2014_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2014_biomass_data.csv")
@@ -1599,6 +1921,7 @@ export(Looe_Key_Deep_2014_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2014_b
 Looe_Key_Deep_2016 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2016.xls")
 Looe_Key_Deep_2016_Total_biomass <- summarise_at(Looe_Key_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2016_Total_biomass$Year <- ('2016')
+Looe_Key_Deep_2016_Total_biomass$Reef <- ('Looe Key Deep')
 
 ###output
 export(Looe_Key_Deep_2016_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2016_biomass_data.csv")
@@ -1606,6 +1929,8 @@ export(Looe_Key_Deep_2016_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2016_b
 Looe_Key_Deep_2018 <- import("Looe_Key_Deep/data/Looe_Key_Deep_2018.xls")
 Looe_Key_Deep_2018_Total_biomass <- summarise_at(Looe_Key_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Deep_2018_Total_biomass$Year <- ('2018')
+Looe_Key_Deep_2018_Total_biomass$Reef <- ('Looe Key Deep')
+
 ###output
 export(Looe_Key_Deep_2018_Total_biomass,"Looe_Key_Deep/data/Looe_Key_Deep_2018_biomass_data.csv")
 
@@ -1658,30 +1983,40 @@ export(Looe_Key_Deep_Reef_biomass_data_combined,"Looe_Key_Deep/data/Looe_Key_Dee
 Looe_Key_Shallow_1999 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_1999.xls")
 Looe_Key_Shallow_1999_Total_biomass <- summarise_at(Looe_Key_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_1999_Total_biomass$Year <- ('1999')
+Looe_Key_Shallow_1999_Total_biomass$Reef <- ('Looe Key Shallow')
+
 ###output
 export(Looe_Key_Shallow_1999_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_1999_biomass_data.csv")
 
 Looe_Key_Shallow_2000 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2000.xls")
 Looe_Key_Shallow_2000_Total_biomass <- summarise_at(Looe_Key_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2000_Total_biomass$Year <- ('2000')
+Looe_Key_Shallow_2000_Total_biomass$Reef <- ('Looe Key Shallow')
+
 ###output
 export(Looe_Key_Shallow_2000_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2000_biomass_data.csv")
 
 Looe_Key_Shallow_2001 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2001.xls")
 Looe_Key_Shallow_2001_Total_biomass <- summarise_at(Looe_Key_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2001_Total_biomass$Year <- ('2001')
+Looe_Key_Shallow_2001_Total_biomass$Reef <- ('Looe Key Shallow')
+
 ###output
 export(Looe_Key_Shallow_2001_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2001_biomass_data.csv")
 
 Looe_Key_Shallow_2002 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2002.xls")
 Looe_Key_Shallow_2002_Total_biomass <- summarise_at(Looe_Key_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2002_Total_biomass$Year <- ('2002')
+Looe_Key_Shallow_2002_Total_biomass$Reef <- ('Looe Key Shallow')
+
 ###output
 export(Looe_Key_Shallow_2002_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2002_biomass_data.csv")
 
 Looe_Key_Shallow_2003 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2003.xls")
 Looe_Key_Shallow_2003_Total_biomass <- summarise_at(Looe_Key_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2003_Total_biomass$Year <- ('2003')
+Looe_Key_Shallow_2003_Total_biomass$Reef <- ('Looe Key Shallow')
+
 ###output
 export(Looe_Key_Shallow_2003_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2003_biomass_data.csv")
 
@@ -1689,6 +2024,7 @@ export(Looe_Key_Shallow_2003_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2004 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2004.xls")
 Looe_Key_Shallow_2004_Total_biomass <- summarise_at(Looe_Key_Shallow_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2004_Total_biomass$Year <- ('2004')
+Looe_Key_Shallow_2004_Total_biomass$Reef <- ('Looe Key Shallow')
 
 ###output
 export(Looe_Key_Shallow_2004_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2004_biomass_data.csv")
@@ -1696,6 +2032,8 @@ export(Looe_Key_Shallow_2004_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2005 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2005.xls")
 Looe_Key_Shallow_2005_Total_biomass <- summarise_at(Looe_Key_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2005_Total_biomass$Year <- ('2005')
+Looe_Key_Shallow_2005_Total_biomass$Reef <- ('Looe Key Shallow')
+
 ###output
 export(Looe_Key_Shallow_2005_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2005_biomass_data.csv")
 
@@ -1703,6 +2041,7 @@ export(Looe_Key_Shallow_2005_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2006 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2006.xls")
 Looe_Key_Shallow_2006_Total_biomass <- summarise_at(Looe_Key_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2006_Total_biomass$Year <- ('2006')
+Looe_Key_Shallow_2006_Total_biomass$Reef <- ('Looe Key Shallow')
 
 ###output
 export(Looe_Key_Shallow_2006_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2006_biomass_data.csv")
@@ -1710,6 +2049,7 @@ export(Looe_Key_Shallow_2006_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2007 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2007.xls")
 Looe_Key_Shallow_2007_Total_biomass <- summarise_at(Looe_Key_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2007_Total_biomass$Year <- ('2007')
+Looe_Key_Shallow_2007_Total_biomass$Reef <- ('Looe Key Shallow')
 ###output
 export(Looe_Key_Shallow_2007_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2007_biomass_data.csv")
 
@@ -1717,6 +2057,7 @@ export(Looe_Key_Shallow_2007_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2008 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2008.xls")
 Looe_Key_Shallow_2008_Total_biomass <- summarise_at(Looe_Key_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2008_Total_biomass$Year <- ('2008')
+Looe_Key_Shallow_2008_Total_biomass$Reef <- ('Looe Key Shallow')
 
 ###output
 export(Looe_Key_Shallow_2008_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2008_biomass_data.csv")
@@ -1724,6 +2065,8 @@ export(Looe_Key_Shallow_2008_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2009 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2009.xls")
 Looe_Key_Shallow_2009_Total_biomass <- summarise_at(Looe_Key_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2009_Total_biomass$Year <- ('2009')
+Looe_Key_Shallow_2009_Total_biomass$Reef <- ('Looe Key Shallow')
+
 ###output
 export(Looe_Key_Shallow_2009_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2009_biomass_data.csv")
 
@@ -1731,6 +2074,7 @@ export(Looe_Key_Shallow_2009_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2010 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2010.xls")
 Looe_Key_Shallow_2010_Total_biomass <- summarise_at(Looe_Key_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2010_Total_biomass$Year <- ('2010')
+Looe_Key_Shallow_2010_Total_biomass$Reef <- ('Looe Key Shallow')
 
 ###output
 export(Looe_Key_Shallow_2010_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2010_biomass_data.csv")
@@ -1738,6 +2082,7 @@ export(Looe_Key_Shallow_2010_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2011 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2011.xls")
 Looe_Key_Shallow_2011_Total_biomass <- summarise_at(Looe_Key_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2011_Total_biomass$Year <- ('2011')
+Looe_Key_Shallow_2011_Total_biomass$Reef <- ('Looe Key Shallow')
 ###output
 export(Looe_Key_Shallow_2011_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2011_biomass_data.csv")
 
@@ -1745,6 +2090,7 @@ export(Looe_Key_Shallow_2011_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2012 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2012.xls")
 Looe_Key_Shallow_2012_Total_biomass <- summarise_at(Looe_Key_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2012_Total_biomass$Year <- ('2012')
+Looe_Key_Shallow_2012_Total_biomass$Reef <- ('Looe Key Shallow')
 
 ###output
 export(Looe_Key_Shallow_2012_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2012_biomass_data.csv")
@@ -1752,6 +2098,7 @@ export(Looe_Key_Shallow_2012_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2014 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2014.xls")
 Looe_Key_Shallow_2014_Total_biomass <- summarise_at(Looe_Key_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2014_Total_biomass$Year <- ('2014')
+Looe_Key_Shallow_2014_Total_biomass$Reef <- ('Looe Key Shallow')
 
 ###output
 export(Looe_Key_Shallow_2014_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2014_biomass_data.csv")
@@ -1759,6 +2106,7 @@ export(Looe_Key_Shallow_2014_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2016 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2016.xls")
 Looe_Key_Shallow_2016_Total_biomass <- summarise_at(Looe_Key_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2016_Total_biomass$Year <- ('2016')
+Looe_Key_Shallow_2016_Total_biomass$Reef <- ('Looe Key Shallow')
 
 ###output
 export(Looe_Key_Shallow_2016_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2016_biomass_data.csv")
@@ -1766,6 +2114,7 @@ export(Looe_Key_Shallow_2016_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shall
 Looe_Key_Shallow_2018 <- import("Looe_Key_Shallow/data/Looe_Key_Shallow_2018.xls")
 Looe_Key_Shallow_2018_Total_biomass <- summarise_at(Looe_Key_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Looe_Key_Shallow_2018_Total_biomass$Year <- ('2018')
+Looe_Key_Shallow_2018_Total_biomass$Reef <- ('Looe Key Shallow')
 ###output
 export(Looe_Key_Shallow_2018_Total_biomass,"Looe_Key_Shallow/data/Looe_Key_Shallow_2018_biomass_data.csv")
 
@@ -1817,30 +2166,39 @@ export(Looe_Key_Shallow_Reef_biomass_data_combined,"Looe_Key_Shallow/data/Looe_K
 Red_Dun_Reef_1999 <- import("Red_Dun_Reef/data/Red_Dun_Reef_1999.xls")
 Red_Dun_Reef_1999_Total_biomass <- summarise_at(Red_Dun_Reef_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_1999_Total_biomass$Year <- ('1999')
+Red_Dun_Reef_1999_Total_biomass$Reef <- ('Red Dun')
+
 ###output
 export(Red_Dun_Reef_1999_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_1999_biomass_data.csv")
 
 Red_Dun_Reef_2000 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2000.xls")
 Red_Dun_Reef_2000_Total_biomass <- summarise_at(Red_Dun_Reef_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2000_Total_biomass$Year <- ('2000')
+Red_Dun_Reef_2000_Total_biomass$Reef <- ('Red Dun')
+
 ###output
 export(Red_Dun_Reef_2000_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2000_biomass_data.csv")
 
 Red_Dun_Reef_2001 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2001.xls")
 Red_Dun_Reef_2001_Total_biomass <- summarise_at(Red_Dun_Reef_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2001_Total_biomass$Year <- ('2001')
+Red_Dun_Reef_2001_Total_biomass$Reef <- ('Red Dun')
+
 ###output
 export(Red_Dun_Reef_2001_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2001_biomass_data.csv")
 
 Red_Dun_Reef_2002 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2002.xls")
 Red_Dun_Reef_2002_Total_biomass <- summarise_at(Red_Dun_Reef_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2002_Total_biomass$Year <- ('2002')
+Red_Dun_Reef_2002_Total_biomass$Reef <- ('Red Dun')
+
 ###output
 export(Red_Dun_Reef_2002_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2002_biomass_data.csv")
 
 Red_Dun_Reef_2003 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2003.xls")
 Red_Dun_Reef_2003_Total_biomass <- summarise_at(Red_Dun_Reef_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2003_Total_biomass$Year <- ('2003')
+Red_Dun_Reef_2003_Total_biomass$Reef <- ('Red Dun')
 ###output
 export(Red_Dun_Reef_2003_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2003_biomass_data.csv")
 
@@ -1848,6 +2206,7 @@ export(Red_Dun_Reef_2003_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2003_biom
 Red_Dun_Reef_2004 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2004.xls")
 Red_Dun_Reef_2004_Total_biomass <- summarise_at(Red_Dun_Reef_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2004_Total_biomass$Year <- ('2004')
+Red_Dun_Reef_2004_Total_biomass$Reef <- ('Red Dun')
 
 ###output
 export(Red_Dun_Reef_2004_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2004_biomass_data.csv")
@@ -1855,6 +2214,7 @@ export(Red_Dun_Reef_2004_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2004_biom
 Red_Dun_Reef_2005 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2005.xls")
 Red_Dun_Reef_2005_Total_biomass <- summarise_at(Red_Dun_Reef_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2005_Total_biomass$Year <- ('2005')
+Red_Dun_Reef_2005_Total_biomass$Reef <- ('Red Dun')
 ###output
 export(Red_Dun_Reef_2005_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2005_biomass_data.csv")
 
@@ -1862,6 +2222,7 @@ export(Red_Dun_Reef_2005_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2005_biom
 Red_Dun_Reef_2006 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2006.xls")
 Red_Dun_Reef_2006_Total_biomass <- summarise_at(Red_Dun_Reef_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2006_Total_biomass$Year <- ('2006')
+Red_Dun_Reef_2006_Total_biomass$Reef <- ('Red Dun')
 
 ###output
 export(Red_Dun_Reef_2006_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2006_biomass_data.csv")
@@ -1869,6 +2230,8 @@ export(Red_Dun_Reef_2006_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2006_biom
 Red_Dun_Reef_2007 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2007.xls")
 Red_Dun_Reef_2007_Total_biomass <- summarise_at(Red_Dun_Reef_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2007_Total_biomass$Year <- ('2007')
+Red_Dun_Reef_2007_Total_biomass$Reef <- ('Red Dun')
+
 ###output
 export(Red_Dun_Reef_2007_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2007_biomass_data.csv")
 
@@ -1876,6 +2239,7 @@ export(Red_Dun_Reef_2007_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2007_biom
 Red_Dun_Reef_2008 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2008.xls")
 Red_Dun_Reef_2008_Total_biomass <- summarise_at(Red_Dun_Reef_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2008_Total_biomass$Year <- ('2008')
+Red_Dun_Reef_2008_Total_biomass$Reef <- ('Red Dun')
 
 ###output
 export(Red_Dun_Reef_2008_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2008_biomass_data.csv")
@@ -1883,6 +2247,7 @@ export(Red_Dun_Reef_2008_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2008_biom
 Red_Dun_Reef_2009 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2009.xls")
 Red_Dun_Reef_2009_Total_biomass <- summarise_at(Red_Dun_Reef_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2009_Total_biomass$Year <- ('2009')
+Red_Dun_Reef_2009_Total_biomass$Reef <- ('Red Dun')
 ###output
 export(Red_Dun_Reef_2009_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2009_biomass_data.csv")
 
@@ -1890,6 +2255,7 @@ export(Red_Dun_Reef_2009_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2009_biom
 Red_Dun_Reef_2010 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2010.xls")
 Red_Dun_Reef_2010_Total_biomass <- summarise_at(Red_Dun_Reef_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2010_Total_biomass$Year <- ('2010')
+Red_Dun_Reef_2010_Total_biomass$Reef <- ('Red Dun')
 
 ###output
 export(Red_Dun_Reef_2010_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2010_biomass_data.csv")
@@ -1897,6 +2263,7 @@ export(Red_Dun_Reef_2010_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2010_biom
 Red_Dun_Reef_2011 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2011.xls")
 Red_Dun_Reef_2011_Total_biomass <- summarise_at(Red_Dun_Reef_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2011_Total_biomass$Year <- ('2011')
+Red_Dun_Reef_2011_Total_biomass$Reef <- ('Red Dun')
 ###output
 export(Red_Dun_Reef_2011_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2011_biomass_data.csv")
 
@@ -1904,6 +2271,7 @@ export(Red_Dun_Reef_2011_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2011_biom
 Red_Dun_Reef_2012 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2012.xls")
 Red_Dun_Reef_2012_Total_biomass <- summarise_at(Red_Dun_Reef_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2012_Total_biomass$Year <- ('2012')
+Red_Dun_Reef_2012_Total_biomass$Reef <- ('Red Dun')
 
 ###output
 export(Red_Dun_Reef_2012_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2012_biomass_data.csv")
@@ -1911,6 +2279,7 @@ export(Red_Dun_Reef_2012_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2012_biom
 Red_Dun_Reef_2014 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2014.xls")
 Red_Dun_Reef_2014_Total_biomass <- summarise_at(Red_Dun_Reef_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2014_Total_biomass$Year <- ('2014')
+Red_Dun_Reef_2014_Total_biomass$Reef <- ('Red Dun')
 
 ###output
 export(Red_Dun_Reef_2014_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2014_biomass_data.csv")
@@ -1918,6 +2287,7 @@ export(Red_Dun_Reef_2014_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2014_biom
 Red_Dun_Reef_2016 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2016.xls")
 Red_Dun_Reef_2016_Total_biomass <- summarise_at(Red_Dun_Reef_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2016_Total_biomass$Year <- ('2016')
+Red_Dun_Reef_2016_Total_biomass$Reef <- ('Red Dun')
 
 ###output
 export(Red_Dun_Reef_2016_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2016_biomass_data.csv")
@@ -1925,6 +2295,7 @@ export(Red_Dun_Reef_2016_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2016_biom
 Red_Dun_Reef_2018 <- import("Red_Dun_Reef/data/Red_Dun_Reef_2018.xls")
 Red_Dun_Reef_2018_Total_biomass <- summarise_at(Red_Dun_Reef_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Red_Dun_Reef_2018_Total_biomass$Year <- ('2018')
+Red_Dun_Reef_2018_Total_biomass$Reef <- ('Red Dun')
 ###output
 export(Red_Dun_Reef_2018_Total_biomass,"Red_Dun_Reef/data/Red_Dun_Reef_2018_biomass_data.csv")
 
@@ -1975,30 +2346,35 @@ export(Red_Dun_Reef_biomass_data_combined,"Red_Dun_Reef/data/Red_Dun_Reef_biomas
 Rock_Key_Deep_1999 <- import("Rock_Key_Deep/data/Rock_Key_Deep_1999.xls")
 Rock_Key_Deep_1999_Total_biomass <- summarise_at(Rock_Key_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_1999_Total_biomass$Year <- ('1999')
+Rock_Key_Deep_1999_Total_biomass$Reef <- ('Rock Key Deep')
 ###output
 export(Rock_Key_Deep_1999_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_1999_biomass_data.csv")
 
 Rock_Key_Deep_2000 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2000.xls")
 Rock_Key_Deep_2000_Total_biomass <- summarise_at(Rock_Key_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2000_Total_biomass$Year <- ('2000')
+Rock_Key_Deep_2000_Total_biomass$Reef <- ('Rock Key Deep')
 ###output
 export(Rock_Key_Deep_2000_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2000_biomass_data.csv")
 
 Rock_Key_Deep_2001 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2001.xls")
 Rock_Key_Deep_2001_Total_biomass <- summarise_at(Rock_Key_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2001_Total_biomass$Year <- ('2001')
+Rock_Key_Deep_2001_Total_biomass$Reef <- ('Rock Key Deep')
 ###output
 export(Rock_Key_Deep_2001_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2001_biomass_data.csv")
 
 Rock_Key_Deep_2002 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2002.xls")
 Rock_Key_Deep_2002_Total_biomass <- summarise_at(Rock_Key_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2002_Total_biomass$Year <- ('2002')
+Rock_Key_Deep_2002_Total_biomass$Reef <- ('Rock Key Deep')
 ###output
 export(Rock_Key_Deep_2002_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2002_biomass_data.csv")
 
 Rock_Key_Deep_2003 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2003.xls")
 Rock_Key_Deep_2003_Total_biomass <- summarise_at(Rock_Key_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2003_Total_biomass$Year <- ('2003')
+Rock_Key_Deep_2003_Total_biomass$Reef <- ('Rock Key Deep')
 ###output
 export(Rock_Key_Deep_2003_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2003_biomass_data.csv")
 
@@ -2006,6 +2382,7 @@ export(Rock_Key_Deep_2003_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2003_b
 Rock_Key_Deep_2004 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2004.xls")
 Rock_Key_Deep_2004_Total_biomass <- summarise_at(Rock_Key_Deep_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2004_Total_biomass$Year <- ('2004')
+Rock_Key_Deep_2004_Total_biomass$Reef <- ('Rock Key Deep')
 
 ###output
 export(Rock_Key_Deep_2004_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2004_biomass_data.csv")
@@ -2013,6 +2390,8 @@ export(Rock_Key_Deep_2004_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2004_b
 Rock_Key_Deep_2005 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2005.xls")
 Rock_Key_Deep_2005_Total_biomass <- summarise_at(Rock_Key_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2005_Total_biomass$Year <- ('2005')
+Rock_Key_Deep_2005_Total_biomass$Reef <- ('Rock Key Deep')
+
 ###output
 export(Rock_Key_Deep_2005_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2005_biomass_data.csv")
 
@@ -2020,6 +2399,7 @@ export(Rock_Key_Deep_2005_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2005_b
 Rock_Key_Deep_2006 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2006.xls")
 Rock_Key_Deep_2006_Total_biomass <- summarise_at(Rock_Key_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2006_Total_biomass$Year <- ('2006')
+Rock_Key_Deep_2006_Total_biomass$Reef <- ('Rock Key Deep')
 
 ###output
 export(Rock_Key_Deep_2006_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2006_biomass_data.csv")
@@ -2027,6 +2407,8 @@ export(Rock_Key_Deep_2006_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2006_b
 Rock_Key_Deep_2007 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2007.xls")
 Rock_Key_Deep_2007_Total_biomass <- summarise_at(Rock_Key_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2007_Total_biomass$Year <- ('2007')
+Rock_Key_Deep_2007_Total_biomass$Reef <- ('Rock Key Deep')
+
 ###output
 export(Rock_Key_Deep_2007_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2007_biomass_data.csv")
 
@@ -2034,6 +2416,7 @@ export(Rock_Key_Deep_2007_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2007_b
 Rock_Key_Deep_2008 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2008.xls")
 Rock_Key_Deep_2008_Total_biomass <- summarise_at(Rock_Key_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2008_Total_biomass$Year <- ('2008')
+Rock_Key_Deep_2008_Total_biomass$Reef <- ('Rock Key Deep')
 
 ###output
 export(Rock_Key_Deep_2008_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2008_biomass_data.csv")
@@ -2041,6 +2424,8 @@ export(Rock_Key_Deep_2008_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2008_b
 Rock_Key_Deep_2009 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2009.xls")
 Rock_Key_Deep_2009_Total_biomass <- summarise_at(Rock_Key_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2009_Total_biomass$Year <- ('2009')
+Rock_Key_Deep_2009_Total_biomass$Reef <- ('Rock Key Deep')
+
 ###output
 export(Rock_Key_Deep_2009_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2009_biomass_data.csv")
 
@@ -2048,6 +2433,7 @@ export(Rock_Key_Deep_2009_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2009_b
 Rock_Key_Deep_2010 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2010.xls")
 Rock_Key_Deep_2010_Total_biomass <- summarise_at(Rock_Key_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2010_Total_biomass$Year <- ('2010')
+Rock_Key_Deep_2010_Total_biomass$Reef <- ('Rock Key Deep')
 
 ###output
 export(Rock_Key_Deep_2010_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2010_biomass_data.csv")
@@ -2055,6 +2441,8 @@ export(Rock_Key_Deep_2010_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2010_b
 Rock_Key_Deep_2011 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2011.xls")
 Rock_Key_Deep_2011_Total_biomass <- summarise_at(Rock_Key_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2011_Total_biomass$Year <- ('2011')
+Rock_Key_Deep_2011_Total_biomass$Reef <- ('Rock Key Deep')
+
 ###output
 export(Rock_Key_Deep_2011_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2011_biomass_data.csv")
 
@@ -2062,6 +2450,7 @@ export(Rock_Key_Deep_2011_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2011_b
 Rock_Key_Deep_2012 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2012.xls")
 Rock_Key_Deep_2012_Total_biomass <- summarise_at(Rock_Key_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2012_Total_biomass$Year <- ('2012')
+Rock_Key_Deep_2012_Total_biomass$Reef <- ('Rock Key Deep')
 
 ###output
 export(Rock_Key_Deep_2012_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2012_biomass_data.csv")
@@ -2069,6 +2458,7 @@ export(Rock_Key_Deep_2012_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2012_b
 Rock_Key_Deep_2014 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2014.xls")
 Rock_Key_Deep_2014_Total_biomass <- summarise_at(Rock_Key_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2014_Total_biomass$Year <- ('2014')
+Rock_Key_Deep_2014_Total_biomass$Reef <- ('Rock Key Deep')
 
 ###output
 export(Rock_Key_Deep_2014_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2014_biomass_data.csv")
@@ -2076,6 +2466,7 @@ export(Rock_Key_Deep_2014_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2014_b
 Rock_Key_Deep_2016 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2016.xls")
 Rock_Key_Deep_2016_Total_biomass <- summarise_at(Rock_Key_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2016_Total_biomass$Year <- ('2016')
+Rock_Key_Deep_2016_Total_biomass$Reef <- ('Rock Key Deep')
 
 ###output
 export(Rock_Key_Deep_2016_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2016_biomass_data.csv")
@@ -2083,6 +2474,8 @@ export(Rock_Key_Deep_2016_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2016_b
 Rock_Key_Deep_2018 <- import("Rock_Key_Deep/data/Rock_Key_Deep_2018.xls")
 Rock_Key_Deep_2018_Total_biomass <- summarise_at(Rock_Key_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Deep_2018_Total_biomass$Year <- ('2018')
+Rock_Key_Deep_2018_Total_biomass$Reef <- ('Rock Key Deep')
+
 ###output
 export(Rock_Key_Deep_2018_Total_biomass,"Rock_Key_Deep/data/Rock_Key_Deep_2018_biomass_data.csv")
 
@@ -2134,30 +2527,37 @@ export(Rock_Key_Deep_Reef_biomass_data_combined,"Rock_Key_Deep/data/Rock_Key_Dee
 Rock_Key_Shallow_1999 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_1999.xls")
 Rock_Key_Shallow_1999_Total_biomass <- summarise_at(Rock_Key_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_1999_Total_biomass$Year <- ('1999')
+Rock_Key_Shallow_1999_Total_biomass$Reef <- ('Rock Key Shallow')
+
 ###output
 export(Rock_Key_Shallow_1999_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_1999_biomass_data.csv")
 
 Rock_Key_Shallow_2000 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2000.xls")
 Rock_Key_Shallow_2000_Total_biomass <- summarise_at(Rock_Key_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2000_Total_biomass$Year <- ('2000')
+Rock_Key_Shallow_2000_Total_biomass$Reef <- ('Rock Key Shallow')
+
 ###output
 export(Rock_Key_Shallow_2000_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2000_biomass_data.csv")
 
 Rock_Key_Shallow_2001 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2001.xls")
 Rock_Key_Shallow_2001_Total_biomass <- summarise_at(Rock_Key_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2001_Total_biomass$Year <- ('2001')
+Rock_Key_Shallow_2001_Total_biomass$Reef <- ('Rock Key Shallow')
 ###output
 export(Rock_Key_Shallow_2001_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2001_biomass_data.csv")
 
 Rock_Key_Shallow_2002 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2002.xls")
 Rock_Key_Shallow_2002_Total_biomass <- summarise_at(Rock_Key_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2002_Total_biomass$Year <- ('2002')
+Rock_Key_Shallow_2002_Total_biomass$Reef <- ('Rock Key Shallow')
 ###output
 export(Rock_Key_Shallow_2002_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2002_biomass_data.csv")
 
 Rock_Key_Shallow_2003 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2003.xls")
 Rock_Key_Shallow_2003_Total_biomass <- summarise_at(Rock_Key_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2003_Total_biomass$Year <- ('2003')
+Rock_Key_Shallow_2003_Total_biomass$Reef <- ('Rock Key Shallow')
 ###output
 export(Rock_Key_Shallow_2003_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2003_biomass_data.csv")
 
@@ -2165,6 +2565,7 @@ export(Rock_Key_Shallow_2003_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2004 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2004.xls")
 Rock_Key_Shallow_2004_Total_biomass <- summarise_at(Rock_Key_Shallow_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2004_Total_biomass$Year <- ('2004')
+Rock_Key_Shallow_2004_Total_biomass$Reef <- ('Rock Key Shallow')
 
 ###output
 export(Rock_Key_Shallow_2004_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2004_biomass_data.csv")
@@ -2172,6 +2573,8 @@ export(Rock_Key_Shallow_2004_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2005 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2005.xls")
 Rock_Key_Shallow_2005_Total_biomass <- summarise_at(Rock_Key_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2005_Total_biomass$Year <- ('2005')
+Rock_Key_Shallow_2005_Total_biomass$Reef <- ('Rock Key Shallow')
+
 ###output
 export(Rock_Key_Shallow_2005_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2005_biomass_data.csv")
 
@@ -2179,6 +2582,7 @@ export(Rock_Key_Shallow_2005_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2006 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2006.xls")
 Rock_Key_Shallow_2006_Total_biomass <- summarise_at(Rock_Key_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2006_Total_biomass$Year <- ('2006')
+Rock_Key_Shallow_2006_Total_biomass$Reef <- ('Rock Key Shallow')
 
 ###output
 export(Rock_Key_Shallow_2006_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2006_biomass_data.csv")
@@ -2186,6 +2590,8 @@ export(Rock_Key_Shallow_2006_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2007 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2007.xls")
 Rock_Key_Shallow_2007_Total_biomass <- summarise_at(Rock_Key_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2007_Total_biomass$Year <- ('2007')
+Rock_Key_Shallow_2007_Total_biomass$Reef <- ('Rock Key Shallow')
+
 ###output
 export(Rock_Key_Shallow_2007_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2007_biomass_data.csv")
 
@@ -2193,6 +2599,7 @@ export(Rock_Key_Shallow_2007_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2008 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2008.xls")
 Rock_Key_Shallow_2008_Total_biomass <- summarise_at(Rock_Key_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2008_Total_biomass$Year <- ('2008')
+Rock_Key_Shallow_2008_Total_biomass$Reef <- ('Rock Key Shallow')
 
 ###output
 export(Rock_Key_Shallow_2008_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2008_biomass_data.csv")
@@ -2200,6 +2607,8 @@ export(Rock_Key_Shallow_2008_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2009 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2009.xls")
 Rock_Key_Shallow_2009_Total_biomass <- summarise_at(Rock_Key_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2009_Total_biomass$Year <- ('2009')
+Rock_Key_Shallow_2009_Total_biomass$Reef <- ('Rock Key Shallow')
+
 ###output
 export(Rock_Key_Shallow_2009_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2009_biomass_data.csv")
 
@@ -2207,6 +2616,7 @@ export(Rock_Key_Shallow_2009_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2010 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2010.xls")
 Rock_Key_Shallow_2010_Total_biomass <- summarise_at(Rock_Key_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2010_Total_biomass$Year <- ('2010')
+Rock_Key_Shallow_2010_Total_biomass$Reef <- ('Rock Key Shallow')
 
 ###output
 export(Rock_Key_Shallow_2010_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2010_biomass_data.csv")
@@ -2214,6 +2624,8 @@ export(Rock_Key_Shallow_2010_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2011 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2011.xls")
 Rock_Key_Shallow_2011_Total_biomass <- summarise_at(Rock_Key_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2011_Total_biomass$Year <- ('2011')
+Rock_Key_Shallow_2011_Total_biomass$Reef <- ('Rock Key Shallow')
+
 ###output
 export(Rock_Key_Shallow_2011_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2011_biomass_data.csv")
 
@@ -2221,6 +2633,7 @@ export(Rock_Key_Shallow_2011_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2012 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2012.xls")
 Rock_Key_Shallow_2012_Total_biomass <- summarise_at(Rock_Key_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2012_Total_biomass$Year <- ('2012')
+Rock_Key_Shallow_2012_Total_biomass$Reef <- ('Rock Key Shallow')
 
 ###output
 export(Rock_Key_Shallow_2012_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2012_biomass_data.csv")
@@ -2228,6 +2641,7 @@ export(Rock_Key_Shallow_2012_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2014 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2014.xls")
 Rock_Key_Shallow_2014_Total_biomass <- summarise_at(Rock_Key_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2014_Total_biomass$Year <- ('2014')
+Rock_Key_Shallow_2014_Total_biomass$Reef <- ('Rock Key Shallow')
 
 ###output
 export(Rock_Key_Shallow_2014_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2014_biomass_data.csv")
@@ -2235,6 +2649,7 @@ export(Rock_Key_Shallow_2014_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2016 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2016.xls")
 Rock_Key_Shallow_2016_Total_biomass <- summarise_at(Rock_Key_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2016_Total_biomass$Year <- ('2016')
+Rock_Key_Shallow_2016_Total_biomass$Reef <- ('Rock Key Shallow')
 
 ###output
 export(Rock_Key_Shallow_2016_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2016_biomass_data.csv")
@@ -2242,6 +2657,8 @@ export(Rock_Key_Shallow_2016_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shall
 Rock_Key_Shallow_2018 <- import("Rock_Key_Shallow/data/Rock_Key_Shallow_2018.xls")
 Rock_Key_Shallow_2018_Total_biomass <- summarise_at(Rock_Key_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rock_Key_Shallow_2018_Total_biomass$Year <- ('2018')
+Rock_Key_Shallow_2018_Total_biomass$Reef <- ('Rock Key Shallow')
+
 ###output
 export(Rock_Key_Shallow_2018_Total_biomass,"Rock_Key_Shallow/data/Rock_Key_Shallow_2018_biomass_data.csv")
 
@@ -2293,30 +2710,36 @@ export(Rock_Key_Shallow_Reef_biomass_data_combined,"Rock_Key_Shallow/data/Rock_K
 Sand_Key_Deep_1999 <- import("Sand_Key_Deep/data/Sand_Key_Deep_1999.xls")
 Sand_Key_Deep_1999_Total_biomass <- summarise_at(Sand_Key_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_1999_Total_biomass$Year <- ('1999')
+Sand_Key_Deep_1999_Total_biomass$Reef <- ('Sand Key Deep')
+
 ###output
 export(Sand_Key_Deep_1999_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_1999_biomass_data.csv")
 
 Sand_Key_Deep_2000 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2000.xls")
 Sand_Key_Deep_2000_Total_biomass <- summarise_at(Sand_Key_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2000_Total_biomass$Year <- ('2000')
+Sand_Key_Deep_2000_Total_biomass$Reef <- ('Sand Key Deep')
 ###output
 export(Sand_Key_Deep_2000_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2000_biomass_data.csv")
 
 Sand_Key_Deep_2001 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2001.xls")
 Sand_Key_Deep_2001_Total_biomass <- summarise_at(Sand_Key_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2001_Total_biomass$Year <- ('2001')
+Sand_Key_Deep_2001_Total_biomass$Reef <- ('Sand Key Deep')
 ###output
 export(Sand_Key_Deep_2001_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2001_biomass_data.csv")
 
 Sand_Key_Deep_2002 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2002.xls")
 Sand_Key_Deep_2002_Total_biomass <- summarise_at(Sand_Key_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2002_Total_biomass$Year <- ('2002')
+Sand_Key_Deep_2002_Total_biomass$Reef <- ('Sand Key Deep')
 ###output
 export(Sand_Key_Deep_2002_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2002_biomass_data.csv")
 
 Sand_Key_Deep_2003 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2003.xls")
 Sand_Key_Deep_2003_Total_biomass <- summarise_at(Sand_Key_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2003_Total_biomass$Year <- ('2003')
+Sand_Key_Deep_2003_Total_biomass$Reef <- ('Sand Key Deep')
 ###output
 export(Sand_Key_Deep_2003_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2003_biomass_data.csv")
 
@@ -2324,6 +2747,7 @@ export(Sand_Key_Deep_2003_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2003_b
 Sand_Key_Deep_2004 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2004.xls")
 Sand_Key_Deep_2004_Total_biomass <- summarise_at(Sand_Key_Deep_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2004_Total_biomass$Year <- ('2004')
+Sand_Key_Deep_2004_Total_biomass$Reef <- ('Sand Key Deep')
 
 ###output
 export(Sand_Key_Deep_2004_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2004_biomass_data.csv")
@@ -2331,6 +2755,8 @@ export(Sand_Key_Deep_2004_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2004_b
 Sand_Key_Deep_2005 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2005.xls")
 Sand_Key_Deep_2005_Total_biomass <- summarise_at(Sand_Key_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2005_Total_biomass$Year <- ('2005')
+Sand_Key_Deep_2005_Total_biomass$Reef <- ('Sand Key Deep')
+
 ###output
 export(Sand_Key_Deep_2005_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2005_biomass_data.csv")
 
@@ -2338,6 +2764,7 @@ export(Sand_Key_Deep_2005_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2005_b
 Sand_Key_Deep_2006 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2006.xls")
 Sand_Key_Deep_2006_Total_biomass <- summarise_at(Sand_Key_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2006_Total_biomass$Year <- ('2006')
+Sand_Key_Deep_2006_Total_biomass$Reef <- ('Sand Key Deep')
 
 ###output
 export(Sand_Key_Deep_2006_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2006_biomass_data.csv")
@@ -2345,6 +2772,8 @@ export(Sand_Key_Deep_2006_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2006_b
 Sand_Key_Deep_2007 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2007.xls")
 Sand_Key_Deep_2007_Total_biomass <- summarise_at(Sand_Key_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2007_Total_biomass$Year <- ('2007')
+Sand_Key_Deep_2007_Total_biomass$Reef <- ('Sand Key Deep')
+
 ###output
 export(Sand_Key_Deep_2007_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2007_biomass_data.csv")
 
@@ -2352,6 +2781,7 @@ export(Sand_Key_Deep_2007_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2007_b
 Sand_Key_Deep_2008 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2008.xls")
 Sand_Key_Deep_2008_Total_biomass <- summarise_at(Sand_Key_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2008_Total_biomass$Year <- ('2008')
+Sand_Key_Deep_2008_Total_biomass$Reef <- ('Sand Key Deep')
 
 ###output
 export(Sand_Key_Deep_2008_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2008_biomass_data.csv")
@@ -2359,6 +2789,8 @@ export(Sand_Key_Deep_2008_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2008_b
 Sand_Key_Deep_2009 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2009.xls")
 Sand_Key_Deep_2009_Total_biomass <- summarise_at(Sand_Key_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2009_Total_biomass$Year <- ('2009')
+Sand_Key_Deep_2009_Total_biomass$Reef <- ('Sand Key Deep')
+
 ###output
 export(Sand_Key_Deep_2009_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2009_biomass_data.csv")
 
@@ -2366,6 +2798,7 @@ export(Sand_Key_Deep_2009_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2009_b
 Sand_Key_Deep_2010 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2010.xls")
 Sand_Key_Deep_2010_Total_biomass <- summarise_at(Sand_Key_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2010_Total_biomass$Year <- ('2010')
+Sand_Key_Deep_2010_Total_biomass$Reef <- ('Sand Key Deep')
 
 ###output
 export(Sand_Key_Deep_2010_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2010_biomass_data.csv")
@@ -2373,6 +2806,7 @@ export(Sand_Key_Deep_2010_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2010_b
 Sand_Key_Deep_2011 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2011.xls")
 Sand_Key_Deep_2011_Total_biomass <- summarise_at(Sand_Key_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2011_Total_biomass$Year <- ('2011')
+Sand_Key_Deep_2011_Total_biomass$Reef <- ('Sand Key Deep')
 ###output
 export(Sand_Key_Deep_2011_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2011_biomass_data.csv")
 
@@ -2380,6 +2814,7 @@ export(Sand_Key_Deep_2011_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2011_b
 Sand_Key_Deep_2012 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2012.xls")
 Sand_Key_Deep_2012_Total_biomass <- summarise_at(Sand_Key_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2012_Total_biomass$Year <- ('2012')
+Sand_Key_Deep_2012_Total_biomass$Reef <- ('Sand Key Deep')
 
 ###output
 export(Sand_Key_Deep_2012_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2012_biomass_data.csv")
@@ -2387,6 +2822,7 @@ export(Sand_Key_Deep_2012_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2012_b
 Sand_Key_Deep_2014 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2014.xls")
 Sand_Key_Deep_2014_Total_biomass <- summarise_at(Sand_Key_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2014_Total_biomass$Year <- ('2014')
+Sand_Key_Deep_2014_Total_biomass$Reef <- ('Sand Key Deep')
 
 ###output
 export(Sand_Key_Deep_2014_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2014_biomass_data.csv")
@@ -2394,6 +2830,7 @@ export(Sand_Key_Deep_2014_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2014_b
 Sand_Key_Deep_2016 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2016.xls")
 Sand_Key_Deep_2016_Total_biomass <- summarise_at(Sand_Key_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2016_Total_biomass$Year <- ('2016')
+Sand_Key_Deep_2016_Total_biomass$Reef <- ('Sand Key Deep')
 
 ###output
 export(Sand_Key_Deep_2016_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2016_biomass_data.csv")
@@ -2401,6 +2838,8 @@ export(Sand_Key_Deep_2016_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2016_b
 Sand_Key_Deep_2018 <- import("Sand_Key_Deep/data/Sand_Key_Deep_2018.xls")
 Sand_Key_Deep_2018_Total_biomass <- summarise_at(Sand_Key_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Deep_2018_Total_biomass$Year <- ('2018')
+Sand_Key_Deep_2018_Total_biomass$Reef <- ('Sand Key Deep')
+
 ###output
 export(Sand_Key_Deep_2018_Total_biomass,"Sand_Key_Deep/data/Sand_Key_Deep_2018_biomass_data.csv")
 
@@ -2451,30 +2890,37 @@ export(Sand_Key_Deep_Reef_biomass_data_combined,"Sand_Key_Deep/data/Sand_Key_Dee
 Sand_Key_Shallow_1999 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_1999.xls")
 Sand_Key_Shallow_1999_Total_biomass <- summarise_at(Sand_Key_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_1999_Total_biomass$Year <- ('1999')
+Sand_Key_Shallow_1999_Total_biomass$Reef <- ('Sand Key Shallow')
+
 ###output
 export(Sand_Key_Shallow_1999_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_1999_biomass_data.csv")
 
 Sand_Key_Shallow_2000 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2000.xls")
 Sand_Key_Shallow_2000_Total_biomass <- summarise_at(Sand_Key_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2000_Total_biomass$Year <- ('2000')
+Sand_Key_Shallow_2000_Total_biomass$Reef <- ('Sand Key Shallow')
+
 ###output
 export(Sand_Key_Shallow_2000_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2000_biomass_data.csv")
 
 Sand_Key_Shallow_2001 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2001.xls")
 Sand_Key_Shallow_2001_Total_biomass <- summarise_at(Sand_Key_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2001_Total_biomass$Year <- ('2001')
+Sand_Key_Shallow_2001_Total_biomass$Reef <- ('Sand Key Shallow')
 ###output
 export(Sand_Key_Shallow_2001_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2001_biomass_data.csv")
 
 Sand_Key_Shallow_2002 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2002.xls")
 Sand_Key_Shallow_2002_Total_biomass <- summarise_at(Sand_Key_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2002_Total_biomass$Year <- ('2002')
+Sand_Key_Shallow_2002_Total_biomass$Reef <- ('Sand Key Shallow')
 ###output
 export(Sand_Key_Shallow_2002_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2002_biomass_data.csv")
 
 Sand_Key_Shallow_2003 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2003.xls")
 Sand_Key_Shallow_2003_Total_biomass <- summarise_at(Sand_Key_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2003_Total_biomass$Year <- ('2003')
+Sand_Key_Shallow_2003_Total_biomass$Reef <- ('Sand Key Shallow')
 ###output
 export(Sand_Key_Shallow_2003_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2003_biomass_data.csv")
 
@@ -2482,6 +2928,7 @@ export(Sand_Key_Shallow_2003_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2004 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2004.xls")
 Sand_Key_Shallow_2004_Total_biomass <- summarise_at(Sand_Key_Shallow_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2004_Total_biomass$Year <- ('2004')
+Sand_Key_Shallow_2004_Total_biomass$Reef <- ('Sand Key Shallow')
 
 ###output
 export(Sand_Key_Shallow_2004_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2004_biomass_data.csv")
@@ -2489,6 +2936,7 @@ export(Sand_Key_Shallow_2004_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2005 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2005.xls")
 Sand_Key_Shallow_2005_Total_biomass <- summarise_at(Sand_Key_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2005_Total_biomass$Year <- ('2005')
+Sand_Key_Shallow_2005_Total_biomass$Reef <- ('Sand Key Shallow')
 ###output
 export(Sand_Key_Shallow_2005_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2005_biomass_data.csv")
 
@@ -2496,6 +2944,7 @@ export(Sand_Key_Shallow_2005_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2006 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2006.xls")
 Sand_Key_Shallow_2006_Total_biomass <- summarise_at(Sand_Key_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2006_Total_biomass$Year <- ('2006')
+Sand_Key_Shallow_2006_Total_biomass$Reef <- ('Sand Key Shallow')
 
 ###output
 export(Sand_Key_Shallow_2006_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2006_biomass_data.csv")
@@ -2503,6 +2952,7 @@ export(Sand_Key_Shallow_2006_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2007 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2007.xls")
 Sand_Key_Shallow_2007_Total_biomass <- summarise_at(Sand_Key_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2007_Total_biomass$Year <- ('2007')
+Sand_Key_Shallow_2007_Total_biomass$Reef <- ('Sand Key Shallow')
 ###output
 export(Sand_Key_Shallow_2007_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2007_biomass_data.csv")
 
@@ -2510,6 +2960,7 @@ export(Sand_Key_Shallow_2007_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2008 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2008.xls")
 Sand_Key_Shallow_2008_Total_biomass <- summarise_at(Sand_Key_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2008_Total_biomass$Year <- ('2008')
+Sand_Key_Shallow_2008_Total_biomass$Reef <- ('Sand Key Shallow')
 
 ###output
 export(Sand_Key_Shallow_2008_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2008_biomass_data.csv")
@@ -2517,6 +2968,7 @@ export(Sand_Key_Shallow_2008_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2009 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2009.xls")
 Sand_Key_Shallow_2009_Total_biomass <- summarise_at(Sand_Key_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2009_Total_biomass$Year <- ('2009')
+Sand_Key_Shallow_2009_Total_biomass$Reef <- ('Sand Key Shallow')
 ###output
 export(Sand_Key_Shallow_2009_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2009_biomass_data.csv")
 
@@ -2524,6 +2976,7 @@ export(Sand_Key_Shallow_2009_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2010 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2010.xls")
 Sand_Key_Shallow_2010_Total_biomass <- summarise_at(Sand_Key_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2010_Total_biomass$Year <- ('2010')
+Sand_Key_Shallow_2010_Total_biomass$Reef <- ('Sand Key Shallow')
 
 ###output
 export(Sand_Key_Shallow_2010_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2010_biomass_data.csv")
@@ -2531,6 +2984,8 @@ export(Sand_Key_Shallow_2010_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2011 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2011.xls")
 Sand_Key_Shallow_2011_Total_biomass <- summarise_at(Sand_Key_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2011_Total_biomass$Year <- ('2011')
+Sand_Key_Shallow_2011_Total_biomass$Reef <- ('Sand Key Shallow')
+
 ###output
 export(Sand_Key_Shallow_2011_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2011_biomass_data.csv")
 
@@ -2538,6 +2993,7 @@ export(Sand_Key_Shallow_2011_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2012 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2012.xls")
 Sand_Key_Shallow_2012_Total_biomass <- summarise_at(Sand_Key_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2012_Total_biomass$Year <- ('2012')
+Sand_Key_Shallow_2012_Total_biomass$Reef <- ('Sand Key Shallow')
 
 ###output
 export(Sand_Key_Shallow_2012_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2012_biomass_data.csv")
@@ -2545,6 +3001,7 @@ export(Sand_Key_Shallow_2012_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2014 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2014.xls")
 Sand_Key_Shallow_2014_Total_biomass <- summarise_at(Sand_Key_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2014_Total_biomass$Year <- ('2014')
+Sand_Key_Shallow_2014_Total_biomass$Reef <- ('Sand Key Shallow')
 
 ###output
 export(Sand_Key_Shallow_2014_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2014_biomass_data.csv")
@@ -2552,6 +3009,7 @@ export(Sand_Key_Shallow_2014_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2016 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2016.xls")
 Sand_Key_Shallow_2016_Total_biomass <- summarise_at(Sand_Key_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2016_Total_biomass$Year <- ('2016')
+Sand_Key_Shallow_2016_Total_biomass$Reef <- ('Sand Key Shallow')
 
 ###output
 export(Sand_Key_Shallow_2016_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2016_biomass_data.csv")
@@ -2559,6 +3017,8 @@ export(Sand_Key_Shallow_2016_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shall
 Sand_Key_Shallow_2018 <- import("Sand_Key_Shallow/data/Sand_Key_Shallow_2018.xls")
 Sand_Key_Shallow_2018_Total_biomass <- summarise_at(Sand_Key_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sand_Key_Shallow_2018_Total_biomass$Year <- ('2018')
+Sand_Key_Shallow_2018_Total_biomass$Reef <- ('Sand Key Shallow')
+
 ###output
 export(Sand_Key_Shallow_2018_Total_biomass,"Sand_Key_Shallow/data/Sand_Key_Shallow_2018_biomass_data.csv")
 
@@ -2609,30 +3069,36 @@ export(Sand_Key_Shallow_Reef_biomass_data_combined,"Sand_Key_Shallow/data/Sand_K
 Smith_Shoal_1999 <- import("Smith_Shoal/data/Smith_Shoal_1999.xls")
 Smith_Shoal_1999_Total_biomass <- summarise_at(Smith_Shoal_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_1999_Total_biomass$Year <- ('1999')
+Smith_Shoal_1999_Total_biomass$Reef <- ('Smith Shoal')
+
 ###output
 export(Smith_Shoal_1999_Total_biomass,"Smith_Shoal/data/Smith_Shoal_1999_biomass_data.csv")
 
 Smith_Shoal_2000 <- import("Smith_Shoal/data/Smith_Shoal_2000.xls")
 Smith_Shoal_2000_Total_biomass <- summarise_at(Smith_Shoal_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2000_Total_biomass$Year <- ('2000')
+Smith_Shoal_2000_Total_biomass$Reef <- ('Smith Shoal')
 ###output
 export(Smith_Shoal_2000_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2000_biomass_data.csv")
 
 Smith_Shoal_2001 <- import("Smith_Shoal/data/Smith_Shoal_2001.xls")
 Smith_Shoal_2001_Total_biomass <- summarise_at(Smith_Shoal_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2001_Total_biomass$Year <- ('2001')
+Smith_Shoal_2001_Total_biomass$Reef <- ('Smith Shoal')
 ###output
 export(Smith_Shoal_2001_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2001_biomass_data.csv")
 
 Smith_Shoal_2002 <- import("Smith_Shoal/data/Smith_Shoal_2002.xls")
 Smith_Shoal_2002_Total_biomass <- summarise_at(Smith_Shoal_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2002_Total_biomass$Year <- ('2002')
+Smith_Shoal_2002_Total_biomass$Reef <- ('Smith Shoal')
 ###output
 export(Smith_Shoal_2002_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2002_biomass_data.csv")
 
 Smith_Shoal_2003 <- import("Smith_Shoal/data/Smith_Shoal_2003.xls")
 Smith_Shoal_2003_Total_biomass <- summarise_at(Smith_Shoal_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2003_Total_biomass$Year <- ('2003')
+Smith_Shoal_2003_Total_biomass$Reef <- ('Smith Shoal')
 ###output
 export(Smith_Shoal_2003_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2003_biomass_data.csv")
 
@@ -2640,6 +3106,7 @@ export(Smith_Shoal_2003_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2003_biomass
 Smith_Shoal_2004 <- import("Smith_Shoal/data/Smith_Shoal_2004.xls")
 Smith_Shoal_2004_Total_biomass <- summarise_at(Smith_Shoal_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2004_Total_biomass$Year <- ('2004')
+Smith_Shoal_2004_Total_biomass$Reef <- ('Smith Shoal')
 
 ###output
 export(Smith_Shoal_2004_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2004_biomass_data.csv")
@@ -2647,6 +3114,7 @@ export(Smith_Shoal_2004_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2004_biomass
 Smith_Shoal_2005 <- import("Smith_Shoal/data/Smith_Shoal_2005.xls")
 Smith_Shoal_2005_Total_biomass <- summarise_at(Smith_Shoal_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2005_Total_biomass$Year <- ('2005')
+Smith_Shoal_2005_Total_biomass$Reef <- ('Smith Shoal')
 ###output
 export(Smith_Shoal_2005_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2005_biomass_data.csv")
 
@@ -2654,6 +3122,7 @@ export(Smith_Shoal_2005_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2005_biomass
 Smith_Shoal_2006 <- import("Smith_Shoal/data/Smith_Shoal_2006.xls")
 Smith_Shoal_2006_Total_biomass <- summarise_at(Smith_Shoal_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2006_Total_biomass$Year <- ('2006')
+Smith_Shoal_2006_Total_biomass$Reef <- ('Smith Shoal')
 
 ###output
 export(Smith_Shoal_2006_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2006_biomass_data.csv")
@@ -2661,6 +3130,7 @@ export(Smith_Shoal_2006_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2006_biomass
 Smith_Shoal_2007 <- import("Smith_Shoal/data/Smith_Shoal_2007.xls")
 Smith_Shoal_2007_Total_biomass <- summarise_at(Smith_Shoal_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2007_Total_biomass$Year <- ('2007')
+Smith_Shoal_2007_Total_biomass$Reef <- ('Smith Shoal')
 ###output
 export(Smith_Shoal_2007_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2007_biomass_data.csv")
 
@@ -2668,6 +3138,7 @@ export(Smith_Shoal_2007_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2007_biomass
 Smith_Shoal_2008 <- import("Smith_Shoal/data/Smith_Shoal_2008.xls")
 Smith_Shoal_2008_Total_biomass <- summarise_at(Smith_Shoal_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2008_Total_biomass$Year <- ('2008')
+Smith_Shoal_2008_Total_biomass$Reef <- ('Smith Shoal')
 
 ###output
 export(Smith_Shoal_2008_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2008_biomass_data.csv")
@@ -2675,6 +3146,7 @@ export(Smith_Shoal_2008_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2008_biomass
 Smith_Shoal_2009 <- import("Smith_Shoal/data/Smith_Shoal_2009.xls")
 Smith_Shoal_2009_Total_biomass <- summarise_at(Smith_Shoal_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2009_Total_biomass$Year <- ('2009')
+Smith_Shoal_2009_Total_biomass$Reef <- ('Smith Shoal')
 ###output
 export(Smith_Shoal_2009_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2009_biomass_data.csv")
 
@@ -2682,6 +3154,7 @@ export(Smith_Shoal_2009_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2009_biomass
 Smith_Shoal_2010 <- import("Smith_Shoal/data/Smith_Shoal_2010.xls")
 Smith_Shoal_2010_Total_biomass <- summarise_at(Smith_Shoal_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2010_Total_biomass$Year <- ('2010')
+Smith_Shoal_2010_Total_biomass$Reef <- ('Smith Shoal')
 
 ###output
 export(Smith_Shoal_2010_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2010_biomass_data.csv")
@@ -2689,6 +3162,7 @@ export(Smith_Shoal_2010_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2010_biomass
 Smith_Shoal_2011 <- import("Smith_Shoal/data/Smith_Shoal_2011.xls")
 Smith_Shoal_2011_Total_biomass <- summarise_at(Smith_Shoal_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2011_Total_biomass$Year <- ('2011')
+Smith_Shoal_2011_Total_biomass$Reef <- ('Smith Shoal')
 ###output
 export(Smith_Shoal_2011_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2011_biomass_data.csv")
 
@@ -2696,6 +3170,7 @@ export(Smith_Shoal_2011_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2011_biomass
 Smith_Shoal_2012 <- import("Smith_Shoal/data/Smith_Shoal_2012.xls")
 Smith_Shoal_2012_Total_biomass <- summarise_at(Smith_Shoal_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2012_Total_biomass$Year <- ('2012')
+Smith_Shoal_2012_Total_biomass$Reef <- ('Smith Shoal')
 
 ###output
 export(Smith_Shoal_2012_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2012_biomass_data.csv")
@@ -2703,6 +3178,7 @@ export(Smith_Shoal_2012_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2012_biomass
 Smith_Shoal_2014 <- import("Smith_Shoal/data/Smith_Shoal_2014.xls")
 Smith_Shoal_2014_Total_biomass <- summarise_at(Smith_Shoal_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2014_Total_biomass$Year <- ('2014')
+Smith_Shoal_2014_Total_biomass$Reef <- ('Smith Shoal')
 
 ###output
 export(Smith_Shoal_2014_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2014_biomass_data.csv")
@@ -2710,6 +3186,7 @@ export(Smith_Shoal_2014_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2014_biomass
 Smith_Shoal_2016 <- import("Smith_Shoal/data/Smith_Shoal_2016.xls")
 Smith_Shoal_2016_Total_biomass <- summarise_at(Smith_Shoal_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2016_Total_biomass$Year <- ('2016')
+Smith_Shoal_2016_Total_biomass$Reef <- ('Smith Shoal')
 
 ###output
 export(Smith_Shoal_2016_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2016_biomass_data.csv")
@@ -2717,6 +3194,8 @@ export(Smith_Shoal_2016_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2016_biomass
 Smith_Shoal_2018 <- import("Smith_Shoal/data/Smith_Shoal_2018.xls")
 Smith_Shoal_2018_Total_biomass <- summarise_at(Smith_Shoal_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Smith_Shoal_2018_Total_biomass$Year <- ('2018')
+Smith_Shoal_2018_Total_biomass$Reef <- ('Smith Shoal')
+
 ###output
 export(Smith_Shoal_2018_Total_biomass,"Smith_Shoal/data/Smith_Shoal_2018_biomass_data.csv")
 
@@ -2767,30 +3246,36 @@ export(Smith_Shoal_Reef_biomass_data_combined,"Smith_Shoal/data/Smith_Shoal_biom
 West_Washer_Woman_1999 <- import("West_Washer_Woman/data/West_Washer_1999.xls")
 West_Washer_Woman_1999_Total_biomass <- summarise_at(West_Washer_Woman_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_1999_Total_biomass$Year <- ('1999')
+West_Washer_Woman_1999_Total_biomass$Reef <- ('West Washer Woman')
+
 ###output
 export(West_Washer_Woman_1999_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_1999_biomass_data.csv")
 
 West_Washer_Woman_2000 <- import("West_Washer_Woman/data/West_Washer_2000.xls")
 West_Washer_Woman_2000_Total_biomass <- summarise_at(West_Washer_Woman_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2000_Total_biomass$Year <- ('2000')
+West_Washer_Woman_2000_Total_biomass$Reef <- ('West Washer Woman')
 ###output
 export(West_Washer_Woman_2000_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2000_biomass_data.csv")
 
 West_Washer_Woman_2001 <- import("West_Washer_Woman/data/West_Washer_2001.xls")
 West_Washer_Woman_2001_Total_biomass <- summarise_at(West_Washer_Woman_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2001_Total_biomass$Year <- ('2001')
+West_Washer_Woman_2001_Total_biomass$Reef <- ('West Washer Woman')
 ###output
 export(West_Washer_Woman_2001_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2001_biomass_data.csv")
 
 West_Washer_Woman_2002 <- import("West_Washer_Woman/data/West_Washer_2002.xls")
 West_Washer_Woman_2002_Total_biomass <- summarise_at(West_Washer_Woman_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2002_Total_biomass$Year <- ('2002')
+West_Washer_Woman_2002_Total_biomass$Reef <- ('West Washer Woman')
 ###output
 export(West_Washer_Woman_2002_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2002_biomass_data.csv")
 
 West_Washer_Woman_2003 <- import("West_Washer_Woman/data/West_Washer_2003.xls")
 West_Washer_Woman_2003_Total_biomass <- summarise_at(West_Washer_Woman_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2003_Total_biomass$Year <- ('2003')
+West_Washer_Woman_2003_Total_biomass$Reef <- ('West Washer Woman')
 ###output
 export(West_Washer_Woman_2003_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2003_biomass_data.csv")
 
@@ -2798,6 +3283,7 @@ export(West_Washer_Woman_2003_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2004 <- import("West_Washer_Woman/data/West_Washer_2004.xls")
 West_Washer_Woman_2004_Total_biomass <- summarise_at(West_Washer_Woman_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2004_Total_biomass$Year <- ('2004')
+West_Washer_Woman_2004_Total_biomass$Reef <- ('West Washer Woman')
 
 ###output
 export(West_Washer_Woman_2004_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2004_biomass_data.csv")
@@ -2805,6 +3291,7 @@ export(West_Washer_Woman_2004_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2005 <- import("West_Washer_Woman/data/West_Washer_2005.xls")
 West_Washer_Woman_2005_Total_biomass <- summarise_at(West_Washer_Woman_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2005_Total_biomass$Year <- ('2005')
+West_Washer_Woman_2005_Total_biomass$Reef <- ('West Washer Woman')
 ###output
 export(West_Washer_Woman_2005_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2005_biomass_data.csv")
 
@@ -2812,6 +3299,7 @@ export(West_Washer_Woman_2005_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2006 <- import("West_Washer_Woman/data/West_Washer_2006.xls")
 West_Washer_Woman_2006_Total_biomass <- summarise_at(West_Washer_Woman_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2006_Total_biomass$Year <- ('2006')
+West_Washer_Woman_2006_Total_biomass$Reef <- ('West Washer Woman')
 
 ###output
 export(West_Washer_Woman_2006_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2006_biomass_data.csv")
@@ -2819,6 +3307,7 @@ export(West_Washer_Woman_2006_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2007 <- import("West_Washer_Woman/data/West_Washer_2007.xls")
 West_Washer_Woman_2007_Total_biomass <- summarise_at(West_Washer_Woman_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2007_Total_biomass$Year <- ('2007')
+West_Washer_Woman_2007_Total_biomass$Reef <- ('West Washer Woman')
 ###output
 export(West_Washer_Woman_2007_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2007_biomass_data.csv")
 
@@ -2826,6 +3315,7 @@ export(West_Washer_Woman_2007_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2008 <- import("West_Washer_Woman/data/West_Washer_2008.xls")
 West_Washer_Woman_2008_Total_biomass <- summarise_at(West_Washer_Woman_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2008_Total_biomass$Year <- ('2008')
+West_Washer_Woman_2008_Total_biomass$Reef <- ('West Washer Woman')
 
 ###output
 export(West_Washer_Woman_2008_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2008_biomass_data.csv")
@@ -2833,6 +3323,7 @@ export(West_Washer_Woman_2008_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2009 <- import("West_Washer_Woman/data/West_Washer_2009.xls")
 West_Washer_Woman_2009_Total_biomass <- summarise_at(West_Washer_Woman_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2009_Total_biomass$Year <- ('2009')
+West_Washer_Woman_2009_Total_biomass$Reef <- ('West Washer Woman')
 ###output
 export(West_Washer_Woman_2009_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2009_biomass_data.csv")
 
@@ -2840,6 +3331,7 @@ export(West_Washer_Woman_2009_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2010 <- import("West_Washer_Woman/data/West_Washer_2010.xls")
 West_Washer_Woman_2010_Total_biomass <- summarise_at(West_Washer_Woman_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2010_Total_biomass$Year <- ('2010')
+West_Washer_Woman_2010_Total_biomass$Reef <- ('West Washer Woman')
 
 ###output
 export(West_Washer_Woman_2010_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2010_biomass_data.csv")
@@ -2847,6 +3339,7 @@ export(West_Washer_Woman_2010_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2011 <- import("West_Washer_Woman/data/West_Washer_2011.xls")
 West_Washer_Woman_2011_Total_biomass <- summarise_at(West_Washer_Woman_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2011_Total_biomass$Year <- ('2011')
+West_Washer_Woman_2011_Total_biomass$Reef <- ('West Washer Woman')
 ###output
 export(West_Washer_Woman_2011_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2011_biomass_data.csv")
 
@@ -2854,6 +3347,7 @@ export(West_Washer_Woman_2011_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2012 <- import("West_Washer_Woman/data/West_Washer_2012.xls")
 West_Washer_Woman_2012_Total_biomass <- summarise_at(West_Washer_Woman_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2012_Total_biomass$Year <- ('2012')
+West_Washer_Woman_2012_Total_biomass$Reef <- ('West Washer Woman')
 
 ###output
 export(West_Washer_Woman_2012_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2012_biomass_data.csv")
@@ -2861,6 +3355,7 @@ export(West_Washer_Woman_2012_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2014 <- import("West_Washer_Woman/data/West_Washer_2014.xls")
 West_Washer_Woman_2014_Total_biomass <- summarise_at(West_Washer_Woman_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2014_Total_biomass$Year <- ('2014')
+West_Washer_Woman_2014_Total_biomass$Reef <- ('West Washer Woman')
 
 ###output
 export(West_Washer_Woman_2014_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2014_biomass_data.csv")
@@ -2868,6 +3363,7 @@ export(West_Washer_Woman_2014_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2016 <- import("West_Washer_Woman/data/West_Washer_2016.xls")
 West_Washer_Woman_2016_Total_biomass <- summarise_at(West_Washer_Woman_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2016_Total_biomass$Year <- ('2016')
+West_Washer_Woman_2016_Total_biomass$Reef <- ('West Washer Woman')
 
 ###output
 export(West_Washer_Woman_2016_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2016_biomass_data.csv")
@@ -2875,6 +3371,8 @@ export(West_Washer_Woman_2016_Total_biomass,"West_Washer_Woman/data/West_Washer_
 West_Washer_Woman_2018 <- import("West_Washer_Woman/data/West_Washer_2018.xls")
 West_Washer_Woman_2018_Total_biomass <- summarise_at(West_Washer_Woman_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Washer_Woman_2018_Total_biomass$Year <- ('2018')
+West_Washer_Woman_2018_Total_biomass$Reef <- ('West Washer Woman')
+
 ###output
 export(West_Washer_Woman_2018_Total_biomass,"West_Washer_Woman/data/West_Washer_Woman_2018_biomass_data.csv")
 
@@ -2926,30 +3424,35 @@ export(West_Washer_Woman_Reef_biomass_data_combined,"West_Washer_Woman/data/West
 Western_Head_1999 <- import("Western_Head/data/Western_Head_1999.xls")
 Western_Head_1999_Total_biomass <- summarise_at(Western_Head_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_1999_Total_biomass$Year <- ('1999')
+Western_Head_1999_Total_biomass$Reef <- ('Western Head')
 ###output
 export(Western_Head_1999_Total_biomass,"Western_Head/data/Western_Head_1999_biomass_data.csv")
 
 Western_Head_2000 <- import("Western_Head/data/Western_Head_2000.xls")
 Western_Head_2000_Total_biomass <- summarise_at(Western_Head_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2000_Total_biomass$Year <- ('2000')
+Western_Head_2000_Total_biomass$Reef <- ('Western Head')
 ###output
 export(Western_Head_2000_Total_biomass,"Western_Head/data/Western_Head_2000_biomass_data.csv")
 
 Western_Head_2001 <- import("Western_Head/data/Western_Head_2001.xls")
 Western_Head_2001_Total_biomass <- summarise_at(Western_Head_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2001_Total_biomass$Year <- ('2001')
+Western_Head_2001_Total_biomass$Reef <- ('Western Head')
 ###output
 export(Western_Head_2001_Total_biomass,"Western_Head/data/Western_Head_2001_biomass_data.csv")
 
 Western_Head_2002 <- import("Western_Head/data/Western_Head_2002.xls")
 Western_Head_2002_Total_biomass <- summarise_at(Western_Head_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2002_Total_biomass$Year <- ('2002')
+Western_Head_2002_Total_biomass$Reef <- ('Western Head')
 ###output
 export(Western_Head_2002_Total_biomass,"Western_Head/data/Western_Head_2002_biomass_data.csv")
 
 Western_Head_2003 <- import("Western_Head/data/Western_Head_2003.xls")
 Western_Head_2003_Total_biomass <- summarise_at(Western_Head_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2003_Total_biomass$Year <- ('2003')
+Western_Head_2003_Total_biomass$Reef <- ('Western Head')
 ###output
 export(Western_Head_2003_Total_biomass,"Western_Head/data/Western_Head_2003_biomass_data.csv")
 
@@ -2957,6 +3460,7 @@ export(Western_Head_2003_Total_biomass,"Western_Head/data/Western_Head_2003_biom
 Western_Head_2004 <- import("Western_Head/data/Western_Head_2004.xls")
 Western_Head_2004_Total_biomass <- summarise_at(Western_Head_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2004_Total_biomass$Year <- ('2004')
+Western_Head_2004_Total_biomass$Reef <- ('Western Head')
 
 ###output
 export(Western_Head_2004_Total_biomass,"Western_Head/data/Western_Head_2004_biomass_data.csv")
@@ -2964,6 +3468,7 @@ export(Western_Head_2004_Total_biomass,"Western_Head/data/Western_Head_2004_biom
 Western_Head_2005 <- import("Western_Head/data/Western_Head_2005.xls")
 Western_Head_2005_Total_biomass <- summarise_at(Western_Head_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2005_Total_biomass$Year <- ('2005')
+Western_Head_2005_Total_biomass$Reef <- ('Western Head')
 ###output
 export(Western_Head_2005_Total_biomass,"Western_Head/data/Western_Head_2005_biomass_data.csv")
 
@@ -2971,6 +3476,7 @@ export(Western_Head_2005_Total_biomass,"Western_Head/data/Western_Head_2005_biom
 Western_Head_2006 <- import("Western_Head/data/Western_Head_2006.xls")
 Western_Head_2006_Total_biomass <- summarise_at(Western_Head_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2006_Total_biomass$Year <- ('2006')
+Western_Head_2006_Total_biomass$Reef <- ('Western Head')
 
 ###output
 export(Western_Head_2006_Total_biomass,"Western_Head/data/Western_Head_2006_biomass_data.csv")
@@ -2978,6 +3484,7 @@ export(Western_Head_2006_Total_biomass,"Western_Head/data/Western_Head_2006_biom
 Western_Head_2007 <- import("Western_Head/data/Western_Head_2007.xls")
 Western_Head_2007_Total_biomass <- summarise_at(Western_Head_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2007_Total_biomass$Year <- ('2007')
+Western_Head_2007_Total_biomass$Reef <- ('Western Head')
 ###output
 export(Western_Head_2007_Total_biomass,"Western_Head/data/Western_Head_2007_biomass_data.csv")
 
@@ -2985,6 +3492,7 @@ export(Western_Head_2007_Total_biomass,"Western_Head/data/Western_Head_2007_biom
 Western_Head_2008 <- import("Western_Head/data/Western_Head_2008.xls")
 Western_Head_2008_Total_biomass <- summarise_at(Western_Head_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2008_Total_biomass$Year <- ('2008')
+Western_Head_2008_Total_biomass$Reef <- ('Western Head')
 
 ###output
 export(Western_Head_2008_Total_biomass,"Western_Head/data/Western_Head_2008_biomass_data.csv")
@@ -2992,6 +3500,7 @@ export(Western_Head_2008_Total_biomass,"Western_Head/data/Western_Head_2008_biom
 Western_Head_2009 <- import("Western_Head/data/Western_Head_2009.xls")
 Western_Head_2009_Total_biomass <- summarise_at(Western_Head_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2009_Total_biomass$Year <- ('2009')
+Western_Head_2009_Total_biomass$Reef <- ('Western Head')
 ###output
 export(Western_Head_2009_Total_biomass,"Western_Head/data/Western_Head_2009_biomass_data.csv")
 
@@ -2999,6 +3508,7 @@ export(Western_Head_2009_Total_biomass,"Western_Head/data/Western_Head_2009_biom
 Western_Head_2010 <- import("Western_Head/data/Western_Head_2010.xls")
 Western_Head_2010_Total_biomass <- summarise_at(Western_Head_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2010_Total_biomass$Year <- ('2010')
+Western_Head_2010_Total_biomass$Reef <- ('Western Head')
 
 ###output
 export(Western_Head_2010_Total_biomass,"Western_Head/data/Western_Head_2010_biomass_data.csv")
@@ -3006,6 +3516,7 @@ export(Western_Head_2010_Total_biomass,"Western_Head/data/Western_Head_2010_biom
 Western_Head_2011 <- import("Western_Head/data/Western_Head_2011.xls")
 Western_Head_2011_Total_biomass <- summarise_at(Western_Head_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2011_Total_biomass$Year <- ('2011')
+Western_Head_2011_Total_biomass$Reef <- ('Western Head')
 ###output
 export(Western_Head_2011_Total_biomass,"Western_Head/data/Western_Head_2011_biomass_data.csv")
 
@@ -3013,6 +3524,7 @@ export(Western_Head_2011_Total_biomass,"Western_Head/data/Western_Head_2011_biom
 Western_Head_2012 <- import("Western_Head/data/Western_Head_2012.xls")
 Western_Head_2012_Total_biomass <- summarise_at(Western_Head_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2012_Total_biomass$Year <- ('2012')
+Western_Head_2012_Total_biomass$Reef <- ('Western Head')
 
 ###output
 export(Western_Head_2012_Total_biomass,"Western_Head/data/Western_Head_2012_biomass_data.csv")
@@ -3020,6 +3532,7 @@ export(Western_Head_2012_Total_biomass,"Western_Head/data/Western_Head_2012_biom
 Western_Head_2014 <- import("Western_Head/data/Western_Head_2014.xls")
 Western_Head_2014_Total_biomass <- summarise_at(Western_Head_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2014_Total_biomass$Year <- ('2014')
+Western_Head_2014_Total_biomass$Reef <- ('Western Head')
 
 ###output
 export(Western_Head_2014_Total_biomass,"Western_Head/data/Western_Head_2014_biomass_data.csv")
@@ -3027,6 +3540,7 @@ export(Western_Head_2014_Total_biomass,"Western_Head/data/Western_Head_2014_biom
 Western_Head_2016 <- import("Western_Head/data/Western_Head_2016.xls")
 Western_Head_2016_Total_biomass <- summarise_at(Western_Head_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2016_Total_biomass$Year <- ('2016')
+Western_Head_2016_Total_biomass$Reef <- ('Western Head')
 
 ###output
 export(Western_Head_2016_Total_biomass,"Western_Head/data/Western_Head_2016_biomass_data.csv")
@@ -3034,6 +3548,7 @@ export(Western_Head_2016_Total_biomass,"Western_Head/data/Western_Head_2016_biom
 Western_Head_2018 <- import("Western_Head/data/Western_Head_2018.xls")
 Western_Head_2018_Total_biomass <- summarise_at(Western_Head_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Head_2018_Total_biomass$Year <- ('2018')
+Western_Head_2018_Total_biomass$Reef <- ('Western Head')
 ###output
 export(Western_Head_2018_Total_biomass,"Western_Head/data/Western_Head_2018_biomass_data.csv")
 
@@ -3086,30 +3601,36 @@ export(Western_Head_Reef_biomass_data_combined,"Western_Head/data/Western_Head_b
 Western_Sambo_Deep_1999 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_1999.xls")
 Western_Sambo_Deep_1999_Total_biomass <- summarise_at(Western_Sambo_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_1999_Total_biomass$Year <- ('1999')
+Western_Sambo_Deep_1999_Total_biomass$Reef <- ('Western Sambo Deep')
+
 ###output
 export(Western_Sambo_Deep_1999_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_1999_biomass_data.csv")
 
 Western_Sambo_Deep_2000 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2000.xls")
 Western_Sambo_Deep_2000_Total_biomass <- summarise_at(Western_Sambo_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2000_Total_biomass$Year <- ('2000')
+Western_Sambo_Deep_2000_Total_biomass$Reef <- ('Western Sambo Deep')
 ###output
 export(Western_Sambo_Deep_2000_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2000_biomass_data.csv")
 
 Western_Sambo_Deep_2001 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2001.xls")
 Western_Sambo_Deep_2001_Total_biomass <- summarise_at(Western_Sambo_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2001_Total_biomass$Year <- ('2001')
+Western_Sambo_Deep_2001_Total_biomass$Reef <- ('Western Sambo Deep')
 ###output
 export(Western_Sambo_Deep_2001_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2001_biomass_data.csv")
 
 Western_Sambo_Deep_2002 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2002.xls")
 Western_Sambo_Deep_2002_Total_biomass <- summarise_at(Western_Sambo_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2002_Total_biomass$Year <- ('2002')
+Western_Sambo_Deep_2002_Total_biomass$Reef <- ('Western Sambo Deep')
 ###output
 export(Western_Sambo_Deep_2002_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2002_biomass_data.csv")
 
 Western_Sambo_Deep_2003 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2003.xls")
 Western_Sambo_Deep_2003_Total_biomass <- summarise_at(Western_Sambo_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2003_Total_biomass$Year <- ('2003')
+Western_Sambo_Deep_2003_Total_biomass$Reef <- ('Western Sambo Deep')
 ###output
 export(Western_Sambo_Deep_2003_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2003_biomass_data.csv")
 
@@ -3117,6 +3638,7 @@ export(Western_Sambo_Deep_2003_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2004 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2004.xls")
 Western_Sambo_Deep_2004_Total_biomass <- summarise_at(Western_Sambo_Deep_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2004_Total_biomass$Year <- ('2004')
+Western_Sambo_Deep_2004_Total_biomass$Reef <- ('Western Sambo Deep')
 
 ###output
 export(Western_Sambo_Deep_2004_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2004_biomass_data.csv")
@@ -3124,6 +3646,7 @@ export(Western_Sambo_Deep_2004_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2005 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2005.xls")
 Western_Sambo_Deep_2005_Total_biomass <- summarise_at(Western_Sambo_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2005_Total_biomass$Year <- ('2005')
+Western_Sambo_Deep_2005_Total_biomass$Reef <- ('Western Sambo Deep')
 ###output
 export(Western_Sambo_Deep_2005_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2005_biomass_data.csv")
 
@@ -3131,6 +3654,7 @@ export(Western_Sambo_Deep_2005_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2006 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2006.xls")
 Western_Sambo_Deep_2006_Total_biomass <- summarise_at(Western_Sambo_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2006_Total_biomass$Year <- ('2006')
+Western_Sambo_Deep_2006_Total_biomass$Reef <- ('Western Sambo Deep')
 
 ###output
 export(Western_Sambo_Deep_2006_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2006_biomass_data.csv")
@@ -3138,6 +3662,7 @@ export(Western_Sambo_Deep_2006_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2007 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2007.xls")
 Western_Sambo_Deep_2007_Total_biomass <- summarise_at(Western_Sambo_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2007_Total_biomass$Year <- ('2007')
+Western_Sambo_Deep_2007_Total_biomass$Reef <- ('Western Sambo Deep')
 ###output
 export(Western_Sambo_Deep_2007_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2007_biomass_data.csv")
 
@@ -3145,6 +3670,7 @@ export(Western_Sambo_Deep_2007_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2008 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2008.xls")
 Western_Sambo_Deep_2008_Total_biomass <- summarise_at(Western_Sambo_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2008_Total_biomass$Year <- ('2008')
+Western_Sambo_Deep_2008_Total_biomass$Reef <- ('Western Sambo Deep')
 
 ###output
 export(Western_Sambo_Deep_2008_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2008_biomass_data.csv")
@@ -3152,6 +3678,7 @@ export(Western_Sambo_Deep_2008_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2009 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2009.xls")
 Western_Sambo_Deep_2009_Total_biomass <- summarise_at(Western_Sambo_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2009_Total_biomass$Year <- ('2009')
+Western_Sambo_Deep_2009_Total_biomass$Reef <- ('Western Sambo Deep')
 ###output
 export(Western_Sambo_Deep_2009_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2009_biomass_data.csv")
 
@@ -3159,6 +3686,7 @@ export(Western_Sambo_Deep_2009_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2010 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2010.xls")
 Western_Sambo_Deep_2010_Total_biomass <- summarise_at(Western_Sambo_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2010_Total_biomass$Year <- ('2010')
+Western_Sambo_Deep_2010_Total_biomass$Reef <- ('Western Sambo Deep')
 
 ###output
 export(Western_Sambo_Deep_2010_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2010_biomass_data.csv")
@@ -3166,6 +3694,7 @@ export(Western_Sambo_Deep_2010_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2011 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2011.xls")
 Western_Sambo_Deep_2011_Total_biomass <- summarise_at(Western_Sambo_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2011_Total_biomass$Year <- ('2011')
+Western_Sambo_Deep_2011_Total_biomass$Reef <- ('Western Sambo Deep')
 ###output
 export(Western_Sambo_Deep_2011_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2011_biomass_data.csv")
 
@@ -3173,6 +3702,7 @@ export(Western_Sambo_Deep_2011_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2012 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2012.xls")
 Western_Sambo_Deep_2012_Total_biomass <- summarise_at(Western_Sambo_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2012_Total_biomass$Year <- ('2012')
+Western_Sambo_Deep_2012_Total_biomass$Reef <- ('Western Sambo Deep')
 
 ###output
 export(Western_Sambo_Deep_2012_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2012_biomass_data.csv")
@@ -3180,6 +3710,7 @@ export(Western_Sambo_Deep_2012_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2014 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2014.xls")
 Western_Sambo_Deep_2014_Total_biomass <- summarise_at(Western_Sambo_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2014_Total_biomass$Year <- ('2014')
+Western_Sambo_Deep_2014_Total_biomass$Reef <- ('Western Sambo Deep')
 
 ###output
 export(Western_Sambo_Deep_2014_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2014_biomass_data.csv")
@@ -3187,6 +3718,7 @@ export(Western_Sambo_Deep_2014_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2016 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2016.xls")
 Western_Sambo_Deep_2016_Total_biomass <- summarise_at(Western_Sambo_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2016_Total_biomass$Year <- ('2016')
+Western_Sambo_Deep_2016_Total_biomass$Reef <- ('Western Sambo Deep')
 
 ###output
 export(Western_Sambo_Deep_2016_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2016_biomass_data.csv")
@@ -3194,6 +3726,7 @@ export(Western_Sambo_Deep_2016_Total_biomass,"Western_Sambo_Deep/data/Western_Sa
 Western_Sambo_Deep_2018 <- import("Western_Sambo_Deep/data/Western_Sambo_Deep_2018.xls")
 Western_Sambo_Deep_2018_Total_biomass <- summarise_at(Western_Sambo_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Deep_2018_Total_biomass$Year <- ('2018')
+Western_Sambo_Deep_2018_Total_biomass$Reef <- ('Western Sambo Deep')
 ###output
 export(Western_Sambo_Deep_2018_Total_biomass,"Western_Sambo_Deep/data/Western_Sambo_Deep_2018_biomass_data.csv")
 
@@ -3244,30 +3777,35 @@ export(Western_Sambo_Deep_Reef_biomass_data_combined,"Western_Sambo_Deep/data/We
 Western_Sambo_Shallow_1999 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_1999.xls")
 Western_Sambo_Shallow_1999_Total_biomass <- summarise_at(Western_Sambo_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_1999_Total_biomass$Year <- ('1999')
+Western_Sambo_Shallow_1999_Total_biomass$Reef <- ('Western Sambo Shallow')
 ###output
 export(Western_Sambo_Shallow_1999_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_1999_biomass_data.csv")
 
 Western_Sambo_Shallow_2000 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2000.xls")
 Western_Sambo_Shallow_2000_Total_biomass <- summarise_at(Western_Sambo_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2000_Total_biomass$Year <- ('2000')
+Western_Sambo_Shallow_2000_Total_biomass$Reef <- ('Western Sambo Shallow')
 ###output
 export(Western_Sambo_Shallow_2000_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2000_biomass_data.csv")
 
 Western_Sambo_Shallow_2001 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2001.xls")
 Western_Sambo_Shallow_2001_Total_biomass <- summarise_at(Western_Sambo_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2001_Total_biomass$Year <- ('2001')
+Western_Sambo_Shallow_2001_Total_biomass$Reef <- ('Western Sambo Shallow')
 ###output
 export(Western_Sambo_Shallow_2001_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2001_biomass_data.csv")
 
 Western_Sambo_Shallow_2002 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2002.xls")
 Western_Sambo_Shallow_2002_Total_biomass <- summarise_at(Western_Sambo_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2002_Total_biomass$Year <- ('2002')
+Western_Sambo_Shallow_2002_Total_biomass$Reef <- ('Western Sambo Shallow')
 ###output
 export(Western_Sambo_Shallow_2002_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2002_biomass_data.csv")
 
 Western_Sambo_Shallow_2003 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2003.xls")
 Western_Sambo_Shallow_2003_Total_biomass <- summarise_at(Western_Sambo_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2003_Total_biomass$Year <- ('2003')
+Western_Sambo_Shallow_2003_Total_biomass$Reef <- ('Western Sambo Shallow')
 ###output
 export(Western_Sambo_Shallow_2003_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2003_biomass_data.csv")
 
@@ -3275,6 +3813,7 @@ export(Western_Sambo_Shallow_2003_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2004 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2004.xls")
 Western_Sambo_Shallow_2004_Total_biomass <- summarise_at(Western_Sambo_Shallow_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2004_Total_biomass$Year <- ('2004')
+Western_Sambo_Shallow_2004_Total_biomass$Reef <- ('Western Sambo Shallow')
 
 ###output
 export(Western_Sambo_Shallow_2004_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2004_biomass_data.csv")
@@ -3282,6 +3821,7 @@ export(Western_Sambo_Shallow_2004_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2005 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2005.xls")
 Western_Sambo_Shallow_2005_Total_biomass <- summarise_at(Western_Sambo_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2005_Total_biomass$Year <- ('2005')
+Western_Sambo_Shallow_2005_Total_biomass$Reef <- ('Western Sambo Shallow')
 ###output
 export(Western_Sambo_Shallow_2005_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2005_biomass_data.csv")
 
@@ -3289,6 +3829,7 @@ export(Western_Sambo_Shallow_2005_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2006 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2006.xls")
 Western_Sambo_Shallow_2006_Total_biomass <- summarise_at(Western_Sambo_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2006_Total_biomass$Year <- ('2006')
+Western_Sambo_Shallow_2006_Total_biomass$Reef <- ('Western Sambo Shallow')
 
 ###output
 export(Western_Sambo_Shallow_2006_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2006_biomass_data.csv")
@@ -3296,6 +3837,7 @@ export(Western_Sambo_Shallow_2006_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2007 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2007.xls")
 Western_Sambo_Shallow_2007_Total_biomass <- summarise_at(Western_Sambo_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2007_Total_biomass$Year <- ('2007')
+Western_Sambo_Shallow_2007_Total_biomass$Reef <- ('Western Sambo Shallow')
 ###output
 export(Western_Sambo_Shallow_2007_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2007_biomass_data.csv")
 
@@ -3303,6 +3845,7 @@ export(Western_Sambo_Shallow_2007_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2008 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2008.xls")
 Western_Sambo_Shallow_2008_Total_biomass <- summarise_at(Western_Sambo_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2008_Total_biomass$Year <- ('2008')
+Western_Sambo_Shallow_2008_Total_biomass$Reef <- ('Western Sambo Shallow')
 
 ###output
 export(Western_Sambo_Shallow_2008_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2008_biomass_data.csv")
@@ -3310,6 +3853,7 @@ export(Western_Sambo_Shallow_2008_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2009 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2009.xls")
 Western_Sambo_Shallow_2009_Total_biomass <- summarise_at(Western_Sambo_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2009_Total_biomass$Year <- ('2009')
+Western_Sambo_Shallow_2009_Total_biomass$Reef <- ('Western Sambo Shallow')
 ###output
 export(Western_Sambo_Shallow_2009_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2009_biomass_data.csv")
 
@@ -3317,6 +3861,7 @@ export(Western_Sambo_Shallow_2009_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2010 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2010.xls")
 Western_Sambo_Shallow_2010_Total_biomass <- summarise_at(Western_Sambo_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2010_Total_biomass$Year <- ('2010')
+Western_Sambo_Shallow_2010_Total_biomass$Reef <- ('Western Sambo Shallow')
 
 ###output
 export(Western_Sambo_Shallow_2010_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2010_biomass_data.csv")
@@ -3324,6 +3869,7 @@ export(Western_Sambo_Shallow_2010_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2011 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2011.xls")
 Western_Sambo_Shallow_2011_Total_biomass <- summarise_at(Western_Sambo_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2011_Total_biomass$Year <- ('2011')
+Western_Sambo_Shallow_2011_Total_biomass$Reef <- ('Western Sambo Shallow')
 ###output
 export(Western_Sambo_Shallow_2011_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2011_biomass_data.csv")
 
@@ -3331,6 +3877,7 @@ export(Western_Sambo_Shallow_2011_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2012 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2012.xls")
 Western_Sambo_Shallow_2012_Total_biomass <- summarise_at(Western_Sambo_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2012_Total_biomass$Year <- ('2012')
+Western_Sambo_Shallow_2012_Total_biomass$Reef <- ('Western Sambo Shallow')
 
 ###output
 export(Western_Sambo_Shallow_2012_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2012_biomass_data.csv")
@@ -3338,6 +3885,7 @@ export(Western_Sambo_Shallow_2012_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2014 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2014.xls")
 Western_Sambo_Shallow_2014_Total_biomass <- summarise_at(Western_Sambo_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2014_Total_biomass$Year <- ('2014')
+Western_Sambo_Shallow_2014_Total_biomass$Reef <- ('Western Sambo Shallow')
 
 ###output
 export(Western_Sambo_Shallow_2014_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2014_biomass_data.csv")
@@ -3345,6 +3893,7 @@ export(Western_Sambo_Shallow_2014_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2016 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2016.xls")
 Western_Sambo_Shallow_2016_Total_biomass <- summarise_at(Western_Sambo_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2016_Total_biomass$Year <- ('2016')
+Western_Sambo_Shallow_2016_Total_biomass$Reef <- ('Western Sambo Shallow')
 
 ###output
 export(Western_Sambo_Shallow_2016_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2016_biomass_data.csv")
@@ -3352,6 +3901,7 @@ export(Western_Sambo_Shallow_2016_Total_biomass,"Western_Sambo_Shallow/data/West
 Western_Sambo_Shallow_2018 <- import("Western_Sambo_Shallow/data/Western_Sambo_Shallow_2018.xls")
 Western_Sambo_Shallow_2018_Total_biomass <- summarise_at(Western_Sambo_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Western_Sambo_Shallow_2018_Total_biomass$Year <- ('2018')
+Western_Sambo_Shallow_2018_Total_biomass$Reef <- ('Western Sambo Shallow')
 ###output
 export(Western_Sambo_Shallow_2018_Total_biomass,"Western_Sambo_Shallow/data/Western_Sambo_Shallow_2018_biomass_data.csv")
 
@@ -3409,30 +3959,35 @@ setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/MK")
 Alligator_Deep_1999 <- import("Alligator_Deep/data/Alligator_Deep_1999.xls")
 Alligator_Deep_1999_Total_biomass <- summarise_at(Alligator_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_1999_Total_biomass$Year <- ('1999')
+Alligator_Deep_1999_Total_biomass$Reef <- ('Alligator Deep')
 ###output
 export(Alligator_Deep_1999_Total_biomass,"Alligator_Deep/data/Alligator_Deep_1999_biomass_data.csv")
 
 Alligator_Deep_2000 <- import("Alligator_Deep/data/Alligator_Deep_2000.xls")
 Alligator_Deep_2000_Total_biomass <- summarise_at(Alligator_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2000_Total_biomass$Year <- ('2000')
+Alligator_Deep_2000_Total_biomass$Reef <- ('Alligator Deep')
 ###output
 export(Alligator_Deep_2000_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2000_biomass_data.csv")
 
 Alligator_Deep_2001 <- import("Alligator_Deep/data/Alligator_Deep_2001.xls")
 Alligator_Deep_2001_Total_biomass <- summarise_at(Alligator_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2001_Total_biomass$Year <- ('2001')
+Alligator_Deep_2001_Total_biomass$Reef <- ('Alligator Deep')
 ###output
 export(Alligator_Deep_2001_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2001_biomass_data.csv")
 
 Alligator_Deep_2002 <- import("Alligator_Deep/data/Alligator_Deep_2002.xls")
 Alligator_Deep_2002_Total_biomass <- summarise_at(Alligator_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2002_Total_biomass$Year <- ('2002')
+Alligator_Deep_2002_Total_biomass$Reef <- ('Alligator Deep')
 ###output
 export(Alligator_Deep_2002_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2002_biomass_data.csv")
 
 Alligator_Deep_2003 <- import("Alligator_Deep/data/Alligator_Deep_2003.xls")
 Alligator_Deep_2003_Total_biomass <- summarise_at(Alligator_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2003_Total_biomass$Year <- ('2003')
+Alligator_Deep_2003_Total_biomass$Reef <- ('Alligator Deep')
 ###output
 export(Alligator_Deep_2003_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2003_biomass_data.csv")
 
@@ -3447,6 +4002,7 @@ export(Alligator_Deep_2003_Total_biomass,"Alligator_Deep/data/Alligator_Deep_200
 Alligator_Deep_2005 <- import("Alligator_Deep/data/Alligator_Deep_2005.xls")
 Alligator_Deep_2005_Total_biomass <- summarise_at(Alligator_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2005_Total_biomass$Year <- ('2005')
+Alligator_Deep_2005_Total_biomass$Reef <- ('Alligator Deep')
 ###output
 export(Alligator_Deep_2005_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2005_biomass_data.csv")
 
@@ -3454,6 +4010,7 @@ export(Alligator_Deep_2005_Total_biomass,"Alligator_Deep/data/Alligator_Deep_200
 Alligator_Deep_2006 <- import("Alligator_Deep/data/Alligator_Deep_2006.xls")
 Alligator_Deep_2006_Total_biomass <- summarise_at(Alligator_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2006_Total_biomass$Year <- ('2006')
+Alligator_Deep_2006_Total_biomass$Reef <- ('Alligator Deep')
 
 ###output
 export(Alligator_Deep_2006_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2006_biomass_data.csv")
@@ -3461,6 +4018,7 @@ export(Alligator_Deep_2006_Total_biomass,"Alligator_Deep/data/Alligator_Deep_200
 Alligator_Deep_2007 <- import("Alligator_Deep/data/Alligator_Deep_2007.xls")
 Alligator_Deep_2007_Total_biomass <- summarise_at(Alligator_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2007_Total_biomass$Year <- ('2007')
+Alligator_Deep_2007_Total_biomass$Reef <- ('Alligator Deep')
 ###output
 export(Alligator_Deep_2007_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2007_biomass_data.csv")
 
@@ -3468,6 +4026,7 @@ export(Alligator_Deep_2007_Total_biomass,"Alligator_Deep/data/Alligator_Deep_200
 Alligator_Deep_2008 <- import("Alligator_Deep/data/Alligator_Deep_2008.xls")
 Alligator_Deep_2008_Total_biomass <- summarise_at(Alligator_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2008_Total_biomass$Year <- ('2008')
+Alligator_Deep_2008_Total_biomass$Reef <- ('Alligator Deep')
 
 ###output
 export(Alligator_Deep_2008_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2008_biomass_data.csv")
@@ -3475,6 +4034,7 @@ export(Alligator_Deep_2008_Total_biomass,"Alligator_Deep/data/Alligator_Deep_200
 Alligator_Deep_2009 <- import("Alligator_Deep/data/Alligator_Deep_2009.xls")
 Alligator_Deep_2009_Total_biomass <- summarise_at(Alligator_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2009_Total_biomass$Year <- ('2009')
+Alligator_Deep_2009_Total_biomass$Reef <- ('Alligator Deep')
 ###output
 export(Alligator_Deep_2009_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2009_biomass_data.csv")
 
@@ -3482,6 +4042,7 @@ export(Alligator_Deep_2009_Total_biomass,"Alligator_Deep/data/Alligator_Deep_200
 Alligator_Deep_2010 <- import("Alligator_Deep/data/Alligator_Deep_2010.xls")
 Alligator_Deep_2010_Total_biomass <- summarise_at(Alligator_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2010_Total_biomass$Year <- ('2010')
+Alligator_Deep_2010_Total_biomass$Reef <- ('Alligator Deep')
 
 ###output
 export(Alligator_Deep_2010_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2010_biomass_data.csv")
@@ -3489,6 +4050,7 @@ export(Alligator_Deep_2010_Total_biomass,"Alligator_Deep/data/Alligator_Deep_201
 Alligator_Deep_2011 <- import("Alligator_Deep/data/Alligator_Deep_2011.xls")
 Alligator_Deep_2011_Total_biomass <- summarise_at(Alligator_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2011_Total_biomass$Year <- ('2011')
+Alligator_Deep_2011_Total_biomass$Reef <- ('Alligator Deep')
 ###output
 export(Alligator_Deep_2011_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2011_biomass_data.csv")
 
@@ -3496,6 +4058,7 @@ export(Alligator_Deep_2011_Total_biomass,"Alligator_Deep/data/Alligator_Deep_201
 Alligator_Deep_2012 <- import("Alligator_Deep/data/Alligator_Deep_2012.xls")
 Alligator_Deep_2012_Total_biomass <- summarise_at(Alligator_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2012_Total_biomass$Year <- ('2012')
+Alligator_Deep_2012_Total_biomass$Reef <- ('Alligator Deep')
 
 ###output
 export(Alligator_Deep_2012_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2012_biomass_data.csv")
@@ -3503,6 +4066,7 @@ export(Alligator_Deep_2012_Total_biomass,"Alligator_Deep/data/Alligator_Deep_201
 Alligator_Deep_2014 <- import("Alligator_Deep/data/Alligator_Deep_2014.xls")
 Alligator_Deep_2014_Total_biomass <- summarise_at(Alligator_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2014_Total_biomass$Year <- ('2014')
+Alligator_Deep_2014_Total_biomass$Reef <- ('Alligator Deep')
 
 ###output
 export(Alligator_Deep_2014_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2014_biomass_data.csv")
@@ -3510,6 +4074,7 @@ export(Alligator_Deep_2014_Total_biomass,"Alligator_Deep/data/Alligator_Deep_201
 Alligator_Deep_2016 <- import("Alligator_Deep/data/Alligator_Deep_2016.xls")
 Alligator_Deep_2016_Total_biomass <- summarise_at(Alligator_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2016_Total_biomass$Year <- ('2016')
+Alligator_Deep_2016_Total_biomass$Reef <- ('Alligator Deep')
 
 ###output
 export(Alligator_Deep_2016_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2016_biomass_data.csv")
@@ -3517,6 +4082,8 @@ export(Alligator_Deep_2016_Total_biomass,"Alligator_Deep/data/Alligator_Deep_201
 Alligator_Deep_2018 <- import("Alligator_Deep/data/Alligator_Deep_2018.xls")
 Alligator_Deep_2018_Total_biomass <- summarise_at(Alligator_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Deep_2018_Total_biomass$Year <- ('2018')
+Alligator_Deep_2018_Total_biomass$Reef <- ('Alligator Deep')
+
 ###output
 export(Alligator_Deep_2018_Total_biomass,"Alligator_Deep/data/Alligator_Deep_2018_biomass_data.csv")
 
@@ -3569,30 +4136,35 @@ export(Alligator_Deep_Reef_biomass_data_combined,"Alligator_Deep/data/Alligator_
 Alligator_Shallow_1999 <- import("Alligator_Shallow/data/Alligator_Shallow_1999.xls")
 Alligator_Shallow_1999_Total_biomass <- summarise_at(Alligator_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_1999_Total_biomass$Year <- ('1999')
+Alligator_Shallow_1999_Total_biomass$Reef <- ('Alligator Shallow')
 ###output
 export(Alligator_Shallow_1999_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_1999_biomass_data.csv")
 
 Alligator_Shallow_2000 <- import("Alligator_Shallow/data/Alligator_Shallow_2000.xls")
 Alligator_Shallow_2000_Total_biomass <- summarise_at(Alligator_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2000_Total_biomass$Year <- ('2000')
+Alligator_Shallow_2000_Total_biomass$Reef <- ('Alligator Shallow')
 ###output
 export(Alligator_Shallow_2000_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2000_biomass_data.csv")
 
 Alligator_Shallow_2001 <- import("Alligator_Shallow/data/Alligator_Shallow_2001.xls")
 Alligator_Shallow_2001_Total_biomass <- summarise_at(Alligator_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2001_Total_biomass$Year <- ('2001')
+Alligator_Shallow_2001_Total_biomass$Reef <- ('Alligator Shallow')
 ###output
 export(Alligator_Shallow_2001_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2001_biomass_data.csv")
 
 Alligator_Shallow_2002 <- import("Alligator_Shallow/data/Alligator_Shallow_2002.xls")
 Alligator_Shallow_2002_Total_biomass <- summarise_at(Alligator_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2002_Total_biomass$Year <- ('2002')
+Alligator_Shallow_2002_Total_biomass$Reef <- ('Alligator Shallow')
 ###output
 export(Alligator_Shallow_2002_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2002_biomass_data.csv")
 
 Alligator_Shallow_2003 <- import("Alligator_Shallow/data/Alligator_Shallow_2003.xls")
 Alligator_Shallow_2003_Total_biomass <- summarise_at(Alligator_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2003_Total_biomass$Year <- ('2003')
+Alligator_Shallow_2003_Total_biomass$Reef <- ('Alligator Shallow')
 ###output
 export(Alligator_Shallow_2003_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2003_biomass_data.csv")
 
@@ -3607,6 +4179,7 @@ export(Alligator_Shallow_2003_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2005 <- import("Alligator_Shallow/data/Alligator_Shallow_2005.xls")
 Alligator_Shallow_2005_Total_biomass <- summarise_at(Alligator_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2005_Total_biomass$Year <- ('2005')
+Alligator_Shallow_2005_Total_biomass$Reef <- ('Alligator Shallow')
 ###output
 export(Alligator_Shallow_2005_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2005_biomass_data.csv")
 
@@ -3614,6 +4187,7 @@ export(Alligator_Shallow_2005_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2006 <- import("Alligator_Shallow/data/Alligator_Shallow_2006.xls")
 Alligator_Shallow_2006_Total_biomass <- summarise_at(Alligator_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2006_Total_biomass$Year <- ('2006')
+Alligator_Shallow_2006_Total_biomass$Reef <- ('Alligator Shallow')
 
 ###output
 export(Alligator_Shallow_2006_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2006_biomass_data.csv")
@@ -3621,6 +4195,7 @@ export(Alligator_Shallow_2006_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2007 <- import("Alligator_Shallow/data/Alligator_Shallow_2007.xls")
 Alligator_Shallow_2007_Total_biomass <- summarise_at(Alligator_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2007_Total_biomass$Year <- ('2007')
+Alligator_Shallow_2007_Total_biomass$Reef <- ('Alligator Shallow')
 ###output
 export(Alligator_Shallow_2007_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2007_biomass_data.csv")
 
@@ -3628,6 +4203,7 @@ export(Alligator_Shallow_2007_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2008 <- import("Alligator_Shallow/data/Alligator_Shallow_2008.xls")
 Alligator_Shallow_2008_Total_biomass <- summarise_at(Alligator_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2008_Total_biomass$Year <- ('2008')
+Alligator_Shallow_2008_Total_biomass$Reef <- ('Alligator Shallow')
 
 ###output
 export(Alligator_Shallow_2008_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2008_biomass_data.csv")
@@ -3635,6 +4211,7 @@ export(Alligator_Shallow_2008_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2009 <- import("Alligator_Shallow/data/Alligator_Shallow_2009.xls")
 Alligator_Shallow_2009_Total_biomass <- summarise_at(Alligator_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2009_Total_biomass$Year <- ('2009')
+Alligator_Shallow_2009_Total_biomass$Reef <- ('Alligator Shallow')
 ###output
 export(Alligator_Shallow_2009_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2009_biomass_data.csv")
 
@@ -3642,6 +4219,7 @@ export(Alligator_Shallow_2009_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2010 <- import("Alligator_Shallow/data/Alligator_Shallow_2010.xls")
 Alligator_Shallow_2010_Total_biomass <- summarise_at(Alligator_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2010_Total_biomass$Year <- ('2010')
+Alligator_Shallow_2010_Total_biomass$Reef <- ('Alligator Shallow')
 
 ###output
 export(Alligator_Shallow_2010_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2010_biomass_data.csv")
@@ -3649,6 +4227,7 @@ export(Alligator_Shallow_2010_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2011 <- import("Alligator_Shallow/data/Alligator_Shallow_2011.xls")
 Alligator_Shallow_2011_Total_biomass <- summarise_at(Alligator_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2011_Total_biomass$Year <- ('2011')
+Alligator_Shallow_2011_Total_biomass$Reef <- ('Alligator Shallow')
 ###output
 export(Alligator_Shallow_2011_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2011_biomass_data.csv")
 
@@ -3656,6 +4235,7 @@ export(Alligator_Shallow_2011_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2012 <- import("Alligator_Shallow/data/Alligator_Shallow_2012.xls")
 Alligator_Shallow_2012_Total_biomass <- summarise_at(Alligator_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2012_Total_biomass$Year <- ('2012')
+Alligator_Shallow_2012_Total_biomass$Reef <- ('Alligator Shallow')
 
 ###output
 export(Alligator_Shallow_2012_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2012_biomass_data.csv")
@@ -3663,6 +4243,7 @@ export(Alligator_Shallow_2012_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2014 <- import("Alligator_Shallow/data/Alligator_Shallow_2014.xls")
 Alligator_Shallow_2014_Total_biomass <- summarise_at(Alligator_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2014_Total_biomass$Year <- ('2014')
+Alligator_Shallow_2014_Total_biomass$Reef <- ('Alligator Shallow')
 
 ###output
 export(Alligator_Shallow_2014_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2014_biomass_data.csv")
@@ -3670,6 +4251,7 @@ export(Alligator_Shallow_2014_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2016 <- import("Alligator_Shallow/data/Alligator_Shallow_2016.xls")
 Alligator_Shallow_2016_Total_biomass <- summarise_at(Alligator_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2016_Total_biomass$Year <- ('2016')
+Alligator_Shallow_2016_Total_biomass$Reef <- ('Alligator Shallow')
 
 ###output
 export(Alligator_Shallow_2016_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2016_biomass_data.csv")
@@ -3677,6 +4259,7 @@ export(Alligator_Shallow_2016_Total_biomass,"Alligator_Shallow/data/Alligator_Sh
 Alligator_Shallow_2018 <- import("Alligator_Shallow/data/Alligator_Shallow_2018.xls")
 Alligator_Shallow_2018_Total_biomass <- summarise_at(Alligator_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Alligator_Shallow_2018_Total_biomass$Year <- ('2018')
+Alligator_Shallow_2018_Total_biomass$Reef <- ('Alligator Shallow')
 ###output
 export(Alligator_Shallow_2018_Total_biomass,"Alligator_Shallow/data/Alligator_Shallow_2018_biomass_data.csv")
 
@@ -3730,30 +4313,36 @@ export(Alligator_Shallow_Reef_biomass_data_combined,"Alligator_Shallow/data/Alli
 Dustan_Rocks_1999 <- import("Dustan_Rocks/data/Dustan_Rocks_1999.xls")
 Dustan_Rocks_1999_Total_biomass <- summarise_at(Dustan_Rocks_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_1999_Total_biomass$Year <- ('1999')
+Dustan_Rocks_1999_Total_biomass$Reef <- ('Dustan Rocks')
+
 ###output
 export(Dustan_Rocks_1999_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_1999_biomass_data.csv")
 
 Dustan_Rocks_2000 <- import("Dustan_Rocks/data/Dustan_Rocks_2000.xls")
 Dustan_Rocks_2000_Total_biomass <- summarise_at(Dustan_Rocks_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2000_Total_biomass$Year <- ('2000')
+Dustan_Rocks_2000_Total_biomass$Reef <- ('Dustan Rocks')
 ###output
 export(Dustan_Rocks_2000_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2000_biomass_data.csv")
 
 Dustan_Rocks_2001 <- import("Dustan_Rocks/data/Dustan_Rocks_2001.xls")
 Dustan_Rocks_2001_Total_biomass <- summarise_at(Dustan_Rocks_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2001_Total_biomass$Year <- ('2001')
+Dustan_Rocks_2001_Total_biomass$Reef <- ('Dustan Rocks')
 ###output
 export(Dustan_Rocks_2001_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2001_biomass_data.csv")
 
 Dustan_Rocks_2002 <- import("Dustan_Rocks/data/Dustan_Rocks_2002.xls")
 Dustan_Rocks_2002_Total_biomass <- summarise_at(Dustan_Rocks_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2002_Total_biomass$Year <- ('2002')
+Dustan_Rocks_2002_Total_biomass$Reef <- ('Dustan Rocks')
 ###output
 export(Dustan_Rocks_2002_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2002_biomass_data.csv")
 
 Dustan_Rocks_2003 <- import("Dustan_Rocks/data/Dustan_Rocks_2003.xls")
 Dustan_Rocks_2003_Total_biomass <- summarise_at(Dustan_Rocks_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2003_Total_biomass$Year <- ('2003')
+Dustan_Rocks_2003_Total_biomass$Reef <- ('Dustan Rocks')
 ###output
 export(Dustan_Rocks_2003_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2003_biomass_data.csv")
 
@@ -3768,6 +4357,7 @@ export(Dustan_Rocks_2003_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2003_biom
 Dustan_Rocks_2005 <- import("Dustan_Rocks/data/Dustan_Rocks_2005.xls")
 Dustan_Rocks_2005_Total_biomass <- summarise_at(Dustan_Rocks_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2005_Total_biomass$Year <- ('2005')
+Dustan_Rocks_2005_Total_biomass$Reef <- ('Dustan Rocks')
 ###output
 export(Dustan_Rocks_2005_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2005_biomass_data.csv")
 
@@ -3775,6 +4365,7 @@ export(Dustan_Rocks_2005_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2005_biom
 Dustan_Rocks_2006 <- import("Dustan_Rocks/data/Dustan_Rocks_2006.xls")
 Dustan_Rocks_2006_Total_biomass <- summarise_at(Dustan_Rocks_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2006_Total_biomass$Year <- ('2006')
+Dustan_Rocks_2006_Total_biomass$Reef <- ('Dustan Rocks')
 
 ###output
 export(Dustan_Rocks_2006_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2006_biomass_data.csv")
@@ -3782,6 +4373,7 @@ export(Dustan_Rocks_2006_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2006_biom
 Dustan_Rocks_2007 <- import("Dustan_Rocks/data/Dustan_Rocks_2007.xls")
 Dustan_Rocks_2007_Total_biomass <- summarise_at(Dustan_Rocks_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2007_Total_biomass$Year <- ('2007')
+Dustan_Rocks_2007_Total_biomass$Reef <- ('Dustan Rocks')
 ###output
 export(Dustan_Rocks_2007_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2007_biomass_data.csv")
 
@@ -3789,6 +4381,7 @@ export(Dustan_Rocks_2007_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2007_biom
 Dustan_Rocks_2008 <- import("Dustan_Rocks/data/Dustan_Rocks_2008.xls")
 Dustan_Rocks_2008_Total_biomass <- summarise_at(Dustan_Rocks_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2008_Total_biomass$Year <- ('2008')
+Dustan_Rocks_2008_Total_biomass$Reef <- ('Dustan Rocks')
 
 ###output
 export(Dustan_Rocks_2008_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2008_biomass_data.csv")
@@ -3796,6 +4389,8 @@ export(Dustan_Rocks_2008_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2008_biom
 Dustan_Rocks_2009 <- import("Dustan_Rocks/data/Dustan_Rocks_2009.xls")
 Dustan_Rocks_2009_Total_biomass <- summarise_at(Dustan_Rocks_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2009_Total_biomass$Year <- ('2009')
+Dustan_Rocks_2009_Total_biomass$Reef <- ('Dustan Rocks')
+
 ###output
 export(Dustan_Rocks_2009_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2009_biomass_data.csv")
 
@@ -3803,6 +4398,7 @@ export(Dustan_Rocks_2009_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2009_biom
 Dustan_Rocks_2010 <- import("Dustan_Rocks/data/Dustan_Rocks_2010.xls")
 Dustan_Rocks_2010_Total_biomass <- summarise_at(Dustan_Rocks_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2010_Total_biomass$Year <- ('2010')
+Dustan_Rocks_2010_Total_biomass$Reef <- ('Dustan Rocks')
 
 ###output
 export(Dustan_Rocks_2010_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2010_biomass_data.csv")
@@ -3810,6 +4406,7 @@ export(Dustan_Rocks_2010_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2010_biom
 Dustan_Rocks_2011 <- import("Dustan_Rocks/data/Dustan_Rocks_2011.xls")
 Dustan_Rocks_2011_Total_biomass <- summarise_at(Dustan_Rocks_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2011_Total_biomass$Year <- ('2011')
+Dustan_Rocks_2011_Total_biomass$Reef <- ('Dustan Rocks')
 ###output
 export(Dustan_Rocks_2011_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2011_biomass_data.csv")
 
@@ -3817,6 +4414,7 @@ export(Dustan_Rocks_2011_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2011_biom
 Dustan_Rocks_2012 <- import("Dustan_Rocks/data/Dustan_Rocks_2012.xls")
 Dustan_Rocks_2012_Total_biomass <- summarise_at(Dustan_Rocks_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2012_Total_biomass$Year <- ('2012')
+Dustan_Rocks_2012_Total_biomass$Reef <- ('Dustan Rocks')
 
 ###output
 export(Dustan_Rocks_2012_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2012_biomass_data.csv")
@@ -3824,6 +4422,7 @@ export(Dustan_Rocks_2012_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2012_biom
 Dustan_Rocks_2014 <- import("Dustan_Rocks/data/Dustan_Rocks_2014.xls")
 Dustan_Rocks_2014_Total_biomass <- summarise_at(Dustan_Rocks_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2014_Total_biomass$Year <- ('2014')
+Dustan_Rocks_2014_Total_biomass$Reef <- ('Dustan Rocks')
 
 ###output
 export(Dustan_Rocks_2014_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2014_biomass_data.csv")
@@ -3831,6 +4430,7 @@ export(Dustan_Rocks_2014_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2014_biom
 Dustan_Rocks_2016 <- import("Dustan_Rocks/data/Dustan_Rocks_2016.xls")
 Dustan_Rocks_2016_Total_biomass <- summarise_at(Dustan_Rocks_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2016_Total_biomass$Year <- ('2016')
+Dustan_Rocks_2016_Total_biomass$Reef <- ('Dustan Rocks')
 
 ###output
 export(Dustan_Rocks_2016_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2016_biomass_data.csv")
@@ -3838,6 +4438,7 @@ export(Dustan_Rocks_2016_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2016_biom
 Dustan_Rocks_2018 <- import("Dustan_Rocks/data/Dustan_Rocks_2018.xls")
 Dustan_Rocks_2018_Total_biomass <- summarise_at(Dustan_Rocks_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dustan_Rocks_2018_Total_biomass$Year <- ('2018')
+Dustan_Rocks_2018_Total_biomass$Reef <- ('Dustan Rocks')
 ###output
 export(Dustan_Rocks_2018_Total_biomass,"Dustan_Rocks/data/Dustan_Rocks_2018_biomass_data.csv")
 
@@ -3890,30 +4491,35 @@ export(Dustan_Rocks_Reef_biomass_data_combined,"Dustan_Rocks/data/Dustan_Rocks_b
 Long_Key_1999 <- import("Long_Key/data/Long_Key_1999.xls")
 Long_Key_1999_Total_biomass <- summarise_at(Long_Key_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_1999_Total_biomass$Year <- ('1999')
+Long_Key_1999_Total_biomass$Reef <- ('Long Key')
 ###output
 export(Long_Key_1999_Total_biomass,"Long_Key/data/Long_Key_1999_biomass_data.csv")
 
 Long_Key_2000 <- import("Long_Key/data/Long_Key_2000.xls")
 Long_Key_2000_Total_biomass <- summarise_at(Long_Key_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2000_Total_biomass$Year <- ('2000')
+Long_Key_2000_Total_biomass$Reef <- ('Long Key')
 ###output
 export(Long_Key_2000_Total_biomass,"Long_Key/data/Long_Key_2000_biomass_data.csv")
 
 Long_Key_2001 <- import("Long_Key/data/Long_Key_2001.xls")
 Long_Key_2001_Total_biomass <- summarise_at(Long_Key_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2001_Total_biomass$Year <- ('2001')
+Long_Key_2001_Total_biomass$Reef <- ('Long Key')
 ###output
 export(Long_Key_2001_Total_biomass,"Long_Key/data/Long_Key_2001_biomass_data.csv")
 
 Long_Key_2002 <- import("Long_Key/data/Long_Key_2002.xls")
 Long_Key_2002_Total_biomass <- summarise_at(Long_Key_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2002_Total_biomass$Year <- ('2002')
+Long_Key_2002_Total_biomass$Reef <- ('Long Key')
 ###output
 export(Long_Key_2002_Total_biomass,"Long_Key/data/Long_Key_2002_biomass_data.csv")
 
 Long_Key_2003 <- import("Long_Key/data/Long_Key_2003.xls")
 Long_Key_2003_Total_biomass <- summarise_at(Long_Key_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2003_Total_biomass$Year <- ('2003')
+Long_Key_2003_Total_biomass$Reef <- ('Long Key')
 ###output
 export(Long_Key_2003_Total_biomass,"Long_Key/data/Long_Key_2003_biomass_data.csv")
 
@@ -3928,6 +4534,7 @@ export(Long_Key_2003_Total_biomass,"Long_Key/data/Long_Key_2003_biomass_data.csv
 Long_Key_2005 <- import("Long_Key/data/Long_Key_2005.xls")
 Long_Key_2005_Total_biomass <- summarise_at(Long_Key_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2005_Total_biomass$Year <- ('2005')
+Long_Key_2005_Total_biomass$Reef <- ('Long Key')
 ###output
 export(Long_Key_2005_Total_biomass,"Long_Key/data/Long_Key_2005_biomass_data.csv")
 
@@ -3935,6 +4542,7 @@ export(Long_Key_2005_Total_biomass,"Long_Key/data/Long_Key_2005_biomass_data.csv
 Long_Key_2006 <- import("Long_Key/data/Long_Key_2006.xls")
 Long_Key_2006_Total_biomass <- summarise_at(Long_Key_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2006_Total_biomass$Year <- ('2006')
+Long_Key_2006_Total_biomass$Reef <- ('Long Key')
 
 ###output
 export(Long_Key_2006_Total_biomass,"Long_Key/data/Long_Key_2006_biomass_data.csv")
@@ -3942,6 +4550,7 @@ export(Long_Key_2006_Total_biomass,"Long_Key/data/Long_Key_2006_biomass_data.csv
 Long_Key_2007 <- import("Long_Key/data/Long_Key_2007.xls")
 Long_Key_2007_Total_biomass <- summarise_at(Long_Key_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2007_Total_biomass$Year <- ('2007')
+Long_Key_2007_Total_biomass$Reef <- ('Long Key')
 ###output
 export(Long_Key_2007_Total_biomass,"Long_Key/data/Long_Key_2007_biomass_data.csv")
 
@@ -3949,6 +4558,7 @@ export(Long_Key_2007_Total_biomass,"Long_Key/data/Long_Key_2007_biomass_data.csv
 Long_Key_2008 <- import("Long_Key/data/Long_Key_2008.xls")
 Long_Key_2008_Total_biomass <- summarise_at(Long_Key_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2008_Total_biomass$Year <- ('2008')
+Long_Key_2008_Total_biomass$Reef <- ('Long Key')
 
 ###output
 export(Long_Key_2008_Total_biomass,"Long_Key/data/Long_Key_2008_biomass_data.csv")
@@ -3956,6 +4566,7 @@ export(Long_Key_2008_Total_biomass,"Long_Key/data/Long_Key_2008_biomass_data.csv
 Long_Key_2009 <- import("Long_Key/data/Long_Key_2009.xls")
 Long_Key_2009_Total_biomass <- summarise_at(Long_Key_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2009_Total_biomass$Year <- ('2009')
+Long_Key_2009_Total_biomass$Reef <- ('Long Key')
 ###output
 export(Long_Key_2009_Total_biomass,"Long_Key/data/Long_Key_2009_biomass_data.csv")
 
@@ -3963,6 +4574,7 @@ export(Long_Key_2009_Total_biomass,"Long_Key/data/Long_Key_2009_biomass_data.csv
 Long_Key_2010 <- import("Long_Key/data/Long_Key_2010.xls")
 Long_Key_2010_Total_biomass <- summarise_at(Long_Key_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2010_Total_biomass$Year <- ('2010')
+Long_Key_2010_Total_biomass$Reef <- ('Long Key')
 
 ###output
 export(Long_Key_2010_Total_biomass,"Long_Key/data/Long_Key_2010_biomass_data.csv")
@@ -3970,6 +4582,7 @@ export(Long_Key_2010_Total_biomass,"Long_Key/data/Long_Key_2010_biomass_data.csv
 Long_Key_2011 <- import("Long_Key/data/Long_Key_2011.xls")
 Long_Key_2011_Total_biomass <- summarise_at(Long_Key_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2011_Total_biomass$Year <- ('2011')
+Long_Key_2011_Total_biomass$Reef <- ('Long Key')
 ###output
 export(Long_Key_2011_Total_biomass,"Long_Key/data/Long_Key_2011_biomass_data.csv")
 
@@ -3977,6 +4590,7 @@ export(Long_Key_2011_Total_biomass,"Long_Key/data/Long_Key_2011_biomass_data.csv
 Long_Key_2012 <- import("Long_Key/data/Long_Key_2012.xls")
 Long_Key_2012_Total_biomass <- summarise_at(Long_Key_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2012_Total_biomass$Year <- ('2012')
+Long_Key_2012_Total_biomass$Reef <- ('Long Key')
 
 ###output
 export(Long_Key_2012_Total_biomass,"Long_Key/data/Long_Key_2012_biomass_data.csv")
@@ -3984,6 +4598,7 @@ export(Long_Key_2012_Total_biomass,"Long_Key/data/Long_Key_2012_biomass_data.csv
 Long_Key_2014 <- import("Long_Key/data/Long_Key_2014.xls")
 Long_Key_2014_Total_biomass <- summarise_at(Long_Key_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2014_Total_biomass$Year <- ('2014')
+Long_Key_2014_Total_biomass$Reef <- ('Long Key')
 
 ###output
 export(Long_Key_2014_Total_biomass,"Long_Key/data/Long_Key_2014_biomass_data.csv")
@@ -3991,6 +4606,7 @@ export(Long_Key_2014_Total_biomass,"Long_Key/data/Long_Key_2014_biomass_data.csv
 Long_Key_2016 <- import("Long_Key/data/Long_Key_2016.xls")
 Long_Key_2016_Total_biomass <- summarise_at(Long_Key_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2016_Total_biomass$Year <- ('2016')
+Long_Key_2016_Total_biomass$Reef <- ('Long Key')
 
 ###output
 export(Long_Key_2016_Total_biomass,"Long_Key/data/Long_Key_2016_biomass_data.csv")
@@ -3998,6 +4614,7 @@ export(Long_Key_2016_Total_biomass,"Long_Key/data/Long_Key_2016_biomass_data.csv
 Long_Key_2018 <- import("Long_Key/data/Long_Key_2018.xls")
 Long_Key_2018_Total_biomass <- summarise_at(Long_Key_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Long_Key_2018_Total_biomass$Year <- ('2018')
+Long_Key_2018_Total_biomass$Reef <- ('Long Key')
 ###output
 export(Long_Key_2018_Total_biomass,"Long_Key/data/Long_Key_2018_biomass_data.csv")
 
@@ -4050,30 +4667,36 @@ export(Long_Key_Reef_biomass_data_combined,"Long_Key/data/Long_Key_biomass_data_
 Molasses_Keys_1999 <- import("Molasses_Keys/data/Molasses_Keys_1999.xls")
 Molasses_Keys_1999_Total_biomass <- summarise_at(Molasses_Keys_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_1999_Total_biomass$Year <- ('1999')
+Molasses_Keys_1999_Total_biomass$Reef <- ('Molasses Keys')
+
 ###output
 export(Molasses_Keys_1999_Total_biomass,"Molasses_Keys/data/Molasses_Keys_1999_biomass_data.csv")
 
 Molasses_Keys_2000 <- import("Molasses_Keys/data/Molasses_Keys_2000.xls")
 Molasses_Keys_2000_Total_biomass <- summarise_at(Molasses_Keys_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2000_Total_biomass$Year <- ('2000')
+Molasses_Keys_2000_Total_biomass$Reef <- ('Molasses Keys')
 ###output
 export(Molasses_Keys_2000_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2000_biomass_data.csv")
 
 Molasses_Keys_2001 <- import("Molasses_Keys/data/Molasses_Keys_2001.xls")
 Molasses_Keys_2001_Total_biomass <- summarise_at(Molasses_Keys_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2001_Total_biomass$Year <- ('2001')
+Molasses_Keys_2001_Total_biomass$Reef <- ('Molasses Keys')
 ###output
 export(Molasses_Keys_2001_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2001_biomass_data.csv")
 
 Molasses_Keys_2002 <- import("Molasses_Keys/data/Molasses_Keys_2002.xls")
 Molasses_Keys_2002_Total_biomass <- summarise_at(Molasses_Keys_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2002_Total_biomass$Year <- ('2002')
+Molasses_Keys_2002_Total_biomass$Reef <- ('Molasses Keys')
 ###output
 export(Molasses_Keys_2002_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2002_biomass_data.csv")
 
 Molasses_Keys_2003 <- import("Molasses_Keys/data/Molasses_Keys_2003.xls")
 Molasses_Keys_2003_Total_biomass <- summarise_at(Molasses_Keys_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2003_Total_biomass$Year <- ('2003')
+Molasses_Keys_2003_Total_biomass$Reef <- ('Molasses Keys')
 ###output
 export(Molasses_Keys_2003_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2003_biomass_data.csv")
 
@@ -4088,6 +4711,7 @@ export(Molasses_Keys_2003_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2003_b
 Molasses_Keys_2005 <- import("Molasses_Keys/data/Molasses_Keys_2005.xls")
 Molasses_Keys_2005_Total_biomass <- summarise_at(Molasses_Keys_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2005_Total_biomass$Year <- ('2005')
+Molasses_Keys_2005_Total_biomass$Reef <- ('Molasses Keys')
 ###output
 export(Molasses_Keys_2005_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2005_biomass_data.csv")
 
@@ -4095,6 +4719,7 @@ export(Molasses_Keys_2005_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2005_b
 Molasses_Keys_2006 <- import("Molasses_Keys/data/Molasses_Keys_2006.xls")
 Molasses_Keys_2006_Total_biomass <- summarise_at(Molasses_Keys_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2006_Total_biomass$Year <- ('2006')
+Molasses_Keys_2006_Total_biomass$Reef <- ('Molasses Keys')
 
 ###output
 export(Molasses_Keys_2006_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2006_biomass_data.csv")
@@ -4102,6 +4727,7 @@ export(Molasses_Keys_2006_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2006_b
 Molasses_Keys_2007 <- import("Molasses_Keys/data/Molasses_Keys_2007.xls")
 Molasses_Keys_2007_Total_biomass <- summarise_at(Molasses_Keys_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2007_Total_biomass$Year <- ('2007')
+Molasses_Keys_2007_Total_biomass$Reef <- ('Molasses Keys')
 ###output
 export(Molasses_Keys_2007_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2007_biomass_data.csv")
 
@@ -4109,6 +4735,7 @@ export(Molasses_Keys_2007_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2007_b
 Molasses_Keys_2008 <- import("Molasses_Keys/data/Molasses_Keys_2008.xls")
 Molasses_Keys_2008_Total_biomass <- summarise_at(Molasses_Keys_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2008_Total_biomass$Year <- ('2008')
+Molasses_Keys_2008_Total_biomass$Reef <- ('Molasses Keys')
 
 ###output
 export(Molasses_Keys_2008_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2008_biomass_data.csv")
@@ -4116,6 +4743,7 @@ export(Molasses_Keys_2008_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2008_b
 Molasses_Keys_2009 <- import("Molasses_Keys/data/Molasses_Keys_2009.xls")
 Molasses_Keys_2009_Total_biomass <- summarise_at(Molasses_Keys_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2009_Total_biomass$Year <- ('2009')
+Molasses_Keys_2009_Total_biomass$Reef <- ('Molasses Keys')
 ###output
 export(Molasses_Keys_2009_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2009_biomass_data.csv")
 
@@ -4123,6 +4751,7 @@ export(Molasses_Keys_2009_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2009_b
 Molasses_Keys_2010 <- import("Molasses_Keys/data/Molasses_Keys_2010.xls")
 Molasses_Keys_2010_Total_biomass <- summarise_at(Molasses_Keys_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2010_Total_biomass$Year <- ('2010')
+Molasses_Keys_2010_Total_biomass$Reef <- ('Molasses Keys')
 
 ###output
 export(Molasses_Keys_2010_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2010_biomass_data.csv")
@@ -4130,6 +4759,7 @@ export(Molasses_Keys_2010_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2010_b
 Molasses_Keys_2011 <- import("Molasses_Keys/data/Molasses_Keys_2011.xls")
 Molasses_Keys_2011_Total_biomass <- summarise_at(Molasses_Keys_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2011_Total_biomass$Year <- ('2011')
+Molasses_Keys_2011_Total_biomass$Reef <- ('Molasses Keys')
 ###output
 export(Molasses_Keys_2011_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2011_biomass_data.csv")
 
@@ -4137,6 +4767,7 @@ export(Molasses_Keys_2011_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2011_b
 Molasses_Keys_2012 <- import("Molasses_Keys/data/Molasses_Keys_2012.xls")
 Molasses_Keys_2012_Total_biomass <- summarise_at(Molasses_Keys_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2012_Total_biomass$Year <- ('2012')
+Molasses_Keys_2012_Total_biomass$Reef <- ('Molasses Keys')
 
 ###output
 export(Molasses_Keys_2012_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2012_biomass_data.csv")
@@ -4144,6 +4775,7 @@ export(Molasses_Keys_2012_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2012_b
 Molasses_Keys_2014 <- import("Molasses_Keys/data/Molasses_Keys_2014.xls")
 Molasses_Keys_2014_Total_biomass <- summarise_at(Molasses_Keys_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2014_Total_biomass$Year <- ('2014')
+Molasses_Keys_2014_Total_biomass$Reef <- ('Molasses Keys')
 
 ###output
 export(Molasses_Keys_2014_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2014_biomass_data.csv")
@@ -4151,6 +4783,7 @@ export(Molasses_Keys_2014_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2014_b
 Molasses_Keys_2016 <- import("Molasses_Keys/data/Molasses_Keys_2016.xls")
 Molasses_Keys_2016_Total_biomass <- summarise_at(Molasses_Keys_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2016_Total_biomass$Year <- ('2016')
+Molasses_Keys_2016_Total_biomass$Reef <- ('Molasses Keys')
 
 ###output
 export(Molasses_Keys_2016_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2016_biomass_data.csv")
@@ -4158,6 +4791,7 @@ export(Molasses_Keys_2016_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2016_b
 Molasses_Keys_2018 <- import("Molasses_Keys/data/Molasses_Keys_2018.xls")
 Molasses_Keys_2018_Total_biomass <- summarise_at(Molasses_Keys_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Keys_2018_Total_biomass$Year <- ('2018')
+Molasses_Keys_2018_Total_biomass$Reef <- ('Molasses Keys')
 ###output
 export(Molasses_Keys_2018_Total_biomass,"Molasses_Keys/data/Molasses_Keys_2018_biomass_data.csv")
 
@@ -4211,30 +4845,36 @@ export(Molasses_Keys_Reef_biomass_data_combined,"Molasses_Keys/data/Molasses_Key
 Moser_Channel_1999 <- import("Moser_Channel/data/Moser_Channel_1999.xls")
 Moser_Channel_1999_Total_biomass <- summarise_at(Moser_Channel_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_1999_Total_biomass$Year <- ('1999')
+Moser_Channel_1999_Total_biomass$Reef <- ('Moser Channel')
+
 ###output
 export(Moser_Channel_1999_Total_biomass,"Moser_Channel/data/Moser_Channel_1999_biomass_data.csv")
 
 Moser_Channel_2000 <- import("Moser_Channel/data/Moser_Channel_2000.xls")
 Moser_Channel_2000_Total_biomass <- summarise_at(Moser_Channel_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2000_Total_biomass$Year <- ('2000')
+Moser_Channel_2000_Total_biomass$Reef <- ('Moser Channel')
 ###output
 export(Moser_Channel_2000_Total_biomass,"Moser_Channel/data/Moser_Channel_2000_biomass_data.csv")
 
 Moser_Channel_2001 <- import("Moser_Channel/data/Moser_Channel_2001.xls")
 Moser_Channel_2001_Total_biomass <- summarise_at(Moser_Channel_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2001_Total_biomass$Year <- ('2001')
+Moser_Channel_2001_Total_biomass$Reef <- ('Moser Channel')
 ###output
 export(Moser_Channel_2001_Total_biomass,"Moser_Channel/data/Moser_Channel_2001_biomass_data.csv")
 
 Moser_Channel_2002 <- import("Moser_Channel/data/Moser_Channel_2002.xls")
 Moser_Channel_2002_Total_biomass <- summarise_at(Moser_Channel_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2002_Total_biomass$Year <- ('2002')
+Moser_Channel_2002_Total_biomass$Reef <- ('Moser Channel')
 ###output
 export(Moser_Channel_2002_Total_biomass,"Moser_Channel/data/Moser_Channel_2002_biomass_data.csv")
 
 Moser_Channel_2003 <- import("Moser_Channel/data/Moser_Channel_2003.xls")
 Moser_Channel_2003_Total_biomass <- summarise_at(Moser_Channel_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2003_Total_biomass$Year <- ('2003')
+Moser_Channel_2003_Total_biomass$Reef <- ('Moser Channel')
 ###output
 export(Moser_Channel_2003_Total_biomass,"Moser_Channel/data/Moser_Channel_2003_biomass_data.csv")
 
@@ -4249,6 +4889,7 @@ export(Moser_Channel_2003_Total_biomass,"Moser_Channel/data/Moser_Channel_2003_b
 Moser_Channel_2005 <- import("Moser_Channel/data/Moser_Channel_2005.xls")
 Moser_Channel_2005_Total_biomass <- summarise_at(Moser_Channel_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2005_Total_biomass$Year <- ('2005')
+Moser_Channel_2005_Total_biomass$Reef <- ('Moser Channel')
 ###output
 export(Moser_Channel_2005_Total_biomass,"Moser_Channel/data/Moser_Channel_2005_biomass_data.csv")
 
@@ -4256,6 +4897,7 @@ export(Moser_Channel_2005_Total_biomass,"Moser_Channel/data/Moser_Channel_2005_b
 Moser_Channel_2006 <- import("Moser_Channel/data/Moser_Channel_2006.xls")
 Moser_Channel_2006_Total_biomass <- summarise_at(Moser_Channel_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2006_Total_biomass$Year <- ('2006')
+Moser_Channel_2006_Total_biomass$Reef <- ('Moser Channel')
 
 ###output
 export(Moser_Channel_2006_Total_biomass,"Moser_Channel/data/Moser_Channel_2006_biomass_data.csv")
@@ -4263,6 +4905,7 @@ export(Moser_Channel_2006_Total_biomass,"Moser_Channel/data/Moser_Channel_2006_b
 Moser_Channel_2007 <- import("Moser_Channel/data/Moser_Channel_2007.xls")
 Moser_Channel_2007_Total_biomass <- summarise_at(Moser_Channel_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2007_Total_biomass$Year <- ('2007')
+Moser_Channel_2007_Total_biomass$Reef <- ('Moser Channel')
 ###output
 export(Moser_Channel_2007_Total_biomass,"Moser_Channel/data/Moser_Channel_2007_biomass_data.csv")
 
@@ -4270,6 +4913,7 @@ export(Moser_Channel_2007_Total_biomass,"Moser_Channel/data/Moser_Channel_2007_b
 Moser_Channel_2008 <- import("Moser_Channel/data/Moser_Channel_2008.xls")
 Moser_Channel_2008_Total_biomass <- summarise_at(Moser_Channel_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2008_Total_biomass$Year <- ('2008')
+Moser_Channel_2008_Total_biomass$Reef <- ('Moser Channel')
 
 ###output
 export(Moser_Channel_2008_Total_biomass,"Moser_Channel/data/Moser_Channel_2008_biomass_data.csv")
@@ -4277,6 +4921,7 @@ export(Moser_Channel_2008_Total_biomass,"Moser_Channel/data/Moser_Channel_2008_b
 Moser_Channel_2009 <- import("Moser_Channel/data/Moser_Channel_2009.xls")
 Moser_Channel_2009_Total_biomass <- summarise_at(Moser_Channel_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2009_Total_biomass$Year <- ('2009')
+Moser_Channel_2009_Total_biomass$Reef <- ('Moser Channel')
 ###output
 export(Moser_Channel_2009_Total_biomass,"Moser_Channel/data/Moser_Channel_2009_biomass_data.csv")
 
@@ -4284,6 +4929,7 @@ export(Moser_Channel_2009_Total_biomass,"Moser_Channel/data/Moser_Channel_2009_b
 Moser_Channel_2010 <- import("Moser_Channel/data/Moser_Channel_2010.xls")
 Moser_Channel_2010_Total_biomass <- summarise_at(Moser_Channel_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2010_Total_biomass$Year <- ('2010')
+Moser_Channel_2010_Total_biomass$Reef <- ('Moser Channel')
 
 ###output
 export(Moser_Channel_2010_Total_biomass,"Moser_Channel/data/Moser_Channel_2010_biomass_data.csv")
@@ -4291,6 +4937,7 @@ export(Moser_Channel_2010_Total_biomass,"Moser_Channel/data/Moser_Channel_2010_b
 Moser_Channel_2011 <- import("Moser_Channel/data/Moser_Channel_2011.xls")
 Moser_Channel_2011_Total_biomass <- summarise_at(Moser_Channel_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2011_Total_biomass$Year <- ('2011')
+Moser_Channel_2011_Total_biomass$Reef <- ('Moser Channel')
 ###output
 export(Moser_Channel_2011_Total_biomass,"Moser_Channel/data/Moser_Channel_2011_biomass_data.csv")
 
@@ -4298,6 +4945,7 @@ export(Moser_Channel_2011_Total_biomass,"Moser_Channel/data/Moser_Channel_2011_b
 Moser_Channel_2012 <- import("Moser_Channel/data/Moser_Channel_2012.xls")
 Moser_Channel_2012_Total_biomass <- summarise_at(Moser_Channel_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2012_Total_biomass$Year <- ('2012')
+Moser_Channel_2012_Total_biomass$Reef <- ('Moser Channel')
 
 ###output
 export(Moser_Channel_2012_Total_biomass,"Moser_Channel/data/Moser_Channel_2012_biomass_data.csv")
@@ -4305,6 +4953,7 @@ export(Moser_Channel_2012_Total_biomass,"Moser_Channel/data/Moser_Channel_2012_b
 Moser_Channel_2014 <- import("Moser_Channel/data/Moser_Channel_2014.xls")
 Moser_Channel_2014_Total_biomass <- summarise_at(Moser_Channel_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2014_Total_biomass$Year <- ('2014')
+Moser_Channel_2014_Total_biomass$Reef <- ('Moser Channel')
 
 ###output
 export(Moser_Channel_2014_Total_biomass,"Moser_Channel/data/Moser_Channel_2014_biomass_data.csv")
@@ -4312,6 +4961,7 @@ export(Moser_Channel_2014_Total_biomass,"Moser_Channel/data/Moser_Channel_2014_b
 Moser_Channel_2016 <- import("Moser_Channel/data/Moser_Channel_2016.xls")
 Moser_Channel_2016_Total_biomass <- summarise_at(Moser_Channel_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2016_Total_biomass$Year <- ('2016')
+Moser_Channel_2016_Total_biomass$Reef <- ('Moser Channel')
 
 ###output
 export(Moser_Channel_2016_Total_biomass,"Moser_Channel/data/Moser_Channel_2016_biomass_data.csv")
@@ -4319,6 +4969,7 @@ export(Moser_Channel_2016_Total_biomass,"Moser_Channel/data/Moser_Channel_2016_b
 Moser_Channel_2018 <- import("Moser_Channel/data/Moser_Channel_2018.xls")
 Moser_Channel_2018_Total_biomass <- summarise_at(Moser_Channel_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Moser_Channel_2018_Total_biomass$Year <- ('2018')
+Moser_Channel_2018_Total_biomass$Reef <- ('Moser Channel')
 ###output
 export(Moser_Channel_2018_Total_biomass,"Moser_Channel/data/Moser_Channel_2018_biomass_data.csv")
 
@@ -4371,30 +5022,35 @@ export(Moser_Channel_Reef_biomass_data_combined,"Moser_Channel/data/Moser_Channe
 Rawa_Reef_1999 <- import("Rawa_Reef/data/Rawa_Reef_1999.xls")
 Rawa_Reef_1999_Total_biomass <- summarise_at(Rawa_Reef_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_1999_Total_biomass$Year <- ('1999')
+Rawa_Reef_1999_Total_biomass$Reef <- ('Rawa Reef')
 ###output
 export(Rawa_Reef_1999_Total_biomass,"Rawa_Reef/data/Rawa_Reef_1999_biomass_data.csv")
 
 Rawa_Reef_2000 <- import("Rawa_Reef/data/Rawa_Reef_2000.xls")
 Rawa_Reef_2000_Total_biomass <- summarise_at(Rawa_Reef_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2000_Total_biomass$Year <- ('2000')
+Rawa_Reef_2000_Total_biomass$Reef <- ('Rawa Reef')
 ###output
 export(Rawa_Reef_2000_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2000_biomass_data.csv")
 
 Rawa_Reef_2001 <- import("Rawa_Reef/data/Rawa_Reef_2001.xls")
 Rawa_Reef_2001_Total_biomass <- summarise_at(Rawa_Reef_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2001_Total_biomass$Year <- ('2001')
+Rawa_Reef_2001_Total_biomass$Reef <- ('Rawa Reef')
 ###output
 export(Rawa_Reef_2001_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2001_biomass_data.csv")
 
 Rawa_Reef_2002 <- import("Rawa_Reef/data/Rawa_Reef_2002.xls")
 Rawa_Reef_2002_Total_biomass <- summarise_at(Rawa_Reef_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2002_Total_biomass$Year <- ('2002')
+Rawa_Reef_2002_Total_biomass$Reef <- ('Rawa Reef')
 ###output
 export(Rawa_Reef_2002_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2002_biomass_data.csv")
 
 Rawa_Reef_2003 <- import("Rawa_Reef/data/Rawa_Reef_2003.xls")
 Rawa_Reef_2003_Total_biomass <- summarise_at(Rawa_Reef_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2003_Total_biomass$Year <- ('2003')
+Rawa_Reef_2003_Total_biomass$Reef <- ('Rawa Reef')
 ###output
 export(Rawa_Reef_2003_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2003_biomass_data.csv")
 
@@ -4409,6 +5065,7 @@ export(Rawa_Reef_2003_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2003_biomass_data.
 Rawa_Reef_2005 <- import("Rawa_Reef/data/Rawa_Reef_2005.xls")
 Rawa_Reef_2005_Total_biomass <- summarise_at(Rawa_Reef_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2005_Total_biomass$Year <- ('2005')
+Rawa_Reef_2005_Total_biomass$Reef <- ('Rawa Reef')
 ###output
 export(Rawa_Reef_2005_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2005_biomass_data.csv")
 
@@ -4416,6 +5073,7 @@ export(Rawa_Reef_2005_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2005_biomass_data.
 Rawa_Reef_2006 <- import("Rawa_Reef/data/Rawa_Reef_2006.xls")
 Rawa_Reef_2006_Total_biomass <- summarise_at(Rawa_Reef_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2006_Total_biomass$Year <- ('2006')
+Rawa_Reef_2006_Total_biomass$Reef <- ('Rawa Reef')
 
 ###output
 export(Rawa_Reef_2006_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2006_biomass_data.csv")
@@ -4423,6 +5081,7 @@ export(Rawa_Reef_2006_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2006_biomass_data.
 Rawa_Reef_2007 <- import("Rawa_Reef/data/Rawa_Reef_2007.xls")
 Rawa_Reef_2007_Total_biomass <- summarise_at(Rawa_Reef_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2007_Total_biomass$Year <- ('2007')
+Rawa_Reef_2007_Total_biomass$Reef <- ('Rawa Reef')
 ###output
 export(Rawa_Reef_2007_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2007_biomass_data.csv")
 
@@ -4430,6 +5089,7 @@ export(Rawa_Reef_2007_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2007_biomass_data.
 Rawa_Reef_2008 <- import("Rawa_Reef/data/Rawa_Reef_2008.xls")
 Rawa_Reef_2008_Total_biomass <- summarise_at(Rawa_Reef_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2008_Total_biomass$Year <- ('2008')
+Rawa_Reef_2008_Total_biomass$Reef <- ('Rawa Reef')
 
 ###output
 export(Rawa_Reef_2008_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2008_biomass_data.csv")
@@ -4437,6 +5097,7 @@ export(Rawa_Reef_2008_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2008_biomass_data.
 Rawa_Reef_2009 <- import("Rawa_Reef/data/Rawa_Reef_2009.xls")
 Rawa_Reef_2009_Total_biomass <- summarise_at(Rawa_Reef_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2009_Total_biomass$Year <- ('2009')
+Rawa_Reef_2009_Total_biomass$Reef <- ('Rawa Reef')
 ###output
 export(Rawa_Reef_2009_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2009_biomass_data.csv")
 
@@ -4444,6 +5105,7 @@ export(Rawa_Reef_2009_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2009_biomass_data.
 Rawa_Reef_2010 <- import("Rawa_Reef/data/Rawa_Reef_2010.xls")
 Rawa_Reef_2010_Total_biomass <- summarise_at(Rawa_Reef_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2010_Total_biomass$Year <- ('2010')
+Rawa_Reef_2010_Total_biomass$Reef <- ('Rawa Reef')
 
 ###output
 export(Rawa_Reef_2010_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2010_biomass_data.csv")
@@ -4451,13 +5113,15 @@ export(Rawa_Reef_2010_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2010_biomass_data.
 Rawa_Reef_2011 <- import("Rawa_Reef/data/Rawa_Reef_2011.xls")
 Rawa_Reef_2011_Total_biomass <- summarise_at(Rawa_Reef_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2011_Total_biomass$Year <- ('2011')
-###output
+Rawa_Reef_2011_Total_biomass$Reef <- ('Rawa Reef')
+##output
 export(Rawa_Reef_2011_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2011_biomass_data.csv")
 
 
 Rawa_Reef_2012 <- import("Rawa_Reef/data/Rawa_Reef_2012.xls")
 Rawa_Reef_2012_Total_biomass <- summarise_at(Rawa_Reef_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2012_Total_biomass$Year <- ('2012')
+Rawa_Reef_2012_Total_biomass$Reef <- ('Rawa Reef')
 
 ###output
 export(Rawa_Reef_2012_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2012_biomass_data.csv")
@@ -4465,6 +5129,7 @@ export(Rawa_Reef_2012_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2012_biomass_data.
 Rawa_Reef_2014 <- import("Rawa_Reef/data/Rawa_Reef_2014.xls")
 Rawa_Reef_2014_Total_biomass <- summarise_at(Rawa_Reef_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2014_Total_biomass$Year <- ('2014')
+Rawa_Reef_2014_Total_biomass$Reef <- ('Rawa Reef')
 
 ###output
 export(Rawa_Reef_2014_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2014_biomass_data.csv")
@@ -4472,6 +5137,7 @@ export(Rawa_Reef_2014_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2014_biomass_data.
 Rawa_Reef_2016 <- import("Rawa_Reef/data/Rawa_Reef_2016.xls")
 Rawa_Reef_2016_Total_biomass <- summarise_at(Rawa_Reef_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2016_Total_biomass$Year <- ('2016')
+Rawa_Reef_2016_Total_biomass$Reef <- ('Rawa Reef')
 
 ###output
 export(Rawa_Reef_2016_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2016_biomass_data.csv")
@@ -4479,6 +5145,7 @@ export(Rawa_Reef_2016_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2016_biomass_data.
 Rawa_Reef_2018 <- import("Rawa_Reef/data/Rawa_Reef_2018.xls")
 Rawa_Reef_2018_Total_biomass <- summarise_at(Rawa_Reef_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Rawa_Reef_2018_Total_biomass$Year <- ('2018')
+Rawa_Reef_2018_Total_biomass$Reef <- ('Rawa Reef')
 ###output
 export(Rawa_Reef_2018_Total_biomass,"Rawa_Reef/data/Rawa_Reef_2018_biomass_data.csv")
 
@@ -4530,30 +5197,35 @@ export(Rawa_Reef_biomass_data_combined,"Rawa_Reef/data/Rawa_Reef_biomass_data_co
 Sombrero_Deep_1999 <- import("Sombrero_Deep/data/Sombrero_Deep_1999.xls")
 Sombrero_Deep_1999_Total_biomass <- summarise_at(Sombrero_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_1999_Total_biomass$Year <- ('1999')
+Sombrero_Deep_1999_Total_biomass$Reef <- ('Sombrero Deep')
 ###output
 export(Sombrero_Deep_1999_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_1999_biomass_data.csv")
 
 Sombrero_Deep_2000 <- import("Sombrero_Deep/data/Sombrero_Deep_2000.xls")
 Sombrero_Deep_2000_Total_biomass <- summarise_at(Sombrero_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2000_Total_biomass$Year <- ('2000')
+Sombrero_Deep_2000_Total_biomass$Reef <- ('Sombrero Deep')
 ###output
 export(Sombrero_Deep_2000_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2000_biomass_data.csv")
 
 Sombrero_Deep_2001 <- import("Sombrero_Deep/data/Sombrero_Deep_2001.xls")
 Sombrero_Deep_2001_Total_biomass <- summarise_at(Sombrero_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2001_Total_biomass$Year <- ('2001')
+Sombrero_Deep_2001_Total_biomass$Reef <- ('Sombrero Deep')
 ###output
 export(Sombrero_Deep_2001_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2001_biomass_data.csv")
 
 Sombrero_Deep_2002 <- import("Sombrero_Deep/data/Sombrero_Deep_2002.xls")
 Sombrero_Deep_2002_Total_biomass <- summarise_at(Sombrero_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2002_Total_biomass$Year <- ('2002')
+Sombrero_Deep_2002_Total_biomass$Reef <- ('Sombrero Deep')
 ###output
 export(Sombrero_Deep_2002_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2002_biomass_data.csv")
 
 Sombrero_Deep_2003 <- import("Sombrero_Deep/data/Sombrero_Deep_2003.xls")
 Sombrero_Deep_2003_Total_biomass <- summarise_at(Sombrero_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2003_Total_biomass$Year <- ('2003')
+Sombrero_Deep_2003_Total_biomass$Reef <- ('Sombrero Deep')
 ###output
 export(Sombrero_Deep_2003_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2003_biomass_data.csv")
 
@@ -4568,6 +5240,7 @@ export(Sombrero_Deep_2003_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2003_b
 Sombrero_Deep_2005 <- import("Sombrero_Deep/data/Sombrero_Deep_2005.xls")
 Sombrero_Deep_2005_Total_biomass <- summarise_at(Sombrero_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2005_Total_biomass$Year <- ('2005')
+Sombrero_Deep_2005_Total_biomass$Reef <- ('Sombrero Deep')
 ###output
 export(Sombrero_Deep_2005_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2005_biomass_data.csv")
 
@@ -4575,6 +5248,7 @@ export(Sombrero_Deep_2005_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2005_b
 Sombrero_Deep_2006 <- import("Sombrero_Deep/data/Sombrero_Deep_2006.xls")
 Sombrero_Deep_2006_Total_biomass <- summarise_at(Sombrero_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2006_Total_biomass$Year <- ('2006')
+Sombrero_Deep_2006_Total_biomass$Reef <- ('Sombrero Deep')
 
 ###output
 export(Sombrero_Deep_2006_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2006_biomass_data.csv")
@@ -4582,6 +5256,7 @@ export(Sombrero_Deep_2006_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2006_b
 Sombrero_Deep_2007 <- import("Sombrero_Deep/data/Sombrero_Deep_2007.xls")
 Sombrero_Deep_2007_Total_biomass <- summarise_at(Sombrero_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2007_Total_biomass$Year <- ('2007')
+Sombrero_Deep_2007_Total_biomass$Reef <- ('Sombrero Deep')
 ###output
 export(Sombrero_Deep_2007_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2007_biomass_data.csv")
 
@@ -4589,6 +5264,7 @@ export(Sombrero_Deep_2007_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2007_b
 Sombrero_Deep_2008 <- import("Sombrero_Deep/data/Sombrero_Deep_2008.xls")
 Sombrero_Deep_2008_Total_biomass <- summarise_at(Sombrero_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2008_Total_biomass$Year <- ('2008')
+Sombrero_Deep_2008_Total_biomass$Reef <- ('Sombrero Deep')
 
 ###output
 export(Sombrero_Deep_2008_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2008_biomass_data.csv")
@@ -4596,6 +5272,7 @@ export(Sombrero_Deep_2008_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2008_b
 Sombrero_Deep_2009 <- import("Sombrero_Deep/data/Sombrero_Deep_2009.xls")
 Sombrero_Deep_2009_Total_biomass <- summarise_at(Sombrero_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2009_Total_biomass$Year <- ('2009')
+Sombrero_Deep_2009_Total_biomass$Reef <- ('Sombrero Deep')
 ###output
 export(Sombrero_Deep_2009_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2009_biomass_data.csv")
 
@@ -4603,6 +5280,7 @@ export(Sombrero_Deep_2009_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2009_b
 Sombrero_Deep_2010 <- import("Sombrero_Deep/data/Sombrero_Deep_2010.xls")
 Sombrero_Deep_2010_Total_biomass <- summarise_at(Sombrero_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2010_Total_biomass$Year <- ('2010')
+Sombrero_Deep_2010_Total_biomass$Reef <- ('Sombrero Deep')
 
 ###output
 export(Sombrero_Deep_2010_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2010_biomass_data.csv")
@@ -4610,6 +5288,7 @@ export(Sombrero_Deep_2010_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2010_b
 Sombrero_Deep_2011 <- import("Sombrero_Deep/data/Sombrero_Deep_2011.xls")
 Sombrero_Deep_2011_Total_biomass <- summarise_at(Sombrero_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2011_Total_biomass$Year <- ('2011')
+Sombrero_Deep_2011_Total_biomass$Reef <- ('Sombrero Deep')
 ###output
 export(Sombrero_Deep_2011_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2011_biomass_data.csv")
 
@@ -4617,6 +5296,7 @@ export(Sombrero_Deep_2011_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2011_b
 Sombrero_Deep_2012 <- import("Sombrero_Deep/data/Sombrero_Deep_2012.xls")
 Sombrero_Deep_2012_Total_biomass <- summarise_at(Sombrero_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2012_Total_biomass$Year <- ('2012')
+Sombrero_Deep_2012_Total_biomass$Reef <- ('Sombrero Deep')
 
 ###output
 export(Sombrero_Deep_2012_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2012_biomass_data.csv")
@@ -4624,6 +5304,7 @@ export(Sombrero_Deep_2012_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2012_b
 Sombrero_Deep_2014 <- import("Sombrero_Deep/data/Sombrero_Deep_2014.xls")
 Sombrero_Deep_2014_Total_biomass <- summarise_at(Sombrero_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2014_Total_biomass$Year <- ('2014')
+Sombrero_Deep_2014_Total_biomass$Reef <- ('Sombrero Deep')
 
 ###output
 export(Sombrero_Deep_2014_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2014_biomass_data.csv")
@@ -4631,6 +5312,7 @@ export(Sombrero_Deep_2014_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2014_b
 Sombrero_Deep_2016 <- import("Sombrero_Deep/data/Sombrero_Deep_2016.xls")
 Sombrero_Deep_2016_Total_biomass <- summarise_at(Sombrero_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2016_Total_biomass$Year <- ('2016')
+Sombrero_Deep_2016_Total_biomass$Reef <- ('Sombrero Deep')
 
 ###output
 export(Sombrero_Deep_2016_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2016_biomass_data.csv")
@@ -4638,6 +5320,8 @@ export(Sombrero_Deep_2016_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2016_b
 Sombrero_Deep_2018 <- import("Sombrero_Deep/data/Sombrero_Deep_2018.xls")
 Sombrero_Deep_2018_Total_biomass <- summarise_at(Sombrero_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Deep_2018_Total_biomass$Year <- ('2018')
+Sombrero_Deep_2018_Total_biomass$Reef <- ('Sombrero Deep')
+
 ###output
 export(Sombrero_Deep_2018_Total_biomass,"Sombrero_Deep/data/Sombrero_Deep_2018_biomass_data.csv")
 
@@ -4690,30 +5374,35 @@ export(Sombrero_Deep_Reef_biomass_data_combined,"Sombrero_Deep/data/Sombrero_Dee
 Sombrero_Shallow_1999 <- import("Sombrero_Shallow/data/Sombrero_Shallow_1999.xls")
 Sombrero_Shallow_1999_Total_biomass <- summarise_at(Sombrero_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_1999_Total_biomass$Year <- ('1999')
+Sombrero_Shallow_1999_Total_biomass$Reef <- ('Sombrero Shallow')
 ###output
 export(Sombrero_Shallow_1999_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_1999_biomass_data.csv")
 
 Sombrero_Shallow_2000 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2000.xls")
 Sombrero_Shallow_2000_Total_biomass <- summarise_at(Sombrero_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2000_Total_biomass$Year <- ('2000')
+Sombrero_Shallow_2000_Total_biomass$Reef <- ('Sombrero Shallow')
 ###output
 export(Sombrero_Shallow_2000_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2000_biomass_data.csv")
 
 Sombrero_Shallow_2001 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2001.xls")
 Sombrero_Shallow_2001_Total_biomass <- summarise_at(Sombrero_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2001_Total_biomass$Year <- ('2001')
+Sombrero_Shallow_2001_Total_biomass$Reef <- ('Sombrero Shallow')
 ###output
 export(Sombrero_Shallow_2001_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2001_biomass_data.csv")
 
 Sombrero_Shallow_2002 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2002.xls")
 Sombrero_Shallow_2002_Total_biomass <- summarise_at(Sombrero_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2002_Total_biomass$Year <- ('2002')
+Sombrero_Shallow_2002_Total_biomass$Reef <- ('Sombrero Shallow')
 ###output
 export(Sombrero_Shallow_2002_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2002_biomass_data.csv")
 
 Sombrero_Shallow_2003 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2003.xls")
 Sombrero_Shallow_2003_Total_biomass <- summarise_at(Sombrero_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2003_Total_biomass$Year <- ('2003')
+Sombrero_Shallow_2003_Total_biomass$Reef <- ('Sombrero Shallow')
 ###output
 export(Sombrero_Shallow_2003_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2003_biomass_data.csv")
 
@@ -4728,6 +5417,7 @@ export(Sombrero_Shallow_2003_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2005 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2005.xls")
 Sombrero_Shallow_2005_Total_biomass <- summarise_at(Sombrero_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2005_Total_biomass$Year <- ('2005')
+Sombrero_Shallow_2005_Total_biomass$Reef <- ('Sombrero Shallow')
 ###output
 export(Sombrero_Shallow_2005_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2005_biomass_data.csv")
 
@@ -4735,6 +5425,7 @@ export(Sombrero_Shallow_2005_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2006 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2006.xls")
 Sombrero_Shallow_2006_Total_biomass <- summarise_at(Sombrero_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2006_Total_biomass$Year <- ('2006')
+Sombrero_Shallow_2006_Total_biomass$Reef <- ('Sombrero Shallow')
 
 ###output
 export(Sombrero_Shallow_2006_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2006_biomass_data.csv")
@@ -4742,6 +5433,7 @@ export(Sombrero_Shallow_2006_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2007 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2007.xls")
 Sombrero_Shallow_2007_Total_biomass <- summarise_at(Sombrero_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2007_Total_biomass$Year <- ('2007')
+Sombrero_Shallow_2007_Total_biomass$Reef <- ('Sombrero Shallow')
 ###output
 export(Sombrero_Shallow_2007_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2007_biomass_data.csv")
 
@@ -4749,6 +5441,7 @@ export(Sombrero_Shallow_2007_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2008 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2008.xls")
 Sombrero_Shallow_2008_Total_biomass <- summarise_at(Sombrero_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2008_Total_biomass$Year <- ('2008')
+Sombrero_Shallow_2008_Total_biomass$Reef <- ('Sombrero Shallow')
 
 ###output
 export(Sombrero_Shallow_2008_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2008_biomass_data.csv")
@@ -4756,6 +5449,7 @@ export(Sombrero_Shallow_2008_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2009 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2009.xls")
 Sombrero_Shallow_2009_Total_biomass <- summarise_at(Sombrero_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2009_Total_biomass$Year <- ('2009')
+Sombrero_Shallow_2009_Total_biomass$Reef <- ('Sombrero Shallow')
 ###output
 export(Sombrero_Shallow_2009_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2009_biomass_data.csv")
 
@@ -4763,6 +5457,7 @@ export(Sombrero_Shallow_2009_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2010 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2010.xls")
 Sombrero_Shallow_2010_Total_biomass <- summarise_at(Sombrero_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2010_Total_biomass$Year <- ('2010')
+Sombrero_Shallow_2010_Total_biomass$Reef <- ('Sombrero Shallow')
 
 ###output
 export(Sombrero_Shallow_2010_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2010_biomass_data.csv")
@@ -4770,6 +5465,7 @@ export(Sombrero_Shallow_2010_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2011 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2011.xls")
 Sombrero_Shallow_2011_Total_biomass <- summarise_at(Sombrero_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2011_Total_biomass$Year <- ('2011')
+Sombrero_Shallow_2011_Total_biomass$Reef <- ('Sombrero Shallow')
 ###output
 export(Sombrero_Shallow_2011_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2011_biomass_data.csv")
 
@@ -4777,6 +5473,7 @@ export(Sombrero_Shallow_2011_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2012 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2012.xls")
 Sombrero_Shallow_2012_Total_biomass <- summarise_at(Sombrero_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2012_Total_biomass$Year <- ('2012')
+Sombrero_Shallow_2012_Total_biomass$Reef <- ('Sombrero Shallow')
 
 ###output
 export(Sombrero_Shallow_2012_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2012_biomass_data.csv")
@@ -4784,6 +5481,7 @@ export(Sombrero_Shallow_2012_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2014 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2014.xls")
 Sombrero_Shallow_2014_Total_biomass <- summarise_at(Sombrero_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2014_Total_biomass$Year <- ('2014')
+Sombrero_Shallow_2014_Total_biomass$Reef <- ('Sombrero Shallow')
 
 ###output
 export(Sombrero_Shallow_2014_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2014_biomass_data.csv")
@@ -4791,6 +5489,7 @@ export(Sombrero_Shallow_2014_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2016 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2016.xls")
 Sombrero_Shallow_2016_Total_biomass <- summarise_at(Sombrero_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2016_Total_biomass$Year <- ('2016')
+Sombrero_Shallow_2016_Total_biomass$Reef <- ('Sombrero Shallow')
 
 ###output
 export(Sombrero_Shallow_2016_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2016_biomass_data.csv")
@@ -4798,6 +5497,7 @@ export(Sombrero_Shallow_2016_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shall
 Sombrero_Shallow_2018 <- import("Sombrero_Shallow/data/Sombrero_Shallow_2018.xls")
 Sombrero_Shallow_2018_Total_biomass <- summarise_at(Sombrero_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Sombrero_Shallow_2018_Total_biomass$Year <- ('2018')
+Sombrero_Shallow_2018_Total_biomass$Reef <- ('Sombrero Shallow')
 ###output
 export(Sombrero_Shallow_2018_Total_biomass,"Sombrero_Shallow/data/Sombrero_Shallow_2018_biomass_data.csv")
 
@@ -4850,30 +5550,35 @@ export(Sombrero_Shallow_Reef_biomass_data_combined,"Sombrero_Shallow/data/Sombre
 Tennessee_Deep_1999 <- import("Tennessee_Deep/data/Tennessee_Deep_1999.xls")
 Tennessee_Deep_1999_Total_biomass <- summarise_at(Tennessee_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_1999_Total_biomass$Year <- ('1999')
+Tennessee_Deep_1999_Total_biomass$Reef <- ('Tennessee Deep')
 ###output
 export(Tennessee_Deep_1999_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_1999_biomass_data.csv")
 
 Tennessee_Deep_2000 <- import("Tennessee_Deep/data/Tennessee_Deep_2000.xls")
 Tennessee_Deep_2000_Total_biomass <- summarise_at(Tennessee_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2000_Total_biomass$Year <- ('2000')
+Tennessee_Deep_2000_Total_biomass$Reef <- ('Tennessee Deep')
 ###output
 export(Tennessee_Deep_2000_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2000_biomass_data.csv")
 
 Tennessee_Deep_2001 <- import("Tennessee_Deep/data/Tennessee_Deep_2001.xls")
 Tennessee_Deep_2001_Total_biomass <- summarise_at(Tennessee_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2001_Total_biomass$Year <- ('2001')
+Tennessee_Deep_2001_Total_biomass$Reef <- ('Tennessee Deep')
 ###output
 export(Tennessee_Deep_2001_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2001_biomass_data.csv")
 
 Tennessee_Deep_2002 <- import("Tennessee_Deep/data/Tennessee_Deep_2002.xls")
 Tennessee_Deep_2002_Total_biomass <- summarise_at(Tennessee_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2002_Total_biomass$Year <- ('2002')
+Tennessee_Deep_2002_Total_biomass$Reef <- ('Tennessee Deep')
 ###output
 export(Tennessee_Deep_2002_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2002_biomass_data.csv")
 
 Tennessee_Deep_2003 <- import("Tennessee_Deep/data/Tennessee_Deep_2003.xls")
 Tennessee_Deep_2003_Total_biomass <- summarise_at(Tennessee_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2003_Total_biomass$Year <- ('2003')
+Tennessee_Deep_2003_Total_biomass$Reef <- ('Tennessee Deep')
 ###output
 export(Tennessee_Deep_2003_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2003_biomass_data.csv")
 
@@ -4888,6 +5593,7 @@ export(Tennessee_Deep_2003_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_200
 Tennessee_Deep_2005 <- import("Tennessee_Deep/data/Tennessee_Deep_2005.xls")
 Tennessee_Deep_2005_Total_biomass <- summarise_at(Tennessee_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2005_Total_biomass$Year <- ('2005')
+Tennessee_Deep_2005_Total_biomass$Reef <- ('Tennessee Deep')
 ###output
 export(Tennessee_Deep_2005_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2005_biomass_data.csv")
 
@@ -4895,6 +5601,7 @@ export(Tennessee_Deep_2005_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_200
 Tennessee_Deep_2006 <- import("Tennessee_Deep/data/Tennessee_Deep_2006.xls")
 Tennessee_Deep_2006_Total_biomass <- summarise_at(Tennessee_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2006_Total_biomass$Year <- ('2006')
+Tennessee_Deep_2006_Total_biomass$Reef <- ('Tennessee Deep')
 
 ###output
 export(Tennessee_Deep_2006_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2006_biomass_data.csv")
@@ -4902,6 +5609,7 @@ export(Tennessee_Deep_2006_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_200
 Tennessee_Deep_2007 <- import("Tennessee_Deep/data/Tennessee_Deep_2007.xls")
 Tennessee_Deep_2007_Total_biomass <- summarise_at(Tennessee_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2007_Total_biomass$Year <- ('2007')
+Tennessee_Deep_2007_Total_biomass$Reef <- ('Tennessee Deep')
 ###output
 export(Tennessee_Deep_2007_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2007_biomass_data.csv")
 
@@ -4909,6 +5617,7 @@ export(Tennessee_Deep_2007_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_200
 Tennessee_Deep_2008 <- import("Tennessee_Deep/data/Tennessee_Deep_2008.xls")
 Tennessee_Deep_2008_Total_biomass <- summarise_at(Tennessee_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2008_Total_biomass$Year <- ('2008')
+Tennessee_Deep_2008_Total_biomass$Reef <- ('Tennessee Deep')
 
 ###output
 export(Tennessee_Deep_2008_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2008_biomass_data.csv")
@@ -4916,6 +5625,8 @@ export(Tennessee_Deep_2008_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_200
 Tennessee_Deep_2009 <- import("Tennessee_Deep/data/Tennessee_Deep_2009.xls")
 Tennessee_Deep_2009_Total_biomass <- summarise_at(Tennessee_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2009_Total_biomass$Year <- ('2009')
+Tennessee_Deep_2009_Total_biomass$Reef <- ('Tennessee Deep')
+
 ###output
 export(Tennessee_Deep_2009_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2009_biomass_data.csv")
 
@@ -4923,6 +5634,7 @@ export(Tennessee_Deep_2009_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_200
 Tennessee_Deep_2010 <- import("Tennessee_Deep/data/Tennessee_Deep_2010.xls")
 Tennessee_Deep_2010_Total_biomass <- summarise_at(Tennessee_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2010_Total_biomass$Year <- ('2010')
+Tennessee_Deep_2010_Total_biomass$Reef <- ('Tennessee Deep')
 
 ###output
 export(Tennessee_Deep_2010_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2010_biomass_data.csv")
@@ -4930,6 +5642,7 @@ export(Tennessee_Deep_2010_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_201
 Tennessee_Deep_2011 <- import("Tennessee_Deep/data/Tennessee_Deep_2011.xls")
 Tennessee_Deep_2011_Total_biomass <- summarise_at(Tennessee_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2011_Total_biomass$Year <- ('2011')
+Tennessee_Deep_2011_Total_biomass$Reef <- ('Tennessee Deep')
 ###output
 export(Tennessee_Deep_2011_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2011_biomass_data.csv")
 
@@ -4937,6 +5650,7 @@ export(Tennessee_Deep_2011_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_201
 Tennessee_Deep_2012 <- import("Tennessee_Deep/data/Tennessee_Deep_2012.xls")
 Tennessee_Deep_2012_Total_biomass <- summarise_at(Tennessee_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2012_Total_biomass$Year <- ('2012')
+Tennessee_Deep_2012_Total_biomass$Reef <- ('Tennessee Deep')
 
 ###output
 export(Tennessee_Deep_2012_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2012_biomass_data.csv")
@@ -4944,6 +5658,7 @@ export(Tennessee_Deep_2012_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_201
 Tennessee_Deep_2014 <- import("Tennessee_Deep/data/Tennessee_Deep_2014.xls")
 Tennessee_Deep_2014_Total_biomass <- summarise_at(Tennessee_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2014_Total_biomass$Year <- ('2014')
+Tennessee_Deep_2014_Total_biomass$Reef <- ('Tennessee Deep')
 
 ###output
 export(Tennessee_Deep_2014_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2014_biomass_data.csv")
@@ -4951,6 +5666,7 @@ export(Tennessee_Deep_2014_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_201
 Tennessee_Deep_2016 <- import("Tennessee_Deep/data/Tennessee_Deep_2016.xls")
 Tennessee_Deep_2016_Total_biomass <- summarise_at(Tennessee_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2016_Total_biomass$Year <- ('2016')
+Tennessee_Deep_2016_Total_biomass$Reef <- ('Tennessee Deep')
 
 ###output
 export(Tennessee_Deep_2016_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2016_biomass_data.csv")
@@ -4958,6 +5674,7 @@ export(Tennessee_Deep_2016_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_201
 Tennessee_Deep_2018 <- import("Tennessee_Deep/data/Tennessee_Deep_2018.xls")
 Tennessee_Deep_2018_Total_biomass <- summarise_at(Tennessee_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Deep_2018_Total_biomass$Year <- ('2018')
+Tennessee_Deep_2018_Total_biomass$Reef <- ('Tennessee Deep')
 ###output
 export(Tennessee_Deep_2018_Total_biomass,"Tennessee_Deep/data/Tennessee_Deep_2018_biomass_data.csv")
 
@@ -5010,30 +5727,35 @@ export(Tennessee_Deep_Reef_biomass_data_combined,"Tennessee_Deep/data/Tennessee_
 Tennessee_Shallow_1999 <- import("Tennessee_Shallow/data/Tennessee_Shallow_1999.xls")
 Tennessee_Shallow_1999_Total_biomass <- summarise_at(Tennessee_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_1999_Total_biomass$Year <- ('1999')
+Tennessee_Shallow_1999_Total_biomass$Reef <- ('Tennessee Shallow')
 ###output
 export(Tennessee_Shallow_1999_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_1999_biomass_data.csv")
 
 Tennessee_Shallow_2000 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2000.xls")
 Tennessee_Shallow_2000_Total_biomass <- summarise_at(Tennessee_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2000_Total_biomass$Year <- ('2000')
+Tennessee_Shallow_2000_Total_biomass$Reef <- ('Tennessee Shallow')
 ###output
 export(Tennessee_Shallow_2000_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2000_biomass_data.csv")
 
 Tennessee_Shallow_2001 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2001.xls")
 Tennessee_Shallow_2001_Total_biomass <- summarise_at(Tennessee_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2001_Total_biomass$Year <- ('2001')
+Tennessee_Shallow_2001_Total_biomass$Reef <- ('Tennessee Shallow')
 ###output
 export(Tennessee_Shallow_2001_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2001_biomass_data.csv")
 
 Tennessee_Shallow_2002 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2002.xls")
 Tennessee_Shallow_2002_Total_biomass <- summarise_at(Tennessee_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2002_Total_biomass$Year <- ('2002')
+Tennessee_Shallow_2002_Total_biomass$Reef <- ('Tennessee Shallow')
 ###output
 export(Tennessee_Shallow_2002_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2002_biomass_data.csv")
 
 Tennessee_Shallow_2003 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2003.xls")
 Tennessee_Shallow_2003_Total_biomass <- summarise_at(Tennessee_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2003_Total_biomass$Year <- ('2003')
+Tennessee_Shallow_2003_Total_biomass$Reef <- ('Tennessee Shallow')
 ###output
 export(Tennessee_Shallow_2003_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2003_biomass_data.csv")
 
@@ -5048,6 +5770,7 @@ export(Tennessee_Shallow_2003_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2005 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2005.xls")
 Tennessee_Shallow_2005_Total_biomass <- summarise_at(Tennessee_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2005_Total_biomass$Year <- ('2005')
+Tennessee_Shallow_2005_Total_biomass$Reef <- ('Tennessee Shallow')
 ###output
 export(Tennessee_Shallow_2005_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2005_biomass_data.csv")
 
@@ -5055,6 +5778,7 @@ export(Tennessee_Shallow_2005_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2006 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2006.xls")
 Tennessee_Shallow_2006_Total_biomass <- summarise_at(Tennessee_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2006_Total_biomass$Year <- ('2006')
+Tennessee_Shallow_2006_Total_biomass$Reef <- ('Tennessee Shallow')
 
 ###output
 export(Tennessee_Shallow_2006_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2006_biomass_data.csv")
@@ -5062,6 +5786,7 @@ export(Tennessee_Shallow_2006_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2007 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2007.xls")
 Tennessee_Shallow_2007_Total_biomass <- summarise_at(Tennessee_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2007_Total_biomass$Year <- ('2007')
+Tennessee_Shallow_2007_Total_biomass$Reef <- ('Tennessee Shallow')
 ###output
 export(Tennessee_Shallow_2007_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2007_biomass_data.csv")
 
@@ -5069,6 +5794,7 @@ export(Tennessee_Shallow_2007_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2008 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2008.xls")
 Tennessee_Shallow_2008_Total_biomass <- summarise_at(Tennessee_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2008_Total_biomass$Year <- ('2008')
+Tennessee_Shallow_2008_Total_biomass$Reef <- ('Tennessee Shallow')
 
 ###output
 export(Tennessee_Shallow_2008_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2008_biomass_data.csv")
@@ -5076,6 +5802,7 @@ export(Tennessee_Shallow_2008_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2009 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2009.xls")
 Tennessee_Shallow_2009_Total_biomass <- summarise_at(Tennessee_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2009_Total_biomass$Year <- ('2009')
+Tennessee_Shallow_2009_Total_biomass$Reef <- ('Tennessee Shallow')
 ###output
 export(Tennessee_Shallow_2009_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2009_biomass_data.csv")
 
@@ -5083,6 +5810,7 @@ export(Tennessee_Shallow_2009_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2010 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2010.xls")
 Tennessee_Shallow_2010_Total_biomass <- summarise_at(Tennessee_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2010_Total_biomass$Year <- ('2010')
+Tennessee_Shallow_2010_Total_biomass$Reef <- ('Tennessee Shallow')
 
 ###output
 export(Tennessee_Shallow_2010_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2010_biomass_data.csv")
@@ -5090,6 +5818,7 @@ export(Tennessee_Shallow_2010_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2011 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2011.xls")
 Tennessee_Shallow_2011_Total_biomass <- summarise_at(Tennessee_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2011_Total_biomass$Year <- ('2011')
+Tennessee_Shallow_2011_Total_biomass$Reef <- ('Tennessee Shallow')
 ###output
 export(Tennessee_Shallow_2011_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2011_biomass_data.csv")
 
@@ -5097,6 +5826,7 @@ export(Tennessee_Shallow_2011_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2012 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2012.xls")
 Tennessee_Shallow_2012_Total_biomass <- summarise_at(Tennessee_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2012_Total_biomass$Year <- ('2012')
+Tennessee_Shallow_2012_Total_biomass$Reef <- ('Tennessee Shallow')
 
 ###output
 export(Tennessee_Shallow_2012_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2012_biomass_data.csv")
@@ -5104,6 +5834,7 @@ export(Tennessee_Shallow_2012_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2014 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2014.xls")
 Tennessee_Shallow_2014_Total_biomass <- summarise_at(Tennessee_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2014_Total_biomass$Year <- ('2014')
+Tennessee_Shallow_2014_Total_biomass$Reef <- ('Tennessee Shallow')
 
 ###output
 export(Tennessee_Shallow_2014_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2014_biomass_data.csv")
@@ -5111,6 +5842,7 @@ export(Tennessee_Shallow_2014_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2016 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2016.xls")
 Tennessee_Shallow_2016_Total_biomass <- summarise_at(Tennessee_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2016_Total_biomass$Year <- ('2016')
+Tennessee_Shallow_2016_Total_biomass$Reef <- ('Tennessee Shallow')
 
 ###output
 export(Tennessee_Shallow_2016_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2016_biomass_data.csv")
@@ -5118,6 +5850,7 @@ export(Tennessee_Shallow_2016_Total_biomass,"Tennessee_Shallow/data/Tennessee_Sh
 Tennessee_Shallow_2018 <- import("Tennessee_Shallow/data/Tennessee_Shallow_2018.xls")
 Tennessee_Shallow_2018_Total_biomass <- summarise_at(Tennessee_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Tennessee_Shallow_2018_Total_biomass$Year <- ('2018')
+Tennessee_Shallow_2018_Total_biomass$Reef <- ('Tennessee Shallow')
 ###output
 export(Tennessee_Shallow_2018_Total_biomass,"Tennessee_Shallow/data/Tennessee_Shallow_2018_biomass_data.csv")
 
@@ -5170,30 +5903,36 @@ export(Tennessee_Shallow_Reef_biomass_data_combined,"Tennessee_Shallow/data/Tenn
 Thor_1999 <- import("Thor/data/Thor_1999.xls")
 Thor_1999_Total_biomass <- summarise_at(Thor_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_1999_Total_biomass$Year <- ('1999')
+Thor_1999_Total_biomass$Reef <- ('Thor')
+
 ###output
 export(Thor_1999_Total_biomass,"Thor/data/Thor_1999_biomass_data.csv")
 
 Thor_2000 <- import("Thor/data/Thor_2000.xls")
 Thor_2000_Total_biomass <- summarise_at(Thor_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2000_Total_biomass$Year <- ('2000')
+Thor_2000_Total_biomass$Reef <- ('Thor')
 ###output
 export(Thor_2000_Total_biomass,"Thor/data/Thor_2000_biomass_data.csv")
 
 Thor_2001 <- import("Thor/data/Thor_2001.xls")
 Thor_2001_Total_biomass <- summarise_at(Thor_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2001_Total_biomass$Year <- ('2001')
+Thor_2001_Total_biomass$Reef <- ('Thor')
 ###output
 export(Thor_2001_Total_biomass,"Thor/data/Thor_2001_biomass_data.csv")
 
 Thor_2002 <- import("Thor/data/Thor_2002.xls")
 Thor_2002_Total_biomass <- summarise_at(Thor_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2002_Total_biomass$Year <- ('2002')
+Thor_2002_Total_biomass$Reef <- ('Thor')
 ###output
 export(Thor_2002_Total_biomass,"Thor/data/Thor_2002_biomass_data.csv")
 
 Thor_2003 <- import("Thor/data/Thor_2003.xls")
 Thor_2003_Total_biomass <- summarise_at(Thor_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2003_Total_biomass$Year <- ('2003')
+Thor_2003_Total_biomass$Reef <- ('Thor')
 ###output
 export(Thor_2003_Total_biomass,"Thor/data/Thor_2003_biomass_data.csv")
 
@@ -5208,6 +5947,7 @@ export(Thor_2003_Total_biomass,"Thor/data/Thor_2003_biomass_data.csv")
 Thor_2005 <- import("Thor/data/Thor_2005.xls")
 Thor_2005_Total_biomass <- summarise_at(Thor_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2005_Total_biomass$Year <- ('2005')
+Thor_2005_Total_biomass$Reef <- ('Thor')
 ###output
 export(Thor_2005_Total_biomass,"Thor/data/Thor_2005_biomass_data.csv")
 
@@ -5215,6 +5955,7 @@ export(Thor_2005_Total_biomass,"Thor/data/Thor_2005_biomass_data.csv")
 Thor_2006 <- import("Thor/data/Thor_2006.xls")
 Thor_2006_Total_biomass <- summarise_at(Thor_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2006_Total_biomass$Year <- ('2006')
+Thor_2006_Total_biomass$Reef <- ('Thor')
 
 ###output
 export(Thor_2006_Total_biomass,"Thor/data/Thor_2006_biomass_data.csv")
@@ -5222,6 +5963,7 @@ export(Thor_2006_Total_biomass,"Thor/data/Thor_2006_biomass_data.csv")
 Thor_2007 <- import("Thor/data/Thor_2007.xls")
 Thor_2007_Total_biomass <- summarise_at(Thor_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2007_Total_biomass$Year <- ('2007')
+Thor_2007_Total_biomass$Reef <- ('Thor')
 ###output
 export(Thor_2007_Total_biomass,"Thor/data/Thor_2007_biomass_data.csv")
 
@@ -5229,6 +5971,7 @@ export(Thor_2007_Total_biomass,"Thor/data/Thor_2007_biomass_data.csv")
 Thor_2008 <- import("Thor/data/Thor_2008.xls")
 Thor_2008_Total_biomass <- summarise_at(Thor_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2008_Total_biomass$Year <- ('2008')
+Thor_2008_Total_biomass$Reef <- ('Thor')
 
 ###output
 export(Thor_2008_Total_biomass,"Thor/data/Thor_2008_biomass_data.csv")
@@ -5236,6 +5979,7 @@ export(Thor_2008_Total_biomass,"Thor/data/Thor_2008_biomass_data.csv")
 Thor_2009 <- import("Thor/data/Thor_2009.xls")
 Thor_2009_Total_biomass <- summarise_at(Thor_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2009_Total_biomass$Year <- ('2009')
+Thor_2009_Total_biomass$Reef <- ('Thor')
 ###output
 export(Thor_2009_Total_biomass,"Thor/data/Thor_2009_biomass_data.csv")
 
@@ -5243,6 +5987,7 @@ export(Thor_2009_Total_biomass,"Thor/data/Thor_2009_biomass_data.csv")
 Thor_2010 <- import("Thor/data/Thor_2010.xls")
 Thor_2010_Total_biomass <- summarise_at(Thor_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2010_Total_biomass$Year <- ('2010')
+Thor_2010_Total_biomass$Reef <- ('Thor')
 
 ###output
 export(Thor_2010_Total_biomass,"Thor/data/Thor_2010_biomass_data.csv")
@@ -5250,6 +5995,7 @@ export(Thor_2010_Total_biomass,"Thor/data/Thor_2010_biomass_data.csv")
 Thor_2011 <- import("Thor/data/Thor_2011.xls")
 Thor_2011_Total_biomass <- summarise_at(Thor_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2011_Total_biomass$Year <- ('2011')
+Thor_2011_Total_biomass$Reef <- ('Thor')
 ###output
 export(Thor_2011_Total_biomass,"Thor/data/Thor_2011_biomass_data.csv")
 
@@ -5257,6 +6003,7 @@ export(Thor_2011_Total_biomass,"Thor/data/Thor_2011_biomass_data.csv")
 Thor_2012 <- import("Thor/data/Thor_2012.xls")
 Thor_2012_Total_biomass <- summarise_at(Thor_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2012_Total_biomass$Year <- ('2012')
+Thor_2012_Total_biomass$Reef <- ('Thor')
 
 ###output
 export(Thor_2012_Total_biomass,"Thor/data/Thor_2012_biomass_data.csv")
@@ -5264,6 +6011,7 @@ export(Thor_2012_Total_biomass,"Thor/data/Thor_2012_biomass_data.csv")
 Thor_2014 <- import("Thor/data/Thor_2014.xls")
 Thor_2014_Total_biomass <- summarise_at(Thor_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2014_Total_biomass$Year <- ('2014')
+Thor_2014_Total_biomass$Reef <- ('Thor')
 
 ###output
 export(Thor_2014_Total_biomass,"Thor/data/Thor_2014_biomass_data.csv")
@@ -5271,6 +6019,7 @@ export(Thor_2014_Total_biomass,"Thor/data/Thor_2014_biomass_data.csv")
 Thor_2016 <- import("Thor/data/Thor_2016.xls")
 Thor_2016_Total_biomass <- summarise_at(Thor_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2016_Total_biomass$Year <- ('2016')
+Thor_2016_Total_biomass$Reef <- ('Thor')
 
 ###output
 export(Thor_2016_Total_biomass,"Thor/data/Thor_2016_biomass_data.csv")
@@ -5278,6 +6027,7 @@ export(Thor_2016_Total_biomass,"Thor/data/Thor_2016_biomass_data.csv")
 Thor_2018 <- import("Thor/data/Thor_2018.xls")
 Thor_2018_Total_biomass <- summarise_at(Thor_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Thor_2018_Total_biomass$Year <- ('2018')
+Thor_2018_Total_biomass$Reef <- ('Thor')
 ###output
 export(Thor_2018_Total_biomass,"Thor/data/Thor_2018_biomass_data.csv")
 
@@ -5330,30 +6080,35 @@ export(Thor_Reef_biomass_data_combined,"Thor/data/Thor_biomass_data_combined.csv
 West_Turtle_Shoal_1999 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_1999.xls")
 West_Turtle_Shoal_1999_Total_biomass <- summarise_at(West_Turtle_Shoal_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_1999_Total_biomass$Year <- ('1999')
+West_Turtle_Shoal_1999_Total_biomass$Reef <- ('West Turtle Shoal')
 ###output
 export(West_Turtle_Shoal_1999_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_1999_biomass_data.csv")
 
 West_Turtle_Shoal_2000 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2000.xls")
 West_Turtle_Shoal_2000_Total_biomass <- summarise_at(West_Turtle_Shoal_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2000_Total_biomass$Year <- ('2000')
+West_Turtle_Shoal_2000_Total_biomass$Reef <- ('West Turtle Shoal')
 ###output
 export(West_Turtle_Shoal_2000_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2000_biomass_data.csv")
 
 West_Turtle_Shoal_2001 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2001.xls")
 West_Turtle_Shoal_2001_Total_biomass <- summarise_at(West_Turtle_Shoal_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2001_Total_biomass$Year <- ('2001')
+West_Turtle_Shoal_2001_Total_biomass$Reef <- ('West Turtle Shoal')
 ###output
 export(West_Turtle_Shoal_2001_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2001_biomass_data.csv")
 
 West_Turtle_Shoal_2002 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2002.xls")
 West_Turtle_Shoal_2002_Total_biomass <- summarise_at(West_Turtle_Shoal_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2002_Total_biomass$Year <- ('2002')
+West_Turtle_Shoal_2002_Total_biomass$Reef <- ('West Turtle Shoal')
 ###output
 export(West_Turtle_Shoal_2002_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2002_biomass_data.csv")
 
 West_Turtle_Shoal_2003 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2003.xls")
 West_Turtle_Shoal_2003_Total_biomass <- summarise_at(West_Turtle_Shoal_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2003_Total_biomass$Year <- ('2003')
+West_Turtle_Shoal_2003_Total_biomass$Reef <- ('West Turtle Shoal')
 ###output
 export(West_Turtle_Shoal_2003_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2003_biomass_data.csv")
 
@@ -5368,6 +6123,7 @@ export(West_Turtle_Shoal_2003_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2005 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2005.xls")
 West_Turtle_Shoal_2005_Total_biomass <- summarise_at(West_Turtle_Shoal_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2005_Total_biomass$Year <- ('2005')
+West_Turtle_Shoal_2005_Total_biomass$Reef <- ('West Turtle Shoal')
 ###output
 export(West_Turtle_Shoal_2005_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2005_biomass_data.csv")
 
@@ -5375,6 +6131,7 @@ export(West_Turtle_Shoal_2005_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2006 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2006.xls")
 West_Turtle_Shoal_2006_Total_biomass <- summarise_at(West_Turtle_Shoal_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2006_Total_biomass$Year <- ('2006')
+West_Turtle_Shoal_2006_Total_biomass$Reef <- ('West Turtle Shoal')
 
 ###output
 export(West_Turtle_Shoal_2006_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2006_biomass_data.csv")
@@ -5382,6 +6139,7 @@ export(West_Turtle_Shoal_2006_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2007 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2007.xls")
 West_Turtle_Shoal_2007_Total_biomass <- summarise_at(West_Turtle_Shoal_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2007_Total_biomass$Year <- ('2007')
+West_Turtle_Shoal_2007_Total_biomass$Reef <- ('West Turtle Shoal')
 ###output
 export(West_Turtle_Shoal_2007_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2007_biomass_data.csv")
 
@@ -5389,6 +6147,7 @@ export(West_Turtle_Shoal_2007_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2008 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2008.xls")
 West_Turtle_Shoal_2008_Total_biomass <- summarise_at(West_Turtle_Shoal_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2008_Total_biomass$Year <- ('2008')
+West_Turtle_Shoal_2008_Total_biomass$Reef <- ('West Turtle Shoal')
 
 ###output
 export(West_Turtle_Shoal_2008_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2008_biomass_data.csv")
@@ -5396,6 +6155,7 @@ export(West_Turtle_Shoal_2008_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2009 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2009.xls")
 West_Turtle_Shoal_2009_Total_biomass <- summarise_at(West_Turtle_Shoal_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2009_Total_biomass$Year <- ('2009')
+West_Turtle_Shoal_2009_Total_biomass$Reef <- ('West Turtle Shoal')
 ###output
 export(West_Turtle_Shoal_2009_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2009_biomass_data.csv")
 
@@ -5403,6 +6163,7 @@ export(West_Turtle_Shoal_2009_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2010 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2010.xls")
 West_Turtle_Shoal_2010_Total_biomass <- summarise_at(West_Turtle_Shoal_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2010_Total_biomass$Year <- ('2010')
+West_Turtle_Shoal_2010_Total_biomass$Reef <- ('West Turtle Shoal')
 
 ###output
 export(West_Turtle_Shoal_2010_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2010_biomass_data.csv")
@@ -5410,6 +6171,7 @@ export(West_Turtle_Shoal_2010_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2011 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2011.xls")
 West_Turtle_Shoal_2011_Total_biomass <- summarise_at(West_Turtle_Shoal_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2011_Total_biomass$Year <- ('2011')
+West_Turtle_Shoal_2011_Total_biomass$Reef <- ('West Turtle Shoal')
 ###output
 export(West_Turtle_Shoal_2011_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2011_biomass_data.csv")
 
@@ -5417,6 +6179,7 @@ export(West_Turtle_Shoal_2011_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2012 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2012.xls")
 West_Turtle_Shoal_2012_Total_biomass <- summarise_at(West_Turtle_Shoal_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2012_Total_biomass$Year <- ('2012')
+West_Turtle_Shoal_2012_Total_biomass$Reef <- ('West Turtle Shoal')
 
 ###output
 export(West_Turtle_Shoal_2012_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2012_biomass_data.csv")
@@ -5424,6 +6187,7 @@ export(West_Turtle_Shoal_2012_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2014 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2014.xls")
 West_Turtle_Shoal_2014_Total_biomass <- summarise_at(West_Turtle_Shoal_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2014_Total_biomass$Year <- ('2014')
+West_Turtle_Shoal_2014_Total_biomass$Reef <- ('West Turtle Shoal')
 
 ###output
 export(West_Turtle_Shoal_2014_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2014_biomass_data.csv")
@@ -5431,6 +6195,7 @@ export(West_Turtle_Shoal_2014_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2016 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2016.xls")
 West_Turtle_Shoal_2016_Total_biomass <- summarise_at(West_Turtle_Shoal_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2016_Total_biomass$Year <- ('2016')
+West_Turtle_Shoal_2016_Total_biomass$Reef <- ('West Turtle Shoal')
 
 ###output
 export(West_Turtle_Shoal_2016_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2016_biomass_data.csv")
@@ -5438,6 +6203,7 @@ export(West_Turtle_Shoal_2016_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_
 West_Turtle_Shoal_2018 <- import("West_Turtle_Shoal/data/West_Turtle_Shoal_2018.xls")
 West_Turtle_Shoal_2018_Total_biomass <- summarise_at(West_Turtle_Shoal_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 West_Turtle_Shoal_2018_Total_biomass$Year <- ('2018')
+West_Turtle_Shoal_2018_Total_biomass$Reef <- ('West Turtle Shoal')
 ###output
 export(West_Turtle_Shoal_2018_Total_biomass,"West_Turtle_Shoal/data/West_Turtle_Shoal_2018_biomass_data.csv")
 
@@ -5494,30 +6260,35 @@ setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/UK")
 Admiral_1999 <- import("Admiral/data/Admiral_1999.xls")
 Admiral_1999_Total_biomass <- summarise_at(Admiral_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_1999_Total_biomass$Year <- ('1999')
+Admiral_1999_Total_biomass$Reef <- ('Admiral')
 ###output
 export(Admiral_1999_Total_biomass,"Admiral/data/Admiral_1999_biomass_data.csv")
 
 Admiral_2000 <- import("Admiral/data/Admiral_2000.xls")
 Admiral_2000_Total_biomass <- summarise_at(Admiral_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2000_Total_biomass$Year <- ('2000')
+Admiral_2000_Total_biomass$Reef <- ('Admiral')
 ###output
 export(Admiral_2000_Total_biomass,"Admiral/data/Admiral_2000_biomass_data.csv")
 
 Admiral_2001 <- import("Admiral/data/Admiral_2001.xls")
 Admiral_2001_Total_biomass <- summarise_at(Admiral_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2001_Total_biomass$Year <- ('2001')
+Admiral_2001_Total_biomass$Reef <- ('Admiral')
 ###output
 export(Admiral_2001_Total_biomass,"Admiral/data/Admiral_2001_biomass_data.csv")
 
 Admiral_2002 <- import("Admiral/data/Admiral_2002.xls")
 Admiral_2002_Total_biomass <- summarise_at(Admiral_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2002_Total_biomass$Year <- ('2002')
+Admiral_2002_Total_biomass$Reef <- ('Admiral')
 ###output
 export(Admiral_2002_Total_biomass,"Admiral/data/Admiral_2002_biomass_data.csv")
 
 Admiral_2003 <- import("Admiral/data/Admiral_2003.xls")
 Admiral_2003_Total_biomass <- summarise_at(Admiral_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2003_Total_biomass$Year <- ('2003')
+Admiral_2003_Total_biomass$Reef <- ('Admiral')
 ###output
 export(Admiral_2003_Total_biomass,"Admiral/data/Admiral_2003_biomass_data.csv")
 
@@ -5525,6 +6296,7 @@ export(Admiral_2003_Total_biomass,"Admiral/data/Admiral_2003_biomass_data.csv")
 Admiral_2004 <- import("Admiral/data/Admiral_2004.xls")
 Admiral_2004_Total_biomass <- summarise_at(Admiral_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2004_Total_biomass$Year <- ('2004')
+Admiral_2004_Total_biomass$Reef <- ('Admiral')
 
 ###output
 export(Admiral_2004_Total_biomass,"Admiral/data/Admiral_2004_biomass_data.csv")
@@ -5532,6 +6304,7 @@ export(Admiral_2004_Total_biomass,"Admiral/data/Admiral_2004_biomass_data.csv")
 Admiral_2005 <- import("Admiral/data/Admiral_2005.xls")
 Admiral_2005_Total_biomass <- summarise_at(Admiral_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2005_Total_biomass$Year <- ('2005')
+Admiral_2005_Total_biomass$Reef <- ('Admiral')
 ###output
 export(Admiral_2005_Total_biomass,"Admiral/data/Admiral_2005_biomass_data.csv")
 
@@ -5539,6 +6312,7 @@ export(Admiral_2005_Total_biomass,"Admiral/data/Admiral_2005_biomass_data.csv")
 Admiral_2006 <- import("Admiral/data/Admiral_2006.xls")
 Admiral_2006_Total_biomass <- summarise_at(Admiral_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2006_Total_biomass$Year <- ('2006')
+Admiral_2006_Total_biomass$Reef <- ('Admiral')
 
 ###output
 export(Admiral_2006_Total_biomass,"Admiral/data/Admiral_2006_biomass_data.csv")
@@ -5546,6 +6320,7 @@ export(Admiral_2006_Total_biomass,"Admiral/data/Admiral_2006_biomass_data.csv")
 Admiral_2007 <- import("Admiral/data/Admiral_2007.xls")
 Admiral_2007_Total_biomass <- summarise_at(Admiral_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2007_Total_biomass$Year <- ('2007')
+Admiral_2007_Total_biomass$Reef <- ('Admiral')
 ###output
 export(Admiral_2007_Total_biomass,"Admiral/data/Admiral_2007_biomass_data.csv")
 
@@ -5553,6 +6328,7 @@ export(Admiral_2007_Total_biomass,"Admiral/data/Admiral_2007_biomass_data.csv")
 Admiral_2008 <- import("Admiral/data/Admiral_2008.xls")
 Admiral_2008_Total_biomass <- summarise_at(Admiral_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2008_Total_biomass$Year <- ('2008')
+Admiral_2008_Total_biomass$Reef <- ('Admiral')
 
 ###output
 export(Admiral_2008_Total_biomass,"Admiral/data/Admiral_2008_biomass_data.csv")
@@ -5560,6 +6336,7 @@ export(Admiral_2008_Total_biomass,"Admiral/data/Admiral_2008_biomass_data.csv")
 Admiral_2009 <- import("Admiral/data/Admiral_2009.xls")
 Admiral_2009_Total_biomass <- summarise_at(Admiral_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2009_Total_biomass$Year <- ('2009')
+Admiral_2009_Total_biomass$Reef <- ('Admiral')
 ###output
 export(Admiral_2009_Total_biomass,"Admiral/data/Admiral_2009_biomass_data.csv")
 
@@ -5567,6 +6344,7 @@ export(Admiral_2009_Total_biomass,"Admiral/data/Admiral_2009_biomass_data.csv")
 Admiral_2010 <- import("Admiral/data/Admiral_2010.xls")
 Admiral_2010_Total_biomass <- summarise_at(Admiral_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2010_Total_biomass$Year <- ('2010')
+Admiral_2010_Total_biomass$Reef <- ('Admiral')
 
 ###output
 export(Admiral_2010_Total_biomass,"Admiral/data/Admiral_2010_biomass_data.csv")
@@ -5574,6 +6352,7 @@ export(Admiral_2010_Total_biomass,"Admiral/data/Admiral_2010_biomass_data.csv")
 Admiral_2011 <- import("Admiral/data/Admiral_2011.xls")
 Admiral_2011_Total_biomass <- summarise_at(Admiral_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2011_Total_biomass$Year <- ('2011')
+Admiral_2011_Total_biomass$Reef <- ('Admiral')
 ###output
 export(Admiral_2011_Total_biomass,"Admiral/data/Admiral_2011_biomass_data.csv")
 
@@ -5581,6 +6360,7 @@ export(Admiral_2011_Total_biomass,"Admiral/data/Admiral_2011_biomass_data.csv")
 Admiral_2012 <- import("Admiral/data/Admiral_2012.xls")
 Admiral_2012_Total_biomass <- summarise_at(Admiral_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2012_Total_biomass$Year <- ('2012')
+Admiral_2012_Total_biomass$Reef <- ('Admiral')
 
 ###output
 export(Admiral_2012_Total_biomass,"Admiral/data/Admiral_2012_biomass_data.csv")
@@ -5588,6 +6368,7 @@ export(Admiral_2012_Total_biomass,"Admiral/data/Admiral_2012_biomass_data.csv")
 Admiral_2014 <- import("Admiral/data/Admiral_2014.xls")
 Admiral_2014_Total_biomass <- summarise_at(Admiral_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2014_Total_biomass$Year <- ('2014')
+Admiral_2014_Total_biomass$Reef <- ('Admiral')
 
 ###output
 export(Admiral_2014_Total_biomass,"Admiral/data/Admiral_2014_biomass_data.csv")
@@ -5595,6 +6376,7 @@ export(Admiral_2014_Total_biomass,"Admiral/data/Admiral_2014_biomass_data.csv")
 Admiral_2016 <- import("Admiral/data/Admiral_2016.xls")
 Admiral_2016_Total_biomass <- summarise_at(Admiral_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2016_Total_biomass$Year <- ('2016')
+Admiral_2016_Total_biomass$Reef <- ('Admiral')
 
 ###output
 export(Admiral_2016_Total_biomass,"Admiral/data/Admiral_2016_biomass_data.csv")
@@ -5602,6 +6384,7 @@ export(Admiral_2016_Total_biomass,"Admiral/data/Admiral_2016_biomass_data.csv")
 Admiral_2018 <- import("Admiral/data/Admiral_2018.xls")
 Admiral_2018_Total_biomass <- summarise_at(Admiral_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Admiral_2018_Total_biomass$Year <- ('2018')
+Admiral_2018_Total_biomass$Reef <- ('Admiral')
 ###output
 export(Admiral_2018_Total_biomass,"Admiral/data/Admiral_2018_biomass_data.csv")
 
@@ -5652,30 +6435,35 @@ export(Admiral_Reef_biomass_data_combined,"Admiral/data/Admiral_biomass_data_com
 Burr_Fish_1999 <- import("Burr_Fish/data/Burr_Fish_1999.xls")
 Burr_Fish_1999_Total_biomass <- summarise_at(Burr_Fish_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_1999_Total_biomass$Year <- ('1999')
+Burr_Fish_1999_Total_biomass$Reef <- ('Burr Fish')
 ###output
 export(Burr_Fish_1999_Total_biomass,"Burr_Fish/data/Burr_Fish_1999_biomass_data.csv")
 
 Burr_Fish_2000 <- import("Burr_Fish/data/Burr_Fish_2000.xls")
 Burr_Fish_2000_Total_biomass <- summarise_at(Burr_Fish_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2000_Total_biomass$Year <- ('2000')
+Burr_Fish_2000_Total_biomass$Reef <- ('Burr Fish')
 ###output
 export(Burr_Fish_2000_Total_biomass,"Burr_Fish/data/Burr_Fish_2000_biomass_data.csv")
 
 Burr_Fish_2001 <- import("Burr_Fish/data/Burr_Fish_2001.xls")
 Burr_Fish_2001_Total_biomass <- summarise_at(Burr_Fish_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2001_Total_biomass$Year <- ('2001')
+Burr_Fish_2001_Total_biomass$Reef <- ('Burr Fish')
 ###output
 export(Burr_Fish_2001_Total_biomass,"Burr_Fish/data/Burr_Fish_2001_biomass_data.csv")
 
 Burr_Fish_2002 <- import("Burr_Fish/data/Burr_Fish_2002.xls")
 Burr_Fish_2002_Total_biomass <- summarise_at(Burr_Fish_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2002_Total_biomass$Year <- ('2002')
+Burr_Fish_2002_Total_biomass$Reef <- ('Burr Fish')
 ###output
 export(Burr_Fish_2002_Total_biomass,"Burr_Fish/data/Burr_Fish_2002_biomass_data.csv")
 
 Burr_Fish_2003 <- import("Burr_Fish/data/Burr_Fish_2003.xls")
 Burr_Fish_2003_Total_biomass <- summarise_at(Burr_Fish_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2003_Total_biomass$Year <- ('2003')
+Burr_Fish_2003_Total_biomass$Reef <- ('Burr Fish')
 ###output
 export(Burr_Fish_2003_Total_biomass,"Burr_Fish/data/Burr_Fish_2003_biomass_data.csv")
 
@@ -5683,6 +6471,7 @@ export(Burr_Fish_2003_Total_biomass,"Burr_Fish/data/Burr_Fish_2003_biomass_data.
 Burr_Fish_2004 <- import("Burr_Fish/data/Burr_Fish_2004.xls")
 Burr_Fish_2004_Total_biomass <- summarise_at(Burr_Fish_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2004_Total_biomass$Year <- ('2004')
+Burr_Fish_2004_Total_biomass$Reef <- ('Burr Fish')
 
 ###output
 export(Burr_Fish_2004_Total_biomass,"Burr_Fish/data/Burr_Fish_2004_biomass_data.csv")
@@ -5690,6 +6479,7 @@ export(Burr_Fish_2004_Total_biomass,"Burr_Fish/data/Burr_Fish_2004_biomass_data.
 Burr_Fish_2005 <- import("Burr_Fish/data/Burr_Fish_2005.xls")
 Burr_Fish_2005_Total_biomass <- summarise_at(Burr_Fish_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2005_Total_biomass$Year <- ('2005')
+Burr_Fish_2005_Total_biomass$Reef <- ('Burr Fish')
 ###output
 export(Burr_Fish_2005_Total_biomass,"Burr_Fish/data/Burr_Fish_2005_biomass_data.csv")
 
@@ -5697,6 +6487,7 @@ export(Burr_Fish_2005_Total_biomass,"Burr_Fish/data/Burr_Fish_2005_biomass_data.
 Burr_Fish_2006 <- import("Burr_Fish/data/Burr_Fish_2006.xls")
 Burr_Fish_2006_Total_biomass <- summarise_at(Burr_Fish_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2006_Total_biomass$Year <- ('2006')
+Burr_Fish_2006_Total_biomass$Reef <- ('Burr Fish')
 
 ###output
 export(Burr_Fish_2006_Total_biomass,"Burr_Fish/data/Burr_Fish_2006_biomass_data.csv")
@@ -5704,6 +6495,7 @@ export(Burr_Fish_2006_Total_biomass,"Burr_Fish/data/Burr_Fish_2006_biomass_data.
 Burr_Fish_2007 <- import("Burr_Fish/data/Burr_Fish_2007.xls")
 Burr_Fish_2007_Total_biomass <- summarise_at(Burr_Fish_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2007_Total_biomass$Year <- ('2007')
+Burr_Fish_2007_Total_biomass$Reef <- ('Burr Fish')
 ###output
 export(Burr_Fish_2007_Total_biomass,"Burr_Fish/data/Burr_Fish_2007_biomass_data.csv")
 
@@ -5711,6 +6503,7 @@ export(Burr_Fish_2007_Total_biomass,"Burr_Fish/data/Burr_Fish_2007_biomass_data.
 Burr_Fish_2008 <- import("Burr_Fish/data/Burr_Fish_2008.xls")
 Burr_Fish_2008_Total_biomass <- summarise_at(Burr_Fish_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2008_Total_biomass$Year <- ('2008')
+Burr_Fish_2008_Total_biomass$Reef <- ('Burr Fish')
 
 ###output
 export(Burr_Fish_2008_Total_biomass,"Burr_Fish/data/Burr_Fish_2008_biomass_data.csv")
@@ -5718,6 +6511,7 @@ export(Burr_Fish_2008_Total_biomass,"Burr_Fish/data/Burr_Fish_2008_biomass_data.
 Burr_Fish_2009 <- import("Burr_Fish/data/Burr_Fish_2009.xls")
 Burr_Fish_2009_Total_biomass <- summarise_at(Burr_Fish_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2009_Total_biomass$Year <- ('2009')
+Burr_Fish_2009_Total_biomass$Reef <- ('Burr Fish')
 ###output
 export(Burr_Fish_2009_Total_biomass,"Burr_Fish/data/Burr_Fish_2009_biomass_data.csv")
 
@@ -5725,6 +6519,7 @@ export(Burr_Fish_2009_Total_biomass,"Burr_Fish/data/Burr_Fish_2009_biomass_data.
 Burr_Fish_2010 <- import("Burr_Fish/data/Burr_Fish_2010.xls")
 Burr_Fish_2010_Total_biomass <- summarise_at(Burr_Fish_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2010_Total_biomass$Year <- ('2010')
+Burr_Fish_2010_Total_biomass$Reef <- ('Burr Fish')
 
 ###output
 export(Burr_Fish_2010_Total_biomass,"Burr_Fish/data/Burr_Fish_2010_biomass_data.csv")
@@ -5732,6 +6527,7 @@ export(Burr_Fish_2010_Total_biomass,"Burr_Fish/data/Burr_Fish_2010_biomass_data.
 Burr_Fish_2011 <- import("Burr_Fish/data/Burr_Fish_2011.xls")
 Burr_Fish_2011_Total_biomass <- summarise_at(Burr_Fish_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2011_Total_biomass$Year <- ('2011')
+Burr_Fish_2011_Total_biomass$Reef <- ('Burr Fish')
 ###output
 export(Burr_Fish_2011_Total_biomass,"Burr_Fish/data/Burr_Fish_2011_biomass_data.csv")
 
@@ -5739,6 +6535,7 @@ export(Burr_Fish_2011_Total_biomass,"Burr_Fish/data/Burr_Fish_2011_biomass_data.
 Burr_Fish_2012 <- import("Burr_Fish/data/Burr_Fish_2012.xls")
 Burr_Fish_2012_Total_biomass <- summarise_at(Burr_Fish_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2012_Total_biomass$Year <- ('2012')
+Burr_Fish_2012_Total_biomass$Reef <- ('Burr Fish')
 
 ###output
 export(Burr_Fish_2012_Total_biomass,"Burr_Fish/data/Burr_Fish_2012_biomass_data.csv")
@@ -5746,6 +6543,7 @@ export(Burr_Fish_2012_Total_biomass,"Burr_Fish/data/Burr_Fish_2012_biomass_data.
 Burr_Fish_2014 <- import("Burr_Fish/data/Burr_Fish_2014.xls")
 Burr_Fish_2014_Total_biomass <- summarise_at(Burr_Fish_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2014_Total_biomass$Year <- ('2014')
+Burr_Fish_2014_Total_biomass$Reef <- ('Burr Fish')
 
 ###output
 export(Burr_Fish_2014_Total_biomass,"Burr_Fish/data/Burr_Fish_2014_biomass_data.csv")
@@ -5753,6 +6551,7 @@ export(Burr_Fish_2014_Total_biomass,"Burr_Fish/data/Burr_Fish_2014_biomass_data.
 Burr_Fish_2016 <- import("Burr_Fish/data/Burr_Fish_2016.xls")
 Burr_Fish_2016_Total_biomass <- summarise_at(Burr_Fish_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2016_Total_biomass$Year <- ('2016')
+Burr_Fish_2016_Total_biomass$Reef <- ('Burr Fish')
 
 ###output
 export(Burr_Fish_2016_Total_biomass,"Burr_Fish/data/Burr_Fish_2016_biomass_data.csv")
@@ -5760,6 +6559,7 @@ export(Burr_Fish_2016_Total_biomass,"Burr_Fish/data/Burr_Fish_2016_biomass_data.
 Burr_Fish_2018 <- import("Burr_Fish/data/Burr_Fish_2018.xls")
 Burr_Fish_2018_Total_biomass <- summarise_at(Burr_Fish_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Burr_Fish_2018_Total_biomass$Year <- ('2018')
+Burr_Fish_2018_Total_biomass$Reef <- ('Burr Fish')
 ###output
 export(Burr_Fish_2018_Total_biomass,"Burr_Fish/data/Burr_Fish_2018_biomass_data.csv")
 
@@ -5810,30 +6610,35 @@ export(Burr_Fish_Reef_biomass_data_combined,"Burr_Fish/data/Burr_Fish_biomass_da
 Carysfort_Deep_1999 <- import("Carysfort_Deep/data/Carysfort_Deep_1999.xls")
 Carysfort_Deep_1999_Total_biomass <- summarise_at(Carysfort_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_1999_Total_biomass$Year <- ('1999')
+Carysfort_Deep_1999_Total_biomass$Reef <- ('Carysfort Deep')
 ###output
 export(Carysfort_Deep_1999_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_1999_biomass_data.csv")
 
 Carysfort_Deep_2000 <- import("Carysfort_Deep/data/Carysfort_Deep_2000.xls")
 Carysfort_Deep_2000_Total_biomass <- summarise_at(Carysfort_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2000_Total_biomass$Year <- ('2000')
+Carysfort_Deep_2000_Total_biomass$Reef <- ('Carysfort Deep')
 ###output
 export(Carysfort_Deep_2000_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2000_biomass_data.csv")
 
 Carysfort_Deep_2001 <- import("Carysfort_Deep/data/Carysfort_Deep_2001.xls")
 Carysfort_Deep_2001_Total_biomass <- summarise_at(Carysfort_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2001_Total_biomass$Year <- ('2001')
+Carysfort_Deep_2001_Total_biomass$Reef <- ('Carysfort Deep')
 ###output
 export(Carysfort_Deep_2001_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2001_biomass_data.csv")
 
 Carysfort_Deep_2002 <- import("Carysfort_Deep/data/Carysfort_Deep_2002.xls")
 Carysfort_Deep_2002_Total_biomass <- summarise_at(Carysfort_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2002_Total_biomass$Year <- ('2002')
+Carysfort_Deep_2002_Total_biomass$Reef <- ('Carysfort Deep')
 ###output
 export(Carysfort_Deep_2002_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2002_biomass_data.csv")
 
 Carysfort_Deep_2003 <- import("Carysfort_Deep/data/Carysfort_Deep_2003.xls")
 Carysfort_Deep_2003_Total_biomass <- summarise_at(Carysfort_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2003_Total_biomass$Year <- ('2003')
+Carysfort_Deep_2003_Total_biomass$Reef <- ('Carysfort Deep')
 ###output
 export(Carysfort_Deep_2003_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2003_biomass_data.csv")
 
@@ -5841,6 +6646,7 @@ export(Carysfort_Deep_2003_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_200
 Carysfort_Deep_2004 <- import("Carysfort_Deep/data/Carysfort_Deep_2004.xls")
 Carysfort_Deep_2004_Total_biomass <- summarise_at(Carysfort_Deep_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2004_Total_biomass$Year <- ('2004')
+Carysfort_Deep_2004_Total_biomass$Reef <- ('Carysfort Deep')
 
 ###output
 export(Carysfort_Deep_2004_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2004_biomass_data.csv")
@@ -5848,6 +6654,7 @@ export(Carysfort_Deep_2004_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_200
 Carysfort_Deep_2005 <- import("Carysfort_Deep/data/Carysfort_Deep_2005.xls")
 Carysfort_Deep_2005_Total_biomass <- summarise_at(Carysfort_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2005_Total_biomass$Year <- ('2005')
+Carysfort_Deep_2005_Total_biomass$Reef <- ('Carysfort Deep')
 ###output
 export(Carysfort_Deep_2005_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2005_biomass_data.csv")
 
@@ -5855,6 +6662,7 @@ export(Carysfort_Deep_2005_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_200
 Carysfort_Deep_2006 <- import("Carysfort_Deep/data/Carysfort_Deep_2006.xls")
 Carysfort_Deep_2006_Total_biomass <- summarise_at(Carysfort_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2006_Total_biomass$Year <- ('2006')
+Carysfort_Deep_2006_Total_biomass$Reef <- ('Carysfort Deep')
 
 ###output
 export(Carysfort_Deep_2006_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2006_biomass_data.csv")
@@ -5862,6 +6670,7 @@ export(Carysfort_Deep_2006_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_200
 Carysfort_Deep_2007 <- import("Carysfort_Deep/data/Carysfort_Deep_2007.xls")
 Carysfort_Deep_2007_Total_biomass <- summarise_at(Carysfort_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2007_Total_biomass$Year <- ('2007')
+Carysfort_Deep_2007_Total_biomass$Reef <- ('Carysfort Deep')
 ###output
 export(Carysfort_Deep_2007_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2007_biomass_data.csv")
 
@@ -5869,6 +6678,7 @@ export(Carysfort_Deep_2007_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_200
 Carysfort_Deep_2008 <- import("Carysfort_Deep/data/Carysfort_Deep_2008.xls")
 Carysfort_Deep_2008_Total_biomass <- summarise_at(Carysfort_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2008_Total_biomass$Year <- ('2008')
+Carysfort_Deep_2008_Total_biomass$Reef <- ('Carysfort Deep')
 
 ###output
 export(Carysfort_Deep_2008_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2008_biomass_data.csv")
@@ -5876,6 +6686,7 @@ export(Carysfort_Deep_2008_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_200
 Carysfort_Deep_2009 <- import("Carysfort_Deep/data/Carysfort_Deep_2009.xls")
 Carysfort_Deep_2009_Total_biomass <- summarise_at(Carysfort_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2009_Total_biomass$Year <- ('2009')
+Carysfort_Deep_2009_Total_biomass$Reef <- ('Carysfort Deep')
 ###output
 export(Carysfort_Deep_2009_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2009_biomass_data.csv")
 
@@ -5883,6 +6694,7 @@ export(Carysfort_Deep_2009_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_200
 Carysfort_Deep_2010 <- import("Carysfort_Deep/data/Carysfort_Deep_2010.xls")
 Carysfort_Deep_2010_Total_biomass <- summarise_at(Carysfort_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2010_Total_biomass$Year <- ('2010')
+Carysfort_Deep_2010_Total_biomass$Reef <- ('Carysfort Deep')
 
 ###output
 export(Carysfort_Deep_2010_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2010_biomass_data.csv")
@@ -5890,6 +6702,7 @@ export(Carysfort_Deep_2010_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_201
 Carysfort_Deep_2011 <- import("Carysfort_Deep/data/Carysfort_Deep_2011.xls")
 Carysfort_Deep_2011_Total_biomass <- summarise_at(Carysfort_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2011_Total_biomass$Year <- ('2011')
+Carysfort_Deep_2011_Total_biomass$Reef <- ('Carysfort Deep')
 ###output
 export(Carysfort_Deep_2011_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2011_biomass_data.csv")
 
@@ -5897,6 +6710,7 @@ export(Carysfort_Deep_2011_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_201
 Carysfort_Deep_2012 <- import("Carysfort_Deep/data/Carysfort_Deep_2012.xls")
 Carysfort_Deep_2012_Total_biomass <- summarise_at(Carysfort_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2012_Total_biomass$Year <- ('2012')
+Carysfort_Deep_2012_Total_biomass$Reef <- ('Carysfort Deep')
 
 ###output
 export(Carysfort_Deep_2012_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2012_biomass_data.csv")
@@ -5904,6 +6718,7 @@ export(Carysfort_Deep_2012_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_201
 Carysfort_Deep_2014 <- import("Carysfort_Deep/data/Carysfort_Deep_2014.xls")
 Carysfort_Deep_2014_Total_biomass <- summarise_at(Carysfort_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2014_Total_biomass$Year <- ('2014')
+Carysfort_Deep_2014_Total_biomass$Reef <- ('Carysfort Deep')
 
 ###output
 export(Carysfort_Deep_2014_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2014_biomass_data.csv")
@@ -5911,6 +6726,7 @@ export(Carysfort_Deep_2014_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_201
 Carysfort_Deep_2016 <- import("Carysfort_Deep/data/Carysfort_Deep_2016.xls")
 Carysfort_Deep_2016_Total_biomass <- summarise_at(Carysfort_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2016_Total_biomass$Year <- ('2016')
+Carysfort_Deep_2016_Total_biomass$Reef <- ('Carysfort Deep')
 
 ###output
 export(Carysfort_Deep_2016_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2016_biomass_data.csv")
@@ -5918,6 +6734,7 @@ export(Carysfort_Deep_2016_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_201
 Carysfort_Deep_2018 <- import("Carysfort_Deep/data/Carysfort_Deep_2018.xls")
 Carysfort_Deep_2018_Total_biomass <- summarise_at(Carysfort_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Deep_2018_Total_biomass$Year <- ('2018')
+Carysfort_Deep_2018_Total_biomass$Reef <- ('Carysfort Deep')
 ###output
 export(Carysfort_Deep_2018_Total_biomass,"Carysfort_Deep/data/Carysfort_Deep_2018_biomass_data.csv")
 
@@ -5968,30 +6785,35 @@ export(Carysfort_Deep_Reef_biomass_data_combined,"Carysfort_Deep/data/Carysfort_
 Carysfort_Shallow_1999 <- import("Carysfort_Shallow/data/Carysfort_Shallow_1999.xls")
 Carysfort_Shallow_1999_Total_biomass <- summarise_at(Carysfort_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_1999_Total_biomass$Year <- ('1999')
+Carysfort_Shallow_1999_Total_biomass$Reef <- ('Carysfort Shallow')
 ###output
 export(Carysfort_Shallow_1999_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_1999_biomass_data.csv")
 
 Carysfort_Shallow_2000 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2000.xls")
 Carysfort_Shallow_2000_Total_biomass <- summarise_at(Carysfort_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2000_Total_biomass$Year <- ('2000')
+Carysfort_Shallow_2000_Total_biomass$Reef <- ('Carysfort Shallow')
 ###output
 export(Carysfort_Shallow_2000_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2000_biomass_data.csv")
 
 Carysfort_Shallow_2001 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2001.xls")
 Carysfort_Shallow_2001_Total_biomass <- summarise_at(Carysfort_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2001_Total_biomass$Year <- ('2001')
+Carysfort_Shallow_2001_Total_biomass$Reef <- ('Carysfort Shallow')
 ###output
 export(Carysfort_Shallow_2001_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2001_biomass_data.csv")
 
 Carysfort_Shallow_2002 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2002.xls")
 Carysfort_Shallow_2002_Total_biomass <- summarise_at(Carysfort_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2002_Total_biomass$Year <- ('2002')
+Carysfort_Shallow_2002_Total_biomass$Reef <- ('Carysfort Shallow')
 ###output
 export(Carysfort_Shallow_2002_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2002_biomass_data.csv")
 
 Carysfort_Shallow_2003 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2003.xls")
 Carysfort_Shallow_2003_Total_biomass <- summarise_at(Carysfort_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2003_Total_biomass$Year <- ('2003')
+Carysfort_Shallow_2003_Total_biomass$Reef <- ('Carysfort Shallow')
 ###output
 export(Carysfort_Shallow_2003_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2003_biomass_data.csv")
 
@@ -5999,6 +6821,7 @@ export(Carysfort_Shallow_2003_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2004 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2004.xls")
 Carysfort_Shallow_2004_Total_biomass <- summarise_at(Carysfort_Shallow_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2004_Total_biomass$Year <- ('2004')
+Carysfort_Shallow_2004_Total_biomass$Reef <- ('Carysfort Shallow')
 
 ###output
 export(Carysfort_Shallow_2004_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2004_biomass_data.csv")
@@ -6006,6 +6829,7 @@ export(Carysfort_Shallow_2004_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2005 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2005.xls")
 Carysfort_Shallow_2005_Total_biomass <- summarise_at(Carysfort_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2005_Total_biomass$Year <- ('2005')
+Carysfort_Shallow_2005_Total_biomass$Reef <- ('Carysfort Shallow')
 ###output
 export(Carysfort_Shallow_2005_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2005_biomass_data.csv")
 
@@ -6013,6 +6837,7 @@ export(Carysfort_Shallow_2005_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2006 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2006.xls")
 Carysfort_Shallow_2006_Total_biomass <- summarise_at(Carysfort_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2006_Total_biomass$Year <- ('2006')
+Carysfort_Shallow_2006_Total_biomass$Reef <- ('Carysfort Shallow')
 
 ###output
 export(Carysfort_Shallow_2006_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2006_biomass_data.csv")
@@ -6020,6 +6845,7 @@ export(Carysfort_Shallow_2006_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2007 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2007.xls")
 Carysfort_Shallow_2007_Total_biomass <- summarise_at(Carysfort_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2007_Total_biomass$Year <- ('2007')
+Carysfort_Shallow_2007_Total_biomass$Reef <- ('Carysfort Shallow')
 ###output
 export(Carysfort_Shallow_2007_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2007_biomass_data.csv")
 
@@ -6027,6 +6853,7 @@ export(Carysfort_Shallow_2007_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2008 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2008.xls")
 Carysfort_Shallow_2008_Total_biomass <- summarise_at(Carysfort_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2008_Total_biomass$Year <- ('2008')
+Carysfort_Shallow_2008_Total_biomass$Reef <- ('Carysfort Shallow')
 
 ###output
 export(Carysfort_Shallow_2008_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2008_biomass_data.csv")
@@ -6034,6 +6861,7 @@ export(Carysfort_Shallow_2008_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2009 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2009.xls")
 Carysfort_Shallow_2009_Total_biomass <- summarise_at(Carysfort_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2009_Total_biomass$Year <- ('2009')
+Carysfort_Shallow_2009_Total_biomass$Reef <- ('Carysfort Shallow')
 ###output
 export(Carysfort_Shallow_2009_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2009_biomass_data.csv")
 
@@ -6041,6 +6869,7 @@ export(Carysfort_Shallow_2009_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2010 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2010.xls")
 Carysfort_Shallow_2010_Total_biomass <- summarise_at(Carysfort_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2010_Total_biomass$Year <- ('2010')
+Carysfort_Shallow_2010_Total_biomass$Reef <- ('Carysfort Shallow')
 
 ###output
 export(Carysfort_Shallow_2010_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2010_biomass_data.csv")
@@ -6048,6 +6877,7 @@ export(Carysfort_Shallow_2010_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2011 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2011.xls")
 Carysfort_Shallow_2011_Total_biomass <- summarise_at(Carysfort_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2011_Total_biomass$Year <- ('2011')
+Carysfort_Shallow_2011_Total_biomass$Reef <- ('Carysfort Shallow')
 ###output
 export(Carysfort_Shallow_2011_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2011_biomass_data.csv")
 
@@ -6055,6 +6885,7 @@ export(Carysfort_Shallow_2011_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2012 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2012.xls")
 Carysfort_Shallow_2012_Total_biomass <- summarise_at(Carysfort_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2012_Total_biomass$Year <- ('2012')
+Carysfort_Shallow_2012_Total_biomass$Reef <- ('Carysfort Shallow')
 
 ###output
 export(Carysfort_Shallow_2012_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2012_biomass_data.csv")
@@ -6062,6 +6893,7 @@ export(Carysfort_Shallow_2012_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2014 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2014.xls")
 Carysfort_Shallow_2014_Total_biomass <- summarise_at(Carysfort_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2014_Total_biomass$Year <- ('2014')
+Carysfort_Shallow_2014_Total_biomass$Reef <- ('Carysfort Shallow')
 
 ###output
 export(Carysfort_Shallow_2014_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2014_biomass_data.csv")
@@ -6069,6 +6901,7 @@ export(Carysfort_Shallow_2014_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2016 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2016.xls")
 Carysfort_Shallow_2016_Total_biomass <- summarise_at(Carysfort_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2016_Total_biomass$Year <- ('2016')
+Carysfort_Shallow_2016_Total_biomass$Reef <- ('Carysfort Shallow')
 
 ###output
 export(Carysfort_Shallow_2016_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2016_biomass_data.csv")
@@ -6076,6 +6909,7 @@ export(Carysfort_Shallow_2016_Total_biomass,"Carysfort_Shallow/data/Carysfort_Sh
 Carysfort_Shallow_2018 <- import("Carysfort_Shallow/data/Carysfort_Shallow_2018.xls")
 Carysfort_Shallow_2018_Total_biomass <- summarise_at(Carysfort_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Carysfort_Shallow_2018_Total_biomass$Year <- ('2018')
+Carysfort_Shallow_2018_Total_biomass$Reef <- ('Carysfort Shallow')
 ###output
 export(Carysfort_Shallow_2018_Total_biomass,"Carysfort_Shallow/data/Carysfort_Shallow_2018_biomass_data.csv")
 
@@ -6126,30 +6960,35 @@ export(Carysfort_Shallow_Reef_biomass_data_combined,"Carysfort_Shallow/data/Cary
 Conch_Deep_1999 <- import("Conch_Deep/data/Conch_Deep_1999.xls")
 Conch_Deep_1999_Total_biomass <- summarise_at(Conch_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_1999_Total_biomass$Year <- ('1999')
+Conch_Deep_1999_Total_biomass$Reef <- ('Conch Deep')
 ###output
 export(Conch_Deep_1999_Total_biomass,"Conch_Deep/data/Conch_Deep_1999_biomass_data.csv")
 
 Conch_Deep_2000 <- import("Conch_Deep/data/Conch_Deep_2000.xls")
 Conch_Deep_2000_Total_biomass <- summarise_at(Conch_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2000_Total_biomass$Year <- ('2000')
+Conch_Deep_2000_Total_biomass$Reef <- ('Conch Deep')
 ###output
 export(Conch_Deep_2000_Total_biomass,"Conch_Deep/data/Conch_Deep_2000_biomass_data.csv")
 
 Conch_Deep_2001 <- import("Conch_Deep/data/Conch_Deep_2001.xls")
 Conch_Deep_2001_Total_biomass <- summarise_at(Conch_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2001_Total_biomass$Year <- ('2001')
+Conch_Deep_2001_Total_biomass$Reef <- ('Conch Deep')
 ###output
 export(Conch_Deep_2001_Total_biomass,"Conch_Deep/data/Conch_Deep_2001_biomass_data.csv")
 
 Conch_Deep_2002 <- import("Conch_Deep/data/Conch_Deep_2002.xls")
 Conch_Deep_2002_Total_biomass <- summarise_at(Conch_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2002_Total_biomass$Year <- ('2002')
+Conch_Deep_2002_Total_biomass$Reef <- ('Conch Deep')
 ###output
 export(Conch_Deep_2002_Total_biomass,"Conch_Deep/data/Conch_Deep_2002_biomass_data.csv")
 
 Conch_Deep_2003 <- import("Conch_Deep/data/Conch_Deep_2003.xls")
 Conch_Deep_2003_Total_biomass <- summarise_at(Conch_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2003_Total_biomass$Year <- ('2003')
+Conch_Deep_2003_Total_biomass$Reef <- ('Conch Deep')
 ###output
 export(Conch_Deep_2003_Total_biomass,"Conch_Deep/data/Conch_Deep_2003_biomass_data.csv")
 
@@ -6157,6 +6996,7 @@ export(Conch_Deep_2003_Total_biomass,"Conch_Deep/data/Conch_Deep_2003_biomass_da
 Conch_Deep_2004 <- import("Conch_Deep/data/Conch_Deep_2004.xls")
 Conch_Deep_2004_Total_biomass <- summarise_at(Conch_Deep_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2004_Total_biomass$Year <- ('2004')
+Conch_Deep_2004_Total_biomass$Reef <- ('Conch Deep')
 
 ###output
 export(Conch_Deep_2004_Total_biomass,"Conch_Deep/data/Conch_Deep_2004_biomass_data.csv")
@@ -6164,6 +7004,7 @@ export(Conch_Deep_2004_Total_biomass,"Conch_Deep/data/Conch_Deep_2004_biomass_da
 Conch_Deep_2005 <- import("Conch_Deep/data/Conch_Deep_2005.xls")
 Conch_Deep_2005_Total_biomass <- summarise_at(Conch_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2005_Total_biomass$Year <- ('2005')
+Conch_Deep_2005_Total_biomass$Reef <- ('Conch Deep')
 ###output
 export(Conch_Deep_2005_Total_biomass,"Conch_Deep/data/Conch_Deep_2005_biomass_data.csv")
 
@@ -6171,6 +7012,7 @@ export(Conch_Deep_2005_Total_biomass,"Conch_Deep/data/Conch_Deep_2005_biomass_da
 Conch_Deep_2006 <- import("Conch_Deep/data/Conch_Deep_2006.xls")
 Conch_Deep_2006_Total_biomass <- summarise_at(Conch_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2006_Total_biomass$Year <- ('2006')
+Conch_Deep_2006_Total_biomass$Reef <- ('Conch Deep')
 
 ###output
 export(Conch_Deep_2006_Total_biomass,"Conch_Deep/data/Conch_Deep_2006_biomass_data.csv")
@@ -6178,6 +7020,7 @@ export(Conch_Deep_2006_Total_biomass,"Conch_Deep/data/Conch_Deep_2006_biomass_da
 Conch_Deep_2007 <- import("Conch_Deep/data/Conch_Deep_2007.xls")
 Conch_Deep_2007_Total_biomass <- summarise_at(Conch_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2007_Total_biomass$Year <- ('2007')
+Conch_Deep_2007_Total_biomass$Reef <- ('Conch Deep')
 ###output
 export(Conch_Deep_2007_Total_biomass,"Conch_Deep/data/Conch_Deep_2007_biomass_data.csv")
 
@@ -6185,6 +7028,7 @@ export(Conch_Deep_2007_Total_biomass,"Conch_Deep/data/Conch_Deep_2007_biomass_da
 Conch_Deep_2008 <- import("Conch_Deep/data/Conch_Deep_2008.xls")
 Conch_Deep_2008_Total_biomass <- summarise_at(Conch_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2008_Total_biomass$Year <- ('2008')
+Conch_Deep_2008_Total_biomass$Reef <- ('Conch Deep')
 
 ###output
 export(Conch_Deep_2008_Total_biomass,"Conch_Deep/data/Conch_Deep_2008_biomass_data.csv")
@@ -6192,6 +7036,7 @@ export(Conch_Deep_2008_Total_biomass,"Conch_Deep/data/Conch_Deep_2008_biomass_da
 Conch_Deep_2009 <- import("Conch_Deep/data/Conch_Deep_2009.xls")
 Conch_Deep_2009_Total_biomass <- summarise_at(Conch_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2009_Total_biomass$Year <- ('2009')
+Conch_Deep_2009_Total_biomass$Reef <- ('Conch Deep')
 ###output
 export(Conch_Deep_2009_Total_biomass,"Conch_Deep/data/Conch_Deep_2009_biomass_data.csv")
 
@@ -6199,6 +7044,7 @@ export(Conch_Deep_2009_Total_biomass,"Conch_Deep/data/Conch_Deep_2009_biomass_da
 Conch_Deep_2010 <- import("Conch_Deep/data/Conch_Deep_2010.xls")
 Conch_Deep_2010_Total_biomass <- summarise_at(Conch_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2010_Total_biomass$Year <- ('2010')
+Conch_Deep_2010_Total_biomass$Reef <- ('Conch Deep')
 
 ###output
 export(Conch_Deep_2010_Total_biomass,"Conch_Deep/data/Conch_Deep_2010_biomass_data.csv")
@@ -6206,6 +7052,7 @@ export(Conch_Deep_2010_Total_biomass,"Conch_Deep/data/Conch_Deep_2010_biomass_da
 Conch_Deep_2011 <- import("Conch_Deep/data/Conch_Deep_2011.xls")
 Conch_Deep_2011_Total_biomass <- summarise_at(Conch_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2011_Total_biomass$Year <- ('2011')
+Conch_Deep_2011_Total_biomass$Reef <- ('Conch Deep')
 ###output
 export(Conch_Deep_2011_Total_biomass,"Conch_Deep/data/Conch_Deep_2011_biomass_data.csv")
 
@@ -6213,6 +7060,7 @@ export(Conch_Deep_2011_Total_biomass,"Conch_Deep/data/Conch_Deep_2011_biomass_da
 Conch_Deep_2012 <- import("Conch_Deep/data/Conch_Deep_2012.xls")
 Conch_Deep_2012_Total_biomass <- summarise_at(Conch_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2012_Total_biomass$Year <- ('2012')
+Conch_Deep_2012_Total_biomass$Reef <- ('Conch Deep')
 
 ###output
 export(Conch_Deep_2012_Total_biomass,"Conch_Deep/data/Conch_Deep_2012_biomass_data.csv")
@@ -6220,6 +7068,7 @@ export(Conch_Deep_2012_Total_biomass,"Conch_Deep/data/Conch_Deep_2012_biomass_da
 Conch_Deep_2014 <- import("Conch_Deep/data/Conch_Deep_2014.xls")
 Conch_Deep_2014_Total_biomass <- summarise_at(Conch_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2014_Total_biomass$Year <- ('2014')
+Conch_Deep_2014_Total_biomass$Reef <- ('Conch Deep')
 
 ###output
 export(Conch_Deep_2014_Total_biomass,"Conch_Deep/data/Conch_Deep_2014_biomass_data.csv")
@@ -6227,6 +7076,7 @@ export(Conch_Deep_2014_Total_biomass,"Conch_Deep/data/Conch_Deep_2014_biomass_da
 Conch_Deep_2016 <- import("Conch_Deep/data/Conch_Deep_2016.xls")
 Conch_Deep_2016_Total_biomass <- summarise_at(Conch_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2016_Total_biomass$Year <- ('2016')
+Conch_Deep_2016_Total_biomass$Reef <- ('Conch Deep')
 
 ###output
 export(Conch_Deep_2016_Total_biomass,"Conch_Deep/data/Conch_Deep_2016_biomass_data.csv")
@@ -6234,6 +7084,7 @@ export(Conch_Deep_2016_Total_biomass,"Conch_Deep/data/Conch_Deep_2016_biomass_da
 Conch_Deep_2018 <- import("Conch_Deep/data/Conch_Deep_2018.xls")
 Conch_Deep_2018_Total_biomass <- summarise_at(Conch_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Deep_2018_Total_biomass$Year <- ('2018')
+Conch_Deep_2018_Total_biomass$Reef <- ('Conch Deep')
 ###output
 export(Conch_Deep_2018_Total_biomass,"Conch_Deep/data/Conch_Deep_2018_biomass_data.csv")
 
@@ -6284,30 +7135,35 @@ export(Conch_Deep_Reef_biomass_data_combined,"Conch_Deep/data/Conch_Deep_biomass
 Conch_Shallow_1999 <- import("Conch_Shallow/data/Conch_Shallow_1999.xls")
 Conch_Shallow_1999_Total_biomass <- summarise_at(Conch_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_1999_Total_biomass$Year <- ('1999')
+Conch_Shallow_1999_Total_biomass$Reef <- ('Conch Shallow')
 ###output
 export(Conch_Shallow_1999_Total_biomass,"Conch_Shallow/data/Conch_Shallow_1999_biomass_data.csv")
 
 Conch_Shallow_2000 <- import("Conch_Shallow/data/Conch_Shallow_2000.xls")
 Conch_Shallow_2000_Total_biomass <- summarise_at(Conch_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2000_Total_biomass$Year <- ('2000')
+Conch_Shallow_2000_Total_biomass$Reef <- ('Conch Shallow')
 ###output
 export(Conch_Shallow_2000_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2000_biomass_data.csv")
 
 Conch_Shallow_2001 <- import("Conch_Shallow/data/Conch_Shallow_2001.xls")
 Conch_Shallow_2001_Total_biomass <- summarise_at(Conch_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2001_Total_biomass$Year <- ('2001')
+Conch_Shallow_2001_Total_biomass$Reef <- ('Conch Shallow')
 ###output
 export(Conch_Shallow_2001_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2001_biomass_data.csv")
 
 Conch_Shallow_2002 <- import("Conch_Shallow/data/Conch_Shallow_2002.xls")
 Conch_Shallow_2002_Total_biomass <- summarise_at(Conch_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2002_Total_biomass$Year <- ('2002')
+Conch_Shallow_2002_Total_biomass$Reef <- ('Conch Shallow')
 ###output
 export(Conch_Shallow_2002_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2002_biomass_data.csv")
 
 Conch_Shallow_2003 <- import("Conch_Shallow/data/Conch_Shallow_2003.xls")
 Conch_Shallow_2003_Total_biomass <- summarise_at(Conch_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2003_Total_biomass$Year <- ('2003')
+Conch_Shallow_2003_Total_biomass$Reef <- ('Conch Shallow')
 ###output
 export(Conch_Shallow_2003_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2003_biomass_data.csv")
 
@@ -6315,6 +7171,7 @@ export(Conch_Shallow_2003_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2003_b
 Conch_Shallow_2004 <- import("Conch_Shallow/data/Conch_Shallow_2004.xls")
 Conch_Shallow_2004_Total_biomass <- summarise_at(Conch_Shallow_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2004_Total_biomass$Year <- ('2004')
+Conch_Shallow_2004_Total_biomass$Reef <- ('Conch Shallow')
 
 ###output
 export(Conch_Shallow_2004_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2004_biomass_data.csv")
@@ -6322,6 +7179,7 @@ export(Conch_Shallow_2004_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2004_b
 Conch_Shallow_2005 <- import("Conch_Shallow/data/Conch_Shallow_2005.xls")
 Conch_Shallow_2005_Total_biomass <- summarise_at(Conch_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2005_Total_biomass$Year <- ('2005')
+Conch_Shallow_2005_Total_biomass$Reef <- ('Conch Shallow')
 ###output
 export(Conch_Shallow_2005_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2005_biomass_data.csv")
 
@@ -6329,6 +7187,7 @@ export(Conch_Shallow_2005_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2005_b
 Conch_Shallow_2006 <- import("Conch_Shallow/data/Conch_Shallow_2006.xls")
 Conch_Shallow_2006_Total_biomass <- summarise_at(Conch_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2006_Total_biomass$Year <- ('2006')
+Conch_Shallow_2006_Total_biomass$Reef <- ('Conch Shallow')
 
 ###output
 export(Conch_Shallow_2006_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2006_biomass_data.csv")
@@ -6336,6 +7195,7 @@ export(Conch_Shallow_2006_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2006_b
 Conch_Shallow_2007 <- import("Conch_Shallow/data/Conch_Shallow_2007.xls")
 Conch_Shallow_2007_Total_biomass <- summarise_at(Conch_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2007_Total_biomass$Year <- ('2007')
+Conch_Shallow_2007_Total_biomass$Reef <- ('Conch Shallow')
 ###output
 export(Conch_Shallow_2007_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2007_biomass_data.csv")
 
@@ -6343,6 +7203,7 @@ export(Conch_Shallow_2007_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2007_b
 Conch_Shallow_2008 <- import("Conch_Shallow/data/Conch_Shallow_2008.xls")
 Conch_Shallow_2008_Total_biomass <- summarise_at(Conch_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2008_Total_biomass$Year <- ('2008')
+Conch_Shallow_2008_Total_biomass$Reef <- ('Conch Shallow')
 
 ###output
 export(Conch_Shallow_2008_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2008_biomass_data.csv")
@@ -6350,6 +7211,7 @@ export(Conch_Shallow_2008_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2008_b
 Conch_Shallow_2009 <- import("Conch_Shallow/data/Conch_Shallow_2009.xls")
 Conch_Shallow_2009_Total_biomass <- summarise_at(Conch_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2009_Total_biomass$Year <- ('2009')
+Conch_Shallow_2009_Total_biomass$Reef <- ('Conch Shallow')
 ###output
 export(Conch_Shallow_2009_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2009_biomass_data.csv")
 
@@ -6357,6 +7219,7 @@ export(Conch_Shallow_2009_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2009_b
 Conch_Shallow_2010 <- import("Conch_Shallow/data/Conch_Shallow_2010.xls")
 Conch_Shallow_2010_Total_biomass <- summarise_at(Conch_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2010_Total_biomass$Year <- ('2010')
+Conch_Shallow_2010_Total_biomass$Reef <- ('Conch Shallow')
 
 ###output
 export(Conch_Shallow_2010_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2010_biomass_data.csv")
@@ -6364,6 +7227,7 @@ export(Conch_Shallow_2010_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2010_b
 Conch_Shallow_2011 <- import("Conch_Shallow/data/Conch_Shallow_2011.xls")
 Conch_Shallow_2011_Total_biomass <- summarise_at(Conch_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2011_Total_biomass$Year <- ('2011')
+Conch_Shallow_2011_Total_biomass$Reef <- ('Conch Shallow')
 ###output
 export(Conch_Shallow_2011_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2011_biomass_data.csv")
 
@@ -6371,6 +7235,7 @@ export(Conch_Shallow_2011_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2011_b
 Conch_Shallow_2012 <- import("Conch_Shallow/data/Conch_Shallow_2012.xls")
 Conch_Shallow_2012_Total_biomass <- summarise_at(Conch_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2012_Total_biomass$Year <- ('2012')
+Conch_Shallow_2012_Total_biomass$Reef <- ('Conch Shallow')
 
 ###output
 export(Conch_Shallow_2012_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2012_biomass_data.csv")
@@ -6378,6 +7243,7 @@ export(Conch_Shallow_2012_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2012_b
 Conch_Shallow_2014 <- import("Conch_Shallow/data/Conch_Shallow_2014.xls")
 Conch_Shallow_2014_Total_biomass <- summarise_at(Conch_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2014_Total_biomass$Year <- ('2014')
+Conch_Shallow_2014_Total_biomass$Reef <- ('Conch Shallow')
 
 ###output
 export(Conch_Shallow_2014_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2014_biomass_data.csv")
@@ -6385,6 +7251,7 @@ export(Conch_Shallow_2014_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2014_b
 Conch_Shallow_2016 <- import("Conch_Shallow/data/Conch_Shallow_2016.xls")
 Conch_Shallow_2016_Total_biomass <- summarise_at(Conch_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2016_Total_biomass$Year <- ('2016')
+Conch_Shallow_2016_Total_biomass$Reef <- ('Conch Shallow')
 
 ###output
 export(Conch_Shallow_2016_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2016_biomass_data.csv")
@@ -6392,6 +7259,7 @@ export(Conch_Shallow_2016_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2016_b
 Conch_Shallow_2018 <- import("Conch_Shallow/data/Conch_Shallow_2018.xls")
 Conch_Shallow_2018_Total_biomass <- summarise_at(Conch_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Conch_Shallow_2018_Total_biomass$Year <- ('2018')
+Conch_Shallow_2018_Total_biomass$Reef <- ('Conch Shallow')
 ###output
 export(Conch_Shallow_2018_Total_biomass,"Conch_Shallow/data/Conch_Shallow_2018_biomass_data.csv")
 
@@ -6442,30 +7310,35 @@ export(Conch_Shallow_Reef_biomass_data_combined,"Conch_Shallow/data/Conch_Shallo
 Grecian_Rocks_1999 <- import("Grecian_Rocks/data/Grecian_Rocks_1999.xls")
 Grecian_Rocks_1999_Total_biomass <- summarise_at(Grecian_Rocks_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_1999_Total_biomass$Year <- ('1999')
+Grecian_Rocks_1999_Total_biomass$Reef <- ('Grecian Rocks')
 ###output
 export(Grecian_Rocks_1999_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_1999_biomass_data.csv")
 
 Grecian_Rocks_2000 <- import("Grecian_Rocks/data/Grecian_Rocks_2000.xls")
 Grecian_Rocks_2000_Total_biomass <- summarise_at(Grecian_Rocks_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2000_Total_biomass$Year <- ('2000')
+Grecian_Rocks_2000_Total_biomass$Reef <- ('Grecian Rocks')
 ###output
 export(Grecian_Rocks_2000_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2000_biomass_data.csv")
 
 Grecian_Rocks_2001 <- import("Grecian_Rocks/data/Grecian_Rocks_2001.xls")
 Grecian_Rocks_2001_Total_biomass <- summarise_at(Grecian_Rocks_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2001_Total_biomass$Year <- ('2001')
+Grecian_Rocks_2001_Total_biomass$Reef <- ('Grecian Rocks')
 ###output
 export(Grecian_Rocks_2001_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2001_biomass_data.csv")
 
 Grecian_Rocks_2002 <- import("Grecian_Rocks/data/Grecian_Rocks_2002.xls")
 Grecian_Rocks_2002_Total_biomass <- summarise_at(Grecian_Rocks_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2002_Total_biomass$Year <- ('2002')
+Grecian_Rocks_2002_Total_biomass$Reef <- ('Grecian Rocks')
 ###output
 export(Grecian_Rocks_2002_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2002_biomass_data.csv")
 
 Grecian_Rocks_2003 <- import("Grecian_Rocks/data/Grecian_Rocks_2003.xls")
 Grecian_Rocks_2003_Total_biomass <- summarise_at(Grecian_Rocks_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2003_Total_biomass$Year <- ('2003')
+Grecian_Rocks_2003_Total_biomass$Reef <- ('Grecian Rocks')
 ###output
 export(Grecian_Rocks_2003_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2003_biomass_data.csv")
 
@@ -6473,6 +7346,7 @@ export(Grecian_Rocks_2003_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2003_b
 Grecian_Rocks_2004 <- import("Grecian_Rocks/data/Grecian_Rocks_2004.xls")
 Grecian_Rocks_2004_Total_biomass <- summarise_at(Grecian_Rocks_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2004_Total_biomass$Year <- ('2004')
+Grecian_Rocks_2004_Total_biomass$Reef <- ('Grecian Rocks')
 
 ###output
 export(Grecian_Rocks_2004_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2004_biomass_data.csv")
@@ -6480,6 +7354,8 @@ export(Grecian_Rocks_2004_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2004_b
 Grecian_Rocks_2005 <- import("Grecian_Rocks/data/Grecian_Rocks_2005.xls")
 Grecian_Rocks_2005_Total_biomass <- summarise_at(Grecian_Rocks_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2005_Total_biomass$Year <- ('2005')
+Grecian_Rocks_2005_Total_biomass$Reef <- ('Grecian Rocks')
+
 ###output
 export(Grecian_Rocks_2005_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2005_biomass_data.csv")
 
@@ -6487,6 +7363,7 @@ export(Grecian_Rocks_2005_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2005_b
 Grecian_Rocks_2006 <- import("Grecian_Rocks/data/Grecian_Rocks_2006.xls")
 Grecian_Rocks_2006_Total_biomass <- summarise_at(Grecian_Rocks_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2006_Total_biomass$Year <- ('2006')
+Grecian_Rocks_2006_Total_biomass$Reef <- ('Grecian Rocks')
 
 ###output
 export(Grecian_Rocks_2006_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2006_biomass_data.csv")
@@ -6494,6 +7371,8 @@ export(Grecian_Rocks_2006_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2006_b
 Grecian_Rocks_2007 <- import("Grecian_Rocks/data/Grecian_Rocks_2007.xls")
 Grecian_Rocks_2007_Total_biomass <- summarise_at(Grecian_Rocks_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2007_Total_biomass$Year <- ('2007')
+Grecian_Rocks_2007_Total_biomass$Reef <- ('Grecian Rocks')
+
 ###output
 export(Grecian_Rocks_2007_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2007_biomass_data.csv")
 
@@ -6501,6 +7380,7 @@ export(Grecian_Rocks_2007_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2007_b
 Grecian_Rocks_2008 <- import("Grecian_Rocks/data/Grecian_Rocks_2008.xls")
 Grecian_Rocks_2008_Total_biomass <- summarise_at(Grecian_Rocks_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2008_Total_biomass$Year <- ('2008')
+Grecian_Rocks_2008_Total_biomass$Reef <- ('Grecian Rocks')
 
 ###output
 export(Grecian_Rocks_2008_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2008_biomass_data.csv")
@@ -6508,6 +7388,7 @@ export(Grecian_Rocks_2008_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2008_b
 Grecian_Rocks_2009 <- import("Grecian_Rocks/data/Grecian_Rocks_2009.xls")
 Grecian_Rocks_2009_Total_biomass <- summarise_at(Grecian_Rocks_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2009_Total_biomass$Year <- ('2009')
+Grecian_Rocks_2009_Total_biomass$Reef <- ('Grecian Rocks')
 ###output
 export(Grecian_Rocks_2009_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2009_biomass_data.csv")
 
@@ -6515,6 +7396,7 @@ export(Grecian_Rocks_2009_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2009_b
 Grecian_Rocks_2010 <- import("Grecian_Rocks/data/Grecian_Rocks_2010.xls")
 Grecian_Rocks_2010_Total_biomass <- summarise_at(Grecian_Rocks_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2010_Total_biomass$Year <- ('2010')
+Grecian_Rocks_2010_Total_biomass$Reef <- ('Grecian Rocks')
 
 ###output
 export(Grecian_Rocks_2010_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2010_biomass_data.csv")
@@ -6522,6 +7404,7 @@ export(Grecian_Rocks_2010_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2010_b
 Grecian_Rocks_2011 <- import("Grecian_Rocks/data/Grecian_Rocks_2011.xls")
 Grecian_Rocks_2011_Total_biomass <- summarise_at(Grecian_Rocks_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2011_Total_biomass$Year <- ('2011')
+Grecian_Rocks_2011_Total_biomass$Reef <- ('Grecian Rocks')
 ###output
 export(Grecian_Rocks_2011_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2011_biomass_data.csv")
 
@@ -6529,6 +7412,7 @@ export(Grecian_Rocks_2011_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2011_b
 Grecian_Rocks_2012 <- import("Grecian_Rocks/data/Grecian_Rocks_2012.xls")
 Grecian_Rocks_2012_Total_biomass <- summarise_at(Grecian_Rocks_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2012_Total_biomass$Year <- ('2012')
+Grecian_Rocks_2012_Total_biomass$Reef <- ('Grecian Rocks')
 
 ###output
 export(Grecian_Rocks_2012_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2012_biomass_data.csv")
@@ -6536,6 +7420,7 @@ export(Grecian_Rocks_2012_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2012_b
 Grecian_Rocks_2014 <- import("Grecian_Rocks/data/Grecian_Rocks_2014.xls")
 Grecian_Rocks_2014_Total_biomass <- summarise_at(Grecian_Rocks_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2014_Total_biomass$Year <- ('2014')
+Grecian_Rocks_2014_Total_biomass$Reef <- ('Grecian Rocks')
 
 ###output
 export(Grecian_Rocks_2014_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2014_biomass_data.csv")
@@ -6543,6 +7428,7 @@ export(Grecian_Rocks_2014_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2014_b
 Grecian_Rocks_2016 <- import("Grecian_Rocks/data/Grecian_Rocks_2016.xls")
 Grecian_Rocks_2016_Total_biomass <- summarise_at(Grecian_Rocks_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2016_Total_biomass$Year <- ('2016')
+Grecian_Rocks_2016_Total_biomass$Reef <- ('Grecian Rocks')
 
 ###output
 export(Grecian_Rocks_2016_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2016_biomass_data.csv")
@@ -6550,6 +7436,8 @@ export(Grecian_Rocks_2016_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2016_b
 Grecian_Rocks_2018 <- import("Grecian_Rocks/data/Grecian_Rocks_2018.xls")
 Grecian_Rocks_2018_Total_biomass <- summarise_at(Grecian_Rocks_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Grecian_Rocks_2018_Total_biomass$Year <- ('2018')
+Grecian_Rocks_2018_Total_biomass$Reef <- ('Grecian Rocks')
+
 ###output
 export(Grecian_Rocks_2018_Total_biomass,"Grecian_Rocks/data/Grecian_Rocks_2018_biomass_data.csv")
 
@@ -6600,30 +7488,35 @@ export(Grecian_Rocks_Reef_biomass_data_combined,"Grecian_Rocks/data/Grecian_Rock
 Molasses_Deep_1999 <- import("Molasses_Deep/data/Molasses_Deep_1999.xls")
 Molasses_Deep_1999_Total_biomass <- summarise_at(Molasses_Deep_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_1999_Total_biomass$Year <- ('1999')
+Molasses_Deep_1999_Total_biomass$Reef <- ('Molasses Deep')
 ###output
 export(Molasses_Deep_1999_Total_biomass,"Molasses_Deep/data/Molasses_Deep_1999_biomass_data.csv")
 
 Molasses_Deep_2000 <- import("Molasses_Deep/data/Molasses_Deep_2000.xls")
 Molasses_Deep_2000_Total_biomass <- summarise_at(Molasses_Deep_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2000_Total_biomass$Year <- ('2000')
+Molasses_Deep_2000_Total_biomass$Reef <- ('Molasses Deep')
 ###output
 export(Molasses_Deep_2000_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2000_biomass_data.csv")
 
 Molasses_Deep_2001 <- import("Molasses_Deep/data/Molasses_Deep_2001.xls")
 Molasses_Deep_2001_Total_biomass <- summarise_at(Molasses_Deep_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2001_Total_biomass$Year <- ('2001')
+Molasses_Deep_2001_Total_biomass$Reef <- ('Molasses Deep')
 ###output
 export(Molasses_Deep_2001_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2001_biomass_data.csv")
 
 Molasses_Deep_2002 <- import("Molasses_Deep/data/Molasses_Deep_2002.xls")
 Molasses_Deep_2002_Total_biomass <- summarise_at(Molasses_Deep_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2002_Total_biomass$Year <- ('2002')
+Molasses_Deep_2002_Total_biomass$Reef <- ('Molasses Deep')
 ###output
 export(Molasses_Deep_2002_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2002_biomass_data.csv")
 
 Molasses_Deep_2003 <- import("Molasses_Deep/data/Molasses_Deep_2003.xls")
 Molasses_Deep_2003_Total_biomass <- summarise_at(Molasses_Deep_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2003_Total_biomass$Year <- ('2003')
+Molasses_Deep_2003_Total_biomass$Reef <- ('Molasses Deep')
 ###output
 export(Molasses_Deep_2003_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2003_biomass_data.csv")
 
@@ -6631,6 +7524,7 @@ export(Molasses_Deep_2003_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2003_b
 Molasses_Deep_2004 <- import("Molasses_Deep/data/Molasses_Deep_2004.xls")
 Molasses_Deep_2004_Total_biomass <- summarise_at(Molasses_Deep_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2004_Total_biomass$Year <- ('2004')
+Molasses_Deep_2004_Total_biomass$Reef <- ('Molasses Deep')
 
 ###output
 export(Molasses_Deep_2004_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2004_biomass_data.csv")
@@ -6638,6 +7532,7 @@ export(Molasses_Deep_2004_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2004_b
 Molasses_Deep_2005 <- import("Molasses_Deep/data/Molasses_Deep_2005.xls")
 Molasses_Deep_2005_Total_biomass <- summarise_at(Molasses_Deep_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2005_Total_biomass$Year <- ('2005')
+Molasses_Deep_2005_Total_biomass$Reef <- ('Molasses Deep')
 ###output
 export(Molasses_Deep_2005_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2005_biomass_data.csv")
 
@@ -6645,6 +7540,7 @@ export(Molasses_Deep_2005_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2005_b
 Molasses_Deep_2006 <- import("Molasses_Deep/data/Molasses_Deep_2006.xls")
 Molasses_Deep_2006_Total_biomass <- summarise_at(Molasses_Deep_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2006_Total_biomass$Year <- ('2006')
+Molasses_Deep_2006_Total_biomass$Reef <- ('Molasses Deep')
 
 ###output
 export(Molasses_Deep_2006_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2006_biomass_data.csv")
@@ -6652,6 +7548,7 @@ export(Molasses_Deep_2006_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2006_b
 Molasses_Deep_2007 <- import("Molasses_Deep/data/Molasses_Deep_2007.xls")
 Molasses_Deep_2007_Total_biomass <- summarise_at(Molasses_Deep_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2007_Total_biomass$Year <- ('2007')
+Molasses_Deep_2007_Total_biomass$Reef <- ('Molasses Deep')
 ###output
 export(Molasses_Deep_2007_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2007_biomass_data.csv")
 
@@ -6659,6 +7556,7 @@ export(Molasses_Deep_2007_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2007_b
 Molasses_Deep_2008 <- import("Molasses_Deep/data/Molasses_Deep_2008.xls")
 Molasses_Deep_2008_Total_biomass <- summarise_at(Molasses_Deep_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2008_Total_biomass$Year <- ('2008')
+Molasses_Deep_2008_Total_biomass$Reef <- ('Molasses Deep')
 
 ###output
 export(Molasses_Deep_2008_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2008_biomass_data.csv")
@@ -6666,6 +7564,7 @@ export(Molasses_Deep_2008_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2008_b
 Molasses_Deep_2009 <- import("Molasses_Deep/data/Molasses_Deep_2009.xls")
 Molasses_Deep_2009_Total_biomass <- summarise_at(Molasses_Deep_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2009_Total_biomass$Year <- ('2009')
+Molasses_Deep_2009_Total_biomass$Reef <- ('Molasses Deep')
 ###output
 export(Molasses_Deep_2009_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2009_biomass_data.csv")
 
@@ -6673,6 +7572,7 @@ export(Molasses_Deep_2009_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2009_b
 Molasses_Deep_2010 <- import("Molasses_Deep/data/Molasses_Deep_2010.xls")
 Molasses_Deep_2010_Total_biomass <- summarise_at(Molasses_Deep_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2010_Total_biomass$Year <- ('2010')
+Molasses_Deep_2010_Total_biomass$Reef <- ('Molasses Deep')
 
 ###output
 export(Molasses_Deep_2010_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2010_biomass_data.csv")
@@ -6680,6 +7580,7 @@ export(Molasses_Deep_2010_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2010_b
 Molasses_Deep_2011 <- import("Molasses_Deep/data/Molasses_Deep_2011.xls")
 Molasses_Deep_2011_Total_biomass <- summarise_at(Molasses_Deep_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2011_Total_biomass$Year <- ('2011')
+Molasses_Deep_2011_Total_biomass$Reef <- ('Molasses Deep')
 ###output
 export(Molasses_Deep_2011_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2011_biomass_data.csv")
 
@@ -6687,6 +7588,7 @@ export(Molasses_Deep_2011_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2011_b
 Molasses_Deep_2012 <- import("Molasses_Deep/data/Molasses_Deep_2012.xls")
 Molasses_Deep_2012_Total_biomass <- summarise_at(Molasses_Deep_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2012_Total_biomass$Year <- ('2012')
+Molasses_Deep_2012_Total_biomass$Reef <- ('Molasses Deep')
 
 ###output
 export(Molasses_Deep_2012_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2012_biomass_data.csv")
@@ -6694,6 +7596,7 @@ export(Molasses_Deep_2012_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2012_b
 Molasses_Deep_2014 <- import("Molasses_Deep/data/Molasses_Deep_2014.xls")
 Molasses_Deep_2014_Total_biomass <- summarise_at(Molasses_Deep_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2014_Total_biomass$Year <- ('2014')
+Molasses_Deep_2014_Total_biomass$Reef <- ('Molasses Deep')
 
 ###output
 export(Molasses_Deep_2014_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2014_biomass_data.csv")
@@ -6701,6 +7604,7 @@ export(Molasses_Deep_2014_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2014_b
 Molasses_Deep_2016 <- import("Molasses_Deep/data/Molasses_Deep_2016.xls")
 Molasses_Deep_2016_Total_biomass <- summarise_at(Molasses_Deep_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2016_Total_biomass$Year <- ('2016')
+Molasses_Deep_2016_Total_biomass$Reef <- ('Molasses Deep')
 
 ###output
 export(Molasses_Deep_2016_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2016_biomass_data.csv")
@@ -6708,6 +7612,8 @@ export(Molasses_Deep_2016_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2016_b
 Molasses_Deep_2018 <- import("Molasses_Deep/data/Molasses_Deep_2018.xls")
 Molasses_Deep_2018_Total_biomass <- summarise_at(Molasses_Deep_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Deep_2018_Total_biomass$Year <- ('2018')
+Molasses_Deep_2018_Total_biomass$Reef <- ('Molasses Deep')
+
 ###output
 export(Molasses_Deep_2018_Total_biomass,"Molasses_Deep/data/Molasses_Deep_2018_biomass_data.csv")
 
@@ -6758,30 +7664,38 @@ export(Molasses_Deep_Reef_biomass_data_combined,"Molasses_Deep/data/Molasses_Dee
 Molasses_Shallow_1999 <- import("Molasses_Shallow/data/Molasses_Shallow_1999.xls")
 Molasses_Shallow_1999_Total_biomass <- summarise_at(Molasses_Shallow_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_1999_Total_biomass$Year <- ('1999')
+Molasses_Shallow_1999_Total_biomass$Reef <- ('Molasses Shallow')
 ###output
 export(Molasses_Shallow_1999_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_1999_biomass_data.csv")
 
 Molasses_Shallow_2000 <- import("Molasses_Shallow/data/Molasses_Shallow_2000.xls")
 Molasses_Shallow_2000_Total_biomass <- summarise_at(Molasses_Shallow_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2000_Total_biomass$Year <- ('2000')
+Molasses_Shallow_2000_Total_biomass$Reef <- ('Molasses Shallow')
+
 ###output
 export(Molasses_Shallow_2000_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2000_biomass_data.csv")
 
 Molasses_Shallow_2001 <- import("Molasses_Shallow/data/Molasses_Shallow_2001.xls")
 Molasses_Shallow_2001_Total_biomass <- summarise_at(Molasses_Shallow_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2001_Total_biomass$Year <- ('2001')
+Molasses_Shallow_2001_Total_biomass$Reef <- ('Molasses Shallow')
+
 ###output
 export(Molasses_Shallow_2001_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2001_biomass_data.csv")
 
 Molasses_Shallow_2002 <- import("Molasses_Shallow/data/Molasses_Shallow_2002.xls")
 Molasses_Shallow_2002_Total_biomass <- summarise_at(Molasses_Shallow_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2002_Total_biomass$Year <- ('2002')
+Molasses_Shallow_2002_Total_biomass$Reef <- ('Molasses Shallow')
+
 ###output
 export(Molasses_Shallow_2002_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2002_biomass_data.csv")
 
 Molasses_Shallow_2003 <- import("Molasses_Shallow/data/Molasses_Shallow_2003.xls")
 Molasses_Shallow_2003_Total_biomass <- summarise_at(Molasses_Shallow_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2003_Total_biomass$Year <- ('2003')
+Molasses_Shallow_2003_Total_biomass$Reef <- ('Molasses Shallow')
 ###output
 export(Molasses_Shallow_2003_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2003_biomass_data.csv")
 
@@ -6789,6 +7703,7 @@ export(Molasses_Shallow_2003_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2004 <- import("Molasses_Shallow/data/Molasses_Shallow_2004.xls")
 Molasses_Shallow_2004_Total_biomass <- summarise_at(Molasses_Shallow_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2004_Total_biomass$Year <- ('2004')
+Molasses_Shallow_2004_Total_biomass$Reef <- ('Molasses Shallow')
 
 ###output
 export(Molasses_Shallow_2004_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2004_biomass_data.csv")
@@ -6796,6 +7711,7 @@ export(Molasses_Shallow_2004_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2005 <- import("Molasses_Shallow/data/Molasses_Shallow_2005.xls")
 Molasses_Shallow_2005_Total_biomass <- summarise_at(Molasses_Shallow_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2005_Total_biomass$Year <- ('2005')
+Molasses_Shallow_2005_Total_biomass$Reef <- ('Molasses Shallow')
 ###output
 export(Molasses_Shallow_2005_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2005_biomass_data.csv")
 
@@ -6803,6 +7719,7 @@ export(Molasses_Shallow_2005_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2006 <- import("Molasses_Shallow/data/Molasses_Shallow_2006.xls")
 Molasses_Shallow_2006_Total_biomass <- summarise_at(Molasses_Shallow_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2006_Total_biomass$Year <- ('2006')
+Molasses_Shallow_2006_Total_biomass$Reef <- ('Molasses Shallow')
 
 ###output
 export(Molasses_Shallow_2006_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2006_biomass_data.csv")
@@ -6810,6 +7727,7 @@ export(Molasses_Shallow_2006_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2007 <- import("Molasses_Shallow/data/Molasses_Shallow_2007.xls")
 Molasses_Shallow_2007_Total_biomass <- summarise_at(Molasses_Shallow_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2007_Total_biomass$Year <- ('2007')
+Molasses_Shallow_2007_Total_biomass$Reef <- ('Molasses Shallow')
 ###output
 export(Molasses_Shallow_2007_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2007_biomass_data.csv")
 
@@ -6817,6 +7735,7 @@ export(Molasses_Shallow_2007_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2008 <- import("Molasses_Shallow/data/Molasses_Shallow_2008.xls")
 Molasses_Shallow_2008_Total_biomass <- summarise_at(Molasses_Shallow_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2008_Total_biomass$Year <- ('2008')
+Molasses_Shallow_2008_Total_biomass$Reef <- ('Molasses Shallow')
 
 ###output
 export(Molasses_Shallow_2008_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2008_biomass_data.csv")
@@ -6824,6 +7743,7 @@ export(Molasses_Shallow_2008_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2009 <- import("Molasses_Shallow/data/Molasses_Shallow_2009.xls")
 Molasses_Shallow_2009_Total_biomass <- summarise_at(Molasses_Shallow_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2009_Total_biomass$Year <- ('2009')
+Molasses_Shallow_2009_Total_biomass$Reef <- ('Molasses Shallow')
 ###output
 export(Molasses_Shallow_2009_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2009_biomass_data.csv")
 
@@ -6831,6 +7751,7 @@ export(Molasses_Shallow_2009_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2010 <- import("Molasses_Shallow/data/Molasses_Shallow_2010.xls")
 Molasses_Shallow_2010_Total_biomass <- summarise_at(Molasses_Shallow_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2010_Total_biomass$Year <- ('2010')
+Molasses_Shallow_2010_Total_biomass$Reef <- ('Molasses Shallow')
 
 ###output
 export(Molasses_Shallow_2010_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2010_biomass_data.csv")
@@ -6838,6 +7759,7 @@ export(Molasses_Shallow_2010_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2011 <- import("Molasses_Shallow/data/Molasses_Shallow_2011.xls")
 Molasses_Shallow_2011_Total_biomass <- summarise_at(Molasses_Shallow_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2011_Total_biomass$Year <- ('2011')
+Molasses_Shallow_2011_Total_biomass$Reef <- ('Molasses Shallow')
 ###output
 export(Molasses_Shallow_2011_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2011_biomass_data.csv")
 
@@ -6845,6 +7767,7 @@ export(Molasses_Shallow_2011_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2012 <- import("Molasses_Shallow/data/Molasses_Shallow_2012.xls")
 Molasses_Shallow_2012_Total_biomass <- summarise_at(Molasses_Shallow_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2012_Total_biomass$Year <- ('2012')
+Molasses_Shallow_2012_Total_biomass$Reef <- ('Molasses Shallow')
 
 ###output
 export(Molasses_Shallow_2012_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2012_biomass_data.csv")
@@ -6852,6 +7775,7 @@ export(Molasses_Shallow_2012_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2014 <- import("Molasses_Shallow/data/Molasses_Shallow_2014.xls")
 Molasses_Shallow_2014_Total_biomass <- summarise_at(Molasses_Shallow_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2014_Total_biomass$Year <- ('2014')
+Molasses_Shallow_2014_Total_biomass$Reef <- ('Molasses Shallow')
 
 ###output
 export(Molasses_Shallow_2014_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2014_biomass_data.csv")
@@ -6859,6 +7783,7 @@ export(Molasses_Shallow_2014_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2016 <- import("Molasses_Shallow/data/Molasses_Shallow_2016.xls")
 Molasses_Shallow_2016_Total_biomass <- summarise_at(Molasses_Shallow_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2016_Total_biomass$Year <- ('2016')
+Molasses_Shallow_2016_Total_biomass$Reef <- ('Molasses Shallow')
 
 ###output
 export(Molasses_Shallow_2016_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2016_biomass_data.csv")
@@ -6866,6 +7791,7 @@ export(Molasses_Shallow_2016_Total_biomass,"Molasses_Shallow/data/Molasses_Shall
 Molasses_Shallow_2018 <- import("Molasses_Shallow/data/Molasses_Shallow_2018.xls")
 Molasses_Shallow_2018_Total_biomass <- summarise_at(Molasses_Shallow_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Molasses_Shallow_2018_Total_biomass$Year <- ('2018')
+Molasses_Shallow_2018_Total_biomass$Reef <- ('Molasses Shallow')
 ###output
 export(Molasses_Shallow_2018_Total_biomass,"Molasses_Shallow/data/Molasses_Shallow_2018_biomass_data.csv")
 
@@ -6916,30 +7842,35 @@ export(Molasses_Shallow_Reef_biomass_data_combined,"Molasses_Shallow/data/Molass
 Porter_Patch_1999 <- import("Porter_Patch/data/Porter_Patch_1999.xls")
 Porter_Patch_1999_Total_biomass <- summarise_at(Porter_Patch_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_1999_Total_biomass$Year <- ('1999')
+Porter_Patch_1999_Total_biomass$Reef <- ('Porter Patch')
 ###output
 export(Porter_Patch_1999_Total_biomass,"Porter_Patch/data/Porter_Patch_1999_biomass_data.csv")
 
 Porter_Patch_2000 <- import("Porter_Patch/data/Porter_Patch_2000.xls")
 Porter_Patch_2000_Total_biomass <- summarise_at(Porter_Patch_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2000_Total_biomass$Year <- ('2000')
+Porter_Patch_2000_Total_biomass$Reef <- ('Porter Patch')
 ###output
 export(Porter_Patch_2000_Total_biomass,"Porter_Patch/data/Porter_Patch_2000_biomass_data.csv")
 
 Porter_Patch_2001 <- import("Porter_Patch/data/Porter_Patch_2001.xls")
 Porter_Patch_2001_Total_biomass <- summarise_at(Porter_Patch_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2001_Total_biomass$Year <- ('2001')
+Porter_Patch_2001_Total_biomass$Reef <- ('Porter Patch')
 ###output
 export(Porter_Patch_2001_Total_biomass,"Porter_Patch/data/Porter_Patch_2001_biomass_data.csv")
 
 Porter_Patch_2002 <- import("Porter_Patch/data/Porter_Patch_2002.xls")
 Porter_Patch_2002_Total_biomass <- summarise_at(Porter_Patch_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2002_Total_biomass$Year <- ('2002')
+Porter_Patch_2002_Total_biomass$Reef <- ('Porter Patch')
 ###output
 export(Porter_Patch_2002_Total_biomass,"Porter_Patch/data/Porter_Patch_2002_biomass_data.csv")
 
 Porter_Patch_2003 <- import("Porter_Patch/data/Porter_Patch_2003.xls")
 Porter_Patch_2003_Total_biomass <- summarise_at(Porter_Patch_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2003_Total_biomass$Year <- ('2003')
+Porter_Patch_2003_Total_biomass$Reef <- ('Porter Patch')
 ###output
 export(Porter_Patch_2003_Total_biomass,"Porter_Patch/data/Porter_Patch_2003_biomass_data.csv")
 
@@ -6947,6 +7878,7 @@ export(Porter_Patch_2003_Total_biomass,"Porter_Patch/data/Porter_Patch_2003_biom
 Porter_Patch_2004 <- import("Porter_Patch/data/Porter_Patch_2004.xls")
 Porter_Patch_2004_Total_biomass <- summarise_at(Porter_Patch_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2004_Total_biomass$Year <- ('2004')
+Porter_Patch_2004_Total_biomass$Reef <- ('Porter Patch')
 
 ###output
 export(Porter_Patch_2004_Total_biomass,"Porter_Patch/data/Porter_Patch_2004_biomass_data.csv")
@@ -6954,6 +7886,7 @@ export(Porter_Patch_2004_Total_biomass,"Porter_Patch/data/Porter_Patch_2004_biom
 Porter_Patch_2005 <- import("Porter_Patch/data/Porter_Patch_2005.xls")
 Porter_Patch_2005_Total_biomass <- summarise_at(Porter_Patch_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2005_Total_biomass$Year <- ('2005')
+Porter_Patch_2005_Total_biomass$Reef <- ('Porter Patch')
 ###output
 export(Porter_Patch_2005_Total_biomass,"Porter_Patch/data/Porter_Patch_2005_biomass_data.csv")
 
@@ -6961,6 +7894,7 @@ export(Porter_Patch_2005_Total_biomass,"Porter_Patch/data/Porter_Patch_2005_biom
 Porter_Patch_2006 <- import("Porter_Patch/data/Porter_Patch_2006.xls")
 Porter_Patch_2006_Total_biomass <- summarise_at(Porter_Patch_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2006_Total_biomass$Year <- ('2006')
+Porter_Patch_2006_Total_biomass$Reef <- ('Porter Patch')
 
 ###output
 export(Porter_Patch_2006_Total_biomass,"Porter_Patch/data/Porter_Patch_2006_biomass_data.csv")
@@ -6968,6 +7902,7 @@ export(Porter_Patch_2006_Total_biomass,"Porter_Patch/data/Porter_Patch_2006_biom
 Porter_Patch_2007 <- import("Porter_Patch/data/Porter_Patch_2007.xls")
 Porter_Patch_2007_Total_biomass <- summarise_at(Porter_Patch_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2007_Total_biomass$Year <- ('2007')
+Porter_Patch_2007_Total_biomass$Reef <- ('Porter Patch')
 ###output
 export(Porter_Patch_2007_Total_biomass,"Porter_Patch/data/Porter_Patch_2007_biomass_data.csv")
 
@@ -6975,6 +7910,7 @@ export(Porter_Patch_2007_Total_biomass,"Porter_Patch/data/Porter_Patch_2007_biom
 Porter_Patch_2008 <- import("Porter_Patch/data/Porter_Patch_2008.xls")
 Porter_Patch_2008_Total_biomass <- summarise_at(Porter_Patch_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2008_Total_biomass$Year <- ('2008')
+Porter_Patch_2008_Total_biomass$Reef <- ('Porter Patch')
 
 ###output
 export(Porter_Patch_2008_Total_biomass,"Porter_Patch/data/Porter_Patch_2008_biomass_data.csv")
@@ -6982,6 +7918,7 @@ export(Porter_Patch_2008_Total_biomass,"Porter_Patch/data/Porter_Patch_2008_biom
 Porter_Patch_2009 <- import("Porter_Patch/data/Porter_Patch_2009.xls")
 Porter_Patch_2009_Total_biomass <- summarise_at(Porter_Patch_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2009_Total_biomass$Year <- ('2009')
+Porter_Patch_2009_Total_biomass$Reef <- ('Porter Patch')
 ###output
 export(Porter_Patch_2009_Total_biomass,"Porter_Patch/data/Porter_Patch_2009_biomass_data.csv")
 
@@ -6989,6 +7926,7 @@ export(Porter_Patch_2009_Total_biomass,"Porter_Patch/data/Porter_Patch_2009_biom
 Porter_Patch_2010 <- import("Porter_Patch/data/Porter_Patch_2010.xls")
 Porter_Patch_2010_Total_biomass <- summarise_at(Porter_Patch_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2010_Total_biomass$Year <- ('2010')
+Porter_Patch_2010_Total_biomass$Reef <- ('Porter Patch')
 
 ###output
 export(Porter_Patch_2010_Total_biomass,"Porter_Patch/data/Porter_Patch_2010_biomass_data.csv")
@@ -6996,6 +7934,7 @@ export(Porter_Patch_2010_Total_biomass,"Porter_Patch/data/Porter_Patch_2010_biom
 Porter_Patch_2011 <- import("Porter_Patch/data/Porter_Patch_2011.xls")
 Porter_Patch_2011_Total_biomass <- summarise_at(Porter_Patch_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2011_Total_biomass$Year <- ('2011')
+Porter_Patch_2011_Total_biomass$Reef <- ('Porter Patch')
 ###output
 export(Porter_Patch_2011_Total_biomass,"Porter_Patch/data/Porter_Patch_2011_biomass_data.csv")
 
@@ -7003,6 +7942,7 @@ export(Porter_Patch_2011_Total_biomass,"Porter_Patch/data/Porter_Patch_2011_biom
 Porter_Patch_2012 <- import("Porter_Patch/data/Porter_Patch_2012.xls")
 Porter_Patch_2012_Total_biomass <- summarise_at(Porter_Patch_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2012_Total_biomass$Year <- ('2012')
+Porter_Patch_2012_Total_biomass$Reef <- ('Porter Patch')
 
 ###output
 export(Porter_Patch_2012_Total_biomass,"Porter_Patch/data/Porter_Patch_2012_biomass_data.csv")
@@ -7010,6 +7950,7 @@ export(Porter_Patch_2012_Total_biomass,"Porter_Patch/data/Porter_Patch_2012_biom
 Porter_Patch_2014 <- import("Porter_Patch/data/Porter_Patch_2014.xls")
 Porter_Patch_2014_Total_biomass <- summarise_at(Porter_Patch_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2014_Total_biomass$Year <- ('2014')
+Porter_Patch_2014_Total_biomass$Reef <- ('Porter Patch')
 
 ###output
 export(Porter_Patch_2014_Total_biomass,"Porter_Patch/data/Porter_Patch_2014_biomass_data.csv")
@@ -7017,6 +7958,7 @@ export(Porter_Patch_2014_Total_biomass,"Porter_Patch/data/Porter_Patch_2014_biom
 Porter_Patch_2016 <- import("Porter_Patch/data/Porter_Patch_2016.xls")
 Porter_Patch_2016_Total_biomass <- summarise_at(Porter_Patch_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2016_Total_biomass$Year <- ('2016')
+Porter_Patch_2016_Total_biomass$Reef <- ('Porter Patch')
 
 ###output
 export(Porter_Patch_2016_Total_biomass,"Porter_Patch/data/Porter_Patch_2016_biomass_data.csv")
@@ -7024,6 +7966,8 @@ export(Porter_Patch_2016_Total_biomass,"Porter_Patch/data/Porter_Patch_2016_biom
 Porter_Patch_2018 <- import("Porter_Patch/data/Porter_Patch_2018.xls")
 Porter_Patch_2018_Total_biomass <- summarise_at(Porter_Patch_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Porter_Patch_2018_Total_biomass$Year <- ('2018')
+Porter_Patch_2018_Total_biomass$Reef <- ('Porter Patch')
+
 ###output
 export(Porter_Patch_2018_Total_biomass,"Porter_Patch/data/Porter_Patch_2018_biomass_data.csv")
 
@@ -7074,30 +8018,35 @@ export(Porter_Patch_Reef_biomass_data_combined,"Porter_Patch/data/Porter_Patch_b
 Turtle_1999 <- import("Turtle/data/Turtle_1999.xls")
 Turtle_1999_Total_biomass <- summarise_at(Turtle_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_1999_Total_biomass$Year <- ('1999')
+Turtle_1999_Total_biomass$Reef <- ('Turtle')
 ###output
 export(Turtle_1999_Total_biomass,"Turtle/data/Turtle_1999_biomass_data.csv")
 
 Turtle_2000 <- import("Turtle/data/Turtle_2000.xls")
 Turtle_2000_Total_biomass <- summarise_at(Turtle_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2000_Total_biomass$Year <- ('2000')
+Turtle_2000_Total_biomass$Reef <- ('Turtle')
 ###output
 export(Turtle_2000_Total_biomass,"Turtle/data/Turtle_2000_biomass_data.csv")
 
 Turtle_2001 <- import("Turtle/data/Turtle_2001.xls")
 Turtle_2001_Total_biomass <- summarise_at(Turtle_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2001_Total_biomass$Year <- ('2001')
+Turtle_2001_Total_biomass$Reef <- ('Turtle')
 ###output
 export(Turtle_2001_Total_biomass,"Turtle/data/Turtle_2001_biomass_data.csv")
 
 Turtle_2002 <- import("Turtle/data/Turtle_2002.xls")
 Turtle_2002_Total_biomass <- summarise_at(Turtle_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2002_Total_biomass$Year <- ('2002')
+Turtle_2002_Total_biomass$Reef <- ('Turtle')
 ###output
 export(Turtle_2002_Total_biomass,"Turtle/data/Turtle_2002_biomass_data.csv")
 
 Turtle_2003 <- import("Turtle/data/Turtle_2003.xls")
 Turtle_2003_Total_biomass <- summarise_at(Turtle_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2003_Total_biomass$Year <- ('2003')
+Turtle_2003_Total_biomass$Reef <- ('Turtle')
 ###output
 export(Turtle_2003_Total_biomass,"Turtle/data/Turtle_2003_biomass_data.csv")
 
@@ -7105,6 +8054,7 @@ export(Turtle_2003_Total_biomass,"Turtle/data/Turtle_2003_biomass_data.csv")
 Turtle_2004 <- import("Turtle/data/Turtle_2004.xls")
 Turtle_2004_Total_biomass <- summarise_at(Turtle_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2004_Total_biomass$Year <- ('2004')
+Turtle_2004_Total_biomass$Reef <- ('Turtle')
 
 ###output
 export(Turtle_2004_Total_biomass,"Turtle/data/Turtle_2004_biomass_data.csv")
@@ -7112,6 +8062,7 @@ export(Turtle_2004_Total_biomass,"Turtle/data/Turtle_2004_biomass_data.csv")
 Turtle_2005 <- import("Turtle/data/Turtle_2005.xls")
 Turtle_2005_Total_biomass <- summarise_at(Turtle_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2005_Total_biomass$Year <- ('2005')
+Turtle_2005_Total_biomass$Reef <- ('Turtle')
 ###output
 export(Turtle_2005_Total_biomass,"Turtle/data/Turtle_2005_biomass_data.csv")
 
@@ -7119,6 +8070,7 @@ export(Turtle_2005_Total_biomass,"Turtle/data/Turtle_2005_biomass_data.csv")
 Turtle_2006 <- import("Turtle/data/Turtle_2006.xls")
 Turtle_2006_Total_biomass <- summarise_at(Turtle_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2006_Total_biomass$Year <- ('2006')
+Turtle_2006_Total_biomass$Reef <- ('Turtle')
 
 ###output
 export(Turtle_2006_Total_biomass,"Turtle/data/Turtle_2006_biomass_data.csv")
@@ -7126,6 +8078,7 @@ export(Turtle_2006_Total_biomass,"Turtle/data/Turtle_2006_biomass_data.csv")
 Turtle_2007 <- import("Turtle/data/Turtle_2007.xls")
 Turtle_2007_Total_biomass <- summarise_at(Turtle_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2007_Total_biomass$Year <- ('2007')
+Turtle_2007_Total_biomass$Reef <- ('Turtle')
 ###output
 export(Turtle_2007_Total_biomass,"Turtle/data/Turtle_2007_biomass_data.csv")
 
@@ -7133,6 +8086,7 @@ export(Turtle_2007_Total_biomass,"Turtle/data/Turtle_2007_biomass_data.csv")
 Turtle_2008 <- import("Turtle/data/Turtle_2008.xls")
 Turtle_2008_Total_biomass <- summarise_at(Turtle_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2008_Total_biomass$Year <- ('2008')
+Turtle_2008_Total_biomass$Reef <- ('Turtle')
 
 ###output
 export(Turtle_2008_Total_biomass,"Turtle/data/Turtle_2008_biomass_data.csv")
@@ -7140,6 +8094,7 @@ export(Turtle_2008_Total_biomass,"Turtle/data/Turtle_2008_biomass_data.csv")
 Turtle_2009 <- import("Turtle/data/Turtle_2009.xls")
 Turtle_2009_Total_biomass <- summarise_at(Turtle_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2009_Total_biomass$Year <- ('2009')
+Turtle_2009_Total_biomass$Reef <- ('Turtle')
 ###output
 export(Turtle_2009_Total_biomass,"Turtle/data/Turtle_2009_biomass_data.csv")
 
@@ -7147,6 +8102,7 @@ export(Turtle_2009_Total_biomass,"Turtle/data/Turtle_2009_biomass_data.csv")
 Turtle_2010 <- import("Turtle/data/Turtle_2010.xls")
 Turtle_2010_Total_biomass <- summarise_at(Turtle_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2010_Total_biomass$Year <- ('2010')
+Turtle_2010_Total_biomass$Reef <- ('Turtle')
 
 ###output
 export(Turtle_2010_Total_biomass,"Turtle/data/Turtle_2010_biomass_data.csv")
@@ -7154,6 +8110,7 @@ export(Turtle_2010_Total_biomass,"Turtle/data/Turtle_2010_biomass_data.csv")
 Turtle_2011 <- import("Turtle/data/Turtle_2011.xls")
 Turtle_2011_Total_biomass <- summarise_at(Turtle_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2011_Total_biomass$Year <- ('2011')
+Turtle_2011_Total_biomass$Reef <- ('Turtle')
 ###output
 export(Turtle_2011_Total_biomass,"Turtle/data/Turtle_2011_biomass_data.csv")
 
@@ -7161,6 +8118,7 @@ export(Turtle_2011_Total_biomass,"Turtle/data/Turtle_2011_biomass_data.csv")
 Turtle_2012 <- import("Turtle/data/Turtle_2012.xls")
 Turtle_2012_Total_biomass <- summarise_at(Turtle_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2012_Total_biomass$Year <- ('2012')
+Turtle_2012_Total_biomass$Reef <- ('Turtle')
 
 ###output
 export(Turtle_2012_Total_biomass,"Turtle/data/Turtle_2012_biomass_data.csv")
@@ -7168,6 +8126,7 @@ export(Turtle_2012_Total_biomass,"Turtle/data/Turtle_2012_biomass_data.csv")
 Turtle_2014 <- import("Turtle/data/Turtle_2014.xls")
 Turtle_2014_Total_biomass <- summarise_at(Turtle_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2014_Total_biomass$Year <- ('2014')
+Turtle_2014_Total_biomass$Reef <- ('Turtle')
 
 ###output
 export(Turtle_2014_Total_biomass,"Turtle/data/Turtle_2014_biomass_data.csv")
@@ -7175,6 +8134,7 @@ export(Turtle_2014_Total_biomass,"Turtle/data/Turtle_2014_biomass_data.csv")
 Turtle_2016 <- import("Turtle/data/Turtle_2016.xls")
 Turtle_2016_Total_biomass <- summarise_at(Turtle_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2016_Total_biomass$Year <- ('2016')
+Turtle_2016_Total_biomass$Reef <- ('Turtle')
 
 ###output
 export(Turtle_2016_Total_biomass,"Turtle/data/Turtle_2016_biomass_data.csv")
@@ -7182,6 +8142,7 @@ export(Turtle_2016_Total_biomass,"Turtle/data/Turtle_2016_biomass_data.csv")
 Turtle_2018 <- import("Turtle/data/Turtle_2018.xls")
 Turtle_2018_Total_biomass <- summarise_at(Turtle_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Turtle_2018_Total_biomass$Year <- ('2018')
+Turtle_2018_Total_biomass$Reef <- ('Turtle')
 ###output
 export(Turtle_2018_Total_biomass,"Turtle/data/Turtle_2018_biomass_data.csv")
 
@@ -7232,30 +8193,35 @@ export(Turtle_Reef_biomass_data_combined,"Turtle/data/Turtle_biomass_data_combin
 Two_Patches_1999 <- import("Two_Patches/data/Two_Patches_1999.xls")
 Two_Patches_1999_Total_biomass <- summarise_at(Two_Patches_1999, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_1999_Total_biomass$Year <- ('1999')
+Two_Patches_1999_Total_biomass$Reef <- ('Two Patches')
 ###output
 export(Two_Patches_1999_Total_biomass,"Two_Patches/data/Two_Patches_1999_biomass_data.csv")
 
 Two_Patches_2000 <- import("Two_Patches/data/Two_Patches_2000.xls")
 Two_Patches_2000_Total_biomass <- summarise_at(Two_Patches_2000, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2000_Total_biomass$Year <- ('2000')
+Two_Patches_2000_Total_biomass$Reef <- ('Two Patches')
 ###output
 export(Two_Patches_2000_Total_biomass,"Two_Patches/data/Two_Patches_2000_biomass_data.csv")
 
 Two_Patches_2001 <- import("Two_Patches/data/Two_Patches_2001.xls")
 Two_Patches_2001_Total_biomass <- summarise_at(Two_Patches_2001, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2001_Total_biomass$Year <- ('2001')
+Two_Patches_2001_Total_biomass$Reef <- ('Two Patches')
 ###output
 export(Two_Patches_2001_Total_biomass,"Two_Patches/data/Two_Patches_2001_biomass_data.csv")
 
 Two_Patches_2002 <- import("Two_Patches/data/Two_Patches_2002.xls")
 Two_Patches_2002_Total_biomass <- summarise_at(Two_Patches_2002, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2002_Total_biomass$Year <- ('2002')
+Two_Patches_2002_Total_biomass$Reef <- ('Two Patches')
 ###output
 export(Two_Patches_2002_Total_biomass,"Two_Patches/data/Two_Patches_2002_biomass_data.csv")
 
 Two_Patches_2003 <- import("Two_Patches/data/Two_Patches_2003.xls")
 Two_Patches_2003_Total_biomass <- summarise_at(Two_Patches_2003, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2003_Total_biomass$Year <- ('2003')
+Two_Patches_2003_Total_biomass$Reef <- ('Two Patches')
 ###output
 export(Two_Patches_2003_Total_biomass,"Two_Patches/data/Two_Patches_2003_biomass_data.csv")
 
@@ -7263,6 +8229,7 @@ export(Two_Patches_2003_Total_biomass,"Two_Patches/data/Two_Patches_2003_biomass
 Two_Patches_2004 <- import("Two_Patches/data/Two_Patches_2004.xls")
 Two_Patches_2004_Total_biomass <- summarise_at(Two_Patches_2004, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2004_Total_biomass$Year <- ('2004')
+Two_Patches_2004_Total_biomass$Reef <- ('Two Patches')
 
 ###output
 export(Two_Patches_2004_Total_biomass,"Two_Patches/data/Two_Patches_2004_biomass_data.csv")
@@ -7270,6 +8237,7 @@ export(Two_Patches_2004_Total_biomass,"Two_Patches/data/Two_Patches_2004_biomass
 Two_Patches_2005 <- import("Two_Patches/data/Two_Patches_2005.xls")
 Two_Patches_2005_Total_biomass <- summarise_at(Two_Patches_2005, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2005_Total_biomass$Year <- ('2005')
+Two_Patches_2005_Total_biomass$Reef <- ('Two Patches')
 ###output
 export(Two_Patches_2005_Total_biomass,"Two_Patches/data/Two_Patches_2005_biomass_data.csv")
 
@@ -7277,6 +8245,7 @@ export(Two_Patches_2005_Total_biomass,"Two_Patches/data/Two_Patches_2005_biomass
 Two_Patches_2006 <- import("Two_Patches/data/Two_Patches_2006.xls")
 Two_Patches_2006_Total_biomass <- summarise_at(Two_Patches_2006, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2006_Total_biomass$Year <- ('2006')
+Two_Patches_2006_Total_biomass$Reef <- ('Two Patches')
 
 ###output
 export(Two_Patches_2006_Total_biomass,"Two_Patches/data/Two_Patches_2006_biomass_data.csv")
@@ -7284,6 +8253,7 @@ export(Two_Patches_2006_Total_biomass,"Two_Patches/data/Two_Patches_2006_biomass
 Two_Patches_2007 <- import("Two_Patches/data/Two_Patches_2007.xls")
 Two_Patches_2007_Total_biomass <- summarise_at(Two_Patches_2007, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2007_Total_biomass$Year <- ('2007')
+Two_Patches_2007_Total_biomass$Reef <- ('Two Patches')
 ###output
 export(Two_Patches_2007_Total_biomass,"Two_Patches/data/Two_Patches_2007_biomass_data.csv")
 
@@ -7291,6 +8261,7 @@ export(Two_Patches_2007_Total_biomass,"Two_Patches/data/Two_Patches_2007_biomass
 Two_Patches_2008 <- import("Two_Patches/data/Two_Patches_2008.xls")
 Two_Patches_2008_Total_biomass <- summarise_at(Two_Patches_2008, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2008_Total_biomass$Year <- ('2008')
+Two_Patches_2008_Total_biomass$Reef <- ('Two Patches')
 
 ###output
 export(Two_Patches_2008_Total_biomass,"Two_Patches/data/Two_Patches_2008_biomass_data.csv")
@@ -7298,6 +8269,7 @@ export(Two_Patches_2008_Total_biomass,"Two_Patches/data/Two_Patches_2008_biomass
 Two_Patches_2009 <- import("Two_Patches/data/Two_Patches_2009.xls")
 Two_Patches_2009_Total_biomass <- summarise_at(Two_Patches_2009, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2009_Total_biomass$Year <- ('2009')
+Two_Patches_2009_Total_biomass$Reef <- ('Two Patches')
 ###output
 export(Two_Patches_2009_Total_biomass,"Two_Patches/data/Two_Patches_2009_biomass_data.csv")
 
@@ -7305,6 +8277,7 @@ export(Two_Patches_2009_Total_biomass,"Two_Patches/data/Two_Patches_2009_biomass
 Two_Patches_2010 <- import("Two_Patches/data/Two_Patches_2010.xls")
 Two_Patches_2010_Total_biomass <- summarise_at(Two_Patches_2010, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2010_Total_biomass$Year <- ('2010')
+Two_Patches_2010_Total_biomass$Reef <- ('Two Patches')
 
 ###output
 export(Two_Patches_2010_Total_biomass,"Two_Patches/data/Two_Patches_2010_biomass_data.csv")
@@ -7312,6 +8285,7 @@ export(Two_Patches_2010_Total_biomass,"Two_Patches/data/Two_Patches_2010_biomass
 Two_Patches_2011 <- import("Two_Patches/data/Two_Patches_2011.xls")
 Two_Patches_2011_Total_biomass <- summarise_at(Two_Patches_2011, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2011_Total_biomass$Year <- ('2011')
+Two_Patches_2011_Total_biomass$Reef <- ('Two Patches')
 ###output
 export(Two_Patches_2011_Total_biomass,"Two_Patches/data/Two_Patches_2011_biomass_data.csv")
 
@@ -7319,6 +8293,7 @@ export(Two_Patches_2011_Total_biomass,"Two_Patches/data/Two_Patches_2011_biomass
 Two_Patches_2012 <- import("Two_Patches/data/Two_Patches_2012.xls")
 Two_Patches_2012_Total_biomass <- summarise_at(Two_Patches_2012, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2012_Total_biomass$Year <- ('2012')
+Two_Patches_2012_Total_biomass$Reef <- ('Two Patches')
 
 ###output
 export(Two_Patches_2012_Total_biomass,"Two_Patches/data/Two_Patches_2012_biomass_data.csv")
@@ -7326,6 +8301,7 @@ export(Two_Patches_2012_Total_biomass,"Two_Patches/data/Two_Patches_2012_biomass
 Two_Patches_2014 <- import("Two_Patches/data/Two_Patches_2014.xls")
 Two_Patches_2014_Total_biomass <- summarise_at(Two_Patches_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2014_Total_biomass$Year <- ('2014')
+Two_Patches_2014_Total_biomass$Reef <- ('Two Patches')
 
 ###output
 export(Two_Patches_2014_Total_biomass,"Two_Patches/data/Two_Patches_2014_biomass_data.csv")
@@ -7333,6 +8309,7 @@ export(Two_Patches_2014_Total_biomass,"Two_Patches/data/Two_Patches_2014_biomass
 Two_Patches_2016 <- import("Two_Patches/data/Two_Patches_2016.xls")
 Two_Patches_2016_Total_biomass <- summarise_at(Two_Patches_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2016_Total_biomass$Year <- ('2016')
+Two_Patches_2016_Total_biomass$Reef <- ('Two Patches')
 
 ###output
 export(Two_Patches_2016_Total_biomass,"Two_Patches/data/Two_Patches_2016_biomass_data.csv")
@@ -7340,6 +8317,8 @@ export(Two_Patches_2016_Total_biomass,"Two_Patches/data/Two_Patches_2016_biomass
 Two_Patches_2018 <- import("Two_Patches/data/Two_Patches_2018.xls")
 Two_Patches_2018_Total_biomass <- summarise_at(Two_Patches_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Two_Patches_2018_Total_biomass$Year <- ('2018')
+Two_Patches_2018_Total_biomass$Reef <- ('Two Patches')
+
 ###output
 export(Two_Patches_2018_Total_biomass,"Two_Patches/data/Two_Patches_2018_biomass_data.csv")
 
@@ -7395,6 +8374,7 @@ setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/SEF")
 Broward_County_1_2013 <- import("Broward_County_1/data/Broward_County_1_2013.xls")
 Broward_County_1_2013_Total_biomass <- summarise_at(Broward_County_1_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_1_2013_Total_biomass$Year <- ('2013')
+Broward_County_1_2013_Total_biomass$Reef <- ('Broward County 1')
 
 ###output
 export(Broward_County_1_2013_Total_biomass,"Broward_County_1/data/Broward_County_1_2013_biomass_data.csv")
@@ -7403,6 +8383,7 @@ export(Broward_County_1_2013_Total_biomass,"Broward_County_1/data/Broward_County
 Broward_County_1_2014 <- import("Broward_County_1/data/Broward_County_1_2014.xls")
 Broward_County_1_2014_Total_biomass <- summarise_at(Broward_County_1_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_1_2014_Total_biomass$Year <- ('2014')
+Broward_County_1_2014_Total_biomass$Reef <- ('Broward County 1')
 
 ###output
 export(Broward_County_1_2014_Total_biomass,"Broward_County_1/data/Broward_County_1_2014_biomass_data.csv")
@@ -7410,6 +8391,7 @@ export(Broward_County_1_2014_Total_biomass,"Broward_County_1/data/Broward_County
 Broward_County_1_2015 <- import("Broward_County_1/data/Broward_County_1_2015.xls")
 Broward_County_1_2015_Total_biomass <- summarise_at(Broward_County_1_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_1_2015_Total_biomass$Year <- ('2015')
+Broward_County_1_2015_Total_biomass$Reef <- ('Broward County 1')
 
 ###output
 export(Broward_County_1_2015_Total_biomass,"Broward_County_1/data/Broward_County_1_2015_biomass_data.csv")
@@ -7418,6 +8400,7 @@ export(Broward_County_1_2015_Total_biomass,"Broward_County_1/data/Broward_County
 Broward_County_1_2016 <- import("Broward_County_1/data/Broward_County_1_2016.xls")
 Broward_County_1_2016_Total_biomass <- summarise_at(Broward_County_1_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_1_2016_Total_biomass$Year <- ('2016')
+Broward_County_1_2016_Total_biomass$Reef <- ('Broward County 1')
 
 ###output
 export(Broward_County_1_2016_Total_biomass,"Broward_County_1/data/Broward_County_1_2016_biomass_data.csv")
@@ -7425,6 +8408,7 @@ export(Broward_County_1_2016_Total_biomass,"Broward_County_1/data/Broward_County
 Broward_County_1_2018 <- import("Broward_County_1/data/Broward_County_1_2018.xls")
 Broward_County_1_2018_Total_biomass <- summarise_at(Broward_County_1_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_1_2018_Total_biomass$Year <- ('2018')
+Broward_County_1_2018_Total_biomass$Reef <- ('Broward County 1')
 ###output
 export(Broward_County_1_2018_Total_biomass,"Broward_County_1/data/Broward_County_1_2018_biomass_data.csv")
 
@@ -7449,6 +8433,7 @@ export(Broward_County_1_Reef_biomass_data_combined,"Broward_County_1/data/Browar
 Broward_County_2_2013 <- import("Broward_County_2/data/Broward_County_2_2013.xls")
 Broward_County_2_2013_Total_biomass <- summarise_at(Broward_County_2_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_2_2013_Total_biomass$Year <- ('2013')
+Broward_County_2_2013_Total_biomass$Reef <- ('Broward County 2')
 
 ###output
 export(Broward_County_2_2013_Total_biomass,"Broward_County_2/data/Broward_County_2_2013_biomass_data.csv")
@@ -7457,6 +8442,7 @@ export(Broward_County_2_2013_Total_biomass,"Broward_County_2/data/Broward_County
 Broward_County_2_2014 <- import("Broward_County_2/data/Broward_County_2_2014.xls")
 Broward_County_2_2014_Total_biomass <- summarise_at(Broward_County_2_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_2_2014_Total_biomass$Year <- ('2014')
+Broward_County_2_2014_Total_biomass$Reef <- ('Broward County 2')
 
 ###output
 export(Broward_County_2_2014_Total_biomass,"Broward_County_2/data/Broward_County_2_2014_biomass_data.csv")
@@ -7464,6 +8450,7 @@ export(Broward_County_2_2014_Total_biomass,"Broward_County_2/data/Broward_County
 Broward_County_2_2015 <- import("Broward_County_2/data/Broward_County_2_2015.xls")
 Broward_County_2_2015_Total_biomass <- summarise_at(Broward_County_2_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_2_2015_Total_biomass$Year <- ('2015')
+Broward_County_2_2015_Total_biomass$Reef <- ('Broward County 2')
 
 ###output
 export(Broward_County_2_2015_Total_biomass,"Broward_County_2/data/Broward_County_2_2015_biomass_data.csv")
@@ -7472,6 +8459,7 @@ export(Broward_County_2_2015_Total_biomass,"Broward_County_2/data/Broward_County
 Broward_County_2_2016 <- import("Broward_County_2/data/Broward_County_2_2016.xls")
 Broward_County_2_2016_Total_biomass <- summarise_at(Broward_County_2_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_2_2016_Total_biomass$Year <- ('2016')
+Broward_County_2_2016_Total_biomass$Reef <- ('Broward County 2')
 
 ###output
 export(Broward_County_2_2016_Total_biomass,"Broward_County_2/data/Broward_County_2_2016_biomass_data.csv")
@@ -7479,6 +8467,7 @@ export(Broward_County_2_2016_Total_biomass,"Broward_County_2/data/Broward_County
 Broward_County_2_2018 <- import("Broward_County_2/data/Broward_County_2_2018.xls")
 Broward_County_2_2018_Total_biomass <- summarise_at(Broward_County_2_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_2_2018_Total_biomass$Year <- ('2018')
+Broward_County_2_2018_Total_biomass$Reef <- ('Broward County 2')
 ###output
 export(Broward_County_2_2018_Total_biomass,"Broward_County_2/data/Broward_County_2_2018_biomass_data.csv")
 
@@ -7504,6 +8493,7 @@ export(Broward_County_2_Reef_biomass_data_combined,"Broward_County_2/data/Browar
 Broward_County_3_2013 <- import("Broward_County_3/data/Broward_County_3_2013.xls")
 Broward_County_3_2013_Total_biomass <- summarise_at(Broward_County_3_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_3_2013_Total_biomass$Year <- ('2013')
+Broward_County_3_2013_Total_biomass$Reef <- ('Broward County 3')
 
 ###output
 export(Broward_County_3_2013_Total_biomass,"Broward_County_3/data/Broward_County_3_2013_biomass_data.csv")
@@ -7512,6 +8502,7 @@ export(Broward_County_3_2013_Total_biomass,"Broward_County_3/data/Broward_County
 Broward_County_3_2014 <- import("Broward_County_3/data/Broward_County_3_2014.xls")
 Broward_County_3_2014_Total_biomass <- summarise_at(Broward_County_3_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_3_2014_Total_biomass$Year <- ('2014')
+Broward_County_3_2014_Total_biomass$Reef <- ('Broward County 3')
 
 ###output
 export(Broward_County_3_2014_Total_biomass,"Broward_County_3/data/Broward_County_3_2014_biomass_data.csv")
@@ -7519,6 +8510,7 @@ export(Broward_County_3_2014_Total_biomass,"Broward_County_3/data/Broward_County
 Broward_County_3_2015 <- import("Broward_County_3/data/Broward_County_3_2015.xls")
 Broward_County_3_2015_Total_biomass <- summarise_at(Broward_County_3_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_3_2015_Total_biomass$Year <- ('2015')
+Broward_County_3_2015_Total_biomass$Reef <- ('Broward County 3')
 
 ###output
 export(Broward_County_3_2015_Total_biomass,"Broward_County_3/data/Broward_County_3_2015_biomass_data.csv")
@@ -7527,6 +8519,7 @@ export(Broward_County_3_2015_Total_biomass,"Broward_County_3/data/Broward_County
 Broward_County_3_2016 <- import("Broward_County_3/data/Broward_County_3_2016.xls")
 Broward_County_3_2016_Total_biomass <- summarise_at(Broward_County_3_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_3_2016_Total_biomass$Year <- ('2016')
+Broward_County_3_2016_Total_biomass$Reef <- ('Broward County 3')
 
 ###output
 export(Broward_County_3_2016_Total_biomass,"Broward_County_3/data/Broward_County_3_2016_biomass_data.csv")
@@ -7534,6 +8527,7 @@ export(Broward_County_3_2016_Total_biomass,"Broward_County_3/data/Broward_County
 Broward_County_3_2018 <- import("Broward_County_3/data/Broward_County_3_2018.xls")
 Broward_County_3_2018_Total_biomass <- summarise_at(Broward_County_3_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_3_2018_Total_biomass$Year <- ('2018')
+Broward_County_3_2018_Total_biomass$Reef <- ('Broward County 3')
 ###output
 export(Broward_County_3_2018_Total_biomass,"Broward_County_3/data/Broward_County_3_2018_biomass_data.csv")
 
@@ -7559,6 +8553,7 @@ export(Broward_County_3_Reef_biomass_data_combined,"Broward_County_3/data/Browar
 Broward_County_4_2013 <- import("Broward_County_4/data/Broward_County_4_2013.xls")
 Broward_County_4_2013_Total_biomass <- summarise_at(Broward_County_4_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_4_2013_Total_biomass$Year <- ('2013')
+Broward_County_4_2013_Total_biomass$Reef <- ('Broward County 4')
 
 ###output
 export(Broward_County_4_2013_Total_biomass,"Broward_County_4/data/Broward_County_4_2013_biomass_data.csv")
@@ -7567,6 +8562,7 @@ export(Broward_County_4_2013_Total_biomass,"Broward_County_4/data/Broward_County
 Broward_County_4_2014 <- import("Broward_County_4/data/Broward_County_4_2014.xls")
 Broward_County_4_2014_Total_biomass <- summarise_at(Broward_County_4_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_4_2014_Total_biomass$Year <- ('2014')
+Broward_County_4_2014_Total_biomass$Reef <- ('Broward County 4')
 
 ###output
 export(Broward_County_4_2014_Total_biomass,"Broward_County_4/data/Broward_County_4_2014_biomass_data.csv")
@@ -7574,6 +8570,7 @@ export(Broward_County_4_2014_Total_biomass,"Broward_County_4/data/Broward_County
 Broward_County_4_2015 <- import("Broward_County_4/data/Broward_County_4_2015.xls")
 Broward_County_4_2015_Total_biomass <- summarise_at(Broward_County_4_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_4_2015_Total_biomass$Year <- ('2015')
+Broward_County_4_2015_Total_biomass$Reef <- ('Broward County 4')
 
 ###output
 export(Broward_County_4_2015_Total_biomass,"Broward_County_4/data/Broward_County_4_2015_biomass_data.csv")
@@ -7582,6 +8579,7 @@ export(Broward_County_4_2015_Total_biomass,"Broward_County_4/data/Broward_County
 Broward_County_4_2016 <- import("Broward_County_4/data/Broward_County_4_2016.xls")
 Broward_County_4_2016_Total_biomass <- summarise_at(Broward_County_4_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_4_2016_Total_biomass$Year <- ('2016')
+Broward_County_4_2016_Total_biomass$Reef <- ('Broward County 4')
 
 ###output
 export(Broward_County_4_2016_Total_biomass,"Broward_County_4/data/Broward_County_4_2016_biomass_data.csv")
@@ -7589,6 +8587,7 @@ export(Broward_County_4_2016_Total_biomass,"Broward_County_4/data/Broward_County
 Broward_County_4_2018 <- import("Broward_County_4/data/Broward_County_4_2018.xls")
 Broward_County_4_2018_Total_biomass <- summarise_at(Broward_County_4_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_4_2018_Total_biomass$Year <- ('2018')
+Broward_County_4_2018_Total_biomass$Reef <- ('Broward County 4')
 ###output
 export(Broward_County_4_2018_Total_biomass,"Broward_County_4/data/Broward_County_4_2018_biomass_data.csv")
 
@@ -7614,6 +8613,7 @@ export(Broward_County_4_Reef_biomass_data_combined,"Broward_County_4/data/Browar
 Broward_County_5_2013 <- import("Broward_County_5/data/Broward_County_5_2013.xls")
 Broward_County_5_2013_Total_biomass <- summarise_at(Broward_County_5_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_5_2013_Total_biomass$Year <- ('2013')
+Broward_County_5_2013_Total_biomass$Reef <- ('Broward County 5')
 
 ###output
 export(Broward_County_5_2013_Total_biomass,"Broward_County_5/data/Broward_County_5_2013_biomass_data.csv")
@@ -7622,6 +8622,7 @@ export(Broward_County_5_2013_Total_biomass,"Broward_County_5/data/Broward_County
 Broward_County_5_2014 <- import("Broward_County_5/data/Broward_County_5_2014.xls")
 Broward_County_5_2014_Total_biomass <- summarise_at(Broward_County_5_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_5_2014_Total_biomass$Year <- ('2014')
+Broward_County_5_2014_Total_biomass$Reef <- ('Broward County 5')
 
 ###output
 export(Broward_County_5_2014_Total_biomass,"Broward_County_5/data/Broward_County_5_2014_biomass_data.csv")
@@ -7629,6 +8630,7 @@ export(Broward_County_5_2014_Total_biomass,"Broward_County_5/data/Broward_County
 Broward_County_5_2015 <- import("Broward_County_5/data/Broward_County_5_2015.xls")
 Broward_County_5_2015_Total_biomass <- summarise_at(Broward_County_5_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_5_2015_Total_biomass$Year <- ('2015')
+Broward_County_5_2015_Total_biomass$Reef <- ('Broward County 5')
 
 ###output
 export(Broward_County_5_2015_Total_biomass,"Broward_County_5/data/Broward_County_5_2015_biomass_data.csv")
@@ -7637,6 +8639,7 @@ export(Broward_County_5_2015_Total_biomass,"Broward_County_5/data/Broward_County
 Broward_County_5_2016 <- import("Broward_County_5/data/Broward_County_5_2016.xls")
 Broward_County_5_2016_Total_biomass <- summarise_at(Broward_County_5_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_5_2016_Total_biomass$Year <- ('2016')
+Broward_County_5_2016_Total_biomass$Reef <- ('Broward County 5')
 
 ###output
 export(Broward_County_5_2016_Total_biomass,"Broward_County_5/data/Broward_County_5_2016_biomass_data.csv")
@@ -7644,6 +8647,7 @@ export(Broward_County_5_2016_Total_biomass,"Broward_County_5/data/Broward_County
 Broward_County_5_2018 <- import("Broward_County_5/data/Broward_County_5_2018.xls")
 Broward_County_5_2018_Total_biomass <- summarise_at(Broward_County_5_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_5_2018_Total_biomass$Year <- ('2018')
+Broward_County_5_2018_Total_biomass$Reef <- ('Broward County 5')
 ###output
 export(Broward_County_5_2018_Total_biomass,"Broward_County_5/data/Broward_County_5_2018_biomass_data.csv")
 
@@ -7669,6 +8673,7 @@ export(Broward_County_5_Reef_biomass_data_combined,"Broward_County_5/data/Browar
 Broward_County_6_2013 <- import("Broward_County_6/data/Broward_County_6_2013.xls")
 Broward_County_6_2013_Total_biomass <- summarise_at(Broward_County_6_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_6_2013_Total_biomass$Year <- ('2013')
+Broward_County_6_2013_Total_biomass$Reef <- ('Broward County 6')
 
 ###output
 export(Broward_County_6_2013_Total_biomass,"Broward_County_6/data/Broward_County_6_2013_biomass_data.csv")
@@ -7677,6 +8682,7 @@ export(Broward_County_6_2013_Total_biomass,"Broward_County_6/data/Broward_County
 Broward_County_6_2014 <- import("Broward_County_6/data/Broward_County_6_2014.xls")
 Broward_County_6_2014_Total_biomass <- summarise_at(Broward_County_6_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_6_2014_Total_biomass$Year <- ('2014')
+Broward_County_6_2014_Total_biomass$Reef <- ('Broward County 6')
 
 ###output
 export(Broward_County_6_2014_Total_biomass,"Broward_County_6/data/Broward_County_6_2014_biomass_data.csv")
@@ -7684,6 +8690,7 @@ export(Broward_County_6_2014_Total_biomass,"Broward_County_6/data/Broward_County
 Broward_County_6_2015 <- import("Broward_County_6/data/Broward_County_6_2015.xls")
 Broward_County_6_2015_Total_biomass <- summarise_at(Broward_County_6_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_6_2015_Total_biomass$Year <- ('2015')
+Broward_County_6_2015_Total_biomass$Reef <- ('Broward County 6')
 
 ###output
 export(Broward_County_6_2015_Total_biomass,"Broward_County_6/data/Broward_County_6_2015_biomass_data.csv")
@@ -7692,6 +8699,7 @@ export(Broward_County_6_2015_Total_biomass,"Broward_County_6/data/Broward_County
 Broward_County_6_2016 <- import("Broward_County_6/data/Broward_County_6_2016.xls")
 Broward_County_6_2016_Total_biomass <- summarise_at(Broward_County_6_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_6_2016_Total_biomass$Year <- ('2016')
+Broward_County_6_2016_Total_biomass$Reef <- ('Broward County 6')
 
 ###output
 export(Broward_County_6_2016_Total_biomass,"Broward_County_6/data/Broward_County_6_2016_biomass_data.csv")
@@ -7699,6 +8707,7 @@ export(Broward_County_6_2016_Total_biomass,"Broward_County_6/data/Broward_County
 Broward_County_6_2018 <- import("Broward_County_6/data/Broward_County_6_2018.xls")
 Broward_County_6_2018_Total_biomass <- summarise_at(Broward_County_6_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_6_2018_Total_biomass$Year <- ('2018')
+Broward_County_6_2018_Total_biomass$Reef <- ('Broward County 6')
 ###output
 export(Broward_County_6_2018_Total_biomass,"Broward_County_6/data/Broward_County_6_2018_biomass_data.csv")
 
@@ -7724,6 +8733,7 @@ export(Broward_County_6_Reef_biomass_data_combined,"Broward_County_6/data/Browar
 Broward_County_A_2013 <- import("Broward_County_A/data/Broward_County_A_2013.xls")
 Broward_County_A_2013_Total_biomass <- summarise_at(Broward_County_A_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_A_2013_Total_biomass$Year <- ('2013')
+Broward_County_A_2013_Total_biomass$Reef <- ('Broward County A')
 
 ###output
 export(Broward_County_A_2013_Total_biomass,"Broward_County_A/data/Broward_County_A_2013_biomass_data.csv")
@@ -7732,6 +8742,7 @@ export(Broward_County_A_2013_Total_biomass,"Broward_County_A/data/Broward_County
 Broward_County_A_2014 <- import("Broward_County_A/data/Broward_County_A_2014.xls")
 Broward_County_A_2014_Total_biomass <- summarise_at(Broward_County_A_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_A_2014_Total_biomass$Year <- ('2014')
+Broward_County_A_2014_Total_biomass$Reef <- ('Broward County A')
 
 ###output
 export(Broward_County_A_2014_Total_biomass,"Broward_County_A/data/Broward_County_A_2014_biomass_data.csv")
@@ -7739,6 +8750,7 @@ export(Broward_County_A_2014_Total_biomass,"Broward_County_A/data/Broward_County
 Broward_County_A_2015 <- import("Broward_County_A/data/Broward_County_A_2015.xls")
 Broward_County_A_2015_Total_biomass <- summarise_at(Broward_County_A_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_A_2015_Total_biomass$Year <- ('2015')
+Broward_County_A_2015_Total_biomass$Reef <- ('Broward County A')
 
 ###output
 export(Broward_County_A_2015_Total_biomass,"Broward_County_A/data/Broward_County_A_2015_biomass_data.csv")
@@ -7747,6 +8759,7 @@ export(Broward_County_A_2015_Total_biomass,"Broward_County_A/data/Broward_County
 Broward_County_A_2016 <- import("Broward_County_A/data/Broward_County_A_2016.xls")
 Broward_County_A_2016_Total_biomass <- summarise_at(Broward_County_A_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_A_2016_Total_biomass$Year <- ('2016')
+Broward_County_A_2016_Total_biomass$Reef <- ('Broward County A')
 
 ###output
 export(Broward_County_A_2016_Total_biomass,"Broward_County_A/data/Broward_County_A_2016_biomass_data.csv")
@@ -7754,6 +8767,8 @@ export(Broward_County_A_2016_Total_biomass,"Broward_County_A/data/Broward_County
 Broward_County_A_2018 <- import("Broward_County_A/data/Broward_County_A_2018.xls")
 Broward_County_A_2018_Total_biomass <- summarise_at(Broward_County_A_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Broward_County_A_2018_Total_biomass$Year <- ('2018')
+Broward_County_A_2018_Total_biomass$Reef <- ('Broward County A')
+
 ###output
 export(Broward_County_A_2018_Total_biomass,"Broward_County_A/data/Broward_County_A_2018_biomass_data.csv")
 
@@ -7779,6 +8794,8 @@ export(Broward_County_A_Reef_biomass_data_combined,"Broward_County_A/data/Browar
 Dade_County_1_2013 <- import("Dade_County_1/data/Dade_County_1_2013.xls")
 Dade_County_1_2013_Total_biomass <- summarise_at(Dade_County_1_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_1_2013_Total_biomass$Year <- ('2013')
+Dade_County_1_2013_Total_biomass$Reef <- ('Dade County 1')
+
 
 ###output
 export(Dade_County_1_2013_Total_biomass,"Dade_County_1/data/Dade_County_1_2013_biomass_data.csv")
@@ -7787,6 +8804,7 @@ export(Dade_County_1_2013_Total_biomass,"Dade_County_1/data/Dade_County_1_2013_b
 Dade_County_1_2014 <- import("Dade_County_1/data/Dade_County_1_2014.xls")
 Dade_County_1_2014_Total_biomass <- summarise_at(Dade_County_1_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_1_2014_Total_biomass$Year <- ('2014')
+Dade_County_1_2014_Total_biomass$Reef <- ('Dade County 1')
 
 ###output
 export(Dade_County_1_2014_Total_biomass,"Dade_County_1/data/Dade_County_1_2014_biomass_data.csv")
@@ -7794,6 +8812,7 @@ export(Dade_County_1_2014_Total_biomass,"Dade_County_1/data/Dade_County_1_2014_b
 Dade_County_1_2015 <- import("Dade_County_1/data/Dade_County_1_2015.xls")
 Dade_County_1_2015_Total_biomass <- summarise_at(Dade_County_1_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_1_2015_Total_biomass$Year <- ('2015')
+Dade_County_1_2015_Total_biomass$Reef <- ('Dade County 1')
 
 ###output
 export(Dade_County_1_2015_Total_biomass,"Dade_County_1/data/Dade_County_1_2015_biomass_data.csv")
@@ -7802,6 +8821,7 @@ export(Dade_County_1_2015_Total_biomass,"Dade_County_1/data/Dade_County_1_2015_b
 Dade_County_1_2016 <- import("Dade_County_1/data/Dade_County_1_2016.xls")
 Dade_County_1_2016_Total_biomass <- summarise_at(Dade_County_1_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_1_2016_Total_biomass$Year <- ('2016')
+Dade_County_1_2016_Total_biomass$Reef <- ('Dade County 1')
 
 ###output
 export(Dade_County_1_2016_Total_biomass,"Dade_County_1/data/Dade_County_1_2016_biomass_data.csv")
@@ -7809,6 +8829,7 @@ export(Dade_County_1_2016_Total_biomass,"Dade_County_1/data/Dade_County_1_2016_b
 Dade_County_1_2018 <- import("Dade_County_1/data/Dade_County_1_2018.xls")
 Dade_County_1_2018_Total_biomass <- summarise_at(Dade_County_1_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_1_2018_Total_biomass$Year <- ('2018')
+Dade_County_1_2018_Total_biomass$Reef <- ('Dade County 1')
 ###output
 export(Dade_County_1_2018_Total_biomass,"Dade_County_1/data/Dade_County_1_2018_biomass_data.csv")
 
@@ -7834,6 +8855,7 @@ export(Dade_County_1_Reef_biomass_data_combined,"Dade_County_1/data/Dade_County_
 Dade_County_2_2013 <- import("Dade_County_2/data/Dade_County_2_2013.xls")
 Dade_County_2_2013_Total_biomass <- summarise_at(Dade_County_2_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_2_2013_Total_biomass$Year <- ('2013')
+Dade_County_2_2013_Total_biomass$Reef <- ('Dade County 2')
 
 ###output
 export(Dade_County_2_2013_Total_biomass,"Dade_County_2/data/Dade_County_2_2013_biomass_data.csv")
@@ -7842,6 +8864,7 @@ export(Dade_County_2_2013_Total_biomass,"Dade_County_2/data/Dade_County_2_2013_b
 Dade_County_2_2014 <- import("Dade_County_2/data/Dade_County_2_2014.xls")
 Dade_County_2_2014_Total_biomass <- summarise_at(Dade_County_2_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_2_2014_Total_biomass$Year <- ('2014')
+Dade_County_2_2014_Total_biomass$Reef <- ('Dade County 2')
 
 ###output
 export(Dade_County_2_2014_Total_biomass,"Dade_County_2/data/Dade_County_2_2014_biomass_data.csv")
@@ -7849,6 +8872,7 @@ export(Dade_County_2_2014_Total_biomass,"Dade_County_2/data/Dade_County_2_2014_b
 Dade_County_2_2015 <- import("Dade_County_2/data/Dade_County_2_2015.xls")
 Dade_County_2_2015_Total_biomass <- summarise_at(Dade_County_2_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_2_2015_Total_biomass$Year <- ('2015')
+Dade_County_2_2015_Total_biomass$Reef <- ('Dade County 2')
 
 ###output
 export(Dade_County_2_2015_Total_biomass,"Dade_County_2/data/Dade_County_2_2015_biomass_data.csv")
@@ -7857,6 +8881,7 @@ export(Dade_County_2_2015_Total_biomass,"Dade_County_2/data/Dade_County_2_2015_b
 Dade_County_2_2016 <- import("Dade_County_2/data/Dade_County_2_2016.xls")
 Dade_County_2_2016_Total_biomass <- summarise_at(Dade_County_2_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_2_2016_Total_biomass$Year <- ('2016')
+Dade_County_2_2016_Total_biomass$Reef <- ('Dade County 2')
 
 ###output
 export(Dade_County_2_2016_Total_biomass,"Dade_County_2/data/Dade_County_2_2016_biomass_data.csv")
@@ -7864,6 +8889,8 @@ export(Dade_County_2_2016_Total_biomass,"Dade_County_2/data/Dade_County_2_2016_b
 Dade_County_2_2018 <- import("Dade_County_2/data/Dade_County_2_2018.xls")
 Dade_County_2_2018_Total_biomass <- summarise_at(Dade_County_2_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_2_2018_Total_biomass$Year <- ('2018')
+Dade_County_2_2018_Total_biomass$Reef <- ('Dade County 2')
+
 ###output
 export(Dade_County_2_2018_Total_biomass,"Dade_County_2/data/Dade_County_2_2018_biomass_data.csv")
 
@@ -7889,6 +8916,7 @@ export(Dade_County_2_Reef_biomass_data_combined,"Dade_County_2/data/Dade_County_
 Dade_County_3_2013 <- import("Dade_County_3/data/Dade_County_3_2013.xls")
 Dade_County_3_2013_Total_biomass <- summarise_at(Dade_County_3_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_3_2013_Total_biomass$Year <- ('2013')
+Dade_County_3_2013_Total_biomass$Reef <- ('Dade County 3')
 
 ###output
 export(Dade_County_3_2013_Total_biomass,"Dade_County_3/data/Dade_County_3_2013_biomass_data.csv")
@@ -7897,6 +8925,7 @@ export(Dade_County_3_2013_Total_biomass,"Dade_County_3/data/Dade_County_3_2013_b
 Dade_County_3_2014 <- import("Dade_County_3/data/Dade_County_3_2014.xls")
 Dade_County_3_2014_Total_biomass <- summarise_at(Dade_County_3_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_3_2014_Total_biomass$Year <- ('2014')
+Dade_County_3_2014_Total_biomass$Reef <- ('Dade County 3')
 
 ###output
 export(Dade_County_3_2014_Total_biomass,"Dade_County_3/data/Dade_County_3_2014_biomass_data.csv")
@@ -7904,6 +8933,7 @@ export(Dade_County_3_2014_Total_biomass,"Dade_County_3/data/Dade_County_3_2014_b
 Dade_County_3_2015 <- import("Dade_County_3/data/Dade_County_3_2015.xls")
 Dade_County_3_2015_Total_biomass <- summarise_at(Dade_County_3_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_3_2015_Total_biomass$Year <- ('2015')
+Dade_County_3_2015_Total_biomass$Reef <- ('Dade County 3')
 
 ###output
 export(Dade_County_3_2015_Total_biomass,"Dade_County_3/data/Dade_County_3_2015_biomass_data.csv")
@@ -7912,6 +8942,7 @@ export(Dade_County_3_2015_Total_biomass,"Dade_County_3/data/Dade_County_3_2015_b
 Dade_County_3_2016 <- import("Dade_County_3/data/Dade_County_3_2016.xls")
 Dade_County_3_2016_Total_biomass <- summarise_at(Dade_County_3_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_3_2016_Total_biomass$Year <- ('2016')
+Dade_County_3_2016_Total_biomass$Reef <- ('Dade County 3')
 
 ###output
 export(Dade_County_3_2016_Total_biomass,"Dade_County_3/data/Dade_County_3_2016_biomass_data.csv")
@@ -7919,6 +8950,7 @@ export(Dade_County_3_2016_Total_biomass,"Dade_County_3/data/Dade_County_3_2016_b
 Dade_County_3_2018 <- import("Dade_County_3/data/Dade_County_3_2018.xls")
 Dade_County_3_2018_Total_biomass <- summarise_at(Dade_County_3_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_3_2018_Total_biomass$Year <- ('2018')
+Dade_County_3_2018_Total_biomass$Reef <- ('Dade County 3')
 ###output
 export(Dade_County_3_2018_Total_biomass,"Dade_County_3/data/Dade_County_3_2018_biomass_data.csv")
 
@@ -7944,6 +8976,7 @@ export(Dade_County_3_Reef_biomass_data_combined,"Dade_County_3/data/Dade_County_
 Dade_County_4_2013 <- import("Dade_County_4/data/Dade_County_4_2013.xls")
 Dade_County_4_2013_Total_biomass <- summarise_at(Dade_County_4_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_4_2013_Total_biomass$Year <- ('2013')
+Dade_County_4_2013_Total_biomass$Reef <- ('Dade County 4')
 
 ###output
 export(Dade_County_4_2013_Total_biomass,"Dade_County_4/data/Dade_County_4_2013_biomass_data.csv")
@@ -7952,6 +8985,7 @@ export(Dade_County_4_2013_Total_biomass,"Dade_County_4/data/Dade_County_4_2013_b
 Dade_County_4_2014 <- import("Dade_County_4/data/Dade_County_4_2014.xls")
 Dade_County_4_2014_Total_biomass <- summarise_at(Dade_County_4_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_4_2014_Total_biomass$Year <- ('2014')
+Dade_County_4_2014_Total_biomass$Reef <- ('Dade County 4')
 
 ###output
 export(Dade_County_4_2014_Total_biomass,"Dade_County_4/data/Dade_County_4_2014_biomass_data.csv")
@@ -7959,6 +8993,7 @@ export(Dade_County_4_2014_Total_biomass,"Dade_County_4/data/Dade_County_4_2014_b
 Dade_County_4_2015 <- import("Dade_County_4/data/Dade_County_4_2015.xls")
 Dade_County_4_2015_Total_biomass <- summarise_at(Dade_County_4_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_4_2015_Total_biomass$Year <- ('2015')
+Dade_County_4_2015_Total_biomass$Reef <- ('Dade County 4')
 
 ###output
 export(Dade_County_4_2015_Total_biomass,"Dade_County_4/data/Dade_County_4_2015_biomass_data.csv")
@@ -7967,6 +9002,7 @@ export(Dade_County_4_2015_Total_biomass,"Dade_County_4/data/Dade_County_4_2015_b
 Dade_County_4_2016 <- import("Dade_County_4/data/Dade_County_4_2016.xls")
 Dade_County_4_2016_Total_biomass <- summarise_at(Dade_County_4_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_4_2016_Total_biomass$Year <- ('2016')
+Dade_County_4_2016_Total_biomass$Reef <- ('Dade County 4')
 
 ###output
 export(Dade_County_4_2016_Total_biomass,"Dade_County_4/data/Dade_County_4_2016_biomass_data.csv")
@@ -7974,6 +9010,7 @@ export(Dade_County_4_2016_Total_biomass,"Dade_County_4/data/Dade_County_4_2016_b
 Dade_County_4_2018 <- import("Dade_County_4/data/Dade_County_4_2018.xls")
 Dade_County_4_2018_Total_biomass <- summarise_at(Dade_County_4_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_4_2018_Total_biomass$Year <- ('2018')
+Dade_County_4_2018_Total_biomass$Reef <- ('Dade County 4')
 ###output
 export(Dade_County_4_2018_Total_biomass,"Dade_County_4/data/Dade_County_4_2018_biomass_data.csv")
 
@@ -7999,6 +9036,7 @@ export(Dade_County_4_Reef_biomass_data_combined,"Dade_County_4/data/Dade_County_
 Dade_County_5_2013 <- import("Dade_County_5/data/Dade_County_5_2013.xls")
 Dade_County_5_2013_Total_biomass <- summarise_at(Dade_County_5_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_5_2013_Total_biomass$Year <- ('2013')
+Dade_County_5_2013_Total_biomass$Reef <- ('Dade County 5')
 
 ###output
 export(Dade_County_5_2013_Total_biomass,"Dade_County_5/data/Dade_County_5_2013_biomass_data.csv")
@@ -8007,6 +9045,7 @@ export(Dade_County_5_2013_Total_biomass,"Dade_County_5/data/Dade_County_5_2013_b
 Dade_County_5_2014 <- import("Dade_County_5/data/Dade_County_5_2014.xls")
 Dade_County_5_2014_Total_biomass <- summarise_at(Dade_County_5_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_5_2014_Total_biomass$Year <- ('2014')
+Dade_County_5_2014_Total_biomass$Reef <- ('Dade County 5')
 
 ###output
 export(Dade_County_5_2014_Total_biomass,"Dade_County_5/data/Dade_County_5_2014_biomass_data.csv")
@@ -8014,6 +9053,7 @@ export(Dade_County_5_2014_Total_biomass,"Dade_County_5/data/Dade_County_5_2014_b
 Dade_County_5_2015 <- import("Dade_County_5/data/Dade_County_5_2015.xls")
 Dade_County_5_2015_Total_biomass <- summarise_at(Dade_County_5_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_5_2015_Total_biomass$Year <- ('2015')
+Dade_County_5_2015_Total_biomass$Reef <- ('Dade County 5')
 
 ###output
 export(Dade_County_5_2015_Total_biomass,"Dade_County_5/data/Dade_County_5_2015_biomass_data.csv")
@@ -8022,6 +9062,7 @@ export(Dade_County_5_2015_Total_biomass,"Dade_County_5/data/Dade_County_5_2015_b
 Dade_County_5_2016 <- import("Dade_County_5/data/Dade_County_5_2016.xls")
 Dade_County_5_2016_Total_biomass <- summarise_at(Dade_County_5_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_5_2016_Total_biomass$Year <- ('2016')
+Dade_County_5_2016_Total_biomass$Reef <- ('Dade County 5')
 
 ###output
 export(Dade_County_5_2016_Total_biomass,"Dade_County_5/data/Dade_County_5_2016_biomass_data.csv")
@@ -8029,6 +9070,7 @@ export(Dade_County_5_2016_Total_biomass,"Dade_County_5/data/Dade_County_5_2016_b
 Dade_County_5_2018 <- import("Dade_County_5/data/Dade_County_5_2018.xls")
 Dade_County_5_2018_Total_biomass <- summarise_at(Dade_County_5_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_5_2018_Total_biomass$Year <- ('2018')
+Dade_County_5_2018_Total_biomass$Reef <- ('Dade County 5')
 ###output
 export(Dade_County_5_2018_Total_biomass,"Dade_County_5/data/Dade_County_5_2018_biomass_data.csv")
 
@@ -8054,6 +9096,7 @@ export(Dade_County_5_Reef_biomass_data_combined,"Dade_County_5/data/Dade_County_
 Dade_County_6_2013 <- import("Dade_County_6/data/Dade_County_6_2013.xls")
 Dade_County_6_2013_Total_biomass <- summarise_at(Dade_County_6_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_6_2013_Total_biomass$Year <- ('2013')
+Dade_County_6_2013_Total_biomass$Reef <- ('Dade County 6')
 
 ###output
 export(Dade_County_6_2013_Total_biomass,"Dade_County_6/data/Dade_County_6_2013_biomass_data.csv")
@@ -8062,6 +9105,7 @@ export(Dade_County_6_2013_Total_biomass,"Dade_County_6/data/Dade_County_6_2013_b
 Dade_County_6_2014 <- import("Dade_County_6/data/Dade_County_6_2014.xls")
 Dade_County_6_2014_Total_biomass <- summarise_at(Dade_County_6_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_6_2014_Total_biomass$Year <- ('2014')
+Dade_County_6_2014_Total_biomass$Reef <- ('Dade County 6')
 
 ###output
 export(Dade_County_6_2014_Total_biomass,"Dade_County_6/data/Dade_County_6_2014_biomass_data.csv")
@@ -8069,6 +9113,7 @@ export(Dade_County_6_2014_Total_biomass,"Dade_County_6/data/Dade_County_6_2014_b
 Dade_County_6_2015 <- import("Dade_County_6/data/Dade_County_6_2015.xls")
 Dade_County_6_2015_Total_biomass <- summarise_at(Dade_County_6_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_6_2015_Total_biomass$Year <- ('2015')
+Dade_County_6_2015_Total_biomass$Reef <- ('Dade County 6')
 
 ###output
 export(Dade_County_6_2015_Total_biomass,"Dade_County_6/data/Dade_County_6_2015_biomass_data.csv")
@@ -8077,6 +9122,7 @@ export(Dade_County_6_2015_Total_biomass,"Dade_County_6/data/Dade_County_6_2015_b
 Dade_County_6_2016 <- import("Dade_County_6/data/Dade_County_6_2016.xls")
 Dade_County_6_2016_Total_biomass <- summarise_at(Dade_County_6_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_6_2016_Total_biomass$Year <- ('2016')
+Dade_County_6_2016_Total_biomass$Reef <- ('Dade County 6')
 
 ###output
 export(Dade_County_6_2016_Total_biomass,"Dade_County_6/data/Dade_County_6_2016_biomass_data.csv")
@@ -8084,6 +9130,7 @@ export(Dade_County_6_2016_Total_biomass,"Dade_County_6/data/Dade_County_6_2016_b
 Dade_County_6_2018 <- import("Dade_County_6/data/Dade_County_6_2018.xls")
 Dade_County_6_2018_Total_biomass <- summarise_at(Dade_County_6_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_6_2018_Total_biomass$Year <- ('2018')
+Dade_County_6_2018_Total_biomass$Reef <- ('Dade County 6')
 ###output
 export(Dade_County_6_2018_Total_biomass,"Dade_County_6/data/Dade_County_6_2018_biomass_data.csv")
 
@@ -8109,6 +9156,7 @@ export(Dade_County_6_Reef_biomass_data_combined,"Dade_County_6/data/Dade_County_
 Dade_County_7_2013 <- import("Dade_County_7/data/Dade_County_7_2013.xls")
 Dade_County_7_2013_Total_biomass <- summarise_at(Dade_County_7_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_7_2013_Total_biomass$Year <- ('2013')
+Dade_County_7_2013_Total_biomass$Reef <- ('Dade County 7')
 
 ###output
 export(Dade_County_7_2013_Total_biomass,"Dade_County_7/data/Dade_County_7_2013_biomass_data.csv")
@@ -8117,6 +9165,7 @@ export(Dade_County_7_2013_Total_biomass,"Dade_County_7/data/Dade_County_7_2013_b
 Dade_County_7_2014 <- import("Dade_County_7/data/Dade_County_7_2014.xls")
 Dade_County_7_2014_Total_biomass <- summarise_at(Dade_County_7_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_7_2014_Total_biomass$Year <- ('2014')
+Dade_County_7_2014_Total_biomass$Reef <- ('Dade County 7')
 
 ###output
 export(Dade_County_7_2014_Total_biomass,"Dade_County_7/data/Dade_County_7_2014_biomass_data.csv")
@@ -8124,6 +9173,7 @@ export(Dade_County_7_2014_Total_biomass,"Dade_County_7/data/Dade_County_7_2014_b
 Dade_County_7_2015 <- import("Dade_County_7/data/Dade_County_7_2015.xls")
 Dade_County_7_2015_Total_biomass <- summarise_at(Dade_County_7_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_7_2015_Total_biomass$Year <- ('2015')
+Dade_County_7_2015_Total_biomass$Reef <- ('Dade County 7')
 
 ###output
 export(Dade_County_7_2015_Total_biomass,"Dade_County_7/data/Dade_County_7_2015_biomass_data.csv")
@@ -8132,6 +9182,7 @@ export(Dade_County_7_2015_Total_biomass,"Dade_County_7/data/Dade_County_7_2015_b
 Dade_County_7_2016 <- import("Dade_County_7/data/Dade_County_7_2016.xls")
 Dade_County_7_2016_Total_biomass <- summarise_at(Dade_County_7_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_7_2016_Total_biomass$Year <- ('2016')
+Dade_County_7_2016_Total_biomass$Reef <- ('Dade County 7')
 
 ###output
 export(Dade_County_7_2016_Total_biomass,"Dade_County_7/data/Dade_County_7_2016_biomass_data.csv")
@@ -8139,6 +9190,7 @@ export(Dade_County_7_2016_Total_biomass,"Dade_County_7/data/Dade_County_7_2016_b
 Dade_County_7_2018 <- import("Dade_County_7/data/Dade_County_7_2018.xls")
 Dade_County_7_2018_Total_biomass <- summarise_at(Dade_County_7_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_7_2018_Total_biomass$Year <- ('2018')
+Dade_County_7_2018_Total_biomass$Reef <- ('Dade County 7')
 ###output
 export(Dade_County_7_2018_Total_biomass,"Dade_County_7/data/Dade_County_7_2018_biomass_data.csv")
 
@@ -8163,6 +9215,7 @@ export(Dade_County_7_Reef_biomass_data_combined,"Dade_County_7/data/Dade_County_
 Dade_County_8_2013 <- import("Dade_County_8/data/Dade_County_8_2013.xls")
 Dade_County_8_2013_Total_biomass <- summarise_at(Dade_County_8_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_8_2013_Total_biomass$Year <- ('2013')
+Dade_County_8_2013_Total_biomass$Reef <- ('Dade County 8')
 
 ###output
 export(Dade_County_8_2013_Total_biomass,"Dade_County_8/data/Dade_County_8_2013_biomass_data.csv")
@@ -8171,6 +9224,7 @@ export(Dade_County_8_2013_Total_biomass,"Dade_County_8/data/Dade_County_8_2013_b
 Dade_County_8_2014 <- import("Dade_County_8/data/Dade_County_8_2014.xls")
 Dade_County_8_2014_Total_biomass <- summarise_at(Dade_County_8_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_8_2014_Total_biomass$Year <- ('2014')
+Dade_County_8_2014_Total_biomass$Reef <- ('Dade County 8')
 
 ###output
 export(Dade_County_8_2014_Total_biomass,"Dade_County_8/data/Dade_County_8_2014_biomass_data.csv")
@@ -8178,6 +9232,7 @@ export(Dade_County_8_2014_Total_biomass,"Dade_County_8/data/Dade_County_8_2014_b
 Dade_County_8_2015 <- import("Dade_County_8/data/Dade_County_8_2015.xls")
 Dade_County_8_2015_Total_biomass <- summarise_at(Dade_County_8_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_8_2015_Total_biomass$Year <- ('2015')
+Dade_County_8_2015_Total_biomass$Reef <- ('Dade County 8')
 
 ###output
 export(Dade_County_8_2015_Total_biomass,"Dade_County_8/data/Dade_County_8_2015_biomass_data.csv")
@@ -8186,6 +9241,7 @@ export(Dade_County_8_2015_Total_biomass,"Dade_County_8/data/Dade_County_8_2015_b
 Dade_County_8_2016 <- import("Dade_County_8/data/Dade_County_8_2016.xls")
 Dade_County_8_2016_Total_biomass <- summarise_at(Dade_County_8_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_8_2016_Total_biomass$Year <- ('2016')
+Dade_County_8_2016_Total_biomass$Reef <- ('Dade County 8')
 
 ###output
 export(Dade_County_8_2016_Total_biomass,"Dade_County_8/data/Dade_County_8_2016_biomass_data.csv")
@@ -8193,6 +9249,7 @@ export(Dade_County_8_2016_Total_biomass,"Dade_County_8/data/Dade_County_8_2016_b
 Dade_County_8_2018 <- import("Dade_County_8/data/Dade_County_8_2018.xls")
 Dade_County_8_2018_Total_biomass <- summarise_at(Dade_County_8_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Dade_County_8_2018_Total_biomass$Year <- ('2018')
+Dade_County_8_2018_Total_biomass$Reef <- ('Dade County 8')
 ###output
 export(Dade_County_8_2018_Total_biomass,"Dade_County_8/data/Dade_County_8_2018_biomass_data.csv")
 
@@ -8218,6 +9275,7 @@ export(Dade_County_8_Reef_biomass_data_combined,"Dade_County_8/data/Dade_County_
 Martin_County_1_2013 <- import("Martin_County_1/data/Martin_County_1_2013.xls")
 Martin_County_1_2013_Total_biomass <- summarise_at(Martin_County_1_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Martin_County_1_2013_Total_biomass$Year <- ('2013')
+Martin_County_1_2013_Total_biomass$Reef <- ('Martin County 1')
 
 ###output
 export(Martin_County_1_2013_Total_biomass,"Martin_County_1/data/Martin_County_1_2013_biomass_data.csv")
@@ -8226,6 +9284,7 @@ export(Martin_County_1_2013_Total_biomass,"Martin_County_1/data/Martin_County_1_
 Martin_County_1_2014 <- import("Martin_County_1/data/Martin_County_1_2014.xls")
 Martin_County_1_2014_Total_biomass <- summarise_at(Martin_County_1_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Martin_County_1_2014_Total_biomass$Year <- ('2014')
+Martin_County_1_2014_Total_biomass$Reef <- ('Martin County 1')
 
 ###output
 export(Martin_County_1_2014_Total_biomass,"Martin_County_1/data/Martin_County_1_2014_biomass_data.csv")
@@ -8233,6 +9292,7 @@ export(Martin_County_1_2014_Total_biomass,"Martin_County_1/data/Martin_County_1_
 Martin_County_1_2015 <- import("Martin_County_1/data/Martin_County_1_2015.xls")
 Martin_County_1_2015_Total_biomass <- summarise_at(Martin_County_1_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Martin_County_1_2015_Total_biomass$Year <- ('2015')
+Martin_County_1_2015_Total_biomass$Reef <- ('Martin County 1')
 
 ###output
 export(Martin_County_1_2015_Total_biomass,"Martin_County_1/data/Martin_County_1_2015_biomass_data.csv")
@@ -8241,6 +9301,7 @@ export(Martin_County_1_2015_Total_biomass,"Martin_County_1/data/Martin_County_1_
 Martin_County_1_2016 <- import("Martin_County_1/data/Martin_County_1_2016.xls")
 Martin_County_1_2016_Total_biomass <- summarise_at(Martin_County_1_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Martin_County_1_2016_Total_biomass$Year <- ('2016')
+Martin_County_1_2016_Total_biomass$Reef <- ('Martin County 1')
 
 ###output
 export(Martin_County_1_2016_Total_biomass,"Martin_County_1/data/Martin_County_1_2016_biomass_data.csv")
@@ -8248,6 +9309,7 @@ export(Martin_County_1_2016_Total_biomass,"Martin_County_1/data/Martin_County_1_
 Martin_County_1_2018 <- import("Martin_County_1/data/Martin_County_1_2018.xls")
 Martin_County_1_2018_Total_biomass <- summarise_at(Martin_County_1_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Martin_County_1_2018_Total_biomass$Year <- ('2018')
+Martin_County_1_2018_Total_biomass$Reef <- ('Martin County 1')
 ###output
 export(Martin_County_1_2018_Total_biomass,"Martin_County_1/data/Martin_County_1_2018_biomass_data.csv")
 
@@ -8273,6 +9335,7 @@ export(Martin_County_1_Reef_biomass_data_combined,"Martin_County_1/data/Martin_C
 Martin_County_2_2013 <- import("Martin_County_2/data/Martin_County_2_2013.xls")
 Martin_County_2_2013_Total_biomass <- summarise_at(Martin_County_2_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Martin_County_2_2013_Total_biomass$Year <- ('2013')
+Martin_County_2_2013_Total_biomass$Reef <- ('Martin County 2')
 
 ###output
 export(Martin_County_2_2013_Total_biomass,"Martin_County_2/data/Martin_County_2_2013_biomass_data.csv")
@@ -8281,6 +9344,7 @@ export(Martin_County_2_2013_Total_biomass,"Martin_County_2/data/Martin_County_2_
 Martin_County_2_2014 <- import("Martin_County_2/data/Martin_County_2_2014.xls")
 Martin_County_2_2014_Total_biomass <- summarise_at(Martin_County_2_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Martin_County_2_2014_Total_biomass$Year <- ('2014')
+Martin_County_2_2014_Total_biomass$Reef <- ('Martin County 2')
 
 ###output
 export(Martin_County_2_2014_Total_biomass,"Martin_County_2/data/Martin_County_2_2014_biomass_data.csv")
@@ -8288,6 +9352,7 @@ export(Martin_County_2_2014_Total_biomass,"Martin_County_2/data/Martin_County_2_
 Martin_County_2_2015 <- import("Martin_County_2/data/Martin_County_2_2015.xls")
 Martin_County_2_2015_Total_biomass <- summarise_at(Martin_County_2_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Martin_County_2_2015_Total_biomass$Year <- ('2015')
+Martin_County_2_2015_Total_biomass$Reef <- ('Martin County 2')
 
 ###output
 export(Martin_County_2_2015_Total_biomass,"Martin_County_2/data/Martin_County_2_2015_biomass_data.csv")
@@ -8296,6 +9361,7 @@ export(Martin_County_2_2015_Total_biomass,"Martin_County_2/data/Martin_County_2_
 Martin_County_2_2016 <- import("Martin_County_2/data/Martin_County_2_2016.xls")
 Martin_County_2_2016_Total_biomass <- summarise_at(Martin_County_2_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Martin_County_2_2016_Total_biomass$Year <- ('2016')
+Martin_County_2_2016_Total_biomass$Reef <- ('Martin County 2')
 
 ###output
 export(Martin_County_2_2016_Total_biomass,"Martin_County_2/data/Martin_County_2_2016_biomass_data.csv")
@@ -8303,6 +9369,8 @@ export(Martin_County_2_2016_Total_biomass,"Martin_County_2/data/Martin_County_2_
 Martin_County_2_2018 <- import("Martin_County_2/data/Martin_County_2_2018.xls")
 Martin_County_2_2018_Total_biomass <- summarise_at(Martin_County_2_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Martin_County_2_2018_Total_biomass$Year <- ('2018')
+Martin_County_2_2018_Total_biomass$Reef <- ('Martin County 2')
+
 ###output
 export(Martin_County_2_2018_Total_biomass,"Martin_County_2/data/Martin_County_2_2018_biomass_data.csv")
 
@@ -8328,6 +9396,7 @@ export(Martin_County_2_Reef_biomass_data_combined,"Martin_County_2/data/Martin_C
 Palm_Beach_1_2013 <- import("Palm_Beach_1/data/Palm_Beach_1_2013.xls")
 Palm_Beach_1_2013_Total_biomass <- summarise_at(Palm_Beach_1_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_1_2013_Total_biomass$Year <- ('2013')
+Palm_Beach_1_2013_Total_biomass$Reef <- ('Palm Beach 1')
 
 ###output
 export(Palm_Beach_1_2013_Total_biomass,"Palm_Beach_1/data/Palm_Beach_1_2013_biomass_data.csv")
@@ -8336,6 +9405,7 @@ export(Palm_Beach_1_2013_Total_biomass,"Palm_Beach_1/data/Palm_Beach_1_2013_biom
 Palm_Beach_1_2014 <- import("Palm_Beach_1/data/Palm_Beach_1_2014.xls")
 Palm_Beach_1_2014_Total_biomass <- summarise_at(Palm_Beach_1_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_1_2014_Total_biomass$Year <- ('2014')
+Palm_Beach_1_2014_Total_biomass$Reef <- ('Palm Beach 1')
 
 ###output
 export(Palm_Beach_1_2014_Total_biomass,"Palm_Beach_1/data/Palm_Beach_1_2014_biomass_data.csv")
@@ -8343,6 +9413,7 @@ export(Palm_Beach_1_2014_Total_biomass,"Palm_Beach_1/data/Palm_Beach_1_2014_biom
 Palm_Beach_1_2015 <- import("Palm_Beach_1/data/Palm_Beach_1_2015.xls")
 Palm_Beach_1_2015_Total_biomass <- summarise_at(Palm_Beach_1_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_1_2015_Total_biomass$Year <- ('2015')
+Palm_Beach_1_2015_Total_biomass$Reef <- ('Palm Beach 1')
 
 ###output
 export(Palm_Beach_1_2015_Total_biomass,"Palm_Beach_1/data/Palm_Beach_1_2015_biomass_data.csv")
@@ -8351,6 +9422,7 @@ export(Palm_Beach_1_2015_Total_biomass,"Palm_Beach_1/data/Palm_Beach_1_2015_biom
 Palm_Beach_1_2016 <- import("Palm_Beach_1/data/Palm_Beach_1_2016.xls")
 Palm_Beach_1_2016_Total_biomass <- summarise_at(Palm_Beach_1_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_1_2016_Total_biomass$Year <- ('2016')
+Palm_Beach_1_2016_Total_biomass$Reef <- ('Palm Beach 1')
 
 ###output
 export(Palm_Beach_1_2016_Total_biomass,"Palm_Beach_1/data/Palm_Beach_1_2016_biomass_data.csv")
@@ -8358,6 +9430,7 @@ export(Palm_Beach_1_2016_Total_biomass,"Palm_Beach_1/data/Palm_Beach_1_2016_biom
 Palm_Beach_1_2018 <- import("Palm_Beach_1/data/Palm_Beach_1_2018.xls")
 Palm_Beach_1_2018_Total_biomass <- summarise_at(Palm_Beach_1_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_1_2018_Total_biomass$Year <- ('2018')
+Palm_Beach_1_2018_Total_biomass$Reef <- ('Palm Beach 1')
 ###output
 export(Palm_Beach_1_2018_Total_biomass,"Palm_Beach_1/data/Palm_Beach_1_2018_biomass_data.csv")
 
@@ -8383,6 +9456,7 @@ export(Palm_Beach_1_Reef_biomass_data_combined,"Palm_Beach_1/data/Palm_Beach_1_b
 Palm_Beach_2_2013 <- import("Palm_Beach_2/data/Palm_Beach_2_2013.xls")
 Palm_Beach_2_2013_Total_biomass <- summarise_at(Palm_Beach_2_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_2_2013_Total_biomass$Year <- ('2013')
+Palm_Beach_2_2013_Total_biomass$Reef <- ('Palm Beach 2')
 
 ###output
 export(Palm_Beach_2_2013_Total_biomass,"Palm_Beach_2/data/Palm_Beach_2_2013_biomass_data.csv")
@@ -8391,6 +9465,7 @@ export(Palm_Beach_2_2013_Total_biomass,"Palm_Beach_2/data/Palm_Beach_2_2013_biom
 Palm_Beach_2_2014 <- import("Palm_Beach_2/data/Palm_Beach_2_2014.xls")
 Palm_Beach_2_2014_Total_biomass <- summarise_at(Palm_Beach_2_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_2_2014_Total_biomass$Year <- ('2014')
+Palm_Beach_2_2014_Total_biomass$Reef <- ('Palm Beach 2')
 
 ###output
 export(Palm_Beach_2_2014_Total_biomass,"Palm_Beach_2/data/Palm_Beach_2_2014_biomass_data.csv")
@@ -8398,6 +9473,7 @@ export(Palm_Beach_2_2014_Total_biomass,"Palm_Beach_2/data/Palm_Beach_2_2014_biom
 Palm_Beach_2_2015 <- import("Palm_Beach_2/data/Palm_Beach_2_2015.xls")
 Palm_Beach_2_2015_Total_biomass <- summarise_at(Palm_Beach_2_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_2_2015_Total_biomass$Year <- ('2015')
+Palm_Beach_2_2015_Total_biomass$Reef <- ('Palm Beach 2')
 
 ###output
 export(Palm_Beach_2_2015_Total_biomass,"Palm_Beach_2/data/Palm_Beach_2_2015_biomass_data.csv")
@@ -8406,6 +9482,7 @@ export(Palm_Beach_2_2015_Total_biomass,"Palm_Beach_2/data/Palm_Beach_2_2015_biom
 Palm_Beach_2_2016 <- import("Palm_Beach_2/data/Palm_Beach_2_2016.xls")
 Palm_Beach_2_2016_Total_biomass <- summarise_at(Palm_Beach_2_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_2_2016_Total_biomass$Year <- ('2016')
+Palm_Beach_2_2016_Total_biomass$Reef <- ('Palm Beach 2')
 
 ###output
 export(Palm_Beach_2_2016_Total_biomass,"Palm_Beach_2/data/Palm_Beach_2_2016_biomass_data.csv")
@@ -8413,6 +9490,7 @@ export(Palm_Beach_2_2016_Total_biomass,"Palm_Beach_2/data/Palm_Beach_2_2016_biom
 Palm_Beach_2_2018 <- import("Palm_Beach_2/data/Palm_Beach_2_2018.xls")
 Palm_Beach_2_2018_Total_biomass <- summarise_at(Palm_Beach_2_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_2_2018_Total_biomass$Year <- ('2018')
+Palm_Beach_2_2018_Total_biomass$Reef <- ('Palm Beach 2')
 ###output
 export(Palm_Beach_2_2018_Total_biomass,"Palm_Beach_2/data/Palm_Beach_2_2018_biomass_data.csv")
 
@@ -8438,6 +9516,7 @@ export(Palm_Beach_2_Reef_biomass_data_combined,"Palm_Beach_2/data/Palm_Beach_2_b
 Palm_Beach_3_2013 <- import("Palm_Beach_3/data/Palm_Beach_3_2013.xls")
 Palm_Beach_3_2013_Total_biomass <- summarise_at(Palm_Beach_3_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_3_2013_Total_biomass$Year <- ('2013')
+Palm_Beach_3_2013_Total_biomass$Reef <- ('Palm Beach 3')
 
 ###output
 export(Palm_Beach_3_2013_Total_biomass,"Palm_Beach_3/data/Palm_Beach_3_2013_biomass_data.csv")
@@ -8446,6 +9525,7 @@ export(Palm_Beach_3_2013_Total_biomass,"Palm_Beach_3/data/Palm_Beach_3_2013_biom
 Palm_Beach_3_2014 <- import("Palm_Beach_3/data/Palm_Beach_3_2014.xls")
 Palm_Beach_3_2014_Total_biomass <- summarise_at(Palm_Beach_3_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_3_2014_Total_biomass$Year <- ('2014')
+Palm_Beach_3_2014_Total_biomass$Reef <- ('Palm Beach 3')
 
 ###output
 export(Palm_Beach_3_2014_Total_biomass,"Palm_Beach_3/data/Palm_Beach_3_2014_biomass_data.csv")
@@ -8453,6 +9533,7 @@ export(Palm_Beach_3_2014_Total_biomass,"Palm_Beach_3/data/Palm_Beach_3_2014_biom
 Palm_Beach_3_2015 <- import("Palm_Beach_3/data/Palm_Beach_3_2015.xls")
 Palm_Beach_3_2015_Total_biomass <- summarise_at(Palm_Beach_3_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_3_2015_Total_biomass$Year <- ('2015')
+Palm_Beach_3_2015_Total_biomass$Reef <- ('Palm Beach 3')
 
 ###output
 export(Palm_Beach_3_2015_Total_biomass,"Palm_Beach_3/data/Palm_Beach_3_2015_biomass_data.csv")
@@ -8461,6 +9542,7 @@ export(Palm_Beach_3_2015_Total_biomass,"Palm_Beach_3/data/Palm_Beach_3_2015_biom
 Palm_Beach_3_2016 <- import("Palm_Beach_3/data/Palm_Beach_3_2016.xls")
 Palm_Beach_3_2016_Total_biomass <- summarise_at(Palm_Beach_3_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_3_2016_Total_biomass$Year <- ('2016')
+Palm_Beach_3_2016_Total_biomass$Reef <- ('Palm Beach 3')
 
 ###output
 export(Palm_Beach_3_2016_Total_biomass,"Palm_Beach_3/data/Palm_Beach_3_2016_biomass_data.csv")
@@ -8468,6 +9550,7 @@ export(Palm_Beach_3_2016_Total_biomass,"Palm_Beach_3/data/Palm_Beach_3_2016_biom
 Palm_Beach_3_2018 <- import("Palm_Beach_3/data/Palm_Beach_3_2018.xls")
 Palm_Beach_3_2018_Total_biomass <- summarise_at(Palm_Beach_3_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_3_2018_Total_biomass$Year <- ('2018')
+Palm_Beach_3_2018_Total_biomass$Reef <- ('Palm Beach 3')
 ###output
 export(Palm_Beach_3_2018_Total_biomass,"Palm_Beach_3/data/Palm_Beach_3_2018_biomass_data.csv")
 
@@ -8493,6 +9576,7 @@ export(Palm_Beach_3_Reef_biomass_data_combined,"Palm_Beach_3/data/Palm_Beach_3_b
 Palm_Beach_4_2013 <- import("Palm_Beach_4/data/Palm_Beach_4_2013.xls")
 Palm_Beach_4_2013_Total_biomass <- summarise_at(Palm_Beach_4_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_4_2013_Total_biomass$Year <- ('2013')
+Palm_Beach_4_2013_Total_biomass$Reef <- ('Palm Beach 4')
 
 ###output
 export(Palm_Beach_4_2013_Total_biomass,"Palm_Beach_4/data/Palm_Beach_4_2013_biomass_data.csv")
@@ -8501,6 +9585,7 @@ export(Palm_Beach_4_2013_Total_biomass,"Palm_Beach_4/data/Palm_Beach_4_2013_biom
 Palm_Beach_4_2014 <- import("Palm_Beach_4/data/Palm_Beach_4_2014.xls")
 Palm_Beach_4_2014_Total_biomass <- summarise_at(Palm_Beach_4_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_4_2014_Total_biomass$Year <- ('2014')
+Palm_Beach_4_2014_Total_biomass$Reef <- ('Palm Beach 4')
 
 ###output
 export(Palm_Beach_4_2014_Total_biomass,"Palm_Beach_4/data/Palm_Beach_4_2014_biomass_data.csv")
@@ -8508,6 +9593,7 @@ export(Palm_Beach_4_2014_Total_biomass,"Palm_Beach_4/data/Palm_Beach_4_2014_biom
 Palm_Beach_4_2015 <- import("Palm_Beach_4/data/Palm_Beach_4_2015.xls")
 Palm_Beach_4_2015_Total_biomass <- summarise_at(Palm_Beach_4_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_4_2015_Total_biomass$Year <- ('2015')
+Palm_Beach_4_2015_Total_biomass$Reef <- ('Palm Beach 4')
 
 ###output
 export(Palm_Beach_4_2015_Total_biomass,"Palm_Beach_4/data/Palm_Beach_4_2015_biomass_data.csv")
@@ -8516,6 +9602,7 @@ export(Palm_Beach_4_2015_Total_biomass,"Palm_Beach_4/data/Palm_Beach_4_2015_biom
 Palm_Beach_4_2016 <- import("Palm_Beach_4/data/Palm_Beach_4_2016.xls")
 Palm_Beach_4_2016_Total_biomass <- summarise_at(Palm_Beach_4_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_4_2016_Total_biomass$Year <- ('2016')
+Palm_Beach_4_2016_Total_biomass$Reef <- ('Palm Beach 4')
 
 ###output
 export(Palm_Beach_4_2016_Total_biomass,"Palm_Beach_4/data/Palm_Beach_4_2016_biomass_data.csv")
@@ -8523,6 +9610,7 @@ export(Palm_Beach_4_2016_Total_biomass,"Palm_Beach_4/data/Palm_Beach_4_2016_biom
 Palm_Beach_4_2018 <- import("Palm_Beach_4/data/Palm_Beach_4_2018.xls")
 Palm_Beach_4_2018_Total_biomass <- summarise_at(Palm_Beach_4_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_4_2018_Total_biomass$Year <- ('2018')
+Palm_Beach_4_2018_Total_biomass$Reef <- ('Palm Beach 4')
 ###output
 export(Palm_Beach_4_2018_Total_biomass,"Palm_Beach_4/data/Palm_Beach_4_2018_biomass_data.csv")
 
@@ -8548,6 +9636,7 @@ export(Palm_Beach_4_Reef_biomass_data_combined,"Palm_Beach_4/data/Palm_Beach_4_b
 Palm_Beach_5_2013 <- import("Palm_Beach_5/data/Palm_Beach_5_2013.xls")
 Palm_Beach_5_2013_Total_biomass <- summarise_at(Palm_Beach_5_2013, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_5_2013_Total_biomass$Year <- ('2013')
+Palm_Beach_5_2013_Total_biomass$Reef <- ('Palm Beach 5')
 
 ###output
 export(Palm_Beach_5_2013_Total_biomass,"Palm_Beach_5/data/Palm_Beach_5_2013_biomass_data.csv")
@@ -8556,6 +9645,7 @@ export(Palm_Beach_5_2013_Total_biomass,"Palm_Beach_5/data/Palm_Beach_5_2013_biom
 Palm_Beach_5_2014 <- import("Palm_Beach_5/data/Palm_Beach_5_2014.xls")
 Palm_Beach_5_2014_Total_biomass <- summarise_at(Palm_Beach_5_2014, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_5_2014_Total_biomass$Year <- ('2014')
+Palm_Beach_5_2014_Total_biomass$Reef <- ('Palm Beach 5')
 
 ###output
 export(Palm_Beach_5_2014_Total_biomass,"Palm_Beach_5/data/Palm_Beach_5_2014_biomass_data.csv")
@@ -8563,6 +9653,7 @@ export(Palm_Beach_5_2014_Total_biomass,"Palm_Beach_5/data/Palm_Beach_5_2014_biom
 Palm_Beach_5_2015 <- import("Palm_Beach_5/data/Palm_Beach_5_2015.xls")
 Palm_Beach_5_2015_Total_biomass <- summarise_at(Palm_Beach_5_2015, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_5_2015_Total_biomass$Year <- ('2015')
+Palm_Beach_5_2015_Total_biomass$Reef <- ('Palm Beach 5')
 
 ###output
 export(Palm_Beach_5_2015_Total_biomass,"Palm_Beach_5/data/Palm_Beach_5_2015_biomass_data.csv")
@@ -8571,6 +9662,7 @@ export(Palm_Beach_5_2015_Total_biomass,"Palm_Beach_5/data/Palm_Beach_5_2015_biom
 Palm_Beach_5_2016 <- import("Palm_Beach_5/data/Palm_Beach_5_2016.xls")
 Palm_Beach_5_2016_Total_biomass <- summarise_at(Palm_Beach_5_2016, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_5_2016_Total_biomass$Year <- ('2016')
+Palm_Beach_5_2016_Total_biomass$Reef <- ('Palm Beach 5')
 
 ###output
 export(Palm_Beach_5_2016_Total_biomass,"Palm_Beach_5/data/Palm_Beach_5_2016_biomass_data.csv")
@@ -8578,6 +9670,7 @@ export(Palm_Beach_5_2016_Total_biomass,"Palm_Beach_5/data/Palm_Beach_5_2016_biom
 Palm_Beach_5_2018 <- import("Palm_Beach_5/data/Palm_Beach_5_2018.xls")
 Palm_Beach_5_2018_Total_biomass <- summarise_at(Palm_Beach_5_2018, vars('biomass'), funs(sum,max,min,mean,sd), na.rm = TRUE)
 Palm_Beach_5_2018_Total_biomass$Year <- ('2018')
+Palm_Beach_5_2018_Total_biomass$Reef <- ('Palm Beach 5')
 ###output
 export(Palm_Beach_5_2018_Total_biomass,"Palm_Beach_5/data/Palm_Beach_5_2018_biomass_data.csv")
 

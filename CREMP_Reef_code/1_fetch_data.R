@@ -102,8 +102,8 @@ RVC16 = getSampleData (year = 2016, regions = "FLA KEYS")
 write_csv (RVC16,"subregion_biomass/FK/RVC16.csv")
 
 RVC18_csv = "subregion_biomass/RVC18.csv"
-RVC18 = getSampleData (year = 2018, regions = "FLA KEYS")
-write_csv (RVC18,"subregion_biomass/FK/RVC18.csv")
+RVC18 = getSampleData (year = 2018, regions = "DRY TORT")
+write_csv (RVC18,"subregion_biomass/DT/RVC18.csv")
 
 ### Change the data to lat, lon, fish, and length for each year
 
@@ -673,7 +673,7 @@ RVC18 <- RVC18[complete.cases(RVC18),]
 
 ###Output csv
 RVC18_lat_lon = "filtered/RVC18_lat_lon.csv"
-write_csv (RVC18,"C:/Users/cara.estes/Documents/R/RVC_feb_rerun/big_csv/subregion_biomass/SE_F/filtered/RVC18_lat_lon.csv" )
+write_csv (RVC18,"C:/Users/cara.estes/Documents/R/RVC_feb_rerun/big_csv/subregion_biomass/DT/filtered/RVC18_lat_lon.csv" )
 
 
 

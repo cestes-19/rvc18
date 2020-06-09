@@ -8,7 +8,7 @@ library(rio)
 library("magrittr")
 library("tidyverse")
 
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF/DT")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/DT")
 
 
 ## Get SPECIES_CD of each fish and group by herbivorous and commercial 
@@ -1866,7 +1866,7 @@ export(DT_comm_RHI, "DT_commercial_RHI.csv")
 
  
 ### Lower Keys
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF/LK")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/LK")
 
 
 # Eastern Sambo Deep
@@ -5700,7 +5700,7 @@ export(LK_comm_RHI, "LK_commercial_RHI.csv")
 ### Middle Keys (missing 2004)
 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF/MK")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/MK")
 
 
 # Alligator Deep
@@ -9532,7 +9532,7 @@ export(MK_comm_RHI, "MK_commercial_RHI.csv")
 
 #Upper Keys
 
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF/UK")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/UK")
 
 
 # Admiral 
@@ -13094,7 +13094,7 @@ export(UK_comm_RHI, "UK_commercial_RHI.csv")
 ### SE Florida 
 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF/SEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF/SEF")
 
 
 
@@ -15833,7 +15833,7 @@ export(SEF_comm_RHI, "SEF_commercial_RHI.csv")
 ### COMBINE ALL SUBREGIONS TOGETHER
 
 library(data.table)
-setwd("C:/Users/cestes/Documents/Spring_2020/RVC_CREMP_by_REEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF")
 
 DT_herb <- read_csv("DT/DT_herbivorous_biomass_data.csv")
 LK_herb <- read_csv("LK/LK_herbivorous_biomass_data.csv")

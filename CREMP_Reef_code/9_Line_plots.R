@@ -2,7 +2,7 @@
 ### Line Graphs for each Reef
 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC")
 extrafont::loadfonts(device="pdf")
 extrafont::loadfonts(device="postscript")
 
@@ -18,6 +18,11 @@ library(ggpubr)
 library(hrbrthemes)
 library(tibble)
 library(reshape2)
+library(grid)
+library(png)
+library(Rgb)
+
+rgb(red, green, blue, alpha, names = NULL, maxColorValue = 1)
 
 ### All data
 RVC_CREMP <- read_csv("CREMP_RVC_REEF.csv")
@@ -26,7 +31,7 @@ RVC_CREMP <- read_csv("CREMP_RVC_REEF.csv")
 
 ### MK
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/Bar/MK")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/Line/MK")
 
 
 
@@ -45,11 +50,11 @@ Alligator_Deep_coral <- data.frame(Alligator_Deep_Stony)
 
 Alligator_Deep_stony_coral <- 100*Alligator_Deep_coral
 
-Alligator_Deep_macro <- Alligator_Deep$Macroalgae/max(Alligator_Deep$Macroalgae)
+Alligator_Deep_macro <- ((Alligator_Deep$Macroalgae)/max(Alligator_Deep$Macroalgae))
 Alligator_Deep_algae <- data.frame(Alligator_Deep_macro)
 
 
-Alligator_Deep_macroalgae <- (100*Alligator_Deep_algae)
+Alligator_Deep_macroalgae <- 100-(100*Alligator_Deep_algae)
 
 
 Alligator_Deep_plot <- cbind(Alligator_Deep_macroalgae,Alligator_Deep_biomass,Alligator_Deep_stony_coral)
@@ -61,6 +66,9 @@ colnames(Alligator_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Ye
 
 Alligator_Deep_plot <- Alligator_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+
+Alligator_Deep_plot$CHI_Average <- rowMeans(subset(Alligator_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(Alligator_Deep_plot,"Alligator_Deep.csv")
@@ -78,17 +86,41 @@ Alligator_Deep_bar_graph <- melt(Alligator_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Alligator_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Alligator Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Alligator_Deep_bar_graph$Year), max(Alligator_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Alligator_Deep.png", width = 8, height = 4)
 
@@ -97,7 +129,7 @@ ggsave ("plots/Alligator_Deep.png", width = 8, height = 4)
 
 Alligator_Shallow <- filter(RVC_CREMP, sitename == "Alligator Shallow")
 
-## Make percentages of sum, stony coral cover, and macroalgae
+## Make CHIs of sum, stony coral cover, and macroalgae
 
 Alligator_Shallow_fish <- Alligator_Shallow$sum/max(Alligator_Shallow$sum)
 Alligator_Shallow_biomass <- data.frame(Alligator_Shallow_fish)
@@ -114,7 +146,7 @@ Alligator_Shallow_macro <- Alligator_Shallow$Macroalgae/max(Alligator_Shallow$Ma
 Alligator_Shallow_algae <- data.frame(Alligator_Shallow_macro)
 
 
-Alligator_Shallow_macroalgae <- (100*Alligator_Shallow_algae)
+Alligator_Shallow_macroalgae <- 100-(100*Alligator_Shallow_algae)
 
 
 Alligator_Shallow_plot <- cbind(Alligator_Shallow_macroalgae,Alligator_Shallow_biomass,Alligator_Shallow_stony_coral)
@@ -126,6 +158,8 @@ colnames(Alligator_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral",
 
 Alligator_Shallow_plot <- Alligator_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Alligator_Shallow_plot$CHI_Average <- rowMeans(subset(Alligator_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(Alligator_Shallow_plot,"Alligator_Shallow.csv")
@@ -141,19 +175,19 @@ Alligator_Shallow_bar_graph <- melt(Alligator_Shallow_bar, id.vars = "Year")
 
 
 ### plot
-ggplot(Alligator_Shallow_bar_graph, aes(Year, value, fill=variable))+
-  ggtitle("Coral Health Index", subtitle = "Alligator Shallow")+
-  geom_line(aes(color = variable), size = 2)+
-  geom_point()+
-  scale_x_continuous(breaks = round(seq(min(Alligator_Shallow_bar_graph$Year), max(Alligator_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
-  theme_light()+
-  theme(
-    plot.title = element_text(hjust = 0.5),
-    plot.subtitle = element_text(hjust = 0.5),
-    legend.background = element_blank(),
-    legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+# ggplot(Alligator_Shallow_bar_graph, aes(Year, value, fill=variable))+
+#   ggtitle("Coral Health Index", subtitle = "Alligator Shallow")+
+#   geom_line(aes(color = variable), size = 2)+
+#   geom_point()+
+#   scale_x_continuous(breaks = round(seq(min(Alligator_Shallow_bar_graph$Year), max(Alligator_Shallow_bar_graph$Year), by = 2),1))+
+#   scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1","yellow"))+
+#   theme_light()+
+#   theme(
+#     plot.title = element_text(hjust = 0.5),
+#     plot.subtitle = element_text(hjust = 0.5),
+#     legend.background = element_blank(),
+#     legend.box.background = element_rect(colour = "black"))+
+#   ylab("CHI %")
 
 ggsave ("plots/Alligator_Shallow.png", width = 8, height = 4)
 
@@ -163,7 +197,7 @@ ggsave ("plots/Alligator_Shallow.png", width = 8, height = 4)
 
 Sombrero_Deep <- filter(RVC_CREMP, sitename == "Sombrero Deep")
 
-## Make percentages of sum, stony coral cover, and macroalgae
+## Make CHIs of sum, stony coral cover, and macroalgae
 
 Sombrero_Deep_fish <- Sombrero_Deep$sum/max(Sombrero_Deep$sum)
 Sombrero_Deep_biomass <- data.frame(Sombrero_Deep_fish)
@@ -180,7 +214,7 @@ Sombrero_Deep_macro <- Sombrero_Deep$Macroalgae/max(Sombrero_Deep$Macroalgae)
 Sombrero_Deep_algae <- data.frame(Sombrero_Deep_macro)
 
 
-Sombrero_Deep_macroalgae <- (100*Sombrero_Deep_algae)
+Sombrero_Deep_macroalgae <- 100-(100*Sombrero_Deep_algae)
 
 
 Sombrero_Deep_plot <- cbind(Sombrero_Deep_macroalgae,Sombrero_Deep_biomass,Sombrero_Deep_stony_coral)
@@ -192,6 +226,8 @@ colnames(Sombrero_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 
 Sombrero_Deep_plot <- Sombrero_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Sombrero_Deep_plot$CHI_Average <- rowMeans(subset(Sombrero_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(Sombrero_Deep_plot,"Sombrero_Deep.csv")
@@ -209,17 +245,41 @@ Sombrero_Deep_bar_graph <- melt(Sombrero_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Sombrero_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Sombrero Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Sombrero_Deep_bar_graph$Year), max(Sombrero_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Sombrero_Deep.png", width = 8, height = 4)
 
@@ -245,7 +305,7 @@ Sombrero_Shallow_macro <- Sombrero_Shallow$Macroalgae/max(Sombrero_Shallow$Macro
 Sombrero_Shallow_algae <- data.frame(Sombrero_Shallow_macro)
 
 
-Sombrero_Shallow_macroalgae <- (100*Sombrero_Shallow_algae)
+Sombrero_Shallow_macroalgae <- 100-(100*Sombrero_Shallow_algae)
 
 
 Sombrero_Shallow_plot <- cbind(Sombrero_Shallow_macroalgae,Sombrero_Shallow_biomass,Sombrero_Shallow_stony_coral)
@@ -257,6 +317,9 @@ colnames(Sombrero_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","
 
 Sombrero_Shallow_plot <- Sombrero_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+
+Sombrero_Shallow_plot$CHI_Average <- rowMeans(subset(Sombrero_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(Sombrero_Shallow_plot,"Sombrero_Shallow.csv")
@@ -274,17 +337,41 @@ Sombrero_Shallow_bar_graph <- melt(Sombrero_Shallow_bar, id.vars = "Year")
 ### plot
 ggplot(Sombrero_Shallow_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Sombrero Shallow")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Sombrero_Shallow_bar_graph$Year), max(Sombrero_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Sombrero_Shallow.png", width = 8, height = 4)
 
@@ -311,7 +398,7 @@ Tennessee_Deep_macro <- Tennessee_Deep$Macroalgae/max(Tennessee_Deep$Macroalgae)
 Tennessee_Deep_algae <- data.frame(Tennessee_Deep_macro)
 
 
-Tennessee_Deep_macroalgae <- (100*Tennessee_Deep_algae)
+Tennessee_Deep_macroalgae <- 100-(100*Tennessee_Deep_algae)
 
 
 Tennessee_Deep_plot <- cbind(Tennessee_Deep_macroalgae,Tennessee_Deep_biomass,Tennessee_Deep_stony_coral)
@@ -323,6 +410,8 @@ colnames(Tennessee_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Ye
 
 Tennessee_Deep_plot <- Tennessee_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Tennessee_Deep_plot$CHI_Average <- rowMeans(subset(Tennessee_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(Tennessee_Deep_plot,"Tennessee_Deep.csv")
@@ -340,17 +429,41 @@ Tennessee_Deep_bar_graph <- melt(Tennessee_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Tennessee_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Tennessee Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Tennessee_Deep_bar_graph$Year), max(Tennessee_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Tennessee_Deep.png", width = 8, height = 4)
 
@@ -376,7 +489,7 @@ Tennessee_Shallow_macro <- Tennessee_Shallow$Macroalgae/max(Tennessee_Shallow$Ma
 Tennessee_Shallow_algae <- data.frame(Tennessee_Shallow_macro)
 
 
-Tennessee_Shallow_macroalgae <- (100*Tennessee_Shallow_algae)
+Tennessee_Shallow_macroalgae <- 100-(100*Tennessee_Shallow_algae)
 
 
 Tennessee_Shallow_plot <- cbind(Tennessee_Shallow_macroalgae,Tennessee_Shallow_biomass,Tennessee_Shallow_stony_coral)
@@ -388,6 +501,9 @@ colnames(Tennessee_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral",
 
 Tennessee_Shallow_plot <- Tennessee_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+
+Tennessee_Shallow_plot$CHI_Average <- rowMeans(subset(Tennessee_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(Tennessee_Shallow_plot,"Tennessee_Shallow.csv")
@@ -405,17 +521,41 @@ Tennessee_Shallow_bar_graph <- melt(Tennessee_Shallow_bar, id.vars = "Year")
 ### plot
 ggplot(Tennessee_Shallow_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Tennessee Shallow")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Tennessee_Shallow_bar_graph$Year), max(Tennessee_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Tennessee_Shallow.png", width = 8, height = 4)
 
@@ -441,7 +581,7 @@ West_Turtle_Shoal_macro <- West_Turtle_Shoal$Macroalgae/max(West_Turtle_Shoal$Ma
 West_Turtle_Shoal_algae <- data.frame(West_Turtle_Shoal_macro)
 
 
-West_Turtle_Shoal_macroalgae <- (100*West_Turtle_Shoal_algae)
+West_Turtle_Shoal_macroalgae <- 100-(100*West_Turtle_Shoal_algae)
 
 
 West_Turtle_Shoal_plot <- cbind(West_Turtle_Shoal_macroalgae,West_Turtle_Shoal_biomass,West_Turtle_Shoal_stony_coral)
@@ -453,6 +593,8 @@ colnames(West_Turtle_Shoal_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral",
 
 West_Turtle_Shoal_plot <- West_Turtle_Shoal_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+West_Turtle_Shoal_plot$CHI_Average <- rowMeans(subset(West_Turtle_Shoal_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(West_Turtle_Shoal_plot,"West_Turtle_Shoal.csv")
@@ -470,17 +612,41 @@ West_Turtle_Shoal_bar_graph <- melt(West_Turtle_Shoal_bar, id.vars = "Year")
 ### plot
 ggplot(West_Turtle_Shoal_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "West Turtle Shoal")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(West_Turtle_Shoal_bar_graph$Year), max(West_Turtle_Shoal_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/West_Turtle_Shoal.png", width = 8, height = 4)
 
@@ -492,7 +658,7 @@ ggsave ("plots/West_Turtle_Shoal.png", width = 8, height = 4)
 
 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/Bar/LK")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/Line/LK")
 
 
 
@@ -516,7 +682,7 @@ Eastern_Sambo_Deep_macro <- Eastern_Sambo_Deep$Macroalgae/max(Eastern_Sambo_Deep
 Eastern_Sambo_Deep_algae <- data.frame(Eastern_Sambo_Deep_macro)
 
 
-Eastern_Sambo_Deep_macroalgae <- (100*Eastern_Sambo_Deep_algae)
+Eastern_Sambo_Deep_macroalgae <- 100-(100*Eastern_Sambo_Deep_algae)
 
 
 Eastern_Sambo_Deep_plot <- cbind(Eastern_Sambo_Deep_macroalgae,Eastern_Sambo_Deep_biomass,Eastern_Sambo_Deep_stony_coral)
@@ -528,6 +694,8 @@ colnames(Eastern_Sambo_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral"
 
 Eastern_Sambo_Deep_plot <- Eastern_Sambo_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Eastern_Sambo_Deep_plot$CHI_Average <- rowMeans(subset(Eastern_Sambo_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(Eastern_Sambo_Deep_plot,"Eastern_Sambo_Deep.csv")
@@ -545,17 +713,42 @@ Eastern_Sambo_Deep_bar_graph <- melt(Eastern_Sambo_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Eastern_Sambo_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Eastern Sambo Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Eastern_Sambo_Deep_bar_graph$Year), max(Eastern_Sambo_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
+
 
 ggsave ("plots/Eastern_Sambo_Deep.png", width = 8, height = 4)
 
@@ -582,7 +775,7 @@ Eastern_Sambo_Shallow_macro <- Eastern_Sambo_Shallow$Macroalgae/max(Eastern_Samb
 Eastern_Sambo_Shallow_algae <- data.frame(Eastern_Sambo_Shallow_macro)
 
 
-Eastern_Sambo_Shallow_macroalgae <- (100*Eastern_Sambo_Shallow_algae)
+Eastern_Sambo_Shallow_macroalgae <- 100-(100*Eastern_Sambo_Shallow_algae)
 
 
 Eastern_Sambo_Shallow_plot <- cbind(Eastern_Sambo_Shallow_macroalgae,Eastern_Sambo_Shallow_biomass,Eastern_Sambo_Shallow_stony_coral)
@@ -594,6 +787,8 @@ colnames(Eastern_Sambo_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Cor
 
 Eastern_Sambo_Shallow_plot <- Eastern_Sambo_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Eastern_Sambo_Shallow_plot$CHI_Average <- rowMeans(subset(Eastern_Sambo_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(Eastern_Sambo_Shallow_plot,"Eastern_Sambo_Shallow.csv")
@@ -611,17 +806,41 @@ Eastern_Sambo_Shallow_bar_graph <- melt(Eastern_Sambo_Shallow_bar, id.vars = "Ye
 ### plot
 ggplot(Eastern_Sambo_Shallow_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Eastern Sambo Shallow")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Eastern_Sambo_Shallow_bar_graph$Year), max(Eastern_Sambo_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Eastern_Sambo_Shallow.png", width = 8, height = 4)
 
@@ -648,7 +867,7 @@ Looe_Key_Deep_macro <- Looe_Key_Deep$Macroalgae/max(Looe_Key_Deep$Macroalgae)
 Looe_Key_Deep_algae <- data.frame(Looe_Key_Deep_macro)
 
 
-Looe_Key_Deep_macroalgae <- (100*Looe_Key_Deep_algae)
+Looe_Key_Deep_macroalgae <- 100-(100*Looe_Key_Deep_algae)
 
 
 Looe_Key_Deep_plot <- cbind(Looe_Key_Deep_macroalgae,Looe_Key_Deep_biomass,Looe_Key_Deep_stony_coral)
@@ -660,6 +879,8 @@ colnames(Looe_Key_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 
 Looe_Key_Deep_plot <- Looe_Key_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Looe_Key_Deep_plot$CHI_Average <- rowMeans(subset(Looe_Key_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(Looe_Key_Deep_plot,"Looe_Key_Deep.csv")
@@ -677,17 +898,41 @@ Looe_Key_Deep_bar_graph <- melt(Looe_Key_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Looe_Key_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Looe Key Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Looe_Key_Deep_bar_graph$Year), max(Looe_Key_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Looe_Key_Deep.png", width = 8, height = 4)
 
@@ -713,7 +958,7 @@ Looe_Key_Shallow_macro <- Looe_Key_Shallow$Macroalgae/max(Looe_Key_Shallow$Macro
 Looe_Key_Shallow_algae <- data.frame(Looe_Key_Shallow_macro)
 
 
-Looe_Key_Shallow_macroalgae <- (100*Looe_Key_Shallow_algae)
+Looe_Key_Shallow_macroalgae <- 100-(100*Looe_Key_Shallow_algae)
 
 
 Looe_Key_Shallow_plot <- cbind(Looe_Key_Shallow_macroalgae,Looe_Key_Shallow_biomass,Looe_Key_Shallow_stony_coral)
@@ -725,6 +970,8 @@ colnames(Looe_Key_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","
 
 Looe_Key_Shallow_plot <- Looe_Key_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Looe_Key_Shallow_plot$CHI_Average <- rowMeans(subset(Looe_Key_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
 
 
 export(Looe_Key_Shallow_plot,"Looe_Key_Shallow.csv")
@@ -742,17 +989,41 @@ Looe_Key_Shallow_bar_graph <- melt(Looe_Key_Shallow_bar, id.vars = "Year")
 ### plot
 ggplot(Looe_Key_Shallow_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Looe Key Shallow")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Looe_Key_Shallow_bar_graph$Year), max(Looe_Key_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Looe_Key_Shallow.png", width = 8, height = 4)
 
@@ -778,7 +1049,7 @@ Rock_Key_Deep_macro <- Rock_Key_Deep$Macroalgae/max(Rock_Key_Deep$Macroalgae)
 Rock_Key_Deep_algae <- data.frame(Rock_Key_Deep_macro)
 
 
-Rock_Key_Deep_macroalgae <- (100*Rock_Key_Deep_algae)
+Rock_Key_Deep_macroalgae <- 100-(100*Rock_Key_Deep_algae)
 
 
 Rock_Key_Deep_plot <- cbind(Rock_Key_Deep_macroalgae,Rock_Key_Deep_biomass,Rock_Key_Deep_stony_coral)
@@ -791,6 +1062,8 @@ colnames(Rock_Key_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 Rock_Key_Deep_plot <- Rock_Key_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
 
+Rock_Key_Deep_plot$CHI_Average <- rowMeans(subset(Rock_Key_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Rock_Key_Deep_plot   is averaging the rows per each year for chi final value
 
 export(Rock_Key_Deep_plot,"Rock_Key_Deep.csv")
 
@@ -807,17 +1080,41 @@ Rock_Key_Deep_bar_graph <- melt(Rock_Key_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Rock_Key_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Rock Key Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Rock_Key_Deep_bar_graph$Year), max(Rock_Key_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Rock_Key_Deep.png", width = 8, height = 4)
 
@@ -843,7 +1140,7 @@ Rock_Key_Shallow_macro <- Rock_Key_Shallow$Macroalgae/max(Rock_Key_Shallow$Macro
 Rock_Key_Shallow_algae <- data.frame(Rock_Key_Shallow_macro)
 
 
-Rock_Key_Shallow_macroalgae <- (100*Rock_Key_Shallow_algae)
+Rock_Key_Shallow_macroalgae <- 100-(100*Rock_Key_Shallow_algae)
 
 
 Rock_Key_Shallow_plot <- cbind(Rock_Key_Shallow_macroalgae,Rock_Key_Shallow_biomass,Rock_Key_Shallow_stony_coral)
@@ -855,6 +1152,9 @@ colnames(Rock_Key_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","
 
 Rock_Key_Shallow_plot <- Rock_Key_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Rock_Key_Shallow_plot$CHI_Average <- rowMeans(subset(Rock_Key_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Rock_Key_Shallow_plot,"Rock_Key_Shallow.csv")
@@ -872,17 +1172,41 @@ Rock_Key_Shallow_bar_graph <- melt(Rock_Key_Shallow_bar, id.vars = "Year")
 ### plot
 ggplot(Rock_Key_Shallow_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Rock Key Shallow")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Rock_Key_Shallow_bar_graph$Year), max(Rock_Key_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Rock_Key_Shallow.png", width = 8, height = 4)
 
@@ -908,7 +1232,7 @@ Sand_Key_Deep_macro <- Sand_Key_Deep$Macroalgae/max(Sand_Key_Deep$Macroalgae)
 Sand_Key_Deep_algae <- data.frame(Sand_Key_Deep_macro)
 
 
-Sand_Key_Deep_macroalgae <- (100*Sand_Key_Deep_algae)
+Sand_Key_Deep_macroalgae <- 100-(100*Sand_Key_Deep_algae)
 
 
 Sand_Key_Deep_plot <- cbind(Sand_Key_Deep_macroalgae,Sand_Key_Deep_biomass,Sand_Key_Deep_stony_coral)
@@ -921,6 +1245,8 @@ colnames(Sand_Key_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 Sand_Key_Deep_plot <- Sand_Key_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
 
+Sand_Key_Deep_plot$CHI_Average <- rowMeans(subset(Sand_Key_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#plot  is averaging the rows per each year for chi final value
 
 export(Sand_Key_Deep_plot,"Sand_Key_Deep.csv")
 
@@ -937,17 +1263,41 @@ Sand_Key_Deep_bar_graph <- melt(Sand_Key_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Sand_Key_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Sand Key Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Sand_Key_Deep_bar_graph$Year), max(Sand_Key_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Sand_Key_Deep.png", width = 8, height = 4)
 
@@ -973,7 +1323,7 @@ Sand_Key_Shallow_macro <- Sand_Key_Shallow$Macroalgae/max(Sand_Key_Shallow$Macro
 Sand_Key_Shallow_algae <- data.frame(Sand_Key_Shallow_macro)
 
 
-Sand_Key_Shallow_macroalgae <- (100*Sand_Key_Shallow_algae)
+Sand_Key_Shallow_macroalgae <- 100-(100*Sand_Key_Shallow_algae)
 
 
 Sand_Key_Shallow_plot <- cbind(Sand_Key_Shallow_macroalgae,Sand_Key_Shallow_biomass,Sand_Key_Shallow_stony_coral)
@@ -986,6 +1336,8 @@ colnames(Sand_Key_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","
 Sand_Key_Shallow_plot <- Sand_Key_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
 
+Sand_Key_Shallow_plot$CHI_Average <- rowMeans(subset(Sand_Key_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 export(Sand_Key_Shallow_plot,"Sand_Key_Shallow.csv")
 
@@ -1002,17 +1354,41 @@ Sand_Key_Shallow_bar_graph <- melt(Sand_Key_Shallow_bar, id.vars = "Year")
 ### plot
 ggplot(Sand_Key_Shallow_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Sand Key Shallow")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Sand_Key_Shallow_bar_graph$Year), max(Sand_Key_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Sand_Key_Shallow.png", width = 8, height = 4)
 
@@ -1039,7 +1415,7 @@ Western_Sambo_Deep_macro <- Western_Sambo_Deep$Macroalgae/max(Western_Sambo_Deep
 Western_Sambo_Deep_algae <- data.frame(Western_Sambo_Deep_macro)
 
 
-Western_Sambo_Deep_macroalgae <- (100*Western_Sambo_Deep_algae)
+Western_Sambo_Deep_macroalgae <- 100-(100*Western_Sambo_Deep_algae)
 
 
 Western_Sambo_Deep_plot <- cbind(Western_Sambo_Deep_macroalgae,Western_Sambo_Deep_biomass,Western_Sambo_Deep_stony_coral)
@@ -1051,6 +1427,9 @@ colnames(Western_Sambo_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral"
 
 Western_Sambo_Deep_plot <- Western_Sambo_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Western_Sambo_Deep_plot$CHI_Average <- rowMeans(subset(Western_Sambo_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Western_Sambo_Deep_plot,"Western_Sambo_Deep.csv")
@@ -1068,17 +1447,41 @@ Western_Sambo_Deep_bar_graph <- melt(Western_Sambo_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Western_Sambo_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Western Sambo Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Western_Sambo_Deep_bar_graph$Year), max(Western_Sambo_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Western_Sambo_Deep.png", width = 8, height = 4)
 
@@ -1105,7 +1508,7 @@ Western_Sambo_Shallow_macro <- Western_Sambo_Shallow$Macroalgae/max(Western_Samb
 Western_Sambo_Shallow_algae <- data.frame(Western_Sambo_Shallow_macro)
 
 
-Western_Sambo_Shallow_macroalgae <- (100*Western_Sambo_Shallow_algae)
+Western_Sambo_Shallow_macroalgae <- 100-(100*Western_Sambo_Shallow_algae)
 
 
 Western_Sambo_Shallow_plot <- cbind(Western_Sambo_Shallow_macroalgae,Western_Sambo_Shallow_biomass,Western_Sambo_Shallow_stony_coral)
@@ -1117,6 +1520,9 @@ colnames(Western_Sambo_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Cor
 
 Western_Sambo_Shallow_plot <- Western_Sambo_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Western_Sambo_Shallow_plot$CHI_Average <- rowMeans(subset(Western_Sambo_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Western_Sambo_Shallow_plot,"Western_Sambo_Shallow.csv")
@@ -1134,31 +1540,55 @@ Western_Sambo_Shallow_bar_graph <- melt(Western_Sambo_Shallow_bar, id.vars = "Ye
 ### plot
 ggplot(Western_Sambo_Shallow_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Western Sambo Shallow")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Western_Sambo_Shallow_bar_graph$Year), max(Western_Sambo_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Western_Sambo_Shallow.png", width = 8, height = 4)
 
 
 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/Bar/UK")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/Line/UK")
 
 
 
 #### UK
 
 Carysfort_Deep <- filter(RVC_CREMP, sitename == "Carysfort Deep")
-
+##export(Carysfort_Deep, "Carysfort_Deep_explanation.csv")
 ## Make percentages of sum, stony coral cover, and macroalgae
 
 Carysfort_Deep_fish <- Carysfort_Deep$sum/max(Carysfort_Deep$sum)
@@ -1176,7 +1606,7 @@ Carysfort_Deep_macro <- Carysfort_Deep$Macroalgae/max(Carysfort_Deep$Macroalgae)
 Carysfort_Deep_algae <- data.frame(Carysfort_Deep_macro)
 
 
-Carysfort_Deep_macroalgae <- (100*Carysfort_Deep_algae)
+Carysfort_Deep_macroalgae <- 100-(100*Carysfort_Deep_algae)
 
 
 Carysfort_Deep_plot <- cbind(Carysfort_Deep_macroalgae,Carysfort_Deep_biomass,Carysfort_Deep_stony_coral)
@@ -1188,6 +1618,9 @@ colnames(Carysfort_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Ye
 
 Carysfort_Deep_plot <- Carysfort_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Carysfort_Deep_plot$CHI_Average <- rowMeans(subset(Carysfort_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Carysfort_Deep_plot,"Carysfort_Deep.csv")
@@ -1205,17 +1638,41 @@ Carysfort_Deep_bar_graph <- melt(Carysfort_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Carysfort_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Carysfort Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Carysfort_Deep_bar_graph$Year), max(Carysfort_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Carysfort_Deep.png", width = 8, height = 4)
 
@@ -1243,7 +1700,7 @@ Carysfort_Shallow_macro <- Carysfort_Shallow$Macroalgae/max(Carysfort_Shallow$Ma
 Carysfort_Shallow_algae <- data.frame(Carysfort_Shallow_macro)
 
 
-Carysfort_Shallow_macroalgae <- (100*Carysfort_Shallow_algae)
+Carysfort_Shallow_macroalgae <- 100-(100*Carysfort_Shallow_algae)
 
 
 Carysfort_Shallow_plot <- cbind(Carysfort_Shallow_macroalgae,Carysfort_Shallow_biomass,Carysfort_Shallow_stony_coral)
@@ -1255,6 +1712,9 @@ colnames(Carysfort_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral",
 
 Carysfort_Shallow_plot <- Carysfort_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Carysfort_Shallow_plot$CHI_Average <- rowMeans(subset(Carysfort_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Carysfort_Shallow_plot,"Carysfort_Shallow.csv")
@@ -1272,17 +1732,41 @@ Carysfort_Shallow_bar_graph <- melt(Carysfort_Shallow_bar, id.vars = "Year")
 ### plot
 ggplot(Carysfort_Shallow_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Carysfort Shallow")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Carysfort_Shallow_bar_graph$Year), max(Carysfort_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Carysfort_Shallow.png", width = 8, height = 4)
 
@@ -1307,7 +1791,7 @@ Conch_Deep_macro <- Conch_Deep$Macroalgae/max(Conch_Deep$Macroalgae)
 Conch_Deep_algae <- data.frame(Conch_Deep_macro)
 
 
-Conch_Deep_macroalgae <- (100*Conch_Deep_algae)
+Conch_Deep_macroalgae <- 100-(100*Conch_Deep_algae)
 
 
 Conch_Deep_plot <- cbind(Conch_Deep_macroalgae,Conch_Deep_biomass,Conch_Deep_stony_coral)
@@ -1319,6 +1803,9 @@ colnames(Conch_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Year")
 
 Conch_Deep_plot <- Conch_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Conch_Deep_plot$CHI_Average <- rowMeans(subset(Conch_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Conch_Deep_plot,"Conch_Deep.csv")
@@ -1336,17 +1823,41 @@ Conch_Deep_bar_graph <- melt(Conch_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Conch_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Conch Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Conch_Deep_bar_graph$Year), max(Conch_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Conch_Deep.png", width = 8, height = 4)
 
@@ -1373,7 +1884,7 @@ Conch_Shallow_macro <- Conch_Shallow$Macroalgae/max(Conch_Shallow$Macroalgae)
 Conch_Shallow_algae <- data.frame(Conch_Shallow_macro)
 
 
-Conch_Shallow_macroalgae <- (100*Conch_Shallow_algae)
+Conch_Shallow_macroalgae <- 100-(100*Conch_Shallow_algae)
 
 
 Conch_Shallow_plot <- cbind(Conch_Shallow_macroalgae,Conch_Shallow_biomass,Conch_Shallow_stony_coral)
@@ -1385,6 +1896,9 @@ colnames(Conch_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 
 Conch_Shallow_plot <- Conch_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Conch_Shallow_plot$CHI_Average <- rowMeans(subset(Conch_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Conch_Shallow_plot,"Conch_Shallow.csv")
@@ -1402,17 +1916,41 @@ Conch_Shallow_bar_graph <- melt(Conch_Shallow_bar, id.vars = "Year")
 ### plot
 ggplot(Conch_Shallow_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Conch Shallow")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Conch_Shallow_bar_graph$Year), max(Conch_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Conch_Shallow.png", width = 8, height = 4)
 
@@ -1439,7 +1977,7 @@ Grecian_Rocks_macro <- Grecian_Rocks$Macroalgae/max(Grecian_Rocks$Macroalgae)
 Grecian_Rocks_algae <- data.frame(Grecian_Rocks_macro)
 
 
-Grecian_Rocks_macroalgae <- (100*Grecian_Rocks_algae)
+Grecian_Rocks_macroalgae <-  100-(100*Grecian_Rocks_algae)
 
 
 Grecian_Rocks_plot <- cbind(Grecian_Rocks_macroalgae,Grecian_Rocks_biomass,Grecian_Rocks_stony_coral)
@@ -1452,6 +1990,8 @@ colnames(Grecian_Rocks_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 Grecian_Rocks_plot <- Grecian_Rocks_plot %>%
   mutate_if(is.numeric,round,digits = 0)
 
+Grecian_Rocks_plot$CHI_Average <- rowMeans(subset(Grecian_Rocks_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 export(Grecian_Rocks_plot,"Grecian_Rocks.csv")
 
@@ -1468,17 +2008,41 @@ Grecian_Rocks_bar_graph <- melt(Grecian_Rocks_bar, id.vars = "Year")
 ### plot
 ggplot(Grecian_Rocks_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Grecian Rocks")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Grecian_Rocks_bar_graph$Year), max(Grecian_Rocks_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Grecian_Rocks.png", width = 8, height = 4)
 
@@ -1506,7 +2070,7 @@ Molasses_Deep_macro <- Molasses_Deep$Macroalgae/max(Molasses_Deep$Macroalgae)
 Molasses_Deep_algae <- data.frame(Molasses_Deep_macro)
 
 
-Molasses_Deep_macroalgae <- (100*Molasses_Deep_algae)
+Molasses_Deep_macroalgae <- 100-(100*Molasses_Deep_algae)
 
 
 Molasses_Deep_plot <- cbind(Molasses_Deep_macroalgae,Molasses_Deep_biomass,Molasses_Deep_stony_coral)
@@ -1519,6 +2083,8 @@ colnames(Molasses_Deep_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 Molasses_Deep_plot <- Molasses_Deep_plot %>%
   mutate_if(is.numeric,round,digits = 0)
 
+Molasses_Deep_plot$CHI_Average <- rowMeans(subset(Molasses_Deep_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 export(Molasses_Deep_plot,"Molasses_Deep.csv")
 
@@ -1535,17 +2101,41 @@ Molasses_Deep_bar_graph <- melt(Molasses_Deep_bar, id.vars = "Year")
 ### plot
 ggplot(Molasses_Deep_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Molasses Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Molasses_Deep_bar_graph$Year), max(Molasses_Deep_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Molasses_Deep.png", width = 8, height = 4)
 
@@ -1573,7 +2163,7 @@ Molasses_Shallow_macro <- Molasses_Shallow$Macroalgae/max(Molasses_Shallow$Macro
 Molasses_Shallow_algae <- data.frame(Molasses_Shallow_macro)
 
 
-Molasses_Shallow_macroalgae <- (100*Molasses_Shallow_algae)
+Molasses_Shallow_macroalgae <- 100-(100*Molasses_Shallow_algae)
 
 
 Molasses_Shallow_plot <- cbind(Molasses_Shallow_macroalgae,Molasses_Shallow_biomass,Molasses_Shallow_stony_coral)
@@ -1586,6 +2176,8 @@ colnames(Molasses_Shallow_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","
 Molasses_Shallow_plot <- Molasses_Shallow_plot %>%
   mutate_if(is.numeric,round,digits = 0)
 
+Molasses_Shallow_plot$CHI_Average <- rowMeans(subset(Molasses_Shallow_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 export(Molasses_Shallow_plot,"Molasses_Shallow.csv")
 
@@ -1602,18 +2194,41 @@ Molasses_Shallow_bar_graph <- melt(Molasses_Shallow_bar, id.vars = "Year")
 ### plot
 ggplot(Molasses_Shallow_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Molasses Shallow")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Molasses_Shallow_bar_graph$Year), max(Molasses_Shallow_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
-
+  ylab("CHI %")
 ggsave ("plots/Molasses_Shallow.png", width = 8, height = 4)
 
 
@@ -1638,7 +2253,7 @@ Porter_Patch_macro <- Porter_Patch$Macroalgae/max(Porter_Patch$Macroalgae)
 Porter_Patch_algae <- data.frame(Porter_Patch_macro)
 
 
-Porter_Patch_macroalgae <- (100*Porter_Patch_algae)
+Porter_Patch_macroalgae <- 100-(100*Porter_Patch_algae)
 
 
 Porter_Patch_plot <- cbind(Porter_Patch_macroalgae,Porter_Patch_biomass,Porter_Patch_stony_coral)
@@ -1650,6 +2265,9 @@ colnames(Porter_Patch_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Year
 
 Porter_Patch_plot <- Porter_Patch_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Porter_Patch_plot$CHI_Average <- rowMeans(subset(Porter_Patch_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Porter_Patch_plot,"Porter_Patch.csv")
@@ -1667,17 +2285,41 @@ Porter_Patch_bar_graph <- melt(Porter_Patch_bar, id.vars = "Year")
 ### plot
 ggplot(Porter_Patch_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Porter Patch")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Porter_Patch_bar_graph$Year), max(Porter_Patch_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Porter_Patch.png", width = 8, height = 4)
 
@@ -1706,7 +2348,7 @@ Turtle_macro <- Turtle$Macroalgae/max(Turtle$Macroalgae)
 Turtle_algae <- data.frame(Turtle_macro)
 
 
-Turtle_macroalgae <- (100*Turtle_algae)
+Turtle_macroalgae <- 100-(100*Turtle_algae)
 
 
 Turtle_plot <- cbind(Turtle_macroalgae,Turtle_biomass,Turtle_stony_coral)
@@ -1718,6 +2360,9 @@ colnames(Turtle_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Year")
 
 Turtle_plot <- Turtle_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Turtle_plot$CHI_Average <- rowMeans(subset(Turtle_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Turtle_plot,"Turtle.csv")
@@ -1735,17 +2380,41 @@ Turtle_bar_graph <- melt(Turtle_bar, id.vars = "Year")
 ### plot
 ggplot(Turtle_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Turtle")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Turtle_bar_graph$Year), max(Turtle_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Turtle.png", width = 8, height = 4)
 
@@ -1773,7 +2442,7 @@ Palmata_Patch_macro <- Palmata_Patch$Macroalgae/max(Palmata_Patch$Macroalgae)
 Palmata_Patch_algae <- data.frame(Palmata_Patch_macro)
 
 
-Palmata_Patch_macroalgae <- (100*Palmata_Patch_algae)
+Palmata_Patch_macroalgae <- 100-(100*Palmata_Patch_algae)
 
 
 Palmata_Patch_plot <- cbind(Palmata_Patch_macroalgae,Palmata_Patch_biomass,Palmata_Patch_stony_coral)
@@ -1785,6 +2454,9 @@ colnames(Palmata_Patch_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 
 Palmata_Patch_plot <- Palmata_Patch_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Palmata_Patch_plot$CHI_Average <- rowMeans(subset(Palmata_Patch_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Palmata_Patch_plot,"Palmata_Patch.csv")
@@ -1802,17 +2474,41 @@ Palmata_Patch_bar_graph <- melt(Palmata_Patch_bar, id.vars = "Year")
 ### plot
 ggplot(Palmata_Patch_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Alligator Deep")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Palmata_Patch_bar_graph$Year), max(Palmata_Patch_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Palmata_Patch.png", width = 8, height = 4)
 
@@ -1822,7 +2518,7 @@ ggsave ("plots/Palmata_Patch.png", width = 8, height = 4)
 ### Dry Tortugas
 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/Bar/DT")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/Line/DT")
 
 
 
@@ -1846,7 +2542,7 @@ Bird_Key_Reef_macro <- Bird_Key_Reef$Macroalgae/max(Bird_Key_Reef$Macroalgae)
 Bird_Key_Reef_algae <- data.frame(Bird_Key_Reef_macro)
 
 
-Bird_Key_Reef_macroalgae <- (100*Bird_Key_Reef_algae)
+Bird_Key_Reef_macroalgae <- 100-(100*Bird_Key_Reef_algae)
 
 
 Bird_Key_Reef_plot <- cbind(Bird_Key_Reef_macroalgae,Bird_Key_Reef_biomass,Bird_Key_Reef_stony_coral)
@@ -1858,6 +2554,9 @@ colnames(Bird_Key_Reef_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 
 Bird_Key_Reef_plot <- Bird_Key_Reef_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Bird_Key_Reef_plot$CHI_Average <- rowMeans(subset(Bird_Key_Reef_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#_plot   is averaging the rows per each year for chi final value
 
 
 export(Bird_Key_Reef_plot,"Bird_Key_Reef.csv")
@@ -1875,17 +2574,41 @@ Bird_Key_Reef_bar_graph <- melt(Bird_Key_Reef_bar, id.vars = "Year")
 ### plot
 ggplot(Bird_Key_Reef_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Bird Key Reef")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Bird_Key_Reef_bar_graph$Year), max(Bird_Key_Reef_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Bird_Key_Reef.png", width = 8, height = 4)
 
@@ -1911,7 +2634,7 @@ Loggerhead_Patch_macro <- Loggerhead_Patch$Macroalgae/max(Loggerhead_Patch$Macro
 Loggerhead_Patch_algae <- data.frame(Loggerhead_Patch_macro)
 
 
-Loggerhead_Patch_macroalgae <- (100*Loggerhead_Patch_algae)
+Loggerhead_Patch_macroalgae <- 100-(100*Loggerhead_Patch_algae)
 
 
 Loggerhead_Patch_plot <- cbind(Loggerhead_Patch_macroalgae,Loggerhead_Patch_biomass,Loggerhead_Patch_stony_coral)
@@ -1923,6 +2646,9 @@ colnames(Loggerhead_Patch_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","
 
 Loggerhead_Patch_plot <- Loggerhead_Patch_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Loggerhead_Patch_plot$CHI_Average <- rowMeans(subset(Loggerhead_Patch_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Loggerhead_Patch_plot   is averaging the rows per each year for chi final value
 
 
 export(Loggerhead_Patch_plot,"Loggerhead_Patch.csv")
@@ -1940,17 +2666,41 @@ Loggerhead_Patch_bar_graph <- melt(Loggerhead_Patch_bar, id.vars = "Year")
 ### plot
 ggplot(Loggerhead_Patch_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Loggerhead Patch")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Loggerhead_Patch_bar_graph$Year), max(Loggerhead_Patch_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Loggerhead_Patch.png", width = 8, height = 4)
 
@@ -1977,7 +2727,7 @@ Palmata_Patch_macro <- Palmata_Patch$Macroalgae/max(Palmata_Patch$Macroalgae)
 Palmata_Patch_algae <- data.frame(Palmata_Patch_macro)
 
 
-Palmata_Patch_macroalgae <- (100*Palmata_Patch_algae)
+Palmata_Patch_macroalgae <- 100-(100*Palmata_Patch_algae)
 
 
 Palmata_Patch_plot <- cbind(Palmata_Patch_macroalgae,Palmata_Patch_biomass,Palmata_Patch_stony_coral)
@@ -1989,6 +2739,9 @@ colnames(Palmata_Patch_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 
 Palmata_Patch_plot <- Palmata_Patch_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Palmata_Patch_plot$CHI_Average <- rowMeans(subset(Palmata_Patch_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Palmata_Patch_plot   is averaging the rows per each year for chi final value
 
 
 export(Palmata_Patch_plot,"Palmata_Patch.csv")
@@ -2006,17 +2759,41 @@ Palmata_Patch_bar_graph <- melt(Palmata_Patch_bar, id.vars = "Year")
 ### plot
 ggplot(Palmata_Patch_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Palmata Patch")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Palmata_Patch_bar_graph$Year), max(Palmata_Patch_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Palmata_Patch.png", width = 8, height = 4)
 
@@ -2043,7 +2820,7 @@ Prolifera_Patch_macro <- Prolifera_Patch$Macroalgae/max(Prolifera_Patch$Macroalg
 Prolifera_Patch_algae <- data.frame(Prolifera_Patch_macro)
 
 
-Prolifera_Patch_macroalgae <- (100*Prolifera_Patch_algae)
+Prolifera_Patch_macroalgae <- 100- (100*Prolifera_Patch_algae)
 
 
 Prolifera_Patch_plot <- cbind(Prolifera_Patch_macroalgae,Prolifera_Patch_biomass,Prolifera_Patch_stony_coral)
@@ -2055,6 +2832,9 @@ colnames(Prolifera_Patch_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Y
 
 Prolifera_Patch_plot <- Prolifera_Patch_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Prolifera_Patch_plot$CHI_Average <- rowMeans(subset(Prolifera_Patch_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Prolifera_Patch_plot   is averaging the rows per each year for chi final value
 
 
 export(Prolifera_Patch_plot,"Prolifera_Patch.csv")
@@ -2072,17 +2852,41 @@ Prolifera_Patch_bar_graph <- melt(Prolifera_Patch_bar, id.vars = "Year")
 ### plot
 ggplot(Prolifera_Patch_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Prolifera Patch")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Prolifera_Patch_bar_graph$Year), max(Prolifera_Patch_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Prolifera_Patch.png", width = 8, height = 4)
 
@@ -2109,7 +2913,7 @@ Temptation_Rock_macro <- Temptation_Rock$Macroalgae/max(Temptation_Rock$Macroalg
 Temptation_Rock_algae <- data.frame(Temptation_Rock_macro)
 
 
-Temptation_Rock_macroalgae <- (100*Temptation_Rock_algae)
+Temptation_Rock_macroalgae <- 100- (100*Temptation_Rock_algae)
 
 
 Temptation_Rock_plot <- cbind(Temptation_Rock_macroalgae,Temptation_Rock_biomass,Temptation_Rock_stony_coral)
@@ -2121,6 +2925,9 @@ colnames(Temptation_Rock_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Y
 
 Temptation_Rock_plot <- Temptation_Rock_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Temptation_Rock_plot$CHI_Average <- rowMeans(subset(Temptation_Rock_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Temptation_Rock_plot   is averaging the rows per each year for chi final value
 
 
 export(Temptation_Rock_plot,"Temptation_Rock.csv")
@@ -2138,17 +2945,41 @@ Temptation_Rock_bar_graph <- melt(Temptation_Rock_bar, id.vars = "Year")
 ### plot
 ggplot(Temptation_Rock_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Temptation Rock")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Temptation_Rock_bar_graph$Year), max(Temptation_Rock_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Temptation_Rock.png", width = 8, height = 4)
 
@@ -2175,7 +3006,7 @@ White_Shoal_macro <- White_Shoal$Macroalgae/max(White_Shoal$Macroalgae)
 White_Shoal_algae <- data.frame(White_Shoal_macro)
 
 
-White_Shoal_macroalgae <- (100*White_Shoal_algae)
+White_Shoal_macroalgae <- 100- (100*White_Shoal_algae)
 
 
 White_Shoal_plot <- cbind(White_Shoal_macroalgae,White_Shoal_biomass,White_Shoal_stony_coral)
@@ -2187,6 +3018,9 @@ colnames(White_Shoal_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Year"
 
 White_Shoal_plot <- White_Shoal_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+White_Shoal_plot$CHI_Average <- rowMeans(subset(White_Shoal_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#White_Shoal_plot   is averaging the rows per each year for chi final value
 
 
 export(White_Shoal_plot,"White_Shoal.csv")
@@ -2204,17 +3038,41 @@ White_Shoal_bar_graph <- melt(White_Shoal_bar, id.vars = "Year")
 ### plot
 ggplot(White_Shoal_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "White Shoal")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(White_Shoal_bar_graph$Year), max(White_Shoal_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/White_Shoal.png", width = 8, height = 4)
 
@@ -2223,7 +3081,7 @@ ggsave ("plots/White_Shoal.png", width = 8, height = 4)
 
 ###SEF
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/Bar/SEF")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/Line/SEF")
 
 
 
@@ -2246,7 +3104,7 @@ Broward_County_1_macro <- Broward_County_1$Macroalgae/max(Broward_County_1$Macro
 Broward_County_1_algae <- data.frame(Broward_County_1_macro)
 
 
-Broward_County_1_macroalgae <- (100*Broward_County_1_algae)
+Broward_County_1_macroalgae <- 100- (100*Broward_County_1_algae)
 
 
 Broward_County_1_plot <- cbind(Broward_County_1_macroalgae,Broward_County_1_biomass,Broward_County_1_stony_coral)
@@ -2259,6 +3117,8 @@ colnames(Broward_County_1_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","
 Broward_County_1_plot <- Broward_County_1_plot %>%
   mutate_if(is.numeric,round,digits = 0)
 
+Broward_County_1_plot$CHI_Average <- rowMeans(subset(Broward_County_1_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Broward_County_1_plot   is averaging the rows per each year for chi final value
 
 export(Broward_County_1_plot,"Broward_County_1.csv")
 
@@ -2275,17 +3135,41 @@ Broward_County_1_bar_graph <- melt(Broward_County_1_bar, id.vars = "Year")
 ### plot
 ggplot(Broward_County_1_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Broward County 1")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Broward_County_1_bar_graph$Year), max(Broward_County_1_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Broward_County_1.png", width = 8, height = 4)
 
@@ -2312,7 +3196,7 @@ Broward_County_2_macro <- Broward_County_2$Macroalgae/max(Broward_County_2$Macro
 Broward_County_2_algae <- data.frame(Broward_County_2_macro)
 
 
-Broward_County_2_macroalgae <- (100*Broward_County_2_algae)
+Broward_County_2_macroalgae <- 100- (100*Broward_County_2_algae)
 
 
 Broward_County_2_plot <- cbind(Broward_County_2_macroalgae,Broward_County_2_biomass,Broward_County_2_stony_coral)
@@ -2325,6 +3209,8 @@ colnames(Broward_County_2_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","
 Broward_County_2_plot <- Broward_County_2_plot %>%
   mutate_if(is.numeric,round,digits = 0)
 
+Broward_County_2_plot$CHI_Average <- rowMeans(subset(Broward_County_2_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Broward_County_2_plot   is averaging the rows per each year for chi final value
 
 export(Broward_County_2_plot,"Broward_County_2.csv")
 
@@ -2341,17 +3227,41 @@ Broward_County_2_bar_graph <- melt(Broward_County_2_bar, id.vars = "Year")
 ### plot
 ggplot(Broward_County_2_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Broward County 2")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Broward_County_2_bar_graph$Year), max(Broward_County_2_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Broward_County_2.png", width = 8, height = 4)
 
@@ -2378,7 +3288,7 @@ Broward_County_3_macro <- Broward_County_3$Macroalgae/max(Broward_County_3$Macro
 Broward_County_3_algae <- data.frame(Broward_County_3_macro)
 
 
-Broward_County_3_macroalgae <- (100*Broward_County_3_algae)
+Broward_County_3_macroalgae <- 100- (100*Broward_County_3_algae)
 
 
 Broward_County_3_plot <- cbind(Broward_County_3_macroalgae,Broward_County_3_biomass,Broward_County_3_stony_coral)
@@ -2390,6 +3300,9 @@ colnames(Broward_County_3_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","
 
 Broward_County_3_plot <- Broward_County_3_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Broward_County_3_plot$CHI_Average <- rowMeans(subset(Broward_County_3_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Broward_County_3_plot   is averaging the rows per each year for chi final value
 
 
 export(Broward_County_3_plot,"Broward_County_3.csv")
@@ -2407,17 +3320,41 @@ Broward_County_3_bar_graph <- melt(Broward_County_3_bar, id.vars = "Year")
 ### plot
 ggplot(Broward_County_3_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Broward County 3")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Broward_County_3_bar_graph$Year), max(Broward_County_3_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Broward_County_3.png", width = 8, height = 4)
 
@@ -2443,7 +3380,7 @@ Broward_County_A_macro <- Broward_County_A$Macroalgae/max(Broward_County_A$Macro
 Broward_County_A_algae <- data.frame(Broward_County_A_macro)
 
 
-Broward_County_A_macroalgae <- (100*Broward_County_A_algae)
+Broward_County_A_macroalgae <- 100- (100*Broward_County_A_algae)
 
 
 Broward_County_A_plot <- cbind(Broward_County_A_macroalgae,Broward_County_A_biomass,Broward_County_A_stony_coral)
@@ -2455,6 +3392,9 @@ colnames(Broward_County_A_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","
 
 Broward_County_A_plot <- Broward_County_A_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Broward_County_A_plot$CHI_Average <- rowMeans(subset(Broward_County_A_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Broward_County_A_plot   is averaging the rows per each year for chi final value
 
 
 export(Broward_County_A_plot,"Broward_County_A.csv")
@@ -2472,17 +3412,41 @@ Broward_County_A_bar_graph <- melt(Broward_County_A_bar, id.vars = "Year")
 ### plot
 ggplot(Broward_County_A_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Broward County A")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Broward_County_A_bar_graph$Year), max(Broward_County_A_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Broward_County_A.png", width = 8, height = 4)
 
@@ -2509,7 +3473,7 @@ Dade_County_1_macro <- Dade_County_1$Macroalgae/max(Dade_County_1$Macroalgae)
 Dade_County_1_algae <- data.frame(Dade_County_1_macro)
 
 
-Dade_County_1_macroalgae <- (100*Dade_County_1_algae)
+Dade_County_1_macroalgae <- 100- (100*Dade_County_1_algae)
 
 
 Dade_County_1_plot <- cbind(Dade_County_1_macroalgae,Dade_County_1_biomass,Dade_County_1_stony_coral)
@@ -2521,6 +3485,9 @@ colnames(Dade_County_1_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 
 Dade_County_1_plot <- Dade_County_1_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Dade_County_1_plot$CHI_Average <- rowMeans(subset(Dade_County_1_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Dade_County_1_plot   is averaging the rows per each year for chi final value
 
 
 export(Dade_County_1_plot,"Dade_County_1.csv")
@@ -2538,17 +3505,41 @@ Dade_County_1_bar_graph <- melt(Dade_County_1_bar, id.vars = "Year")
 ### plot
 ggplot(Dade_County_1_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Dade County 1")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Dade_County_1_bar_graph$Year), max(Dade_County_1_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Dade_County_1.png", width = 8, height = 4)
 
@@ -2573,7 +3564,7 @@ Dade_County_2_macro <- Dade_County_2$Macroalgae/max(Dade_County_2$Macroalgae)
 Dade_County_2_algae <- data.frame(Dade_County_2_macro)
 
 
-Dade_County_2_macroalgae <- (100*Dade_County_2_algae)
+Dade_County_2_macroalgae <- 100- (100*Dade_County_2_algae)
 
 
 Dade_County_2_plot <- cbind(Dade_County_2_macroalgae,Dade_County_2_biomass,Dade_County_2_stony_coral)
@@ -2586,6 +3577,8 @@ colnames(Dade_County_2_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 Dade_County_2_plot <- Dade_County_2_plot %>%
   mutate_if(is.numeric,round,digits = 0)
 
+Dade_County_2_plot$CHI_Average <- rowMeans(subset(Dade_County_2_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Dade_County_2_plot   is averaging the rows per each year for chi final value
 
 export(Dade_County_2_plot,"Dade_County_2.csv")
 
@@ -2602,17 +3595,41 @@ Dade_County_2_bar_graph <- melt(Dade_County_2_bar, id.vars = "Year")
 ### plot
 ggplot(Dade_County_2_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Dade County 2")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Dade_County_2_bar_graph$Year), max(Dade_County_2_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Dade_County_2.png", width = 8, height = 4)
 
@@ -2640,7 +3657,7 @@ Dade_County_3_macro <- Dade_County_3$Macroalgae/max(Dade_County_3$Macroalgae)
 Dade_County_3_algae <- data.frame(Dade_County_3_macro)
 
 
-Dade_County_3_macroalgae <- (100*Dade_County_3_algae)
+Dade_County_3_macroalgae <- 100- (100*Dade_County_3_algae)
 
 
 Dade_County_3_plot <- cbind(Dade_County_3_macroalgae,Dade_County_3_biomass,Dade_County_3_stony_coral)
@@ -2652,6 +3669,9 @@ colnames(Dade_County_3_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Yea
 
 Dade_County_3_plot <- Dade_County_3_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Dade_County_3_plot$CHI_Average <- rowMeans(subset(Dade_County_3_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Dade_County_3_plot   is averaging the rows per each year for chi final value
 
 
 export(Dade_County_3_plot,"Dade_County_3.csv")
@@ -2669,17 +3689,41 @@ Dade_County_3_bar_graph <- melt(Dade_County_3_bar, id.vars = "Year")
 ### plot
 ggplot(Dade_County_3_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Dade County 3")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Dade_County_3_bar_graph$Year), max(Dade_County_3_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Dade_County_3.png", width = 8, height = 4)
 
@@ -2706,7 +3750,7 @@ Martin_County_1_macro <- Martin_County_1$Macroalgae/max(Martin_County_1$Macroalg
 Martin_County_1_algae <- data.frame(Martin_County_1_macro)
 
 
-Martin_County_1_macroalgae <- (100*Martin_County_1_algae)
+Martin_County_1_macroalgae <- 100- (100*Martin_County_1_algae)
 
 
 Martin_County_1_plot <- cbind(Martin_County_1_macroalgae,Martin_County_1_biomass,Martin_County_1_stony_coral)
@@ -2718,6 +3762,9 @@ colnames(Martin_County_1_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Y
 
 Martin_County_1_plot <- Martin_County_1_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Martin_County_1_plot$CHI_Average <- rowMeans(subset(Martin_County_1_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Martin_County_1_plot   is averaging the rows per each year for chi final value
 
 
 export(Martin_County_1_plot,"Martin_County_1.csv")
@@ -2735,17 +3782,41 @@ Martin_County_1_bar_graph <- melt(Martin_County_1_bar, id.vars = "Year")
 ### plot
 ggplot(Martin_County_1_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Martin County 1")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Martin_County_1_bar_graph$Year), max(Martin_County_1_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Martin_County_1.png", width = 8, height = 4)
 
@@ -2770,7 +3841,7 @@ Martin_County_2_macro <- Martin_County_2$Macroalgae/max(Martin_County_2$Macroalg
 Martin_County_2_algae <- data.frame(Martin_County_2_macro)
 
 
-Martin_County_2_macroalgae <- (100*Martin_County_2_algae)
+Martin_County_2_macroalgae <- 100- (100*Martin_County_2_algae)
 
 
 Martin_County_2_plot <- cbind(Martin_County_2_macroalgae,Martin_County_2_biomass,Martin_County_2_stony_coral)
@@ -2782,6 +3853,9 @@ colnames(Martin_County_2_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Y
 
 Martin_County_2_plot <- Martin_County_2_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Martin_County_2_plot$CHI_Average <- rowMeans(subset(Martin_County_2_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Martin_County_2_plot   is averaging the rows per each year for chi final value
 
 
 export(Martin_County_2_plot,"Martin_County_2.csv")
@@ -2799,17 +3873,41 @@ Martin_County_2_bar_graph <- melt(Martin_County_2_bar, id.vars = "Year")
 ### plot
 ggplot(Martin_County_2_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Martin County 2")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Martin_County_2_bar_graph$Year), max(Martin_County_2_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Martin_County_2.png", width = 8, height = 4)
 
@@ -2834,7 +3932,7 @@ Palm_Beach_1_macro <- Palm_Beach_1$Macroalgae/max(Palm_Beach_1$Macroalgae)
 Palm_Beach_1_algae <- data.frame(Palm_Beach_1_macro)
 
 
-Palm_Beach_1_macroalgae <- (100*Palm_Beach_1_algae)
+Palm_Beach_1_macroalgae <- 100- (100*Palm_Beach_1_algae)
 
 
 Palm_Beach_1_plot <- cbind(Palm_Beach_1_macroalgae,Palm_Beach_1_biomass,Palm_Beach_1_stony_coral)
@@ -2846,6 +3944,9 @@ colnames(Palm_Beach_1_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Year
 
 Palm_Beach_1_plot <- Palm_Beach_1_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Palm_Beach_1_plot$CHI_Average <- rowMeans(subset(Palm_Beach_1_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Palm_Beach_1_plot   is averaging the rows per each year for chi final value
 
 
 export(Palm_Beach_1_plot,"Palm_Beach_1.csv")
@@ -2863,17 +3964,41 @@ Palm_Beach_1_bar_graph <- melt(Palm_Beach_1_bar, id.vars = "Year")
 ### plot
 ggplot(Palm_Beach_1_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Palm Beach 1")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Palm_Beach_1_bar_graph$Year), max(Palm_Beach_1_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Palm_Beach_1.png", width = 8, height = 4)
 
@@ -2898,7 +4023,7 @@ Palm_Beach_2_macro <- Palm_Beach_2$Macroalgae/max(Palm_Beach_2$Macroalgae)
 Palm_Beach_2_algae <- data.frame(Palm_Beach_2_macro)
 
 
-Palm_Beach_2_macroalgae <- (100*Palm_Beach_2_algae)
+Palm_Beach_2_macroalgae <- 100- (100*Palm_Beach_2_algae)
 
 
 Palm_Beach_2_plot <- cbind(Palm_Beach_2_macroalgae,Palm_Beach_2_biomass,Palm_Beach_2_stony_coral)
@@ -2910,6 +4035,9 @@ colnames(Palm_Beach_2_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Year
 
 Palm_Beach_2_plot <- Palm_Beach_2_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Palm_Beach_2_plot$CHI_Average <- rowMeans(subset(Palm_Beach_2_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Palm_Beach_2_plot   is averaging the rows per each year for chi final value
 
 
 export(Palm_Beach_2_plot,"Palm_Beach_2.csv")
@@ -2927,17 +4055,41 @@ Palm_Beach_2_bar_graph <- melt(Palm_Beach_2_bar, id.vars = "Year")
 ### plot
 ggplot(Palm_Beach_2_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Palm Beach 2")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Palm_Beach_2_bar_graph$Year), max(Palm_Beach_2_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Palm_Beach_2.png", width = 8, height = 4)
 
@@ -2965,7 +4117,7 @@ Palm_Beach_3_macro <- Palm_Beach_3$Macroalgae/max(Palm_Beach_3$Macroalgae)
 Palm_Beach_3_algae <- data.frame(Palm_Beach_3_macro)
 
 
-Palm_Beach_3_macroalgae <- (100*Palm_Beach_3_algae)
+Palm_Beach_3_macroalgae <- 100- (100*Palm_Beach_3_algae)
 
 
 Palm_Beach_3_plot <- cbind(Palm_Beach_3_macroalgae,Palm_Beach_3_biomass,Palm_Beach_3_stony_coral)
@@ -2977,6 +4129,9 @@ colnames(Palm_Beach_3_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Year
 
 Palm_Beach_3_plot <- Palm_Beach_3_plot %>%
   mutate_if(is.numeric,round,digits = 0)
+
+Palm_Beach_3_plot$CHI_Average <- rowMeans(subset(Palm_Beach_3_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Palm_Beach_3_plot   is averaging the rows per each year for chi final value
 
 
 export(Palm_Beach_3_plot,"Palm_Beach_3.csv")
@@ -2994,17 +4149,41 @@ Palm_Beach_3_bar_graph <- melt(Palm_Beach_3_bar, id.vars = "Year")
 ### plot
 ggplot(Palm_Beach_3_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Palm Beach 3")+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                xmax = Inf,
+                ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Palm_Beach_3_bar_graph$Year), max(Palm_Beach_3_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
 
 ggsave ("plots/Palm_Beach_3.png", width = 8, height = 4)
 
@@ -3031,7 +4210,7 @@ Palm_Beach_4_macro <- Palm_Beach_4$Macroalgae/max(Palm_Beach_4$Macroalgae)
 Palm_Beach_4_algae <- data.frame(Palm_Beach_4_macro)
 
 
-Palm_Beach_4_macroalgae <- (100*Palm_Beach_4_algae)
+Palm_Beach_4_macroalgae <- 100- (100*Palm_Beach_4_algae)
 
 
 Palm_Beach_4_plot <- cbind(Palm_Beach_4_macroalgae,Palm_Beach_4_biomass,Palm_Beach_4_stony_coral)
@@ -3044,6 +4223,8 @@ colnames(Palm_Beach_4_plot) <- c("Macroalgae","Fish_Biomass","Stony_Coral","Year
 Palm_Beach_4_plot <- Palm_Beach_4_plot %>%
   mutate_if(is.numeric,round,digits = 0)
 
+Palm_Beach_4_plot$CHI_Average <- rowMeans(subset(Palm_Beach_4_plot, select = c(Macroalgae,Fish_Biomass,Stony_Coral)))
+#Palm_Beach_4_plot   is averaging the rows per each year for chi final value
 
 export(Palm_Beach_4_plot,"Palm_Beach_4.csv")
 
@@ -3058,18 +4239,50 @@ Palm_Beach_4_bar_graph <- melt(Palm_Beach_4_bar, id.vars = "Year")
 
 
 ### plot
-ggplot(Palm_Beach_4_bar_graph, aes(Year, value, fill=variable))+
+# mbon <- png::readPNG("C:/Users/cara.estes/Pictures/Research/MBON.png")  
+# g_pic <- rasterGrob(mbon, interpolate=TRUE)
+
+  ggplot(Palm_Beach_4_bar_graph, aes(Year, value, fill=variable))+
   ggtitle("Coral Health Index", subtitle = "Palm Beach 4")+
-  geom_line(aes(color = variable), size = 2)+
+   geom_rect(aes(xmin = -Inf,
+                  xmax = Inf,
+                  ymin = -Inf, ymax = 20, fill = 'Very Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                  xmax = Inf,
+                  ymin = 20.5, ymax = 40, fill = 'Degraded'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                  xmax = Inf,
+                  ymin = 40.5, ymax = 60,fill = 'Fair'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                  xmax = Inf,
+                  ymin = 60.5, ymax = 80, fill = 'Healthy'), alpha = .01)+
+  geom_rect(aes(xmin = -Inf,
+                  xmax = Inf,
+                  ymin = 80.5, ymax = Inf, fill = 'Very Healthy'), alpha = .01)+
+   geom_line(aes(color = variable), size = 2)+
   geom_point()+
   scale_x_continuous(breaks = round(seq(min(Palm_Beach_4_bar_graph$Year), max(Palm_Beach_4_bar_graph$Year), by = 2),1))+
-  scale_color_manual(values=c("forestgreen", "dodgerblue", "indianred1"))+
+  scale_color_manual(name = "Health Indicators",
+                     labels = c("Macroalgae","Fish Biomass","Stony Coral","CHI Value"),
+                     values=c("forestgreen", "dodgerblue", "indianred1","black"))+
+  scale_fill_manual(name = "Health Categories",
+                    labels = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    values = alpha(c("lightgreen","lightblue","gold","khaki","tomato")),
+                    limits = c("Very Healthy","Healthy","Fair","Degraded","Very Degraded"),
+                    guide = guide_legend(override.aes = list(shape = 22, size = 5)))+
   theme_light()+
-  theme(
+  theme(  
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5),
+    panel.grid = element_blank(),
+    legend.title = element_text(face = "bold"),
     legend.background = element_blank(),
     legend.box.background = element_rect(colour = "black"))+
-  ylab("Percentage %")
+  ylab("CHI %")
+  
 
 ggsave ("plots/Palm_Beach_4.png", width = 8, height = 4)
+
+
+  
+

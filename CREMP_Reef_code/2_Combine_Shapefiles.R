@@ -115,6 +115,12 @@ RVC_99_DT <- import("RVC99_lat_lon.csv")
 RVC_99_DT$SUBREGION_DOMAIN <-rep('DT',nrow(RVC_99_DT))
 export(RVC_99_DT,"RVC_99_DT_analyze.csv")
 
+
+RVC_18_DT <- import("RVC18_lat_lon.csv")
+RVC_18_DT$SUBREGION_DOMAIN <-rep('DT',nrow(RVC_18_DT))
+export(RVC_18_DT,"RVC_18_DT_analyze.csv")
+
+
 RVC_16_DT <- import("RVC16_lat_lon.csv")
 RVC_16_DT$SUBREGION_DOMAIN <-rep('DT',nrow(RVC_16_DT))
 export(RVC_16_DT,"RVC_16_DT_analyze.csv")

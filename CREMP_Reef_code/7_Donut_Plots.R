@@ -2,7 +2,7 @@
 
 ## wd may be off added "Donut" folder (FYI next run)
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC")
 extrafont::loadfonts(device="pdf")
 extrafont::loadfonts(device="postscript")
 
@@ -26,7 +26,7 @@ RVC_CREMP <- read_csv("CREMP_RVC_REEF.csv")
 
 
 
-setwd("C:/Users/cestes/Documents/Spring_2020/CREMP_RVC/Donut/MK")
+setwd("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/Donut/MK")
 
 ### Data per reef for MK
 
