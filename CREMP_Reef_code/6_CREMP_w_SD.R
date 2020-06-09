@@ -17043,3 +17043,18 @@ coral_2017_merged <- rbind(coral_2017_Carysfort_Shallow_merge,
 
 
 coral_2017_merged$Year <- "2017"
+
+
+
+### Combine all years
+
+
+CREMP_all <- rbind(coral_1996_merged,coral_1997_merged,coral_1998_merged,coral_1999_merged,
+                   coral_2000_merged,coral_2001_merged,coral_2002_merged,coral_2003_merged,
+                   coral_2004_merged,coral_2005_merged,coral_2006_merged,coral_2007_merged,
+                   coral_2008_merged,coral_2009_merged,coral_2010_merged,coral_2011_merged,
+                   coral_2012_merged,coral_2013_merged,coral_2014_merged,coral_2015_merged,
+                   coral_2016_merged,coral_2017_merged)
+
+
+export(CREMP_all,"Coral_Macro_w_SD_all_years.csv")
