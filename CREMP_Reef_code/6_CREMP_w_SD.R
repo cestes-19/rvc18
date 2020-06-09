@@ -17058,3 +17058,20 @@ CREMP_all <- rbind(coral_1996_merged,coral_1997_merged,coral_1998_merged,coral_1
 
 
 export(CREMP_all,"Coral_Macro_w_SD_all_years.csv")
+
+
+
+### Combine with RVC data 
+CREMP_all <- read_csv("Coral_Macro_w_SD_all_years.csv")
+
+setwd("C:/Users/cara.estes/Documents/Spring_2020/RVC_CREMP_by_REEF")
+
+RVC_18_SD <- read_csv("All_regions_RVC_biomass_data.csv")
+
+
+### Combine with join function 
+
+CREMP_RVC_combined_SD <- merge(RVC_18_SD, CREMP_all, by = c("sitename","Year"))
+
+
+export(CREMP_RVC_combined_SD,"C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/CREMP_RVC_SD.csv")
