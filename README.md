@@ -14,6 +14,11 @@ There are no additional folders in exploited_species
 
 The diversity indices have shown some problems and may need to be changed slightly to work for your code. The inputs for domain biomass are not calculated in this code, but I give an example of one year. 
 
+The Reef Fish Biodiversity portion of the code(very end) will require you to run the Fetch_data_updated.R prior to getting figures. 
+
+
+
+
 
 
 
