@@ -2613,8 +2613,6 @@ ggplot(Bird_Key_Reef_bar_graph, aes(Year, value, fill=variable))+
 ggsave ("plots/Bird_Key_Reef.png", width = 8, height = 4)
 
 
-
-
 Loggerhead_Patch <- filter(RVC_CREMP, sitename == "Loggerhead Patch")
 
 ## Make percentages of sum, stony coral cover, and macroalgae
