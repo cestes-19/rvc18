@@ -242,7 +242,7 @@ Molasses_Deep_CHI <- read_csv('Spring_2020/CREMP_RVC/Line/UK/Molasses_Deep.csv')
 Molasses_Deep_CHI$sitename <- "Molasses Deep"
 
 Molasses_Shallow_CHI <- read_csv('Spring_2020/CREMP_RVC/Line/UK/Molasses_Shallow.csv')
-Molasses_Shallow_CHI$sitename <- "Molasses_Shallow"
+Molasses_Shallow_CHI$sitename <- "Molasses Shallow"
 
 Porter_Patch_CHI <- read_csv('Spring_2020/CREMP_RVC/Line/UK/Porter_Patch.csv')
 Porter_Patch_CHI$sitename <- "Porter Patch"
@@ -275,7 +275,7 @@ Molasses_Deep_RHI <- read_csv('Spring_2020/CREMP_RVC/RHI/UK/Molasses_Deep.csv')
 Molasses_Deep_RHI$sitename <- "Molasses Deep"
 
 Molasses_Shallow_RHI <- read_csv('Spring_2020/CREMP_RVC/RHI/UK/Molasses_Shallow.csv')
-Molasses_Shallow_RHI$sitename <- "Molasses_Shallow"
+Molasses_Shallow_RHI$sitename <- "Molasses Shallow"
 
 Porter_Patch_RHI <- read_csv('Spring_2020/CREMP_RVC/RHI/UK/Porter_Patch.csv')
 Porter_Patch_RHI$sitename <- "Porter Patch"
@@ -295,7 +295,8 @@ UK_RHI$REGION <- "UK"
 All_CHI <- rbind(DT_CHI,LK_CHI,MK_CHI,UK_CHI)
 All_RHI <- rbind(DT_RHI,LK_RHI,MK_RHI,UK_RHI)
 
-
+export(All_CHI,"Summer_2020/Dygraphs_CHI_RHI/CHI_combined.csv")
+export(All_RHI,"Summer_2020/Dygraphs_CHI_RHI/RHI_combined.csv")
 
 ## Add in column for MPA protected vs unportected  
 
@@ -421,14 +422,15 @@ colnames(CHI_unprotected_Yearly_graph) <- c("Year","Unprotected Average")
 
 CHI_all_graph <- merge(CHI_protected_Yearly_graph,CHI_unprotected_Yearly_graph)
 
-setwd("C:/Users/cara.estes/Documents/Summer_2020/Dygraphs_CHI_RHI")
+setwd("C:/Users/cara.estes/Documents/Summer_2020/Dygraphs_CHI_RHI/plots")
 
 
 dygraph(CHI_all_graph, main = 'CHI Trends') %>% 
   dyAxis("y", label = "CHI %",valueRange = c(0,100)) %>%
   dyAxis("x", label = "Year") %>%
-  dyOptions(stackedGraph = F, fillGraph = T, fillAlpha = .01)%>%
-  saveWidget(file=paste0( getwd(), "/CHI_MPAs.html"))
+  dyOptions(stackedGraph = F, fillGraph = T, fillAlpha = .01)
+
+  # saveWidget(file=paste0( getwd(), "/CHI_MPAs.html"))
 
 
   
@@ -649,10 +651,14 @@ colnames(Macro_unprotected_1) <- c("Year","Unprotected")
 Macro_all <- merge(Macro_protected_1,Macro_unprotected_1)
 
 
+setwd("C:/Users/cara.estes/Documents/Summer_2020/Dygraphs_CHI_RHI/plots")
+
+
 dygraph(Macro_all, main = 'Macroalgae Cover') %>% 
   dyAxis("y", label = "Macroalgae % Cover",valueRange = c(0,40)) %>%
   dyAxis("x", label = "Year") %>%
-  dyOptions(stackedGraph = F, fillGraph = T, fillAlpha = .01)
+  dyOptions(stackedGraph = F, fillGraph = T, fillAlpha = .01) %>%
+  saveWidget(file=paste0( getwd(), "/Macroalgae_Cover_MPAs.html"))
 
 ## Herbivorous fish biomass dygraph
 
@@ -683,7 +689,8 @@ Herb_all <- merge(Herb_protected_1,Herb_unprotected_1)
 dygraph(Herb_all, main = 'Herbivorous Fish') %>% 
   dyAxis("y", label = "Herbivorous Fish Biomass",valueRange = c(0,.2)) %>%
   dyAxis("x", label = "Year") %>%
-  dyOptions(stackedGraph = F, fillGraph = T, fillAlpha = .01)
+  dyOptions(stackedGraph = F, fillGraph = T, fillAlpha = .01)%>%
+  saveWidget(file=paste0( getwd(), "/Herbivorous_biomass_MPAs.html"))
 
 
 
