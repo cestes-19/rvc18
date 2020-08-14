@@ -641,24 +641,38 @@ RVC_tax_sample <- left_join(RVC_master,RVC_combine, by = "SPECIES_CD")
 
 
 RVC_biomass <- RVC_tax_sample
-RVC_biomass$Biomass <- (RVC_biomass$WLEN_A*(RVC_biomass$LEN*10^(RVC_biomass$WLEN_B))/1000)
+RVC_biomass$Biomass <- (RVC_biomass$NUM*(RVC_biomass$WLEN_A*(RVC_biomass$LEN*10^(RVC_biomass$WLEN_B))/1000))
 
 
   
-## Average biomass per species per year,,, then divide by 177m^2 to get density of each species per year  
+## Average biomass per species per year  
 
-RVC_density_per_species <- RVC_biomass %>%
+RVC_biomass_per_species <- RVC_biomass %>%
   group_by(file_id,YEAR_,SPECIES_CD) %>%
-  mutate(Avgpspecies = mean(Biomass)) %>%
-  mutate(Densitypspecies = Avgpspecies/177) %>%
+  mutate(Avgpspecies = sum(Biomass)) %>%
   ungroup()
 
-## Average the density of all species together for each year for density per reef 
+## Average the density via psu -> ssu -> species by 177 m^2  
 
-RVC_density_per_reef <- RVC_density_per_species %>%
+RVC_density_per_species <- RVC_biomass_per_species %>%
+  group_by(file_id,YEAR_,SPECIES_CD,PRIMARY_SA,STATION_NR) %>%
+  mutate(DensitypSSU = sum(NUM)) %>%
+  ungroup()
+
+
+#RVC_density_per_reef per year 
+
+Test <- RVC_density_per_species %>%
+  group_by(file_id,YEAR_,PRIMARY_SA) %>%
+  mutate(DensitypPSU = sum(DensitypSSU)/length(STATION_NR)) %>%
+  mutate(var = var(DensitypSSU)) %>%
+  ungroup()
+
+Test2 <- Test %>%
   group_by(file_id,YEAR_) %>%
-  mutate(Densitypreef = mean(Densitypspecies)) %>%
+  mutate(DensitypReef = sum(DensitypPSU)/length(unique(SPECIES_CD))) %>%
   ungroup()
+
 
 #export(RVC_density_per_reef,"Density_per_Reef.csv")
 
@@ -690,6 +704,7 @@ CREMP_all <- read_csv("C:/Users/cara.estes/Documents/Spring_2020/CREMP_RVC/SD_Ma
 ## combine
 
 Density_CREMP <- left_join(RVC_new_name, CREMP_all, by = c("sitename","Year"))
+
 
 ## calculate CHI w SD for each reef 
 
